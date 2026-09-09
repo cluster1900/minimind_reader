@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "device": "cpu",
+  "seed": 42,
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "torch": "2.6.0",
+  "transformers": "4.57.6",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "script_sha256": "9912bf9ad28f0ea67cdba843a755129f7c0d5c809e854c717400ce1da3332e96",
+  "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+  "tensor_last_value": 23.0,
+  "linear_output": [
+    [
+      1.0,
+      2.0,
+      3.0
+    ]
+  ],
+  "scalar_gradient": -6.0,
+  "scalar_after_update": 2.299999952316284,
+  "loss_before": 1.0,
+  "loss_after": 0.0100000761449337,
+  "logits_shape": [
+    2,
+    4,
+    32
+  ],
+  "model_loss": 3.5718185901641846,
+  "parameters": 19648
+}

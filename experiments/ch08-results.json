@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "device": "cpu",
+  "seed": 42,
+  "steps": 80,
+  "learning_rate": 0.003,
+  "train_rows": 2,
+  "held_out_rows": 1,
+  "before_train": {
+    "nll_sum": 78.99321746826172,
+    "valid_tokens": 9,
+    "nll": 8.77702416314019,
+    "perplexity": 6483.5544366751665
+  },
+  "after_train": {
+    "nll_sum": 1.0073451101779938,
+    "valid_tokens": 9,
+    "nll": 0.11192723446422154,
+    "perplexity": 1.1184314744185573
+  },
+  "before_held_out": {
+    "nll_sum": 43.99115753173828,
+    "valid_tokens": 5,
+    "nll": 8.798231506347657,
+    "perplexity": 6622.521756282219
+  },
+  "after_held_out": {
+    "nll_sum": 33.130191802978516,
+    "valid_tokens": 5,
+    "nll": 6.626038360595703,
+    "perplexity": 754.487235769565
+  },
+  "history": [
+    {
+      "step": 1,
+      "loss": 8.777024269104004
+    },
+    {
+      "step": 20,
+      "loss": 5.202970027923584
+    },
+    {
+      "step": 40,
+      "loss": 1.8596545457839966
+    },
+    {
+      "step": 80,
+      "loss": 0.12018837034702301
+    }
+  ],
+  "generated": [
+    {
+      "question": "问题甲",
+      "expected": "答甲",
+      "outputs": {
+        "default_template": "答甲<|im_end|>",
+        "empty_think_removed": "答甲<|im_end|>"
+      }
+    },
+    {
+      "question": "问题乙",
+      "expected": "答乙",
+      "outputs": {
+        "default_template": "答乙<|im_end|>",
+        "empty_think_removed": "答乙<|im_end|>"
+      }
+    },
+    {
+      "question": "未见问题丙",
+      "expected": "答丙",
+      "outputs": {
+        "default_template": "答甲<|im_end|>",
+        "empty_think_removed": "答甲<|im_end|>"
+      }
+    }
+  ],
+  "aggregation_counterexample": {
+    "token_mean": 2.8,
+    "batch_mean": 2.0
+  },
+  "corpus_sha256": "cc033befe5d600256f593063a0ae505ef4513991aaa9d596a311fdf5bda09cfe",
+  "script_sha256": "25a8b8207744688a64f12e125e19432e7044743c4ee74bd026c3cc35eef02eb6",
+  "files": {
+    "dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
+    "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+  }
+}

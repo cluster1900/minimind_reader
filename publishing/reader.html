@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>MiniMind EPUB 阅读校验</title>
+<style>body{margin:0;background:#dde5e8;font:16px sans-serif}header{height:48px;display:flex;gap:14px;align-items:center;padding:0 20px}#viewer{width:960px;height:760px;margin:auto;background:white}button,select{font:inherit}</style>
+<header><button onclick="reader.prev()">上一页</button><button onclick="reader.next()">下一页</button><select id="chapters"></select><span id="state">加载 EPUB</span></header>
+<div id="viewer"></div>
+<script src="/node_modules/jszip/dist/jszip.min.js"></script><script src="/node_modules/epubjs/dist/epub.min.js"></script>
+<script>
+window.book=ePub('/build/release/minimind-source-guide.epub');
+window.reader=book.renderTo('viewer',{width:960,height:760,spread:'none',flow:'paginated'});
+window.ready=(async()=>{await book.ready;const nav=await book.loaded.navigation;window.nav=nav;
+const select=document.querySelector('#chapters');for(const item of nav.toc){const o=document.createElement('option');o.value=item.href;o.textContent=item.label;select.append(o)}
+select.onchange=()=>reader.display(select.value);reader.on('relocated',loc=>{const item=nav.toc.find(x=>x.href.split('#')[0]===loc.start.href);if(item)select.value=item.href});await reader.display(nav.toc[0].href);document.querySelector('#state').textContent='EPUB.js 已载入';return nav.toc;})();
+</script></html>

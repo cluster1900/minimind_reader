@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>MiniMind Foliate 阅读校验</title>
+<style>html,body{margin:0;height:100%}foliate-view{display:block;width:100%;height:100%}</style>
+<script type="module">
+import '../.tools/foliate-js/view.js';
+window.ready=(async()=>{
+ const view=document.createElement('foliate-view');window.reader=view;document.body.append(view);
+ await view.open('/build/release/minimind-source-guide.epub');
+ view.renderer.setAttribute('max-column-count','1');
+ window.nav=view.book.toc;await view.goTo(nav[0].href);return nav;
+})();
+</script></html>

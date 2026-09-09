@@ -1,0 +1,474 @@
+[
+  {
+    "chapter_id": "ch03",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "MiniMindConfig",
+      "RMSNorm.norm",
+      "RMSNorm.forward",
+      "FeedForward.forward",
+      "MiniMindBlock.forward",
+      "MiniMindModel.forward",
+      "MiniMindForCausalLM.__init__",
+      "MiniMindForCausalLM.forward"
+    ]
+  },
+  {
+    "chapter_id": "ch01",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "MiniMindConfig",
+      "MiniMindForCausalLM.__init__",
+      "MiniMindForCausalLM.forward"
+    ]
+  },
+  {
+    "chapter_id": "ch01",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "eval_llm.py",
+    "symbols": [
+      "init_model",
+      "main"
+    ]
+  },
+  {
+    "chapter_id": "ch02",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_tokenizer.py",
+    "symbols": [
+      "get_texts",
+      "train_tokenizer",
+      "eval_tokenizer"
+    ]
+  },
+  {
+    "chapter_id": "ch04",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "Attention.__init__",
+      "Attention.forward",
+      "repeat_kv"
+    ]
+  },
+  {
+    "chapter_id": "ch05",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "precompute_freqs_cis",
+      "apply_rotary_pos_emb",
+      "MiniMindModel.forward",
+      "MiniMindForCausalLM.generate"
+    ]
+  },
+  {
+    "chapter_id": "ch06",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "dataset/lm_dataset.py",
+    "symbols": [
+      "PretrainDataset.__getitem__",
+      "SFTDataset.__getitem__",
+      "SFTDataset.generate_labels",
+      "SFTDataset.create_chat_prompt",
+      "pre_processing_chat",
+      "post_processing_chat"
+    ]
+  },
+  {
+    "chapter_id": "ch06",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "MiniMindForCausalLM.forward"
+    ]
+  },
+  {
+    "chapter_id": "ch07",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_pretrain.py",
+    "symbols": [
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch07",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_full_sft.py",
+    "symbols": [
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch07",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/trainer_utils.py",
+    "symbols": [
+      "get_lr",
+      "lm_checkpoint",
+      "SkipBatchSampler.__iter__",
+      "init_model",
+      "init_distributed_mode"
+    ]
+  },
+  {
+    "chapter_id": "ch08",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_full_sft.py",
+    "symbols": [
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch08",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/trainer_utils.py",
+    "symbols": [
+      "init_model"
+    ]
+  },
+  {
+    "chapter_id": "ch08",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "dataset/lm_dataset.py",
+    "symbols": [
+      "SFTDataset"
+    ]
+  },
+  {
+    "chapter_id": "ch08",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "MiniMindForCausalLM.forward",
+      "MiniMindForCausalLM.generate"
+    ]
+  },
+  {
+    "chapter_id": "ch08",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "eval_llm.py",
+    "symbols": [
+      "main"
+    ]
+  },
+  {
+    "chapter_id": "ch09",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "MOEFeedForward.forward",
+      "MiniMindModel.forward",
+      "MiniMindBlock.__init__"
+    ]
+  },
+  {
+    "chapter_id": "ch10",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_lora.py",
+    "symbols": [
+      "LoRA.forward",
+      "apply_lora",
+      "save_lora",
+      "merge_lora"
+    ]
+  },
+  {
+    "chapter_id": "ch10",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_lora.py",
+    "symbols": [
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch10",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_distillation.py",
+    "symbols": [
+      "distillation_loss",
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch11",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_dpo.py",
+    "symbols": [
+      "logits_to_log_probs",
+      "dpo_loss",
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch11",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "dataset/lm_dataset.py",
+    "symbols": [
+      "DPODataset.__getitem__",
+      "DPODataset.generate_loss_mask"
+    ]
+  },
+  {
+    "chapter_id": "ch12",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_ppo.py",
+    "symbols": [
+      "CriticModel.forward",
+      "ppo_train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch12",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_grpo.py",
+    "symbols": [
+      "grpo_train_epoch",
+      "calculate_rewards"
+    ]
+  },
+  {
+    "chapter_id": "ch12",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/rollout_engine.py",
+    "symbols": [
+      "compute_per_token_logps",
+      "TorchRolloutEngine.rollout",
+      "SGLangRolloutEngine.rollout",
+      "SGLangRolloutEngine.update_policy"
+    ]
+  },
+  {
+    "chapter_id": "ch12",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "dataset/lm_dataset.py",
+    "symbols": [
+      "RLAIFDataset.create_chat_prompt"
+    ]
+  },
+  {
+    "chapter_id": "ch13",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "trainer/train_agent.py",
+    "symbols": [
+      "parse_tool_calls",
+      "execute_tool",
+      "rollout_single",
+      "rollout_batch",
+      "calculate_rewards",
+      "validate_gt_in_text",
+      "rl_train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch13",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "dataset/lm_dataset.py",
+    "symbols": [
+      "AgentRLDataset.parse_conversations"
+    ]
+  },
+  {
+    "chapter_id": "ch14",
+    "repository": "minimind-v",
+    "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+    "path": "model/model_vlm.py",
+    "symbols": [
+      "VLMConfig",
+      "MMVisionProjector",
+      "MiniMindVLM.forward",
+      "MiniMindVLM.count_vision_proj",
+      "MiniMindVLM.get_vision_model",
+      "MiniMindVLM.get_image_embeddings"
+    ]
+  },
+  {
+    "chapter_id": "ch15",
+    "repository": "minimind-v",
+    "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+    "path": "trainer/trainer_utils.py",
+    "symbols": [
+      "init_vlm_model",
+      "vlm_checkpoint",
+      "vlm_collate_fn"
+    ]
+  },
+  {
+    "chapter_id": "ch15",
+    "repository": "minimind-v",
+    "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+    "path": "dataset/lm_dataset.py",
+    "symbols": [
+      "VLMDataset.__getitem__",
+      "VLMDataset.create_chat_prompt"
+    ]
+  },
+  {
+    "chapter_id": "ch15",
+    "repository": "minimind-v",
+    "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+    "path": "trainer/train_pretrain_vlm.py",
+    "symbols": [
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch15",
+    "repository": "minimind-v",
+    "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+    "path": "trainer/train_sft_vlm.py",
+    "symbols": [
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch16",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "model/model_omni.py",
+    "symbols": [
+      "SenseVoiceAudioProcessor.__call__",
+      "MiniMindOmni.load_sensevoice",
+      "MiniMindOmni.encode_audio_inputs",
+      "MiniMindOmni.inject_audio_features"
+    ]
+  },
+  {
+    "chapter_id": "ch16",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "dataset/omni_dataset.py",
+    "symbols": [
+      "OmniDataset.process_audio",
+      "OmniDataset.load_audio_inputs",
+      "OmniDataset.augment_wav"
+    ]
+  },
+  {
+    "chapter_id": "ch17",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "model/model_omni.py",
+    "symbols": [
+      "OmniConfig",
+      "TalkerModule",
+      "MiniMindOmni.__init__",
+      "MiniMindOmni.forward"
+    ]
+  },
+  {
+    "chapter_id": "ch18",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "model/model_omni.py",
+    "symbols": [
+      "TalkerHead.forward",
+      "TalkerEmbedding.forward",
+      "MiniMindOmni.generate",
+      "MiniMindOmni.stream_generate"
+    ]
+  },
+  {
+    "chapter_id": "ch18",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "dataset/omni_dataset.py",
+    "symbols": [
+      "OmniDataset.__getitem__"
+    ]
+  },
+  {
+    "chapter_id": "ch18",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "eval_omni.py",
+    "symbols": [
+      "eval_sample"
+    ]
+  },
+  {
+    "chapter_id": "ch19",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "trainer/train_sft_omni.py",
+    "symbols": [
+      "omni_collate_fn",
+      "train_epoch"
+    ]
+  },
+  {
+    "chapter_id": "ch19",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "trainer/trainer_utils.py",
+    "symbols": [
+      "init_omni_model",
+      "omni_checkpoint"
+    ]
+  },
+  {
+    "chapter_id": "ch19",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "dataset/omni_dataset.py",
+    "symbols": [
+      "OmniDataset.__getitem__",
+      "OmniDataset.apply_scheduled_sampling"
+    ]
+  },
+  {
+    "chapter_id": "ch20",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "model/model_omni.py",
+    "symbols": [
+      "SileroVAD",
+      "RealtimeSession.push_chunk",
+      "RealtimeSession.get_audio"
+    ]
+  },
+  {
+    "chapter_id": "ch20",
+    "repository": "minimind-o",
+    "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+    "path": "webui/web_demo.py",
+    "symbols": [
+      "realtime",
+      "run_generate",
+      "prepare_turn",
+      "stream_pcm",
+      "pcm_bytes",
+      "_mimi_decode"
+    ]
+  }
+]

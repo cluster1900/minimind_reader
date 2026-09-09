@@ -1,0 +1,1833 @@
+{
+  "status": "passed",
+  "reviewed_at": "2026-09-09T11:08:41.042211+08:00",
+  "record": "meta/consistency-review.md",
+  "documents": [
+    {
+      "id": "reading-guide",
+      "path": "book/reading-guide.md",
+      "body_sha256": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209",
+      "items": [
+        {
+          "id": "reading-guide-math-001",
+          "kind": "math",
+          "sha256": "6bcf51a7eb9a6a4ff5c99dbc7066c1d9081ee67eba37f6f3586f03c1de283eef"
+        },
+        {
+          "id": "reading-guide-math-002",
+          "kind": "math",
+          "sha256": "2007178d72d7cc0280c904956189f1a7e627c0ce4863c653dbec868221970909"
+        },
+        {
+          "id": "reading-guide-math-003",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "reading-guide-math-004",
+          "kind": "math",
+          "sha256": "b28fd8e1b4006133539de79679dc34200d9b7915595df44bd18737463585da1a"
+        },
+        {
+          "id": "reading-guide-math-005",
+          "kind": "math",
+          "sha256": "b11807925cbf1600a20d9b31257f2c82241fdfd9cc190bcf7c81e3a20f4268f0"
+        },
+        {
+          "id": "reading-guide-math-006",
+          "kind": "math",
+          "sha256": "1af7d2773d05580b59fe8d7d3c41a4d4609c6a8de740b242820181ec3ea8df91"
+        },
+        {
+          "id": "reading-guide-math-007",
+          "kind": "math",
+          "sha256": "27b3d601b8c46f3f4de6fb8c7bd36f85c6b318f2fb8f5cf2712c31948c295db0"
+        },
+        {
+          "id": "reading-guide-math-008",
+          "kind": "math",
+          "sha256": "738e8a80d0d055021a7fe466cef6eb22dd6a375ce2170b7e91319b48c38a2d59"
+        }
+      ]
+    },
+    {
+      "id": "ch01",
+      "path": "book/01-start-here/README.md",
+      "body_sha256": "42ee211a551efcd4e79ad94a42d00ea8162f80c4c0039a644d18f1e8932d8037",
+      "items": [
+        {
+          "id": "ch01-diagram-001",
+          "kind": "diagram",
+          "sha256": "47ac3cdc394d1b147a4394ef1659c2e2c0bf93dbc43211277ba757ee31db03ea"
+        },
+        {
+          "id": "ch01-math-001",
+          "kind": "math",
+          "sha256": "6bcf51a7eb9a6a4ff5c99dbc7066c1d9081ee67eba37f6f3586f03c1de283eef"
+        },
+        {
+          "id": "ch01-math-002",
+          "kind": "math",
+          "sha256": "2007178d72d7cc0280c904956189f1a7e627c0ce4863c653dbec868221970909"
+        },
+        {
+          "id": "ch01-math-003",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch01-math-004",
+          "kind": "math",
+          "sha256": "4429dc9ba7b27bb27e27fef669e558af25f4fdc05c09dcc572c9adfa695e770a"
+        },
+        {
+          "id": "ch01-math-005",
+          "kind": "math",
+          "sha256": "41418e3f562ce83bbd2836e39e24377a0f6425b371d3edfaf0b396a81b8188b6"
+        },
+        {
+          "id": "ch01-math-006",
+          "kind": "math",
+          "sha256": "63d060f614af18c5ee4632ca3d8205d7b61ed8ef78a3fe06515155ef75ba3f56"
+        },
+        {
+          "id": "ch01-math-007",
+          "kind": "math",
+          "sha256": "ee04c07ff577469e5605e5fa183c8f990143d069f40e45d71a904bbfadb8ac2b"
+        },
+        {
+          "id": "ch01-math-008",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch01-math-009",
+          "kind": "math",
+          "sha256": "b11807925cbf1600a20d9b31257f2c82241fdfd9cc190bcf7c81e3a20f4268f0"
+        },
+        {
+          "id": "ch01-math-010",
+          "kind": "math",
+          "sha256": "da88938b2680676a440c3ecf9b379bd7fd89eaabce992a8a4be72c89ee054865"
+        },
+        {
+          "id": "ch01-math-011",
+          "kind": "math",
+          "sha256": "46aa8618d92307d41807a71b416a9cf1d3dc652faa643c06754f546e9769dc7f"
+        },
+        {
+          "id": "ch01-math-012",
+          "kind": "math",
+          "sha256": "c9bce8dea3e7eb034ed49b37f7b6f31e66cf8aed92a15ce1d4697748ab4065e4"
+        },
+        {
+          "id": "ch01-math-013",
+          "kind": "math",
+          "sha256": "64a13f9e1241b1281861e9cf75969aae22aa3937a7fef689720e41ef5e0f05a7"
+        },
+        {
+          "id": "ch01-math-014",
+          "kind": "math",
+          "sha256": "da88938b2680676a440c3ecf9b379bd7fd89eaabce992a8a4be72c89ee054865"
+        },
+        {
+          "id": "ch01-math-015",
+          "kind": "math",
+          "sha256": "9a2b280840b3443cf426eeba35beb85abf9b3d96c81bcff415822c51277db5df"
+        },
+        {
+          "id": "ch01-math-016",
+          "kind": "math",
+          "sha256": "da88938b2680676a440c3ecf9b379bd7fd89eaabce992a8a4be72c89ee054865"
+        },
+        {
+          "id": "ch01-math-017",
+          "kind": "math",
+          "sha256": "828d9379efe405911f7c641d5338451caaeecfeac3a04f4fa1f19cda5f635c08"
+        },
+        {
+          "id": "ch01-math-018",
+          "kind": "math",
+          "sha256": "852e630b1323479c7c241d0f480977e169779e5ad784152987d58107c2bb65f1"
+        },
+        {
+          "id": "ch01-diagram-002",
+          "kind": "diagram",
+          "sha256": "46b1bafba0faf3137058cdc6ac832acb8515567df59cbc1b2a15fae4ea9637bb"
+        }
+      ]
+    },
+    {
+      "id": "ch02",
+      "path": "book/02-tokenizer/README.md",
+      "body_sha256": "811d0efde371a02d2d0aad2cd800d72e21da139e3b88edc74fac0f10f6fb2e5f",
+      "items": [
+        {
+          "id": "ch02-diagram-001",
+          "kind": "diagram",
+          "sha256": "3f5a677ce6b3e95772b4c60511ad3018a81692ebc9c124fc515bad9e45fd5dad"
+        },
+        {
+          "id": "ch02-diagram-002",
+          "kind": "diagram",
+          "sha256": "d863e43146fc2ef7b67d1083e38b57cd2957dc42ae9797332762480863b16623"
+        },
+        {
+          "id": "ch02-math-001",
+          "kind": "math",
+          "sha256": "3ee4712d523f58548aa6accfd1b9844970eab1d5a210db16e3f7b99ec7e7e1c6"
+        },
+        {
+          "id": "ch02-math-002",
+          "kind": "math",
+          "sha256": "14871ddf9c6405e1a8e9acc339443eb780bac2fc632ef271b7ca06358ff21af6"
+        },
+        {
+          "id": "ch02-math-003",
+          "kind": "math",
+          "sha256": "1f5855969fb5720f526cb7b519a3da3eeb81e1dbad032df30ae4ed479d334411"
+        },
+        {
+          "id": "ch02-math-004",
+          "kind": "math",
+          "sha256": "2422230520c8a6e51b4a1d2f7eac51641e7050f709845dfc5f579a300872eab8"
+        },
+        {
+          "id": "ch02-math-005",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        },
+        {
+          "id": "ch02-math-006",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        },
+        {
+          "id": "ch02-math-007",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        }
+      ]
+    },
+    {
+      "id": "ch03",
+      "path": "book/03-model-skeleton/README.md",
+      "body_sha256": "50a9b038e83b79552503b8f051811876b096c9074b391c6adc7ed1902a1b1239",
+      "items": [
+        {
+          "id": "ch03-math-001",
+          "kind": "math",
+          "sha256": "6bcf51a7eb9a6a4ff5c99dbc7066c1d9081ee67eba37f6f3586f03c1de283eef"
+        },
+        {
+          "id": "ch03-math-002",
+          "kind": "math",
+          "sha256": "2007178d72d7cc0280c904956189f1a7e627c0ce4863c653dbec868221970909"
+        },
+        {
+          "id": "ch03-math-003",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch03-math-004",
+          "kind": "math",
+          "sha256": "b28fd8e1b4006133539de79679dc34200d9b7915595df44bd18737463585da1a"
+        },
+        {
+          "id": "ch03-diagram-001",
+          "kind": "diagram",
+          "sha256": "3a61ec09085027f26449e94269bed6847d4eb1e263ce8d5414b064bfc8dd1aff"
+        },
+        {
+          "id": "ch03-math-005",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch03-math-006",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch03-math-007",
+          "kind": "math",
+          "sha256": "b28fd8e1b4006133539de79679dc34200d9b7915595df44bd18737463585da1a"
+        },
+        {
+          "id": "ch03-math-008",
+          "kind": "math",
+          "sha256": "43646981abcbcc93314a5e599c5c031f02f8b55a68b092c408de6c16b79b50ca"
+        },
+        {
+          "id": "ch03-math-009",
+          "kind": "math",
+          "sha256": "cb30602bc444f04434f77a3f2f226628ceb8f5224e59d508a0bba1069b063f04"
+        },
+        {
+          "id": "ch03-math-010",
+          "kind": "math",
+          "sha256": "b11807925cbf1600a20d9b31257f2c82241fdfd9cc190bcf7c81e3a20f4268f0"
+        },
+        {
+          "id": "ch03-math-011",
+          "kind": "math",
+          "sha256": "211acaa245cc41642143fe10ad36fb5a25e33356b372fd76b50abf328304ae69"
+        },
+        {
+          "id": "ch03-math-012",
+          "kind": "math",
+          "sha256": "e3ce8ee2abf0cb22f2585138cdbaedbc0b7244330d75b9437f6961ead54e2948"
+        },
+        {
+          "id": "ch03-math-013",
+          "kind": "math",
+          "sha256": "0ffe70e154b3bda6cae9e1d17a84df86608a0fe0e939f58416ec6f002e0a690e"
+        },
+        {
+          "id": "ch03-math-014",
+          "kind": "math",
+          "sha256": "2fc82ae40db0fdcc34f838e20f1f1a906db4457de902de19e78cf9aab3982884"
+        },
+        {
+          "id": "ch03-math-015",
+          "kind": "math",
+          "sha256": "8315ac9c252b1e4d1a167b7ed45913aee2671c55558aa57b768a0f41e9bab5dd"
+        },
+        {
+          "id": "ch03-math-016",
+          "kind": "math",
+          "sha256": "933cdfe65003440092ba1ce5de18529572d6bbf245e1c5807685e588cab10ee9"
+        },
+        {
+          "id": "ch03-math-017",
+          "kind": "math",
+          "sha256": "6d66230600d74dc590d26de1675eb00d7de0681cafa4a0f95c78d54217b3627e"
+        },
+        {
+          "id": "ch03-diagram-002",
+          "kind": "diagram",
+          "sha256": "e46a23354eef8a11f6b4a186c42404606bb733fcda6e6956c4d999fd6d4f6123"
+        },
+        {
+          "id": "ch03-math-018",
+          "kind": "math",
+          "sha256": "a638755ca21e2ce7853893c36f6e34b8a0e4972c2a179c0fb4cb605e669f85e5"
+        },
+        {
+          "id": "ch03-math-019",
+          "kind": "math",
+          "sha256": "6c3346c994e2f92310661c69666b5b77ee2831ab58077cfe25f1112b61ad668f"
+        },
+        {
+          "id": "ch03-math-020",
+          "kind": "math",
+          "sha256": "cace78334c0afbfefe2fa43ed778d1598dcf499a85ca91f5ddcb12f575bb7215"
+        },
+        {
+          "id": "ch03-math-021",
+          "kind": "math",
+          "sha256": "783ec987d312060d23876de2311c1ab56943db21b1bde589f946862cf95efeb7"
+        },
+        {
+          "id": "ch03-math-022",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        },
+        {
+          "id": "ch03-math-023",
+          "kind": "math",
+          "sha256": "c8d260e22a8ef0afb2d54ab58bdd2d5d16e63690842189f5b6bf4dd0178099c9"
+        },
+        {
+          "id": "ch03-math-024",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch03-math-025",
+          "kind": "math",
+          "sha256": "b11807925cbf1600a20d9b31257f2c82241fdfd9cc190bcf7c81e3a20f4268f0"
+        },
+        {
+          "id": "ch03-math-026",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch03-math-027",
+          "kind": "math",
+          "sha256": "ed6080a64182477a98ae6336514fc4c9a9e35c299989325abb9d9506a00d774d"
+        },
+        {
+          "id": "ch03-math-028",
+          "kind": "math",
+          "sha256": "286a3597c4a568f6c372dcb6e8da06c7c9b34d51a76e0d857b8f43e6c7564015"
+        },
+        {
+          "id": "ch03-math-029",
+          "kind": "math",
+          "sha256": "d86ae39e557f02a4b36ecaa33840e2df2ea21094e105b47de21084d8b310427a"
+        },
+        {
+          "id": "ch03-math-030",
+          "kind": "math",
+          "sha256": "881ee9c4ba6a950bf3e765c93a6192974738ba31bb94e3241c3693a101854954"
+        },
+        {
+          "id": "ch03-math-031",
+          "kind": "math",
+          "sha256": "4206a1e6d1dd4c397a4bba065153658e42aaa692c1c26717bd72fe2e1a34e5f6"
+        },
+        {
+          "id": "ch03-math-032",
+          "kind": "math",
+          "sha256": "63d192f96d7cf21eb7467d4d70ffa4a6778c43032c22cacde7a4351f615b1b71"
+        },
+        {
+          "id": "ch03-math-033",
+          "kind": "math",
+          "sha256": "7fe40990c22119b6329e3875afe7c8fdfc9dee56f2c92236cbb24070ecf1a097"
+        },
+        {
+          "id": "ch03-math-034",
+          "kind": "math",
+          "sha256": "e9faefe113b1b5fe2eac11d05c984e1d38f11ea2139dfb8bb7b009a1da9884d0"
+        },
+        {
+          "id": "ch03-math-035",
+          "kind": "math",
+          "sha256": "081c0c8f0c11ae46bc14b20d05d9e39ff151339839af87a9b253c9a44772c923"
+        },
+        {
+          "id": "ch03-math-036",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch03-math-037",
+          "kind": "math",
+          "sha256": "b28fd8e1b4006133539de79679dc34200d9b7915595df44bd18737463585da1a"
+        },
+        {
+          "id": "ch03-math-038",
+          "kind": "math",
+          "sha256": "081c0c8f0c11ae46bc14b20d05d9e39ff151339839af87a9b253c9a44772c923"
+        },
+        {
+          "id": "ch03-math-039",
+          "kind": "math",
+          "sha256": "081c0c8f0c11ae46bc14b20d05d9e39ff151339839af87a9b253c9a44772c923"
+        },
+        {
+          "id": "ch03-math-040",
+          "kind": "math",
+          "sha256": "65434dd5e6a389f100e4883dcf1b988711cc27b353688122562dadc32a5d6bc7"
+        },
+        {
+          "id": "ch03-math-041",
+          "kind": "math",
+          "sha256": "65434dd5e6a389f100e4883dcf1b988711cc27b353688122562dadc32a5d6bc7"
+        }
+      ]
+    },
+    {
+      "id": "ch04",
+      "path": "book/04-attention/README.md",
+      "body_sha256": "4d0927548a236ea859dd48115cb11510468088b065fa54c4df679dd6fba28607",
+      "items": [
+        {
+          "id": "ch04-math-001",
+          "kind": "math",
+          "sha256": "ab08dae673fbfbe054f760e96483dd2380af867547fe130167726e0ba907721e"
+        },
+        {
+          "id": "ch04-math-002",
+          "kind": "math",
+          "sha256": "a738076f0772879fe6d45ad3e25762c71a0d5ece45be81b0cd341fd25d8e5b72"
+        },
+        {
+          "id": "ch04-math-003",
+          "kind": "math",
+          "sha256": "27b3d601b8c46f3f4de6fb8c7bd36f85c6b318f2fb8f5cf2712c31948c295db0"
+        },
+        {
+          "id": "ch04-math-004",
+          "kind": "math",
+          "sha256": "7677df71fe84d9bed98eab07f2bf6724438b269ffda047789ed233238c25578f"
+        },
+        {
+          "id": "ch04-math-005",
+          "kind": "math",
+          "sha256": "bd94cf64d9a11bd36ce0533c18cfe9a0a548a52594a97746a6edfe7980f1298f"
+        },
+        {
+          "id": "ch04-math-006",
+          "kind": "math",
+          "sha256": "bd94cf64d9a11bd36ce0533c18cfe9a0a548a52594a97746a6edfe7980f1298f"
+        },
+        {
+          "id": "ch04-math-007",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        },
+        {
+          "id": "ch04-math-008",
+          "kind": "math",
+          "sha256": "191d186e539421d8f90b03ccabad82417cef79156e8a4b8514c3033ffd26eb5e"
+        },
+        {
+          "id": "ch04-math-009",
+          "kind": "math",
+          "sha256": "5b0a6a6d0ae6b5fa0f7e046c843ef72b42d8206deba3c3d3787f147bbfe25882"
+        },
+        {
+          "id": "ch04-math-010",
+          "kind": "math",
+          "sha256": "8b72f96298ba48e2c6360754b49ec4b37a993cdfb227777bfaa305d27dc0b48b"
+        },
+        {
+          "id": "ch04-math-011",
+          "kind": "math",
+          "sha256": "e82506722e0d5930106124468a37625f575536fd4188f9b461814dea16f5c221"
+        },
+        {
+          "id": "ch04-math-012",
+          "kind": "math",
+          "sha256": "2c0ab7c3c3478d85370c4f5edefd9d57982d25fb21c380731aa650e7bbb25fb8"
+        },
+        {
+          "id": "ch04-math-013",
+          "kind": "math",
+          "sha256": "fa6dd6ef000edd946692671321421249c9b5846ba642e735b043e41187dfcd0a"
+        },
+        {
+          "id": "ch04-math-014",
+          "kind": "math",
+          "sha256": "27b3d601b8c46f3f4de6fb8c7bd36f85c6b318f2fb8f5cf2712c31948c295db0"
+        },
+        {
+          "id": "ch04-math-015",
+          "kind": "math",
+          "sha256": "f8729a00bb106be1bc5fd8e0c04ea6b4fa7f0c3170123b1fc8e6cdfdba078451"
+        },
+        {
+          "id": "ch04-math-016",
+          "kind": "math",
+          "sha256": "5cc7162895e4d0a2c3e5015ad80115adf1ab4d7fdc8be5c786a79adf35f0399a"
+        },
+        {
+          "id": "ch04-math-017",
+          "kind": "math",
+          "sha256": "503a2ef81270688347fc732efc8b9e8601ed898951c12a1cc2253047ee71f5da"
+        },
+        {
+          "id": "ch04-math-018",
+          "kind": "math",
+          "sha256": "0317ac95169f4bcbdcfc38614687017f6c5b6ddd7848e8f629cf6446cf3dc307"
+        },
+        {
+          "id": "ch04-math-019",
+          "kind": "math",
+          "sha256": "d26f673ac58d8029a074a666abf7e247874ae6ad671030a3d799e829ea8f00b4"
+        },
+        {
+          "id": "ch04-math-020",
+          "kind": "math",
+          "sha256": "478a5ad72b09619917d31820204f4665c08f4463a3bf983bef211c0633403afa"
+        },
+        {
+          "id": "ch04-diagram-001",
+          "kind": "diagram",
+          "sha256": "55a02398626b771cd7052ef4db477007c26e23eb0d24f41db5d5e22ee67a5b3c"
+        },
+        {
+          "id": "ch04-math-021",
+          "kind": "math",
+          "sha256": "0609f29a2135c71282f6331c6947d28063aead6bf2973bd4d25853a1b734401f"
+        },
+        {
+          "id": "ch04-math-022",
+          "kind": "math",
+          "sha256": "2f764e434f696889fe96d1d93701688940101bb4e1a1b6ba014238e08d171621"
+        },
+        {
+          "id": "ch04-math-023",
+          "kind": "math",
+          "sha256": "cf1dfe903bd4a4bf608bf5a9c596af5e8cb6fb46078e240952053347b3dd2c04"
+        },
+        {
+          "id": "ch04-math-024",
+          "kind": "math",
+          "sha256": "2007178d72d7cc0280c904956189f1a7e627c0ce4863c653dbec868221970909"
+        },
+        {
+          "id": "ch04-math-025",
+          "kind": "math",
+          "sha256": "cf1dfe903bd4a4bf608bf5a9c596af5e8cb6fb46078e240952053347b3dd2c04"
+        },
+        {
+          "id": "ch04-math-026",
+          "kind": "math",
+          "sha256": "64a13f9e1241b1281861e9cf75969aae22aa3937a7fef689720e41ef5e0f05a7"
+        },
+        {
+          "id": "ch04-math-027",
+          "kind": "math",
+          "sha256": "9791efde20303a0985801a828b4f544387423ad7259c6daec4c644aeefeee85a"
+        },
+        {
+          "id": "ch04-math-028",
+          "kind": "math",
+          "sha256": "aabc0b67ce657a2697fc32d80aa6002128ae83473644a64b529558712ff11bc4"
+        },
+        {
+          "id": "ch04-math-029",
+          "kind": "math",
+          "sha256": "b6472ebee97f96c991189a4b0a68b9c508f6891053085348a47cd4c1c631cf4d"
+        },
+        {
+          "id": "ch04-math-030",
+          "kind": "math",
+          "sha256": "27b3d601b8c46f3f4de6fb8c7bd36f85c6b318f2fb8f5cf2712c31948c295db0"
+        },
+        {
+          "id": "ch04-diagram-002",
+          "kind": "diagram",
+          "sha256": "4206291a5c8f16960ba3012b6809c5ff5e57039fa6d64f475071ea74fb961eb6"
+        },
+        {
+          "id": "ch04-math-031",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        }
+      ]
+    },
+    {
+      "id": "ch05",
+      "path": "book/05-rope-cache-generation/README.md",
+      "body_sha256": "d94bb463ed5c383ae38d8d209f4b2d6c4e5d2c9c1233299b61fcbbb7c5860ba9",
+      "items": [
+        {
+          "id": "ch05-math-001",
+          "kind": "math",
+          "sha256": "a32d3c19889a9117fd667a1229df7c23b0d0462fc85db5e2712b438e19f831a9"
+        },
+        {
+          "id": "ch05-math-002",
+          "kind": "math",
+          "sha256": "daea34337eb5c34863395b8948abb5a75250d6f68479a2e3cbd5f90529dec768"
+        },
+        {
+          "id": "ch05-math-003",
+          "kind": "math",
+          "sha256": "19b1455bb2befac4adc2ad4aff6c62f78e144b681fd21dc1de1a4828c917df48"
+        },
+        {
+          "id": "ch05-math-004",
+          "kind": "math",
+          "sha256": "3859fb1e24ac1da02998f3d021a5b4f873f996ec7ec680223ebbfd2bc1b32f7e"
+        },
+        {
+          "id": "ch05-math-005",
+          "kind": "math",
+          "sha256": "975a2bb3dbeb8cdd926ba18899dd64e53b4bfbea76f87ae98bfb2bc9d2760973"
+        },
+        {
+          "id": "ch05-math-006",
+          "kind": "math",
+          "sha256": "62f1de86abdb8541d51dff9c8fe3ff0a803692231c95f587498a6ba45d34d839"
+        },
+        {
+          "id": "ch05-math-007",
+          "kind": "math",
+          "sha256": "65d06f1bd47ae6673cb9b8db089495723a9560301920e61a18331ef93bc85eea"
+        },
+        {
+          "id": "ch05-math-008",
+          "kind": "math",
+          "sha256": "27b3d601b8c46f3f4de6fb8c7bd36f85c6b318f2fb8f5cf2712c31948c295db0"
+        },
+        {
+          "id": "ch05-math-009",
+          "kind": "math",
+          "sha256": "d405172f95692b132b57ea7924304526ffa7f611f4e27bcbc2ba55bc7562a2b3"
+        },
+        {
+          "id": "ch05-diagram-001",
+          "kind": "diagram",
+          "sha256": "80df7d60cb9e10db7f36cb4a5ae13bbdcc126cb08388c8098d0344e9253140e3"
+        },
+        {
+          "id": "ch05-math-010",
+          "kind": "math",
+          "sha256": "b35b84314d0eaac7d57ee3b6f93ef4d4bf492407f45bbd9490f97184b4023fb2"
+        },
+        {
+          "id": "ch05-math-011",
+          "kind": "math",
+          "sha256": "def4f8d36528eba0b7a484eab7d772beb325905a77973c0364344b70a956e3d6"
+        },
+        {
+          "id": "ch05-math-012",
+          "kind": "math",
+          "sha256": "fe556950be3ae18e7ec2b882d36329d3bf5599a68fd9acd26ede28ceeac9e009"
+        },
+        {
+          "id": "ch05-math-013",
+          "kind": "math",
+          "sha256": "cace78334c0afbfefe2fa43ed778d1598dcf499a85ca91f5ddcb12f575bb7215"
+        },
+        {
+          "id": "ch05-math-014",
+          "kind": "math",
+          "sha256": "8c7f95f16e13fcbaf6f9b748206dd912a96a1bf07c14b89913f2fab69b3085e1"
+        },
+        {
+          "id": "ch05-math-015",
+          "kind": "math",
+          "sha256": "1573bf5f5cd6d312636093170137814db59e3e5dc916d1bf44f5ca81be0689e5"
+        },
+        {
+          "id": "ch05-math-016",
+          "kind": "math",
+          "sha256": "8063d813479c09c809b701373a4aac925c8a25f36ebe9578fad758d8c95122c4"
+        },
+        {
+          "id": "ch05-math-017",
+          "kind": "math",
+          "sha256": "b0bc6bbb45a14af1aefd080769ef772309edc63d65b2f7ca1e21d7a4464b6774"
+        },
+        {
+          "id": "ch05-math-018",
+          "kind": "math",
+          "sha256": "165434f4f1d73d6f985ddddece2812fec2f9e9600a740e139b9056a63aa7bada"
+        },
+        {
+          "id": "ch05-math-019",
+          "kind": "math",
+          "sha256": "9c39df5ad71f46ea778b55e49a1da6fc4a09db26bf01ca7fced4e071f3cddcb0"
+        },
+        {
+          "id": "ch05-math-020",
+          "kind": "math",
+          "sha256": "a1567cd05aacd9abc1aebd494ff8dfb3eee45d6741dc79a371a561640b4ded4a"
+        },
+        {
+          "id": "ch05-math-021",
+          "kind": "math",
+          "sha256": "ba44acdf9a3cb03116297974d1024b8cbe121fd9391a4755c73065421eb22c49"
+        }
+      ]
+    },
+    {
+      "id": "ch06",
+      "path": "book/06-datasets/README.md",
+      "body_sha256": "1a304b6201b1d92f951d553553cfff776435586d810b782b0081fdb6ce3103a5",
+      "items": [
+        {
+          "id": "ch06-diagram-001",
+          "kind": "diagram",
+          "sha256": "5ee793417220e5e707878da2f5c56d063a07cbef9d01ee9704cfa25d1395102f"
+        },
+        {
+          "id": "ch06-math-001",
+          "kind": "math",
+          "sha256": "7acc0242986ff10d65bf62bce60ebacfcd181399add706111e7331e1f53bebc8"
+        },
+        {
+          "id": "ch06-math-002",
+          "kind": "math",
+          "sha256": "8c4fda5d40e49e32d1ed32608ca1d429707a4795fbe6e413c11764a6a61c322a"
+        },
+        {
+          "id": "ch06-math-003",
+          "kind": "math",
+          "sha256": "ea10566f01c3782923fcfe84a2995b46e2ebff2e436d59738d8721a096e1abfb"
+        },
+        {
+          "id": "ch06-math-004",
+          "kind": "math",
+          "sha256": "a8d1f5684f3485fef90493afabba9263d0f90e5c64598c0fc4435425b51428b0"
+        },
+        {
+          "id": "ch06-math-005",
+          "kind": "math",
+          "sha256": "aabc0b67ce657a2697fc32d80aa6002128ae83473644a64b529558712ff11bc4"
+        },
+        {
+          "id": "ch06-math-006",
+          "kind": "math",
+          "sha256": "c33d7964c0224e0228991f9bd8323dfe578c17d803dc064e059ad3a55531ed49"
+        },
+        {
+          "id": "ch06-math-007",
+          "kind": "math",
+          "sha256": "a32d3c19889a9117fd667a1229df7c23b0d0462fc85db5e2712b438e19f831a9"
+        },
+        {
+          "id": "ch06-math-008",
+          "kind": "math",
+          "sha256": "3227125bd15bb9c39d518fdbfc35ce1607f01283a1f70043b023fa8b835b4abb"
+        },
+        {
+          "id": "ch06-diagram-002",
+          "kind": "diagram",
+          "sha256": "64fa8c5d327ae879a5306c307cfddc7595414f0337987fa5a7c37e52c87c076a"
+        }
+      ]
+    },
+    {
+      "id": "ch07",
+      "path": "book/07-pretraining/README.md",
+      "body_sha256": "a2cd2ee0d25d8102729cbf3eb3e134499159b462ec4c70de7e0a5c087131ce4f",
+      "items": [
+        {
+          "id": "ch07-diagram-001",
+          "kind": "diagram",
+          "sha256": "3b9be3d8e69e45a52913377f3c79709430521434bace93fee7de0c08e6b51448"
+        },
+        {
+          "id": "ch07-math-001",
+          "kind": "math",
+          "sha256": "d622e6225caca7185e5356d92df908ff969988613ec12609f41db0b78cceaf80"
+        },
+        {
+          "id": "ch07-math-002",
+          "kind": "math",
+          "sha256": "4e5cde8d603e91f47def646daa7679342a466025a888aec5a788d3de8c7320b9"
+        },
+        {
+          "id": "ch07-math-003",
+          "kind": "math",
+          "sha256": "2dba34cb260c7413458223362b7b461423d2f611534b29bf0d28e8b38ead260e"
+        },
+        {
+          "id": "ch07-math-004",
+          "kind": "math",
+          "sha256": "cea42b26185b8e5170efc9573bb87784661c6776a1f6be5a839500075424fe56"
+        },
+        {
+          "id": "ch07-math-005",
+          "kind": "math",
+          "sha256": "3975a74bebd9152f0478886e7afe90ee054114edd528453a681389030ca35424"
+        },
+        {
+          "id": "ch07-diagram-002",
+          "kind": "diagram",
+          "sha256": "aa2c15cf1c96d966b1107643631f453a435c21e6c708801cc212f331a8b168a7"
+        },
+        {
+          "id": "ch07-math-006",
+          "kind": "math",
+          "sha256": "69e4edf0d92726ecca279cd90fe1a19839e3efa0c5ef6ab101bc2bde04cd7143"
+        },
+        {
+          "id": "ch07-math-007",
+          "kind": "math",
+          "sha256": "aabcecaed454ac24e392d2972c67250edf07b2472c2cd68d043e6c605dad30eb"
+        },
+        {
+          "id": "ch07-math-008",
+          "kind": "math",
+          "sha256": "9791efde20303a0985801a828b4f544387423ad7259c6daec4c644aeefeee85a"
+        },
+        {
+          "id": "ch07-math-009",
+          "kind": "math",
+          "sha256": "c33d7964c0224e0228991f9bd8323dfe578c17d803dc064e059ad3a55531ed49"
+        },
+        {
+          "id": "ch07-math-010",
+          "kind": "math",
+          "sha256": "aabcecaed454ac24e392d2972c67250edf07b2472c2cd68d043e6c605dad30eb"
+        },
+        {
+          "id": "ch07-math-011",
+          "kind": "math",
+          "sha256": "9791efde20303a0985801a828b4f544387423ad7259c6daec4c644aeefeee85a"
+        },
+        {
+          "id": "ch07-math-012",
+          "kind": "math",
+          "sha256": "6df8c9572997e8f2a6310dde0593b54d0829cd4fb20c69c2a64c45369ed8d6e3"
+        },
+        {
+          "id": "ch07-math-013",
+          "kind": "math",
+          "sha256": "da88938b2680676a440c3ecf9b379bd7fd89eaabce992a8a4be72c89ee054865"
+        }
+      ]
+    },
+    {
+      "id": "ch08",
+      "path": "book/08-sft-evaluation/README.md",
+      "body_sha256": "d5cb2a4b6648be4485f90f7c1e45dba8b00e35b24a6a27c0fd1369abdbd27bc4",
+      "items": [
+        {
+          "id": "ch08-diagram-001",
+          "kind": "diagram",
+          "sha256": "33417102fc210832a204af012c1a9084fc2edd10728eb7e7486cc2a029f2906a"
+        },
+        {
+          "id": "ch08-math-001",
+          "kind": "math",
+          "sha256": "7c0d70b5df25e11fb45ca6bf58694d50650ec4cf7e063197be39b16db5b23ca2"
+        },
+        {
+          "id": "ch08-math-002",
+          "kind": "math",
+          "sha256": "262bcaeac596343424a87f9ba1c7a838c32a08560d12e660434e02bf294ffd8f"
+        },
+        {
+          "id": "ch08-math-003",
+          "kind": "math",
+          "sha256": "bc7989f6370fbd9b64cb4c6ddd506880e99cb6d5f09e78e3b72c1962d1c37d39"
+        },
+        {
+          "id": "ch08-math-004",
+          "kind": "math",
+          "sha256": "a3a73ab9388d84db946441b3cfc812b59d99caa0eb9c93b09d93472bd220705c"
+        },
+        {
+          "id": "ch08-math-005",
+          "kind": "math",
+          "sha256": "caf704ecbf6254f68718b6e35ba1efdbc676686d1b3c078f66c89bc63f3c3a7a"
+        },
+        {
+          "id": "ch08-diagram-002",
+          "kind": "diagram",
+          "sha256": "a8e6888c7e2af1fdca7ac371f5d4e79f0ba2456179496f09504468406eaf1e97"
+        }
+      ]
+    },
+    {
+      "id": "ch09",
+      "path": "book/09-moe/README.md",
+      "body_sha256": "c37aec450c917cf455f4a1896354e1c8ef50765e6a01ad07b7b4b03d2004a433",
+      "items": [
+        {
+          "id": "ch09-diagram-001",
+          "kind": "diagram",
+          "sha256": "fbbd02db288e8e25b3aef7854d3405f8c38ee3f81f090caa3ea8203aba2e8f58"
+        },
+        {
+          "id": "ch09-math-001",
+          "kind": "math",
+          "sha256": "6a60cad912412d4c8c7502b27b82b928d9cc783b48b477135eacc2f76e951e16"
+        },
+        {
+          "id": "ch09-math-002",
+          "kind": "math",
+          "sha256": "891c8ca901eeeab0e1ff261bb99613835d0b445b5ec45f484125e4b7896c0e4d"
+        },
+        {
+          "id": "ch09-math-003",
+          "kind": "math",
+          "sha256": "f71d6554e2523542c21c71b0a9ec99f075a4820390fafd65eb184c09fe2f321f"
+        },
+        {
+          "id": "ch09-math-004",
+          "kind": "math",
+          "sha256": "03e86fa8429f1956b6c4a811df062056067fe6b4e8a7222b4201cea4f8f870ae"
+        },
+        {
+          "id": "ch09-math-005",
+          "kind": "math",
+          "sha256": "f0b33533b59a66e19866b2ff5da2db31cf596268739a50973f8286dc10ed244a"
+        },
+        {
+          "id": "ch09-math-006",
+          "kind": "math",
+          "sha256": "3de3ff622f6214dcd47336f5af1b8b885788344ef43882426e723131b787c772"
+        },
+        {
+          "id": "ch09-math-007",
+          "kind": "math",
+          "sha256": "506a517ffc40cc0ba72fba1e0f62706cc4351c8118c9ceffa11f42aea2cd2963"
+        },
+        {
+          "id": "ch09-math-008",
+          "kind": "math",
+          "sha256": "253fb27a4dd2f0cd7d54cef3d59f557b140bef95eb1825af53ba9b981b6f169c"
+        },
+        {
+          "id": "ch09-math-009",
+          "kind": "math",
+          "sha256": "d42bad55fbd7aa58588b74b15cecb77c692556babeb2b43d2d66e3907b938115"
+        },
+        {
+          "id": "ch09-math-010",
+          "kind": "math",
+          "sha256": "aefe0c3588a812ef96342b9b79b30eb6dca94e75b9cfcf7b71638b6e4a506aa1"
+        },
+        {
+          "id": "ch09-math-011",
+          "kind": "math",
+          "sha256": "fd77a941c6ea07534b72172e9190ce95c4fb6c5479d0c43241094a3cf22cf2aa"
+        },
+        {
+          "id": "ch09-math-012",
+          "kind": "math",
+          "sha256": "ca2f060fcc5370b9a99c6c0aa0fcca702e9168402a9ad2ef26990b09f20349f6"
+        },
+        {
+          "id": "ch09-math-013",
+          "kind": "math",
+          "sha256": "73692c429ad4bd9243508f301418de7c05a51593ff9a4e81bcbfeddd8425d048"
+        },
+        {
+          "id": "ch09-math-014",
+          "kind": "math",
+          "sha256": "758f9fe20eb05d7c81d48ff7fc78b4f7fab4f14b725bcaa02c39a67ad9ae53a9"
+        },
+        {
+          "id": "ch09-math-015",
+          "kind": "math",
+          "sha256": "fd26526cc2014e28cf26bf27635119dc0f2d94bd744e5bfc09d217d8411b497f"
+        },
+        {
+          "id": "ch09-diagram-002",
+          "kind": "diagram",
+          "sha256": "d09b15ce18f03892aa2329967f9eebf5866977318550c726c0919ffffa7af56a"
+        }
+      ]
+    },
+    {
+      "id": "ch10",
+      "path": "book/10-lora-distillation/README.md",
+      "body_sha256": "e359d98899a3f5f957378aa850595ceab139eb7fb92d13c0c4e7c6b495a3a58f",
+      "items": [
+        {
+          "id": "ch10-math-001",
+          "kind": "math",
+          "sha256": "9f5f10a0de6819f1205b5c003716037bd6107ea276db321cb96d980bafc32741"
+        },
+        {
+          "id": "ch10-math-002",
+          "kind": "math",
+          "sha256": "b8584f78945f3e7cafb5cc81cc1c1a636483c5cffe89190f4b30f90a03f3c80c"
+        },
+        {
+          "id": "ch10-math-003",
+          "kind": "math",
+          "sha256": "da25a90cb24a7f20badcaa64b40d609683a4098868bde755b360a823387d863d"
+        },
+        {
+          "id": "ch10-math-004",
+          "kind": "math",
+          "sha256": "0b16e5e83ba6c040419d9d4cd9d47d9bec4b14f6b22cf43867399e3175e6f4a4"
+        },
+        {
+          "id": "ch10-math-005",
+          "kind": "math",
+          "sha256": "279617e56b8980fbe1ad7615c1f2810d2f17b02ec77be21b19ba0bf879d72af8"
+        },
+        {
+          "id": "ch10-diagram-001",
+          "kind": "diagram",
+          "sha256": "a4e537bb22fb45c33f232fdd465afa6cfb0c73378ccd5820263f701c1254979e"
+        },
+        {
+          "id": "ch10-math-006",
+          "kind": "math",
+          "sha256": "21c49f8fb8651ba998e46014b38617920aeb6d1b7977861c2452c84738b51f91"
+        },
+        {
+          "id": "ch10-math-007",
+          "kind": "math",
+          "sha256": "b35b84314d0eaac7d57ee3b6f93ef4d4bf492407f45bbd9490f97184b4023fb2"
+        },
+        {
+          "id": "ch10-math-008",
+          "kind": "math",
+          "sha256": "a9c28dd14daf1250365730e4ea787c577bb54a654763b09b9b2c6c8292f1a339"
+        },
+        {
+          "id": "ch10-math-009",
+          "kind": "math",
+          "sha256": "ef3bca4aadac1fc79c929ebfb33f7480c392204f94719f18ba7b973c99b6668c"
+        },
+        {
+          "id": "ch10-diagram-002",
+          "kind": "diagram",
+          "sha256": "9b8f0ca2ace152f9af73f33c78e6b5104eab7a3a5f0f2ee36a380b65ab9d07da"
+        },
+        {
+          "id": "ch10-math-010",
+          "kind": "math",
+          "sha256": "ceb42c170bb8ace24a066813ed6ffbe755d429adcee2f0a07ec4888c1af964d2"
+        },
+        {
+          "id": "ch10-math-011",
+          "kind": "math",
+          "sha256": "a7149d7c45a9f83081659c02fb0aa009db24dfcbd4903d6e9451641cc943f72d"
+        }
+      ]
+    },
+    {
+      "id": "ch11",
+      "path": "book/11-dpo/README.md",
+      "body_sha256": "19502a897c33c43b8621dff621db7fb90312437cde379349cd5bb1c6b186fd0e",
+      "items": [
+        {
+          "id": "ch11-diagram-001",
+          "kind": "diagram",
+          "sha256": "9b3327ae19c20de17b1d1def81f409e99fc001b6ab29ef3e6e885f6f9c22566b"
+        },
+        {
+          "id": "ch11-math-001",
+          "kind": "math",
+          "sha256": "635608e1f8b58f9ee718dbe1df2a4b6858d0e12b7f22f79e3aadc5bd94b53b71"
+        },
+        {
+          "id": "ch11-math-002",
+          "kind": "math",
+          "sha256": "a12667c711e5960b9aa123ecc1a6eb2e984b04d3c148e805a337f292b453ec64"
+        },
+        {
+          "id": "ch11-math-003",
+          "kind": "math",
+          "sha256": "f9da38fe6aaabb1553f55cffb67ced324b3dae027a8091be8235e8a8f8505e67"
+        },
+        {
+          "id": "ch11-math-004",
+          "kind": "math",
+          "sha256": "86669fd4975061b2e27937f2d4e402a79405b2bac644c8a18ab4269776739be9"
+        },
+        {
+          "id": "ch11-math-005",
+          "kind": "math",
+          "sha256": "d23b01be3439bd9ee8d28052d7033b7fa0cdab6fbf5087b1fec9ddef9db477b7"
+        },
+        {
+          "id": "ch11-math-006",
+          "kind": "math",
+          "sha256": "c1296fdabcb5c7cffbfc713b064fb237af5c56e00f17ccc0688eb4c35bad4aa8"
+        },
+        {
+          "id": "ch11-math-007",
+          "kind": "math",
+          "sha256": "891ace7271d7f99c060cac1859f75c5aeb8a03b8c329f140a06cd793db638898"
+        },
+        {
+          "id": "ch11-math-008",
+          "kind": "math",
+          "sha256": "b1564fe30c16ecc04a6ae353010243c9b764742aed52611cf428f82ed2b3f442"
+        },
+        {
+          "id": "ch11-math-009",
+          "kind": "math",
+          "sha256": "0ea1ef77c915d12454e252739a49ca8bd2581b742e0ff3a899ee791d6474ab66"
+        },
+        {
+          "id": "ch11-diagram-002",
+          "kind": "diagram",
+          "sha256": "a15b90db7b2c8627e933f2119a98151815ad0302149accbcacc9ed2488a8eea9"
+        }
+      ]
+    },
+    {
+      "id": "ch12",
+      "path": "book/12-ppo-grpo/README.md",
+      "body_sha256": "fe581a149b1cccc5015ed0739f92f59758899238586418eaa14565e37cd8c77e",
+      "items": [
+        {
+          "id": "ch12-diagram-001",
+          "kind": "diagram",
+          "sha256": "d67ad21394ba4d5d1bb5a520d99481accb1b24d25ab60c2a40af0fe7a6d7b2c7"
+        },
+        {
+          "id": "ch12-math-001",
+          "kind": "math",
+          "sha256": "af18533b151c0e8458c92bd804e3fea22e4dfb99f59632670aad596955553425"
+        },
+        {
+          "id": "ch12-math-002",
+          "kind": "math",
+          "sha256": "b8a7cc0f8bd71d519adccf44112877e5c4bf1697dd3dbc06dcfae064b254fd1d"
+        },
+        {
+          "id": "ch12-math-003",
+          "kind": "math",
+          "sha256": "f305abee51e32f988b3fc9a3011379835a6697c6c01ccaae77aa78dab6e59bb5"
+        },
+        {
+          "id": "ch12-math-004",
+          "kind": "math",
+          "sha256": "95bd2632204e65dda0ee08297043d2bba2c33f57a965b303869195a8debb4cec"
+        },
+        {
+          "id": "ch12-math-005",
+          "kind": "math",
+          "sha256": "73692c429ad4bd9243508f301418de7c05a51593ff9a4e81bcbfeddd8425d048"
+        },
+        {
+          "id": "ch12-math-006",
+          "kind": "math",
+          "sha256": "c7465568595ce692f916498f33af268d41e2dcfd8e2e853c6f236075cea21d2f"
+        },
+        {
+          "id": "ch12-math-007",
+          "kind": "math",
+          "sha256": "119cc32748e789bb00616a7bce591cc964e29c8877d1acdd2e6e45c381675ac2"
+        },
+        {
+          "id": "ch12-math-008",
+          "kind": "math",
+          "sha256": "b94fa9913b7d046b41390781ad44e1fc59ed9b2c85cc6b6594fa0c0720fca99e"
+        },
+        {
+          "id": "ch12-math-009",
+          "kind": "math",
+          "sha256": "39cbbdd9e4b5b603990367a482e7a45bb8c04133de2536579579dccfebe73e5e"
+        },
+        {
+          "id": "ch12-math-010",
+          "kind": "math",
+          "sha256": "cd0b234334570390bacae807b94cdb2f10ad65cfeea94c8518fb60fb2bce861c"
+        },
+        {
+          "id": "ch12-math-011",
+          "kind": "math",
+          "sha256": "aabc0b67ce657a2697fc32d80aa6002128ae83473644a64b529558712ff11bc4"
+        },
+        {
+          "id": "ch12-math-012",
+          "kind": "math",
+          "sha256": "b343222d13d59817ba00d09c145529cd308fccd2584f37f1ec2cd8383f29b7f6"
+        },
+        {
+          "id": "ch12-math-013",
+          "kind": "math",
+          "sha256": "6c810d5eec63dea8a2847052d0f4a36dc4b0832c4e8bc309d57704e5c76aec40"
+        },
+        {
+          "id": "ch12-math-014",
+          "kind": "math",
+          "sha256": "e4db7a931469c3d1e7b9bbf9c7788f07250508d5758c0cf4adc1a9756faf23f1"
+        },
+        {
+          "id": "ch12-math-015",
+          "kind": "math",
+          "sha256": "5564d998ad4096e74a65d7eb17a21368737fd6ba779d19653c85b5358e84d202"
+        },
+        {
+          "id": "ch12-diagram-002",
+          "kind": "diagram",
+          "sha256": "de5ad5bc63410340483dd697413f6aa11e28596f80f257eedb4148cd371c79ce"
+        },
+        {
+          "id": "ch12-math-016",
+          "kind": "math",
+          "sha256": "a486a91b4d9608233af95f9eb62054fbf4562ef88fed21550b5b9ac2391da746"
+        },
+        {
+          "id": "ch12-math-017",
+          "kind": "math",
+          "sha256": "f05401b37cc1154c36c244ed3957eb7ea2fad6f797c0542e244d9d5b05a9490b"
+        },
+        {
+          "id": "ch12-math-018",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        },
+        {
+          "id": "ch12-math-019",
+          "kind": "math",
+          "sha256": "c33d7964c0224e0228991f9bd8323dfe578c17d803dc064e059ad3a55531ed49"
+        },
+        {
+          "id": "ch12-math-020",
+          "kind": "math",
+          "sha256": "a90d3ff30d90f6ab6e42e1a9f5b28ac936ef1f1eb030dbab651efb50f2268b5e"
+        },
+        {
+          "id": "ch12-math-021",
+          "kind": "math",
+          "sha256": "d41230e045eb9e6c06b23433e065f2caeb9ad6f99c7ce8a2ae62c31818340121"
+        },
+        {
+          "id": "ch12-math-022",
+          "kind": "math",
+          "sha256": "bbe971458d8659ddcd70a073fb3b24cc4d73eda4bf248931687a332c244d3b98"
+        },
+        {
+          "id": "ch12-math-023",
+          "kind": "math",
+          "sha256": "df5b1ecd21ec928c8b6c1ca90769ff61887441f949be37ae4e902edab9642760"
+        },
+        {
+          "id": "ch12-math-024",
+          "kind": "math",
+          "sha256": "6b132b5eaffd02d66544bef6044cb16fe20bedabf0ff0b98c2953573a2defb10"
+        },
+        {
+          "id": "ch12-math-025",
+          "kind": "math",
+          "sha256": "de606348e9578196178c40e88e63c1b9da29b57c875bd3ba91b100de5d7c76f7"
+        },
+        {
+          "id": "ch12-math-026",
+          "kind": "math",
+          "sha256": "6e38e0e7cb42c2da6206e83f1b3cab00e5d0fce23b61b9daf5dbb7191acea7d1"
+        },
+        {
+          "id": "ch12-math-027",
+          "kind": "math",
+          "sha256": "9885ab9668cd6a2475a166cac4804ace7596101a53cfff2d8357131b5e3cc408"
+        },
+        {
+          "id": "ch12-math-028",
+          "kind": "math",
+          "sha256": "9cb80d6e1668d396b9e771850627f8728a9d2133b1123c48601d6a77a4de487b"
+        }
+      ]
+    },
+    {
+      "id": "ch13",
+      "path": "book/13-agent/README.md",
+      "body_sha256": "41b24ed4fc1e6ce4e5860cebc1c24a60673d4a80a11c2b8308ad41dae19512eb",
+      "items": [
+        {
+          "id": "ch13-diagram-001",
+          "kind": "diagram",
+          "sha256": "e437ba9cc8d6dfacfaaa26677b924c8281332e5879d9194acc798702da6410f3"
+        },
+        {
+          "id": "ch13-diagram-002",
+          "kind": "diagram",
+          "sha256": "3978e0a578098a33064552db191bdb236521f4f0656d083bc34ba57e41b68eb0"
+        }
+      ]
+    },
+    {
+      "id": "ch14",
+      "path": "book/14-vision/README.md",
+      "body_sha256": "2b9186d08979b453a23b8d9167514fe87c6faca3cc6a99ea041083cfc3115b25",
+      "items": [
+        {
+          "id": "ch14-math-001",
+          "kind": "math",
+          "sha256": "c394639ca54a02f49dbb7a5e7b62f64d5e3a8a089123227d373c45ba8de065c1"
+        },
+        {
+          "id": "ch14-diagram-001",
+          "kind": "diagram",
+          "sha256": "47c5861640e93da47b54917956609f8aa35b39d5b41a6723c0387491176e05bd"
+        },
+        {
+          "id": "ch14-math-002",
+          "kind": "math",
+          "sha256": "f6a3aa7ec93b1c6396a3bbe51795a0ff3a20c8927d0d2339070ce868c5feb214"
+        },
+        {
+          "id": "ch14-math-003",
+          "kind": "math",
+          "sha256": "bbb29a8950786eb64080c7ed29747d2f486dd1cf19b70d001b0588aea2a43386"
+        },
+        {
+          "id": "ch14-math-004",
+          "kind": "math",
+          "sha256": "ddcd3c5d1e802a96e89c6748e2cc6ececb54fd2a97b6aa0bfbd5ed9bfc9d33a6"
+        },
+        {
+          "id": "ch14-diagram-002",
+          "kind": "diagram",
+          "sha256": "743b4079c5519dbe756d71d36e1727d125c8c1e6ed0d6a04c951a99242035e0d"
+        }
+      ]
+    },
+    {
+      "id": "ch15",
+      "path": "book/15-vlm-training/README.md",
+      "body_sha256": "45b7c5a5a5aeab11fcdc91e2af9dc36d5953f20ab1828bde4865ecc527a1b57a",
+      "items": [
+        {
+          "id": "ch15-diagram-001",
+          "kind": "diagram",
+          "sha256": "e814837dc5b8495cc3e3f8734e9d6c1bdf954e5708d743d0576ace253faaf51d"
+        },
+        {
+          "id": "ch15-diagram-002",
+          "kind": "diagram",
+          "sha256": "a0cfd383008d8d3a213226ab9d051fdadfd71975bf168e16b19129b92577ecee"
+        }
+      ]
+    },
+    {
+      "id": "ch16",
+      "path": "book/16-audio-basics/README.md",
+      "body_sha256": "d0c1c1b2b67942719dfbe96be432a91984b8253d44939d3383dc6407b3b76a97",
+      "items": [
+        {
+          "id": "ch16-math-001",
+          "kind": "math",
+          "sha256": "3e1cfb1f26e57a33b7ce7e2ed11537d9c2430b00e45158bd925e54e634ed9351"
+        },
+        {
+          "id": "ch16-math-002",
+          "kind": "math",
+          "sha256": "9791efde20303a0985801a828b4f544387423ad7259c6daec4c644aeefeee85a"
+        },
+        {
+          "id": "ch16-math-003",
+          "kind": "math",
+          "sha256": "8ab1e208c86e4e92c58c2b4ab9c9e491ec1c952075f90c12438e310c4e46351d"
+        },
+        {
+          "id": "ch16-math-004",
+          "kind": "math",
+          "sha256": "1b58b1965c1918f3b114e26d0e3f5b6cf4067b2771a6a4c00058c24b2da796eb"
+        },
+        {
+          "id": "ch16-math-005",
+          "kind": "math",
+          "sha256": "6229365028179eb733f4431ad819d76e65af64a6885348c29b0d3527186dc30b"
+        },
+        {
+          "id": "ch16-math-006",
+          "kind": "math",
+          "sha256": "8315ac9c252b1e4d1a167b7ed45913aee2671c55558aa57b768a0f41e9bab5dd"
+        },
+        {
+          "id": "ch16-math-007",
+          "kind": "math",
+          "sha256": "d3f0a14877b3442eb515ec0a8eb650ab814136d6f9ea101758a1c70b93982aac"
+        },
+        {
+          "id": "ch16-diagram-001",
+          "kind": "diagram",
+          "sha256": "8bf86017f197c8ce53956b1b42f2038ef0a61874ef7ab5ee1a1a4d7862df6948"
+        },
+        {
+          "id": "ch16-diagram-002",
+          "kind": "diagram",
+          "sha256": "9f476664280e41de8a3316ee8293a5205ac757db62bc8ad7a93e4d7556a01a0a"
+        }
+      ]
+    },
+    {
+      "id": "ch17",
+      "path": "book/17-thinker-talker/README.md",
+      "body_sha256": "15334082206cdd0fec802c72697d62d2e25de315093b39acb110702bfce3ce07",
+      "items": [
+        {
+          "id": "ch17-diagram-001",
+          "kind": "diagram",
+          "sha256": "5eefdabcd648bccb134fd85c4f038d40f1ad18354aaa944ca1a2a2cdc5be2d51"
+        },
+        {
+          "id": "ch17-math-001",
+          "kind": "math",
+          "sha256": "cb29975d5b47770b43d597c89eaa4489f56e956239cc515e0a8749dd5adc05d7"
+        },
+        {
+          "id": "ch17-math-002",
+          "kind": "math",
+          "sha256": "c93b8ab8e87f9b8faf8f6a838d3e6e311482af871d4cd33a43fa35cfed4c329d"
+        },
+        {
+          "id": "ch17-math-003",
+          "kind": "math",
+          "sha256": "097a6839d3d09e4df6563ba30b05a5ba2865054a07eaa3580c51d9f25b9e1721"
+        },
+        {
+          "id": "ch17-math-004",
+          "kind": "math",
+          "sha256": "f00f3a4befaa0fdbd96092c52e994736835f12b6248ed169d24af3b2403ad18a"
+        },
+        {
+          "id": "ch17-math-005",
+          "kind": "math",
+          "sha256": "3fa1f33efdddd37487d148a8198cedc30218d6b74b3911d9525582ad18855655"
+        },
+        {
+          "id": "ch17-diagram-002",
+          "kind": "diagram",
+          "sha256": "5dc40fb438ae4a0edca48b5e7b4853fc859d08292905f74685005d0b41bb591a"
+        }
+      ]
+    },
+    {
+      "id": "ch18",
+      "path": "book/18-audio-codebooks/README.md",
+      "body_sha256": "6c062753934c81693dcc032fe28284fd0cb9016cdf69bd98f79744e41eda5cf8",
+      "items": [
+        {
+          "id": "ch18-math-001",
+          "kind": "math",
+          "sha256": "f86f8567790a7d26d2d3daab8de5ff40ce288ea3d63ce24c49418ebde1c12b01"
+        },
+        {
+          "id": "ch18-math-002",
+          "kind": "math",
+          "sha256": "d141e94f9188c0632343a43e487b5472284f14dcf90eef2e90af4affb756b45a"
+        },
+        {
+          "id": "ch18-math-003",
+          "kind": "math",
+          "sha256": "8e0cff0e5a8153d27b4e7ed2e3d7eec6990db051f988910ae3f421f4f5e9392f"
+        },
+        {
+          "id": "ch18-math-004",
+          "kind": "math",
+          "sha256": "c9e9d8ee95723df49cee97591a2890d3f880708d33ab4bc1d3d6ebdd1c8c09ef"
+        },
+        {
+          "id": "ch18-math-005",
+          "kind": "math",
+          "sha256": "2c0ab7c3c3478d85370c4f5edefd9d57982d25fb21c380731aa650e7bbb25fb8"
+        },
+        {
+          "id": "ch18-math-006",
+          "kind": "math",
+          "sha256": "0a81de34de350db5f4623e03e4a8b77ca7d249f8897c3641ad7bb9bd7dc8eb16"
+        },
+        {
+          "id": "ch18-math-007",
+          "kind": "math",
+          "sha256": "c33d7964c0224e0228991f9bd8323dfe578c17d803dc064e059ad3a55531ed49"
+        },
+        {
+          "id": "ch18-math-008",
+          "kind": "math",
+          "sha256": "47136c5dc4e9a73d2d5bcdf27b617c76c74bd6c27d136e7f21c18909f6ecfc07"
+        },
+        {
+          "id": "ch18-math-009",
+          "kind": "math",
+          "sha256": "6a3ee3b70b25a0133e7257c8a6b792e46e4892766dd8a32cfed9e5780d06091f"
+        },
+        {
+          "id": "ch18-math-010",
+          "kind": "math",
+          "sha256": "4755fa1cfda0fd52abbcf00ed413db7ddd5dcc6d4bbfb5ab08a029a2b51b8f6f"
+        },
+        {
+          "id": "ch18-math-011",
+          "kind": "math",
+          "sha256": "0a61e40a2a76f44c06cb80fac504e212ab80c61c9724f224914e83ac3bd5bff7"
+        },
+        {
+          "id": "ch18-math-012",
+          "kind": "math",
+          "sha256": "b03596864e11117c8ffb946c9a77749055a139dfbc0cff8367d2b67451e64801"
+        },
+        {
+          "id": "ch18-math-013",
+          "kind": "math",
+          "sha256": "13544c6dbda9bb397b669166ea2ef2498a5c71662b0d651da0235bae03f0ef6a"
+        },
+        {
+          "id": "ch18-math-014",
+          "kind": "math",
+          "sha256": "ecef74e4f720676abfe87b35c1acf6871f4cb8faad1f4ed9dd245552c264940f"
+        },
+        {
+          "id": "ch18-math-015",
+          "kind": "math",
+          "sha256": "b568e3478fcfc9c227a14c084c122b00277c1c0005d623e9e422717b131bfbe2"
+        },
+        {
+          "id": "ch18-math-016",
+          "kind": "math",
+          "sha256": "b11f626178ac8f7f185e5d746e502569496e1c6fec69b27257f2b306c1dc53b9"
+        },
+        {
+          "id": "ch18-math-017",
+          "kind": "math",
+          "sha256": "47d6ec9b622cc7d93d3a5b6440835cf9ced7ca9c43b989035216425e4eff8e42"
+        },
+        {
+          "id": "ch18-math-018",
+          "kind": "math",
+          "sha256": "343716e8987d9cadfb550be98bc0f9976496249a593d697a57fc5dd14910809d"
+        },
+        {
+          "id": "ch18-diagram-001",
+          "kind": "diagram",
+          "sha256": "95c4f4c681a26a0bdf47ef1d84eb31d532969e3af1fb4a24dd3798825a2a7eb0"
+        }
+      ]
+    },
+    {
+      "id": "ch19",
+      "path": "book/19-omni-training/README.md",
+      "body_sha256": "101ad9eb7311c3b0309253c080098e6fceaefbb1dae98e1384eb957930ecc84f",
+      "items": [
+        {
+          "id": "ch19-diagram-001",
+          "kind": "diagram",
+          "sha256": "d6d38930bf4efc0fb946d60ecf3fe18d817cfbd49b3a138f3b7c8536c0a693b0"
+        },
+        {
+          "id": "ch19-math-001",
+          "kind": "math",
+          "sha256": "1acac3ae409e2a01c8b443d2f419053114dc42e6c12dddec76be28f47001e33c"
+        },
+        {
+          "id": "ch19-math-002",
+          "kind": "math",
+          "sha256": "6e25431112bbfcf8998f366576025baee23e27e497cd1d253aaa62cb548f7186"
+        },
+        {
+          "id": "ch19-math-003",
+          "kind": "math",
+          "sha256": "a1727a16572c418e51d452ddef62d9b46848a5261275eeaabf09b7ad59324fe0"
+        },
+        {
+          "id": "ch19-diagram-002",
+          "kind": "diagram",
+          "sha256": "ff61d435caa5402a7d7e007553ecc593e500ea44e71f09dd2c6ac027234068b4"
+        }
+      ]
+    },
+    {
+      "id": "ch20",
+      "path": "book/20-realtime/README.md",
+      "body_sha256": "2fa7a9c58cf4bba105e6a1d89f81981c748a15d1d7be24244e2a2533ada789fd",
+      "items": [
+        {
+          "id": "ch20-diagram-001",
+          "kind": "diagram",
+          "sha256": "5a59b2cd8bf26c2051c17dce2aa7f99bdf02d95db9f58347728a402612cb4895"
+        },
+        {
+          "id": "ch20-math-001",
+          "kind": "math",
+          "sha256": "bbf4063c7b7906b5984ae31e0deb52fa3e19c578a806438b2f7f9100360d8389"
+        },
+        {
+          "id": "ch20-diagram-002",
+          "kind": "diagram",
+          "sha256": "4be44f958d7f04e5c3baa28d7bd10dcbc2361c2f4bf6f158019d08f59c792b57"
+        }
+      ]
+    },
+    {
+      "id": "glossary",
+      "path": "glossary/terms.md",
+      "body_sha256": "c13863a364b8f17c25d4dfe1a00c0a53ed53c4f582a1ce7777b03911e9d4ced7",
+      "items": []
+    },
+    {
+      "id": "appendix-math",
+      "path": "book/appendices/math-and-tensors.md",
+      "body_sha256": "1199d2404c681e2d8831a396e4a11c7b620330445fbb12b65f6bb05881a4b53f",
+      "items": [
+        {
+          "id": "appendix-math-math-001",
+          "kind": "math",
+          "sha256": "93acc0f6db4a4f285f399da4dbcb1db6d8c810d6dc13406b2cc55331015d96de"
+        },
+        {
+          "id": "appendix-math-math-002",
+          "kind": "math",
+          "sha256": "60f780092f97c2e04083c50662bd7d8268b75f7f54949382a470b806a0b8929c"
+        },
+        {
+          "id": "appendix-math-math-003",
+          "kind": "math",
+          "sha256": "d28fdcee4fe9985f3d816175efb067dbef246c381c172813fa97118c337e9186"
+        }
+      ]
+    },
+    {
+      "id": "appendix-reproduction",
+      "path": "book/appendices/reproduction.md",
+      "body_sha256": "a09a9be0244fd38953b5099cc4f7c36b1af2d581805986fcf8b6cbb03fff8350",
+      "items": []
+    },
+    {
+      "id": "appendix-source",
+      "path": "book/appendices/source-index.md",
+      "body_sha256": "18322e323bbba142523dc956f65b452ec47b9f53fdebb83219c413f366a8b991",
+      "items": []
+    },
+    {
+      "id": "appendix-licenses",
+      "path": "book/appendices/licenses.md",
+      "body_sha256": "7d21a01b384cae23d7f2e1698e6758d2d60dd5fb30ebee0048b9de280b45c59d",
+      "items": []
+    }
+  ],
+  "source_files": [
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "dataset/lm_dataset.py",
+      "sha256": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "eval_llm.py",
+      "sha256": "4da3dd722ca2e846ef657f7dd04b92835d7acb678a6cd657847650bca50c550c"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "model/model_lora.py",
+      "sha256": "dcb5196e968be99a4059416f165014bd4cb2bffbf33c74ed445266a1a689c5a5"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "model/model_minimind.py",
+      "sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "model/tokenizer_config.json",
+      "sha256": "d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/rollout_engine.py",
+      "sha256": "a01891b6855dfd9b2bfc4dcea5e3cf549ce20454966f28a10eab7cb2461c78be"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_agent.py",
+      "sha256": "57e4c8c19052eaf62e3660102fdeb8985c412c96f5f666818a1db6508a699a80"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_distillation.py",
+      "sha256": "cc588e9aaf95ede7189833f7100fec320d6bac45d491ecad88d7622374e44107"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_dpo.py",
+      "sha256": "842e10371c7189b77835b23632afb9d65806af2f621c72361a6dd9a864a6d81e"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_full_sft.py",
+      "sha256": "a9758012e7f2917420d7c42ea4d67a2e02ebfeaf1b746c35b43e6d47c5dc87b3"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_grpo.py",
+      "sha256": "485765a15db7a7d8dca950ffc3f98dc8624a7f52be88c813b78ec8fc0431f5ae"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_lora.py",
+      "sha256": "e710463862139d1b9876728fda21e455f899b66f7c67c7f7010410224851067a"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_ppo.py",
+      "sha256": "c8fa026fcbf8613039dbb388807d794c6b73d93803f12e237fcc81b40d992ed4"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_pretrain.py",
+      "sha256": "2009187e9b701f682292ebfc697bc3bfcd34c222848c00930cb88754374ae240"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/train_tokenizer.py",
+      "sha256": "41c996fe0384b036972e9830731236ef47d34e5dcb10f13dbd134c1c578ca1a1"
+    },
+    {
+      "repository": "minimind",
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "path": "trainer/trainer_utils.py",
+      "sha256": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "dataset/omni_dataset.py",
+      "sha256": "06c305bf010dc47dcbe812b0b01316563e10537c32b61efdfa37ad7065fdff56"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "eval_omni.py",
+      "sha256": "fcb81cef734a2a1b8ac56bd686798c44b178b809efd38ead43d9bd7a3de0554c"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "model/model_omni.py",
+      "sha256": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "trainer/train.sh",
+      "sha256": "dc1758ddca19bcf3a78ab7367c3725b14c4027569c2e5df6117d28d1a3d0f8a4"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "trainer/train_sft_omni.py",
+      "sha256": "270b65e682816968fe5edf2440936e1a702ea677b4f0d81d9a66e2ac7feb688a"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "trainer/trainer_utils.py",
+      "sha256": "61bf26516a60f808aaa117617c874d2bd4898b6583cb527df4603e95d334a708"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "webui/web_demo.html",
+      "sha256": "46c540562fafc8de78dc3f8e717d5d0dcf4e3a3a85cb40c805cef1c7edff29a0"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "path": "webui/web_demo.py",
+      "sha256": "37aaf0a59cd60cddc52b356f4d3861344879b5ce6337a8b1d6008857c79f9bac"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "path": "dataset/lm_dataset.py",
+      "sha256": "3b7816ffb72d7d6232a54bb776ff2ed73a8fc1fcdcd67501480f7e00be5e3d24"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "path": "model/model_vlm.py",
+      "sha256": "02f175bd2ef75dbf4d5f22f5f9f09234922acca4ebe7340d0dfefa813343baf3"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "path": "trainer/train_pretrain_vlm.py",
+      "sha256": "b9fb840aa9cd0da6e3a3b09839ee2d4a8139dc365edb16245742cd37739a1fc7"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "path": "trainer/train_sft_vlm.py",
+      "sha256": "bca6bab569964a828c644a7eb8986181e19f443ea48557e5fdda7a576583393d"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "path": "trainer/trainer_utils.py",
+      "sha256": "c8c3c1da9dec56deba447f59a84388106e14194a1b058a0817cd7204549a1ff2"
+    }
+  ],
+  "math_descriptions_sha256": "c67fd374c91998ae43640b410a0cbff796d75555fb9e99d006912eb423693326",
+  "limits": "Records the explicitly completed review and detects later changes; does not prove semantic correctness."
+}

@@ -1,0 +1,11 @@
+{
+  "name": "minimind-source-guide",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Offline diagram and formula rendering for the MiniMind source book",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "11.17.0",
+    "epubjs": "0.3.93",
+    "mathjax-full": "3.2.2"
+  }
+}

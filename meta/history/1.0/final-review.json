@@ -1,0 +1,1741 @@
+{
+  "title": "MiniMind 源码阅读与工程实践",
+  "version": "1.0",
+  "status": "passed",
+  "verified_at": "2026-09-09T10:10:14.026858+08:00",
+  "inputs": [
+    {
+      "id": "reading-guide",
+      "path": "book/reading-guide.md",
+      "sha256": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209"
+    },
+    {
+      "id": "ch01",
+      "path": "book/01-start-here/README.md",
+      "sha256": "7120d3b73c65e118f1712d3dd556301ce16c9d6b2a868cbf84bcf1c0c1add12a"
+    },
+    {
+      "id": "ch02",
+      "path": "book/02-tokenizer/README.md",
+      "sha256": "1e2d03e48d639449b9be44c6b3b7a31e8423606a4b1794ecacf100391d2cde7b"
+    },
+    {
+      "id": "ch03",
+      "path": "book/03-model-skeleton/README.md",
+      "sha256": "ae0737757ae78661c030eb4e9ab442fd57f58fc1e039255a5b34c90cfdf78efa"
+    },
+    {
+      "id": "ch04",
+      "path": "book/04-attention/README.md",
+      "sha256": "b2de5dfa821341526084f8f4f06912442749084744c23e5d768ec54a23a95524"
+    },
+    {
+      "id": "ch05",
+      "path": "book/05-rope-cache-generation/README.md",
+      "sha256": "d595f7aa079b067aaf5c8f406bb10960a817e17c3bc0bb13b5e4d5b1f92e98b8"
+    },
+    {
+      "id": "ch06",
+      "path": "book/06-datasets/README.md",
+      "sha256": "b00d614faab7471ac844efe5dda7578e8eca80d9321dcd20d0476534cea8b26b"
+    },
+    {
+      "id": "ch07",
+      "path": "book/07-pretraining/README.md",
+      "sha256": "0932aea9e7e9920d00ac94702a296a0cd1a05583f3f168876c5bdd2f00cc5d26"
+    },
+    {
+      "id": "ch08",
+      "path": "book/08-sft-evaluation/README.md",
+      "sha256": "d36c39568a4171450eca0b2c8a109fec5f7ceb2a5964ed2462fa728951e2c24d"
+    },
+    {
+      "id": "ch09",
+      "path": "book/09-moe/README.md",
+      "sha256": "291733fa38b3cce37690b1be331410cfe20c0efc51ffcbad85e70e50e8b9e009"
+    },
+    {
+      "id": "ch10",
+      "path": "book/10-lora-distillation/README.md",
+      "sha256": "2be23e19557293f246a3227bfeedceb8d7b256ad1f9b8ce0922ec511c762c4a2"
+    },
+    {
+      "id": "ch11",
+      "path": "book/11-dpo/README.md",
+      "sha256": "92812552ceff6deef570d33a4d510d583d15af1e7d63e95789ec27f22ac27d3d"
+    },
+    {
+      "id": "ch12",
+      "path": "book/12-ppo-grpo/README.md",
+      "sha256": "f3d911c818fd4430119075c0ee0c8897c27122d34c8d75db0d584542a708a60e"
+    },
+    {
+      "id": "ch13",
+      "path": "book/13-agent/README.md",
+      "sha256": "d879214861efd0ffc613d9974f27ea477a919c2a40c0280865adabb3c56fab7d"
+    },
+    {
+      "id": "ch14",
+      "path": "book/14-vision/README.md",
+      "sha256": "7ca60ae62ef78f657790fd349de7b8727527d9041601bbfd71087f7f36f23809"
+    },
+    {
+      "id": "ch15",
+      "path": "book/15-vlm-training/README.md",
+      "sha256": "46ad3a9a0433b0145ac80ee63d59f1635b788c1eff4a761034ae2bbcf38e780e"
+    },
+    {
+      "id": "ch16",
+      "path": "book/16-audio-basics/README.md",
+      "sha256": "dc05334d251044c1d32917fa01d154236278afe13a54ca33d01b3ad34c48a0a6"
+    },
+    {
+      "id": "ch17",
+      "path": "book/17-thinker-talker/README.md",
+      "sha256": "22ad9629c9fc47a61ef34b74f053b802dc3cf1c02d874368e8b2a17c276805c3"
+    },
+    {
+      "id": "ch18",
+      "path": "book/18-audio-codebooks/README.md",
+      "sha256": "51564055ba450c8e496ed72b39ebaaca89ce213f3ef0d92bb9bedf4e0c7fa5dd"
+    },
+    {
+      "id": "ch19",
+      "path": "book/19-omni-training/README.md",
+      "sha256": "b92dd2f4a0817b866097e8df4bde8e292cc87842d176417390a6220203ebf37a"
+    },
+    {
+      "id": "ch20",
+      "path": "book/20-realtime/README.md",
+      "sha256": "2f0f6da589be0c9e022fd6b452501bf52ab2e1dd6f682c749aba8a3e3133839c"
+    },
+    {
+      "id": "glossary",
+      "path": "glossary/terms.md",
+      "sha256": "c13863a364b8f17c25d4dfe1a00c0a53ed53c4f582a1ce7777b03911e9d4ced7"
+    },
+    {
+      "id": "appendix-math",
+      "path": "book/appendices/math-and-tensors.md",
+      "sha256": "1199d2404c681e2d8831a396e4a11c7b620330445fbb12b65f6bb05881a4b53f"
+    },
+    {
+      "id": "appendix-reproduction",
+      "path": "book/appendices/reproduction.md",
+      "sha256": "a09a9be0244fd38953b5099cc4f7c36b1af2d581805986fcf8b6cbb03fff8350"
+    },
+    {
+      "id": "appendix-source",
+      "path": "book/appendices/source-index.md",
+      "sha256": "18322e323bbba142523dc956f65b452ec47b9f53fdebb83219c413f366a8b991"
+    },
+    {
+      "id": "appendix-licenses",
+      "path": "book/appendices/licenses.md",
+      "sha256": "7d21a01b384cae23d7f2e1698e6758d2d60dd5fb30ebee0048b9de280b45c59d"
+    }
+  ],
+  "sources": {
+    "minimind": {
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "dirty": false,
+      "remote": "https://github.com/jingyaogong/minimind"
+    },
+    "minimind-v": {
+      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "dirty": false,
+      "remote": "https://github.com/jingyaogong/minimind-v"
+    },
+    "minimind-o": {
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "dirty": false,
+      "remote": "https://github.com/jingyaogong/minimind-o"
+    }
+  },
+  "checks": {
+    "manuscript": "passed",
+    "source_mapping": "passed",
+    "cpu_experiments": 20,
+    "publication_tests": 19,
+    "epubcheck": "passed: zero errors/warnings",
+    "epub_documents": 26,
+    "formula_resources": 191,
+    "diagrams": 38,
+    "pdf_text_probes": 1849,
+    "pdf_visual_pages": 194,
+    "epubjs_cases": 5,
+    "foliate_cases": 28,
+    "xhtml_display_cases": 78,
+    "embedded_font_resources": 1124
+  },
+  "pdf_text_check": {
+    "pages": 194,
+    "bookmarks": 221,
+    "text_probes": 1849,
+    "missing": [],
+    "bounds": [],
+    "scope": "Paragraph fragments, code lines, table text and page bounds. Formula meaning and visual layout need separate review."
+  },
+  "pdf_visual": {
+    "passed": true,
+    "pages": 194,
+    "initial_review_pages": 195,
+    "revision_comparison": {
+      "unchanged_body_pages": [
+        {
+          "new": 1,
+          "old": 1
+        },
+        {
+          "new": 2,
+          "old": 2
+        },
+        {
+          "new": 3,
+          "old": 3
+        },
+        {
+          "new": 4,
+          "old": 4
+        },
+        {
+          "new": 5,
+          "old": 5
+        },
+        {
+          "new": 10,
+          "old": 10
+        },
+        {
+          "new": 11,
+          "old": 11
+        },
+        {
+          "new": 12,
+          "old": 12
+        },
+        {
+          "new": 13,
+          "old": 13
+        },
+        {
+          "new": 14,
+          "old": 14
+        },
+        {
+          "new": 15,
+          "old": 15
+        },
+        {
+          "new": 16,
+          "old": 16
+        },
+        {
+          "new": 17,
+          "old": 17
+        },
+        {
+          "new": 18,
+          "old": 18
+        },
+        {
+          "new": 19,
+          "old": 19
+        },
+        {
+          "new": 20,
+          "old": 20
+        },
+        {
+          "new": 21,
+          "old": 21
+        },
+        {
+          "new": 22,
+          "old": 22
+        },
+        {
+          "new": 23,
+          "old": 23
+        },
+        {
+          "new": 24,
+          "old": 24
+        },
+        {
+          "new": 25,
+          "old": 25
+        },
+        {
+          "new": 26,
+          "old": 26
+        },
+        {
+          "new": 27,
+          "old": 27
+        },
+        {
+          "new": 28,
+          "old": 28
+        },
+        {
+          "new": 29,
+          "old": 29
+        },
+        {
+          "new": 30,
+          "old": 30
+        },
+        {
+          "new": 31,
+          "old": 31
+        },
+        {
+          "new": 32,
+          "old": 32
+        },
+        {
+          "new": 33,
+          "old": 33
+        },
+        {
+          "new": 34,
+          "old": 34
+        },
+        {
+          "new": 35,
+          "old": 35
+        },
+        {
+          "new": 36,
+          "old": 36
+        },
+        {
+          "new": 37,
+          "old": 37
+        },
+        {
+          "new": 38,
+          "old": 38
+        },
+        {
+          "new": 39,
+          "old": 39
+        },
+        {
+          "new": 40,
+          "old": 40
+        },
+        {
+          "new": 41,
+          "old": 41
+        },
+        {
+          "new": 42,
+          "old": 42
+        },
+        {
+          "new": 43,
+          "old": 43
+        },
+        {
+          "new": 44,
+          "old": 44
+        },
+        {
+          "new": 45,
+          "old": 45
+        },
+        {
+          "new": 46,
+          "old": 46
+        },
+        {
+          "new": 47,
+          "old": 47
+        },
+        {
+          "new": 48,
+          "old": 48
+        },
+        {
+          "new": 49,
+          "old": 49
+        },
+        {
+          "new": 50,
+          "old": 50
+        },
+        {
+          "new": 51,
+          "old": 51
+        },
+        {
+          "new": 52,
+          "old": 52
+        },
+        {
+          "new": 53,
+          "old": 53
+        },
+        {
+          "new": 54,
+          "old": 54
+        },
+        {
+          "new": 55,
+          "old": 55
+        },
+        {
+          "new": 56,
+          "old": 56
+        },
+        {
+          "new": 57,
+          "old": 57
+        },
+        {
+          "new": 58,
+          "old": 58
+        },
+        {
+          "new": 59,
+          "old": 59
+        },
+        {
+          "new": 60,
+          "old": 60
+        },
+        {
+          "new": 61,
+          "old": 61
+        },
+        {
+          "new": 62,
+          "old": 62
+        },
+        {
+          "new": 63,
+          "old": 63
+        },
+        {
+          "new": 64,
+          "old": 64
+        },
+        {
+          "new": 65,
+          "old": 65
+        },
+        {
+          "new": 66,
+          "old": 66
+        },
+        {
+          "new": 67,
+          "old": 67
+        },
+        {
+          "new": 68,
+          "old": 68
+        },
+        {
+          "new": 69,
+          "old": 69
+        },
+        {
+          "new": 70,
+          "old": 70
+        },
+        {
+          "new": 71,
+          "old": 71
+        },
+        {
+          "new": 72,
+          "old": 72
+        },
+        {
+          "new": 73,
+          "old": 73
+        },
+        {
+          "new": 74,
+          "old": 74
+        },
+        {
+          "new": 75,
+          "old": 75
+        },
+        {
+          "new": 76,
+          "old": 76
+        },
+        {
+          "new": 77,
+          "old": 77
+        },
+        {
+          "new": 78,
+          "old": 78
+        },
+        {
+          "new": 79,
+          "old": 79
+        },
+        {
+          "new": 80,
+          "old": 80
+        },
+        {
+          "new": 81,
+          "old": 81
+        },
+        {
+          "new": 82,
+          "old": 82
+        },
+        {
+          "new": 83,
+          "old": 83
+        },
+        {
+          "new": 84,
+          "old": 84
+        },
+        {
+          "new": 85,
+          "old": 85
+        },
+        {
+          "new": 86,
+          "old": 86
+        },
+        {
+          "new": 87,
+          "old": 87
+        },
+        {
+          "new": 88,
+          "old": 88
+        },
+        {
+          "new": 89,
+          "old": 89
+        },
+        {
+          "new": 90,
+          "old": 90
+        },
+        {
+          "new": 91,
+          "old": 91
+        },
+        {
+          "new": 92,
+          "old": 92
+        },
+        {
+          "new": 93,
+          "old": 93
+        },
+        {
+          "new": 94,
+          "old": 94
+        },
+        {
+          "new": 95,
+          "old": 95
+        },
+        {
+          "new": 96,
+          "old": 96
+        },
+        {
+          "new": 97,
+          "old": 97
+        },
+        {
+          "new": 98,
+          "old": 98
+        },
+        {
+          "new": 99,
+          "old": 99
+        },
+        {
+          "new": 100,
+          "old": 100
+        },
+        {
+          "new": 101,
+          "old": 101
+        },
+        {
+          "new": 102,
+          "old": 102
+        },
+        {
+          "new": 103,
+          "old": 103
+        },
+        {
+          "new": 104,
+          "old": 104
+        },
+        {
+          "new": 105,
+          "old": 105
+        },
+        {
+          "new": 106,
+          "old": 106
+        },
+        {
+          "new": 108,
+          "old": 109
+        },
+        {
+          "new": 109,
+          "old": 110
+        },
+        {
+          "new": 110,
+          "old": 111
+        },
+        {
+          "new": 111,
+          "old": 112
+        },
+        {
+          "new": 112,
+          "old": 113
+        },
+        {
+          "new": 113,
+          "old": 114
+        },
+        {
+          "new": 114,
+          "old": 115
+        },
+        {
+          "new": 115,
+          "old": 116
+        },
+        {
+          "new": 116,
+          "old": 117
+        },
+        {
+          "new": 117,
+          "old": 118
+        },
+        {
+          "new": 118,
+          "old": 119
+        },
+        {
+          "new": 119,
+          "old": 120
+        },
+        {
+          "new": 120,
+          "old": 121
+        },
+        {
+          "new": 121,
+          "old": 122
+        },
+        {
+          "new": 122,
+          "old": 123
+        },
+        {
+          "new": 123,
+          "old": 124
+        },
+        {
+          "new": 124,
+          "old": 125
+        },
+        {
+          "new": 125,
+          "old": 126
+        },
+        {
+          "new": 126,
+          "old": 127
+        },
+        {
+          "new": 127,
+          "old": 128
+        },
+        {
+          "new": 128,
+          "old": 129
+        },
+        {
+          "new": 129,
+          "old": 130
+        },
+        {
+          "new": 130,
+          "old": 131
+        },
+        {
+          "new": 131,
+          "old": 132
+        },
+        {
+          "new": 132,
+          "old": 133
+        },
+        {
+          "new": 133,
+          "old": 134
+        },
+        {
+          "new": 134,
+          "old": 135
+        },
+        {
+          "new": 135,
+          "old": 136
+        },
+        {
+          "new": 136,
+          "old": 137
+        },
+        {
+          "new": 137,
+          "old": 138
+        },
+        {
+          "new": 138,
+          "old": 139
+        },
+        {
+          "new": 139,
+          "old": 140
+        },
+        {
+          "new": 140,
+          "old": 141
+        },
+        {
+          "new": 141,
+          "old": 142
+        },
+        {
+          "new": 142,
+          "old": 143
+        },
+        {
+          "new": 143,
+          "old": 144
+        },
+        {
+          "new": 144,
+          "old": 145
+        },
+        {
+          "new": 145,
+          "old": 146
+        },
+        {
+          "new": 146,
+          "old": 147
+        },
+        {
+          "new": 147,
+          "old": 148
+        },
+        {
+          "new": 148,
+          "old": 149
+        },
+        {
+          "new": 149,
+          "old": 150
+        },
+        {
+          "new": 150,
+          "old": 151
+        },
+        {
+          "new": 151,
+          "old": 152
+        },
+        {
+          "new": 152,
+          "old": 153
+        },
+        {
+          "new": 153,
+          "old": 154
+        },
+        {
+          "new": 154,
+          "old": 155
+        },
+        {
+          "new": 155,
+          "old": 156
+        },
+        {
+          "new": 156,
+          "old": 157
+        },
+        {
+          "new": 157,
+          "old": 158
+        },
+        {
+          "new": 158,
+          "old": 159
+        },
+        {
+          "new": 159,
+          "old": 160
+        },
+        {
+          "new": 160,
+          "old": 161
+        },
+        {
+          "new": 161,
+          "old": 162
+        },
+        {
+          "new": 162,
+          "old": 163
+        },
+        {
+          "new": 163,
+          "old": 164
+        },
+        {
+          "new": 164,
+          "old": 165
+        },
+        {
+          "new": 165,
+          "old": 166
+        },
+        {
+          "new": 166,
+          "old": 167
+        },
+        {
+          "new": 167,
+          "old": 168
+        },
+        {
+          "new": 168,
+          "old": 169
+        },
+        {
+          "new": 169,
+          "old": 170
+        },
+        {
+          "new": 170,
+          "old": 171
+        },
+        {
+          "new": 171,
+          "old": 172
+        },
+        {
+          "new": 172,
+          "old": 173
+        },
+        {
+          "new": 173,
+          "old": 174
+        },
+        {
+          "new": 174,
+          "old": 175
+        },
+        {
+          "new": 175,
+          "old": 176
+        },
+        {
+          "new": 176,
+          "old": 177
+        },
+        {
+          "new": 177,
+          "old": 178
+        },
+        {
+          "new": 178,
+          "old": 179
+        },
+        {
+          "new": 179,
+          "old": 180
+        },
+        {
+          "new": 180,
+          "old": 181
+        },
+        {
+          "new": 181,
+          "old": 182
+        },
+        {
+          "new": 182,
+          "old": 183
+        },
+        {
+          "new": 183,
+          "old": 184
+        },
+        {
+          "new": 184,
+          "old": 185
+        },
+        {
+          "new": 185,
+          "old": 186
+        },
+        {
+          "new": 186,
+          "old": 187
+        },
+        {
+          "new": 187,
+          "old": 188
+        },
+        {
+          "new": 188,
+          "old": 189
+        },
+        {
+          "new": 189,
+          "old": 190
+        },
+        {
+          "new": 190,
+          "old": 191
+        },
+        {
+          "new": 191,
+          "old": 192
+        },
+        {
+          "new": 192,
+          "old": 193
+        },
+        {
+          "new": 193,
+          "old": 194
+        },
+        {
+          "new": 194,
+          "old": 195
+        }
+      ],
+      "changed_pages": [
+        6,
+        7,
+        8,
+        9,
+        107
+      ]
+    },
+    "details": "meta/final-review.md"
+  },
+  "readers": {
+    "epubjs": {
+      "reader": "EPUB.js 0.3.93",
+      "sha256": "28641c86ac92c99b00dd3fd8d18124b0439144a93567af209b5caa023ec973b6",
+      "checks": [
+        {
+          "index": 0,
+          "theme": "light",
+          "size": "100%",
+          "state": [
+            {
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n阅读指南：把问题带到代码里\n\n你不需要先读完所有大模型论文。先挑一个能观察的问题：一句话怎样成为整数？ 模型怎样为下一个词打分？为什么 loss 能推动参数变化？每解决一个问题，就多掌握一段真实调"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "theme": "light",
+          "size": "130%",
+          "state": [
+            {
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n第 03 章 搭起语言模型骨架\n\n一串整数怎样变成对下一个词的预测？上一章的分词器已经把文字交给了模型， 但模型内部还没有“词义”这样的 Python 对象。它拥有的是一组可学习的数值表， 以及反"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "theme": "dark",
+          "size": "130%",
+          "state": [
+            {
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 17,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n第 12 章 从 PPO 概念到 GRPO\n\n前一章使用事先给定的偏好对。本章让策略自己生成回答，再根据奖励改进。 困难在于：一句回答最终得到一个分数，怎样把它变成每个生成位置的更新信号？ 我们先"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "theme": "light",
+          "size": "150%",
+          "state": [
+            {
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n第 18 章 八路码本与时间对齐\n\nTalker 输出的不是直接可播放的声波，而是若干离散编号。Mimi codec 再把这些编号还原成波形。 最容易误读的地方在于：八路头一次计算，并不表示八个连"
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "theme": "light",
+          "size": "100%",
+          "state": [
+            {
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n附录 D 来源与许可\n\n本书是独立编写的源码学习教程，项目名称用于说明研究对象，不表示上游维护者为本书背书。 正文未另行设定统一的公开开源许可；引用代码、字体和工具分别保留原有权利与许可。 教学简"
+            }
+          ]
+        }
+      ],
+      "toc": [
+        "阅读指南：把问题带到代码里",
+        "第 01 章 环境、张量与一次最小前向",
+        "第 02 章 从文字到 token",
+        "第 03 章 搭起语言模型骨架",
+        "第 04 章 手算一次注意力",
+        "第 05 章 位置、缓存与逐字生成",
+        "第 06 章 一条训练样本的旅程",
+        "第 07 章 预训练循环与断点恢复",
+        "第 08 章 SFT、评估与训练排错",
+        "第 09 章 MoE 的路由与负载",
+        "第 10 章 LoRA 与知识蒸馏",
+        "第 11 章 DPO 与偏好数据",
+        "第 12 章 从 PPO 概念到 GRPO",
+        "第 13 章 Agent 多轮交互与奖励",
+        "第 14 章 图像怎样进入语言模型",
+        "第 15 章 视觉训练与评估",
+        "第 16 章 音频入门与特征注入",
+        "第 17 章 Thinker、Bridge 与 Talker",
+        "第 18 章 八路码本与时间对齐",
+        "第 19 章 Omni 训练流水线",
+        "第 20 章 流式交互、打断与综合实战",
+        "全书术语表",
+        "附录 A 数学与张量速查",
+        "附录 B 运行与验证方法",
+        "附录 C 源码入口索引",
+        "附录 D 来源与许可"
+      ],
+      "status": "passed"
+    },
+    "foliate": {
+      "reader": "Foliate.js",
+      "revision": "78914aef4466eb960965702401634c2cb348e9b1",
+      "sha256": "28641c86ac92c99b00dd3fd8d18124b0439144a93567af209b5caa023ec973b6",
+      "checks": [
+        {
+          "index": 0,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 17,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 17,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 17,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 17,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "status": "passed"
+    }
+  },
+  "tool_versions": {
+    "mathjax-full": "3.2.2",
+    "mermaid": "11.17.2",
+    "@mermaid-js/mermaid-cli": "11.17.0",
+    "epubjs": "0.3.93",
+    "puppeteer": "25.10.0",
+    "pandoc": "3.9",
+    "tectonic": "0.17.0",
+    "epubcheck": "5.3.0",
+    "node": "v24.15.0",
+    "foliate_js": "78914aef4466eb960965702401634c2cb348e9b1",
+    "chrome": "152.0.7977.83"
+  },
+  "tool_input_sha256": {
+    "assets/cover.pdf": "cf9496c2c484449c1e1c958486956c7c60f4e9e7ff3a3b5c7a71d742e6df8425",
+    "assets/cover.png": "231a842dcfdd084ac4ea0db6aeda5d61f8b819775c85da4fc3cac309628bbe73",
+    "assets/fonts/MiniMindBookCJK.otf": "8f4a33cb430ce0f27d9d86515a64ac30ef83e9daac8bf9389a2c3b2d02bddf48",
+    "assets/fonts/NotoSansCJKsc-Regular.otf": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
+    "assets/fonts/SourceCodePro-Regular.otf": "9f9664e2edf6f045c11e774f9bd0be6993971f2544a39061a5ce478b96b051f8",
+    "package-lock.json": "86f28db0d9ffcaed7b6924f4c436dc16d1c1b761c423fff51f6c7fb4378ee1ea",
+    "publishing/book.yaml": "32370a51e070a38ae9543a4044c565988f40a2ed06c757af31f7fd1df9620b8f",
+    "publishing/epub/style.css": "60b6bb1ed75ce054bdfe8bd9870e3a42171d27058bd49089bd12af47cdcaf626",
+    "publishing/foliate-reader.html": "28623c01c5800b306fc38e62acc957421d95ffaa0bca509e63d9bb0a17605ff6",
+    "publishing/math-descriptions.json": "2535c246a828b29dfea92ae0786563b2455883d49fd6a274301f16c860b7ef92",
+    "publishing/mermaid.json": "81a1ca3fe4c51becefc3e5a19ab332b3ae5ea2563b7b892c1e9f8af8e376ab53",
+    "publishing/pdf/header.tex": "e7a76ae181f2ed3d388987d61c1992b0a290cf0de701cb56ca2f3078cd73989a",
+    "publishing/puppeteer.json": "c3f75cec23bbabe85cdef1dd731e7d7fe0f981cad3e8a2d19bee6fd7b96d5c84",
+    "publishing/reader.html": "5fa99096ccb75d569541d8d29f300fdb016830fd71d8a91672bd60bd47a48778",
+    "scripts/booklib.py": "d99170a0e7b3b8e1d5d03e0cbb507dfba80ff97b2ae36cd76cfefc565416b184",
+    "scripts/build_book.py": "61adff6be2f7b325c6b5a5a789f10e7582a059ffb7d13a5263a9c0845189b2ec",
+    "scripts/check_book.py": "e5c6026907b093c7bdd5c9ceaa197ba9dcad228d5a3ae815fc69fbf07605ab8d",
+    "scripts/check_epub.py": "4c44ac51755d222bc8eaf668649976fc7cd36ad5d96b5cd5cda98097ffbbd94e",
+    "scripts/check_epub_display.cjs": "893e35619e42c962c15660ab88f2c718d7ae4bd704689ea2e934319ed7449341",
+    "scripts/check_epubjs.cjs": "391fe81f62ad3a32597d92c47d0dfc227ef4c1eb7f0a8f87bde43c74b192094b",
+    "scripts/check_foliate.cjs": "b1e99b7808a7ac958548b95d5483e035bc960022c251495635ed8e7bd61abc7e",
+    "scripts/check_pdf.py": "ff42756dd6c1cff344e60289593fb95fdd4e5fd9dd3c6dcd0e1a6188fc8d2ff6",
+    "scripts/content_contract.py": "039341489a2bef28e012a2aababc22fca5cb7e06c590f0aa7634980b7c99fd92",
+    "scripts/publish_book.py": "3d5898c8833af784bf8be23bf668064740b65809befb7ec3c3e8f89c00f33501",
+    "scripts/render_cover.cjs": "9f165c92b83f034d3bea43ea8262272b79c5e8c24327a488a5fb173a63300dcf",
+    "scripts/render_math.cjs": "64d76580c0410688c4197943998ab6cd1d25e86625165b50365cd8eb65e39ec9",
+    "scripts/subset_book_font.py": "be8186c3906dc801adf4d45de84c4edd74842995570ebe0edf5c644e6337790c",
+    "scripts/verify_experiments.py": "105357867b30abc2e3b6717c15191881a15091754e5e21289521d54acfd705b7"
+  },
+  "output_sha256": {
+    "minimind-source-guide.epub": "28641c86ac92c99b00dd3fd8d18124b0439144a93567af209b5caa023ec973b6",
+    "minimind-source-guide.pdf": "ffda26d428e6c2675ac95a5e4cefad64ea56227adaf33917ac3ff81a2388eebf"
+  },
+  "audit_sha256": {
+    "build/final-audit/experiments.json": "e1b3d3bd7f21472617724504e7e87c0cd13f9a6e96c9c516e0346bc3987b056b",
+    "build/final-audit/tests.log": "3cc226a474538e2dbcb829aedc874f529198a870bf4aaf661b13df0fc4616087",
+    "build/final-audit/build.log": "1b11918a79f72b5fdd60719c4529eb181e9c45c8d8971332c2d35201b1bbd09c",
+    "build/final-audit/structure.json": "5388990773018f687b529017a46d0189bfca70b44556398264f2e4dd1a82a228",
+    "build/final-audit/pdffonts.txt": "c8d61e58caab7c43d897c81bd4851104a30a979cb7f09dd2ca7846bd42ed5c72",
+    "build/final-audit/pagination-diff.json": "328c34ce5b9e10a18464a1ff89a0c59fef2c409771c2ed28159e3f13ec26067c"
+  },
+  "limits": [
+    "CPU/source/control-flow scope only; no full default-weight training or quality/performance claim",
+    "No real microphone/speaker latency test",
+    "Apple Books supplementary sample only; final reader gates are EPUB.js and Foliate",
+    "No full screen-reader accessibility certification"
+  ]
+}

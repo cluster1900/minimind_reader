@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "device": "cpu",
+  "torch": "2.6.0",
+  "seed": 42,
+  "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+  "script_sha256": "7cd664985e37a103d1a5adc59279fb65bb1a670e0d79e8436c1239c6a39bc32b",
+  "toy_weights": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.3302384614944458,
+      0.6697615385055542
+    ]
+  ],
+  "toy_output": [
+    [
+      10.0,
+      0.0
+    ],
+    [
+      3.302384614944458,
+      13.395231246948242
+    ]
+  ],
+  "attention_output_shape": [
+    1,
+    4,
+    32
+  ],
+  "cache_shape": [
+    1,
+    4,
+    2,
+    8
+  ],
+  "sdpa_manual_max_error": 5.960464477539063e-08,
+  "future_perturbation_prefix_error": 0.0,
+  "masked_key_valid_query_error": 0.0,
+  "all_zero_mask_output_nonzero": true,
+  "sdpa_called_for_unmasked_prefill": true,
+  "sdpa_skipped_for_padding_and_single_token": true
+}

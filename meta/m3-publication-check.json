@@ -1,0 +1,625 @@
+{
+  "phase": "M3 post-training and vision",
+  "chapters": [
+    "ch01",
+    "ch02",
+    "ch03",
+    "ch04",
+    "ch05",
+    "ch06",
+    "ch07",
+    "ch08",
+    "ch09",
+    "ch10",
+    "ch11",
+    "ch12",
+    "ch13",
+    "ch14",
+    "ch15"
+  ],
+  "inputs": [
+    {
+      "id": "reading-guide",
+      "path": "book/reading-guide.md",
+      "sha256": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209"
+    },
+    {
+      "id": "ch01",
+      "path": "book/01-start-here/README.md",
+      "sha256": "b32cb5c4ae97cf32a00728939f760863702aa0bc0c29328005b3003dd6bf16ae"
+    },
+    {
+      "id": "ch02",
+      "path": "book/02-tokenizer/README.md",
+      "sha256": "9b8e453fd458873304dc1059f4766ef02361f9f1904465726922b52cbb0ae055"
+    },
+    {
+      "id": "ch03",
+      "path": "book/03-model-skeleton/README.md",
+      "sha256": "f63925e61e56fdbc593626823204bdf900ac508516450d627537c00144d30d96"
+    },
+    {
+      "id": "ch04",
+      "path": "book/04-attention/README.md",
+      "sha256": "540b2c253a0c3308212d16dfe3e73cbe98b1c0c8a2258c480052a5c584fab6e8"
+    },
+    {
+      "id": "ch05",
+      "path": "book/05-rope-cache-generation/README.md",
+      "sha256": "54cd7f173edbe0824e46759b0bfc53654ee1f8e2b7a9bb572e34a6534e006023"
+    },
+    {
+      "id": "ch06",
+      "path": "book/06-datasets/README.md",
+      "sha256": "946b9a05edce5c2c0745445ccd44cf0fe03e90a0b18d79856ef0727336b59fbf"
+    },
+    {
+      "id": "ch07",
+      "path": "book/07-pretraining/README.md",
+      "sha256": "7107b9296422f5a578e5c7a3e6d6d575f5fe5051ea11451f0b634cc6d17c400e"
+    },
+    {
+      "id": "ch08",
+      "path": "book/08-sft-evaluation/README.md",
+      "sha256": "43382b4e9e324777519c2ea7ee9df8acd5ab75f136e5751cce78b2e18fa39020"
+    },
+    {
+      "id": "ch09",
+      "path": "book/09-moe/README.md",
+      "sha256": "8203b1a8c5252d9be0fd0929ccaa1ef391eb20d510dd4808861c4bbbb6c0757a"
+    },
+    {
+      "id": "ch10",
+      "path": "book/10-lora-distillation/README.md",
+      "sha256": "d62b1ac64c48502b294ba2b9e2c72ac0747f0388164592b45e7a51de6b461ddf"
+    },
+    {
+      "id": "ch11",
+      "path": "book/11-dpo/README.md",
+      "sha256": "d5261b82b76125417995b9f47e222ae91fefd50479b7d518997e69f6bd0bf9e9"
+    },
+    {
+      "id": "ch12",
+      "path": "book/12-ppo-grpo/README.md",
+      "sha256": "7fef03ad4afdb3c989546db608b2c3545fb702421f8801623cc6aacaa755c8e4"
+    },
+    {
+      "id": "ch13",
+      "path": "book/13-agent/README.md",
+      "sha256": "96df15163c168b18f2f11dd4f014fa766c8a5a38244a6f43f49e226cc522c02c"
+    },
+    {
+      "id": "ch14",
+      "path": "book/14-vision/README.md",
+      "sha256": "27371b0f8e53cf899d04ecad3f3c6eb2294dd16b055f56dffd0c2c7602797104"
+    },
+    {
+      "id": "ch15",
+      "path": "book/15-vlm-training/README.md",
+      "sha256": "cb066610261c8101187211ae36c221766af581a9236718271afe40500d23b92c"
+    },
+    {
+      "id": "glossary",
+      "path": "glossary/terms.md",
+      "sha256": "8ae130ad6d0f85705015e3a8291a8d0cf5105db928e5aa791508d24669c85812"
+    },
+    {
+      "id": "layout-test",
+      "path": "publishing/samples/layout.md",
+      "sha256": "56df16991ab53ca73c91a2a5f39b6cd36feb84a233d2b796656ff665c85989b7"
+    }
+  ],
+  "pdf_pages": 126,
+  "pdf_text_check": {
+    "pages": 126,
+    "bookmarks": 144,
+    "text_probes": 1124,
+    "missing": [],
+    "bounds": [],
+    "scope": "Paragraph fragments, code lines, table text and page bounds. Formula meaning and visual layout need separate review."
+  },
+  "display_checks": [
+    {
+      "file": "ch001.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 8,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch001.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 8,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch001.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 8,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch002.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 20,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch002.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 20,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch002.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 20,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch003.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 9,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch003.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 9,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch003.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 9,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch004.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 43,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch004.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 43,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch004.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 43,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch005.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 33,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch005.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 33,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch005.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 33,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch006.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 22,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch006.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 22,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch006.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 22,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch007.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 10,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch007.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 10,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch007.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 10,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch008.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 15,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch008.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 15,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch008.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 15,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch009.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 7,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch009.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 7,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch009.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 7,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch010.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 17,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch010.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 17,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch010.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 17,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch011.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 13,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch011.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 13,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch011.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 13,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch012.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 11,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch012.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 11,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch012.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 11,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch013.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 17,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch013.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 17,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch013.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 17,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch014.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 2,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch014.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 2,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch014.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 2,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch015.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 6,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch015.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 6,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch015.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 6,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch016.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 2,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch016.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 2,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch016.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 2,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch017.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 0,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch017.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 0,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch017.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 0,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch018.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 1,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch018.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 1,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch018.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 1,
+      "broken": [],
+      "overflow": []
+    }
+  ],
+  "output_sha256": {
+    "minimind-source-guide-preview.pdf": "ecb3ae3c2749df065b90fa306f34737136c9d29d8599c4eddc3e8cc4c00626b0",
+    "minimind-source-guide-preview.epub": "0f7fd156203c622b3831377250d1507fd7cfcef487390179b8b64563f0045052"
+  },
+  "helper_sha256": {
+    "_support.py": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
+    "_tiny_vision.py": "e125107b0be332e0d1617e3083607199b5dd34f06197a07cfc651003cad8ec3c"
+  },
+  "epubcheck": "5.3.0: zero errors and warnings",
+  "publication_tests_passed": 12,
+  "limitations": [
+    "15 of 20 chapters; not final book",
+    "RL objective blocks and scripted Agent are isolated tests, not full learned-policy training",
+    "VLM uses random tiny SigLIP; no default checkpoint quality claim",
+    "Two actual EPUB readers still required for full release"
+  ]
+}

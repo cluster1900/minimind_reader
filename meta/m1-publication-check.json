@@ -1,0 +1,55 @@
+{
+  "edition": "preview",
+  "chapters": [
+    "ch01",
+    "ch02",
+    "ch03"
+  ],
+  "pdf_pages": 34,
+  "epubcheck": "5.3.0: 0 errors / 0 warnings",
+  "inputs": [
+    {
+      "id": "reading-guide",
+      "path": "book/reading-guide.md",
+      "sha256": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209"
+    },
+    {
+      "id": "ch01",
+      "path": "book/01-start-here/README.md",
+      "sha256": "b32cb5c4ae97cf32a00728939f760863702aa0bc0c29328005b3003dd6bf16ae"
+    },
+    {
+      "id": "ch02",
+      "path": "book/02-tokenizer/README.md",
+      "sha256": "9b8e453fd458873304dc1059f4766ef02361f9f1904465726922b52cbb0ae055"
+    },
+    {
+      "id": "ch03",
+      "path": "book/03-model-skeleton/README.md",
+      "sha256": "f63925e61e56fdbc593626823204bdf900ac508516450d627537c00144d30d96"
+    },
+    {
+      "id": "layout-test",
+      "path": "publishing/samples/layout.md",
+      "sha256": "56df16991ab53ca73c91a2a5f39b6cd36feb84a233d2b796656ff665c85989b7"
+    }
+  ],
+  "output_sha256": {
+    "minimind-source-guide-preview.pdf": "84583ca6a62a1804e31a69803f8098534b9be8269ff5605f3bb48ddbacfb27ae",
+    "minimind-source-guide-preview.epub": "6f54dfb5c9c97d53485d457fffcab9b0fddbb9fd21dbcc508126524ffb6fc876"
+  },
+  "pdf_text_check": {
+    "pages": 34,
+    "bookmarks": 36,
+    "text_probes": 315,
+    "missing": [],
+    "bounds": [],
+    "scope": "Paragraph fragments, code lines, table text and page bounds. Formula meaning and visual layout need separate review."
+  },
+  "display_checks": 15,
+  "limits": [
+    "Not the complete book",
+    "Chrome XHTML display is not two independent EPUB readers",
+    "Remaining chapters and final publication gate are unfinished"
+  ]
+}

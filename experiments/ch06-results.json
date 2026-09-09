@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "device": "cpu",
+  "seed": 42,
+  "pretrain_ids": [
+    1,
+    5078,
+    365,
+    283,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "pretrain_labels": [
+    1,
+    5078,
+    365,
+    283,
+    2,
+    -100,
+    -100,
+    -100,
+    -100,
+    -100,
+    -100,
+    -100
+  ],
+  "supervised_text": "甲答案<|im_end|>\n乙答案<|im_end|>\n",
+  "supervised_count": 9,
+  "shift_loss": 8.741042137145996,
+  "ignored_logits_gradient_zero": true,
+  "prompt_embedding_gradient_nonzero": true,
+  "empty_target_loss": "nan",
+  "files": {
+    "dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
+    "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+  },
+  "script_sha256": "beb86fb13f0ca4dd79b23b99a2b02cc0856d93fe0577e86daed77aa2fac0d2ee"
+}

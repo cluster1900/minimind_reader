@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "device": "cpu",
+  "control_flow": {
+    "train_pretrain": {
+      "snapshot": {
+        "step": 3,
+        "weight": 0.06499999761581421,
+        "grad": -0.9350000023841858,
+        "updates": 1
+      },
+      "final_weight": 0.07434999942779541,
+      "updates": 2
+    },
+    "train_full_sft": {
+      "snapshot": {
+        "step": 3,
+        "weight": 0.06499999761581421,
+        "grad": -0.9350000023841858,
+        "updates": 1
+      },
+      "final_weight": 0.07434999942779541,
+      "updates": 2
+    }
+  },
+  "checkpoint_fields": [
+    "epoch",
+    "model",
+    "optimizer",
+    "scaler",
+    "step",
+    "wandb_id",
+    "world_size"
+  ],
+  "checkpoint_model_dtype": "torch.float16",
+  "skip_batches": [
+    [
+      2,
+      3
+    ],
+    [
+      4
+    ]
+  ],
+  "files": {
+    "trainer/train_pretrain.py": "2009187e9b701f682292ebfc697bc3bfcd34c222848c00930cb88754374ae240",
+    "trainer/train_full_sft.py": "a9758012e7f2917420d7c42ea4d67a2e02ebfeaf1b746c35b43e6d47c5dc87b3",
+    "trainer/trainer_utils.py": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b"
+  },
+  "script_sha256": "4d49ec7715eabd87e790d4a28b83105ba1f40a8baf61dffb0d14e7c76d6c4998"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scope": "random tiny Omni forward, external encoders absent; no audio quality claim",
+  "text_shape": [
+    1,
+    3,
+    6400
+  ],
+  "audio_heads": 8,
+  "audio_shape": [
+    1,
+    3,
+    2112
+  ],
+  "cache_layers": 3,
+  "parameters": 9212010,
+  "model_source_sha256": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c"
+}

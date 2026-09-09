@@ -1,0 +1,214 @@
+{
+  "title": "MiniMind 源码阅读与工程实践",
+  "subtitle": "从文本模型到视觉、语音与实时交互",
+  "author": [
+    "MiniMind Reader 项目"
+  ],
+  "lang": "zh-CN",
+  "date": "2026-09-09",
+  "identifier": "urn:uuid:e511cc04-1cc8-44a0-94fc-3c87540b451e",
+  "frontmatter": [
+    {
+      "id": "reading-guide",
+      "files": [
+        "book/reading-guide.md"
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch01",
+      "part": "一",
+      "title": "环境、张量与一次最小前向",
+      "files": [
+        "book/01-start-here/README.md"
+      ]
+    },
+    {
+      "id": "ch02",
+      "part": "一",
+      "title": "从文字到 token",
+      "files": [
+        "book/02-tokenizer/README.md"
+      ]
+    },
+    {
+      "id": "ch03",
+      "part": "一",
+      "title": "搭起语言模型骨架",
+      "files": [
+        "book/03-model-skeleton/README.md"
+      ]
+    },
+    {
+      "id": "ch04",
+      "part": "一",
+      "title": "手算一次注意力",
+      "files": [
+        "book/04-attention/README.md"
+      ]
+    },
+    {
+      "id": "ch05",
+      "part": "一",
+      "title": "位置、缓存与逐字生成",
+      "files": [
+        "book/05-rope-cache-generation/README.md"
+      ]
+    },
+    {
+      "id": "ch06",
+      "part": "一",
+      "title": "一条训练样本的旅程",
+      "files": [
+        "book/06-datasets/README.md"
+      ]
+    },
+    {
+      "id": "ch07",
+      "part": "一",
+      "title": "预训练循环与断点恢复",
+      "files": [
+        "book/07-pretraining/README.md"
+      ]
+    },
+    {
+      "id": "ch08",
+      "part": "一",
+      "title": "SFT、评估与训练排错",
+      "files": [
+        "book/08-sft-evaluation/README.md"
+      ]
+    },
+    {
+      "id": "ch09",
+      "part": "二",
+      "title": "MoE 的路由与负载",
+      "files": [
+        "book/09-moe/README.md"
+      ]
+    },
+    {
+      "id": "ch10",
+      "part": "二",
+      "title": "LoRA 与知识蒸馏",
+      "files": [
+        "book/10-lora-distillation/README.md"
+      ]
+    },
+    {
+      "id": "ch11",
+      "part": "二",
+      "title": "DPO 与偏好数据",
+      "files": [
+        "book/11-dpo/README.md"
+      ]
+    },
+    {
+      "id": "ch12",
+      "part": "二",
+      "title": "从 PPO 概念到 GRPO",
+      "files": [
+        "book/12-ppo-grpo/README.md"
+      ]
+    },
+    {
+      "id": "ch13",
+      "part": "二",
+      "title": "Agent 多轮交互与奖励",
+      "files": [
+        "book/13-agent/README.md"
+      ]
+    },
+    {
+      "id": "ch14",
+      "part": "三",
+      "title": "图像怎样进入语言模型",
+      "files": [
+        "book/14-vision/README.md"
+      ]
+    },
+    {
+      "id": "ch15",
+      "part": "三",
+      "title": "视觉训练与评估",
+      "files": [
+        "book/15-vlm-training/README.md"
+      ]
+    },
+    {
+      "id": "ch16",
+      "part": "四",
+      "title": "音频入门与特征注入",
+      "files": [
+        "book/16-audio-basics/README.md"
+      ]
+    },
+    {
+      "id": "ch17",
+      "part": "四",
+      "title": "Thinker、Bridge 与 Talker",
+      "files": [
+        "book/17-thinker-talker/README.md"
+      ]
+    },
+    {
+      "id": "ch18",
+      "part": "四",
+      "title": "八路码本与时间对齐",
+      "files": [
+        "book/18-audio-codebooks/README.md"
+      ]
+    },
+    {
+      "id": "ch19",
+      "part": "四",
+      "title": "Omni 训练流水线",
+      "files": [
+        "book/19-omni-training/README.md"
+      ]
+    },
+    {
+      "id": "ch20",
+      "part": "四",
+      "title": "流式交互、打断与综合实战",
+      "files": [
+        "book/20-realtime/README.md"
+      ]
+    }
+  ],
+  "backmatter": [
+    {
+      "id": "glossary",
+      "files": [
+        "glossary/terms.md"
+      ]
+    },
+    {
+      "id": "appendix-math",
+      "files": [
+        "book/appendices/math-and-tensors.md"
+      ]
+    },
+    {
+      "id": "appendix-reproduction",
+      "files": [
+        "book/appendices/reproduction.md"
+      ]
+    },
+    {
+      "id": "appendix-source",
+      "files": [
+        "book/appendices/source-index.md"
+      ]
+    },
+    {
+      "id": "appendix-licenses",
+      "files": [
+        "book/appendices/licenses.md"
+      ]
+    }
+  ],
+  "version": "1.0.1",
+  "rights": "本书正文未另设统一开源许可；引用代码和字体保留各自许可，详见来源与许可附录。"
+}

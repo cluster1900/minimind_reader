@@ -1,0 +1,26 @@
+@font-face { font-family: "MiniMind Book CJK"; src: url("../fonts/MiniMindBookCJK.otf") format("opentype"); }
+body { font-family: "MiniMind Book CJK", sans-serif; line-height: 1.75; margin: 5%; color: #20252a; }
+h1,h2,h3 { line-height: 1.35; page-break-after: avoid; }
+h1 { font-size: 1.65em; border-bottom: 2px solid #285264; padding-bottom: .5em; }
+h2 { font-size: 1.3em; margin-top: 1.7em; }
+p { text-align: justify; }
+pre { font-size: .82em; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; padding: .7em; background: #f2f4f5; }
+code { font-family: monospace; overflow-wrap: anywhere; word-break: break-word; }
+pre, pre.sourceCode, pre > code { white-space: pre-wrap !important; overflow-wrap: anywhere !important; word-break: break-word; max-width: 100%; box-sizing: border-box; }
+div.sourceCode { overflow: visible !important; }
+table { border-collapse: collapse; width: 100%; font-size: .85em; }
+th,td { border: 1px solid #9daab2; padding: .4em; text-align: left; vertical-align: top; min-width: 2.4em; }
+figure { margin: 1em 0; text-align: center; }
+img { max-width: 100%; height: auto; }
+img.diagram { display: block; width: 100%; max-width: 24em; margin: 1em auto; }
+img.math-inline { max-height: 3em; }
+img.math-inline, img.math-display { height: auto !important; background-color: white; }
+.math-display { text-align: center; margin: 1em 0; }
+a { color: #245d7b; overflow-wrap: anywhere; word-break: break-word; }
+blockquote { border-left: 3px solid #587b88; margin-left: 0; padding-left: 1em; }
+@media (prefers-color-scheme: dark) {
+  body { color: #e6edf0; background: #182025; }
+  a { color: #a9d4ed; }
+  pre { background: #29343c; color: #f3f5f7; }
+  img.math-inline, img.math-display { filter: invert(1); }
+}

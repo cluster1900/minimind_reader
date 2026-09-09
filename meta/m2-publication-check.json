@@ -1,0 +1,424 @@
+{
+  "phase": "M2 text foundation",
+  "chapters": [
+    "ch01",
+    "ch02",
+    "ch03",
+    "ch04",
+    "ch05",
+    "ch06",
+    "ch07",
+    "ch08"
+  ],
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "inputs": [
+    {
+      "id": "reading-guide",
+      "path": "book/reading-guide.md",
+      "sha256": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209"
+    },
+    {
+      "id": "ch01",
+      "path": "book/01-start-here/README.md",
+      "sha256": "b32cb5c4ae97cf32a00728939f760863702aa0bc0c29328005b3003dd6bf16ae"
+    },
+    {
+      "id": "ch02",
+      "path": "book/02-tokenizer/README.md",
+      "sha256": "9b8e453fd458873304dc1059f4766ef02361f9f1904465726922b52cbb0ae055"
+    },
+    {
+      "id": "ch03",
+      "path": "book/03-model-skeleton/README.md",
+      "sha256": "f63925e61e56fdbc593626823204bdf900ac508516450d627537c00144d30d96"
+    },
+    {
+      "id": "ch04",
+      "path": "book/04-attention/README.md",
+      "sha256": "540b2c253a0c3308212d16dfe3e73cbe98b1c0c8a2258c480052a5c584fab6e8"
+    },
+    {
+      "id": "ch05",
+      "path": "book/05-rope-cache-generation/README.md",
+      "sha256": "54cd7f173edbe0824e46759b0bfc53654ee1f8e2b7a9bb572e34a6534e006023"
+    },
+    {
+      "id": "ch06",
+      "path": "book/06-datasets/README.md",
+      "sha256": "946b9a05edce5c2c0745445ccd44cf0fe03e90a0b18d79856ef0727336b59fbf"
+    },
+    {
+      "id": "ch07",
+      "path": "book/07-pretraining/README.md",
+      "sha256": "7107b9296422f5a578e5c7a3e6d6d575f5fe5051ea11451f0b634cc6d17c400e"
+    },
+    {
+      "id": "ch08",
+      "path": "book/08-sft-evaluation/README.md",
+      "sha256": "43382b4e9e324777519c2ea7ee9df8acd5ab75f136e5751cce78b2e18fa39020"
+    },
+    {
+      "id": "glossary",
+      "path": "glossary/terms.md",
+      "sha256": "cf0d64ce4768eac757437907b7e906ce0fc98be938669ebb4a86382aa4784efe"
+    },
+    {
+      "id": "layout-test",
+      "path": "publishing/samples/layout.md",
+      "sha256": "56df16991ab53ca73c91a2a5f39b6cd36feb84a233d2b796656ff665c85989b7"
+    }
+  ],
+  "pdf_pages": 79,
+  "pdf_text_check": {
+    "pages": 79,
+    "bookmarks": 85,
+    "text_probes": 746,
+    "missing": [],
+    "bounds": [],
+    "scope": "Paragraph fragments, code lines, table text and page bounds. Formula meaning and visual layout need separate review."
+  },
+  "display_checks": [
+    {
+      "file": "ch001.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 8,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch001.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 8,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch001.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 8,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch002.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 20,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch002.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 20,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch002.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 20,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch003.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 9,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch003.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 9,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch003.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 9,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch004.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 43,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch004.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 43,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch004.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 43,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch005.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 33,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch005.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 33,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch005.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 33,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch006.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 22,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch006.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 22,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch006.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 22,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch007.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 10,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch007.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 10,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch007.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 10,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch008.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 15,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch008.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 15,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch008.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 15,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch009.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 7,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch009.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 7,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch009.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 7,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch010.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 0,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch010.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 0,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch010.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 0,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch011.xhtml",
+      "scheme": "light",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 1,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch011.xhtml",
+      "scheme": "light",
+      "width": 900,
+      "contentWidth": 900,
+      "images": 1,
+      "broken": [],
+      "overflow": []
+    },
+    {
+      "file": "ch011.xhtml",
+      "scheme": "dark",
+      "width": 390,
+      "contentWidth": 390,
+      "images": 1,
+      "broken": [],
+      "overflow": []
+    }
+  ],
+  "output_sha256": {
+    "minimind-source-guide-preview.pdf": "14106ca1a13d2e669db62c8b444339f332850d76b22cf2b759aae9240b353279",
+    "minimind-source-guide-preview.epub": "0857de40758f731865cf136b0c723f3c554673c5fae50dc1fd3a92e84e1e9273"
+  },
+  "epubcheck": "5.3.0, zero errors and warnings",
+  "tests_passed": 12,
+  "limitations": [
+    "Preview of chapters 01-08, glossary and layout fixture; not full 20-chapter book",
+    "No GPU training or model quality benchmark claims",
+    "Actual EPUB reader verification required before full release"
+  ],
+  "experiment_validation": [
+    {
+      "script": "ch01_start_here.py",
+      "returncode": 0
+    },
+    {
+      "script": "ch02_tokenizer.py",
+      "returncode": 0
+    },
+    {
+      "script": "ch03_model_skeleton.py",
+      "returncode": 0
+    },
+    {
+      "script": "ch04_attention.py",
+      "returncode": 0
+    },
+    {
+      "script": "ch05_rope_cache.py",
+      "returncode": 0
+    },
+    {
+      "script": "ch06_datasets.py",
+      "returncode": 0
+    },
+    {
+      "script": "ch07_training_loop.py",
+      "returncode": 0
+    },
+    {
+      "script": "ch08_sft_evaluation.py",
+      "returncode": 0
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "files": {
+    "model/tokenizer.json": "71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668",
+    "model/tokenizer_config.json": "d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110",
+    "trainer/train_tokenizer.py": "41c996fe0384b036972e9830731236ef47d34e5dcb10f13dbd134c1c578ca1a1"
+  },
+  "vocabulary": 6400,
+  "bos": 1,
+  "eos": 2,
+  "pad": 0,
+  "samples": [
+    {
+      "text": "你好，MiniMind！",
+      "ids": [
+        1968,
+        294,
+        80,
+        301,
+        108,
+        80,
+        916,
+        1364
+      ],
+      "characters": 12,
+      "tokens": 8,
+      "ratio": 1.5
+    },
+    {
+      "text": "hello world",
+      "ids": [
+        6170,
+        1707
+      ],
+      "characters": 11,
+      "tokens": 2,
+      "ratio": 5.5
+    },
+    {
+      "text": "空格  和换行\n都要保留。",
+      "ids": [
+        1273,
+        1073,
+        256,
+        4080,
+        1446,
+        474,
+        234,
+        857,
+        420,
+        5988,
+        302
+      ],
+      "characters": 13,
+      "tokens": 11,
+      "ratio": 1.1818181818181819
+    }
+  ],
+  "tokens": {
+    "<|im_start|>": {
+      "id": 1,
+      "decoded_skip": ""
+    },
+    "<|im_end|>": {
+      "id": 2,
+      "decoded_skip": ""
+    },
+    "<|image_pad|>": {
+      "id": 12,
+      "decoded_skip": ""
+    },
+    "<think>": {
+      "id": 25,
+      "decoded_skip": "<think>"
+    },
+    "<tool_call>": {
+      "id": 21,
+      "decoded_skip": "<tool_call>"
+    }
+  },
+  "prompts": {
+    "False": "<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "True": "<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n"
+  },
+  "assistant_training_template": "<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n你好！<|im_end|>\n",
+  "toy_vocabulary": 364,
+  "toy_ids": [
+    350,
+    354
+  ],
+  "toy_roundtrip": "你好 hello",
+  "script_sha256": "754b6a5d426f153293fc6b45f640cf496316c32061d056e48513beaae7b2cd69"
+}

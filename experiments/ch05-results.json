@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "device": "cpu",
+  "seed": 42,
+  "torch": "2.6.0",
+  "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+  "script_sha256": "49deb7e05a055aa80163ea37201116860a1816148f5aac9bdbe147e07838f81f",
+  "rope_relative_error": 2.384185791015625e-07,
+  "chunk_cache_error": 2.9802322387695312e-08,
+  "token_cache_error": 5.960464477539063e-08,
+  "cache_lengths": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "generated_ids": [
+    [
+      1,
+      4,
+      7,
+      9,
+      9,
+      9,
+      9
+    ]
+  ],
+  "returned_cache_length": 6,
+  "nucleus_distribution": [
+    0.5714285969734192,
+    0.4285714626312256,
+    0.0,
+    0.0
+  ],
+  "top_k_tie_support": 3,
+  "penalty_distribution": [
+    0.0028374874964356422,
+    0.4211204946041107,
+    0.15492157638072968,
+    0.4211204946041107
+  ]
+}

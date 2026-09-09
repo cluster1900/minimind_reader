@@ -1,0 +1,1078 @@
+{
+  "title": "MiniMind 源码阅读与工程实践",
+  "version": "1.0.1",
+  "status": "passed",
+  "verified_at": "2026-09-09T11:18:59.572255+08:00",
+  "inputs": [
+    {
+      "id": "reading-guide",
+      "path": "book/reading-guide.md",
+      "sha256": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209"
+    },
+    {
+      "id": "ch01",
+      "path": "book/01-start-here/README.md",
+      "sha256": "129fbf87f337da364cd68509fbf091eeda8f0d7a02dfd9a49ac470e1f19f7d1f"
+    },
+    {
+      "id": "ch02",
+      "path": "book/02-tokenizer/README.md",
+      "sha256": "0c8abd9508304416b8df43a884338bf259b0b604ab7e839162e220ddcef04101"
+    },
+    {
+      "id": "ch03",
+      "path": "book/03-model-skeleton/README.md",
+      "sha256": "e8fd5b6fc7a96f3df9edc227833600211da7829daf61191f7e0dc46cca4d25d6"
+    },
+    {
+      "id": "ch04",
+      "path": "book/04-attention/README.md",
+      "sha256": "1ba6bb9d081eaac84a371ad60cb3a3d288a49bd847fc2b66ae22e9fd8b686758"
+    },
+    {
+      "id": "ch05",
+      "path": "book/05-rope-cache-generation/README.md",
+      "sha256": "7a4110db40df81bc5e62740b51008212c4463c2af386b2cb64d3c5920604c343"
+    },
+    {
+      "id": "ch06",
+      "path": "book/06-datasets/README.md",
+      "sha256": "c919162f6409911013e5f2edb0c05cf4b5dc123247dff0e635f15ddaafd9dc9d"
+    },
+    {
+      "id": "ch07",
+      "path": "book/07-pretraining/README.md",
+      "sha256": "a785a88cd7f0c2d959000a786b6d71b5400393470fb0a8cb00e5e340531fa37a"
+    },
+    {
+      "id": "ch08",
+      "path": "book/08-sft-evaluation/README.md",
+      "sha256": "54b67d2ab3edfe804068efa0f716ebcc9ffb39ad41ccdccb29d5aacbcdd9e57a"
+    },
+    {
+      "id": "ch09",
+      "path": "book/09-moe/README.md",
+      "sha256": "5dfbf03e4080d48a1e35fd6c1c304227dbd0098ab8c1386dfb76175df60774bc"
+    },
+    {
+      "id": "ch10",
+      "path": "book/10-lora-distillation/README.md",
+      "sha256": "e4a2d38503ad032289053eb045819232d26ad004485a06896e7538836c41cdb8"
+    },
+    {
+      "id": "ch11",
+      "path": "book/11-dpo/README.md",
+      "sha256": "24d938989e84e48fd3c5768660d6045a67d7c0708e8a569964132162ad632f11"
+    },
+    {
+      "id": "ch12",
+      "path": "book/12-ppo-grpo/README.md",
+      "sha256": "fba2504263774c581a5c7203f26ef95797ad9c68b7cb4a7e347c68b03c992e89"
+    },
+    {
+      "id": "ch13",
+      "path": "book/13-agent/README.md",
+      "sha256": "30ea606d5a7a396051ad2c364ce566cf76d95abd4e4621fb269dfe990204a78a"
+    },
+    {
+      "id": "ch14",
+      "path": "book/14-vision/README.md",
+      "sha256": "f65a330eddba7334a537e0c5edc2e750aab26258d8e088b0fa510e4c79c583fd"
+    },
+    {
+      "id": "ch15",
+      "path": "book/15-vlm-training/README.md",
+      "sha256": "ae5daff98be76216fe5da7f047bbf8a345b8d247b0294654e1799ef631e97fc3"
+    },
+    {
+      "id": "ch16",
+      "path": "book/16-audio-basics/README.md",
+      "sha256": "4cdc2d8468787569df4270e84050ebe3aff1be38b168828d790b1087b79e4550"
+    },
+    {
+      "id": "ch17",
+      "path": "book/17-thinker-talker/README.md",
+      "sha256": "b4fa670b009395268a246fdf7c2a4661e4fc0654c528a8fe343a345feedfd2e2"
+    },
+    {
+      "id": "ch18",
+      "path": "book/18-audio-codebooks/README.md",
+      "sha256": "8221b28b4444716d77e082ea788f696cdff6bc551d9f5d5c844660ac1a4ca8c0"
+    },
+    {
+      "id": "ch19",
+      "path": "book/19-omni-training/README.md",
+      "sha256": "d0efbedb1249aca0cdd719ad8081562b3f4f2d5e94af33bbbd2a606cace9764e"
+    },
+    {
+      "id": "ch20",
+      "path": "book/20-realtime/README.md",
+      "sha256": "28a2375e79fe43fc161908f43000d2c05f581aa530f3e0378d0f6e30ad4a63e4"
+    },
+    {
+      "id": "glossary",
+      "path": "glossary/terms.md",
+      "sha256": "c13863a364b8f17c25d4dfe1a00c0a53ed53c4f582a1ce7777b03911e9d4ced7"
+    },
+    {
+      "id": "appendix-math",
+      "path": "book/appendices/math-and-tensors.md",
+      "sha256": "1199d2404c681e2d8831a396e4a11c7b620330445fbb12b65f6bb05881a4b53f"
+    },
+    {
+      "id": "appendix-reproduction",
+      "path": "book/appendices/reproduction.md",
+      "sha256": "a09a9be0244fd38953b5099cc4f7c36b1af2d581805986fcf8b6cbb03fff8350"
+    },
+    {
+      "id": "appendix-source",
+      "path": "book/appendices/source-index.md",
+      "sha256": "18322e323bbba142523dc956f65b452ec47b9f53fdebb83219c413f366a8b991"
+    },
+    {
+      "id": "appendix-licenses",
+      "path": "book/appendices/licenses.md",
+      "sha256": "7d21a01b384cae23d7f2e1698e6758d2d60dd5fb30ebee0048b9de280b45c59d"
+    }
+  ],
+  "sources": {
+    "minimind": {
+      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "dirty": false,
+      "remote": "https://github.com/jingyaogong/minimind"
+    },
+    "minimind-v": {
+      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "dirty": false,
+      "remote": "https://github.com/jingyaogong/minimind-v"
+    },
+    "minimind-o": {
+      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "dirty": false,
+      "remote": "https://github.com/jingyaogong/minimind-o"
+    }
+  },
+  "checks": {
+    "manuscript": "passed",
+    "source_mapping": "passed",
+    "cpu_experiments": 20,
+    "publication_tests": 29,
+    "epubcheck": "passed: zero errors/warnings",
+    "epub_documents": 26,
+    "formula_resources": 201,
+    "diagrams": 38,
+    "pdf_text_probes": 1861,
+    "pdf_visual_pages": 194,
+    "epubjs_cases": 5,
+    "foliate_cases": 28,
+    "xhtml_display_cases": 78,
+    "embedded_font_resources": 1098,
+    "pdf_chapter_order": "passed"
+  },
+  "pdf_text_check": {
+    "pages": 194,
+    "bookmarks": 221,
+    "text_probes": 1861,
+    "missing": [],
+    "bounds": [],
+    "scope": "Paragraph fragments, code lines, table text and page bounds. Formula meaning and visual layout need separate review."
+  },
+  "pdf_visual": {
+    "passed": true,
+    "pages": 194,
+    "pdf_sha256": "65f8853e5382e3d7bd06d77ecd5c26741799153df427a405b24ea73be3e4f69f",
+    "reviewed_at": "2026-09-09T11:18:42.623957+08:00",
+    "baseline_pdf_sha256": "ffda26d428e6c2675ac95a5e4cefad64ea56227adaf33917ac3ff81a2388eebf",
+    "changed_body_pages": [
+      2,
+      6,
+      7,
+      8,
+      17,
+      18,
+      42,
+      50,
+      76,
+      82,
+      84,
+      87,
+      90,
+      97,
+      103,
+      104,
+      106,
+      107,
+      108,
+      136,
+      137,
+      142,
+      143,
+      144,
+      145,
+      152,
+      158,
+      159,
+      160
+    ],
+    "review_pages_with_neighbors": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      16,
+      17,
+      18,
+      19,
+      41,
+      42,
+      43,
+      49,
+      50,
+      51,
+      75,
+      76,
+      77,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      96,
+      97,
+      98,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      135,
+      136,
+      137,
+      138,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      151,
+      152,
+      153,
+      157,
+      158,
+      159,
+      160,
+      161
+    ],
+    "method": "Compared every final page raster to reviewed 1.0. Reviewed 63 affected/adjacent pages of first candidate, then corrected state-diagram overlap and inspected final changed pages 8,9,158,159,160,161. Final chapter-end exercise fits preceding page; no clipped glyphs, equation or diagram content found.",
+    "record": "meta/consistency-review.md"
+  },
+  "readers": {
+    "epubjs": {
+      "reader": "EPUB.js 0.3.93",
+      "sha256": "a37d7a2b71fdb08de10be05bb731a2cc7f68c1fd1b59ad415fd97e11fd30ad64",
+      "checks": [
+        {
+          "index": 0,
+          "theme": "light",
+          "size": "100%",
+          "state": [
+            {
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n阅读指南：把问题带到代码里\n\n你不需要先读完所有大模型论文。先挑一个能观察的问题：一句话怎样成为整数？ 模型怎样为下一个词打分？为什么 loss 能推动参数变化？每解决一个问题，就多掌握一段真实调"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "theme": "light",
+          "size": "130%",
+          "state": [
+            {
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n第 03 章 搭起语言模型骨架\n\n一串整数怎样变成对下一个词的预测？上一章的分词器已经把文字交给了模型， 但模型内部还没有“词义”这样的 Python 对象。它拥有的是一组可学习的数值表， 以及反"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "theme": "dark",
+          "size": "130%",
+          "state": [
+            {
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 30,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n第 12 章 从 PPO 概念到 GRPO\n\n前一章使用事先给定的偏好对。本章让策略自己生成回答，再根据奖励改进。 困难在于：一句回答最终得到一个分数，怎样把它变成每个生成位置的更新信号？ 我们先"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "theme": "light",
+          "size": "150%",
+          "state": [
+            {
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n第 18 章 八路码本与时间对齐\n\nTalker 输出的不是直接可播放的声波，而是若干离散编号。Mimi codec 再把这些编号还原成波形。 最容易误读的地方在于：八路头一次计算，并不表示八个连"
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "theme": "light",
+          "size": "100%",
+          "state": [
+            {
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ],
+              "text": "\n\n附录 D 来源与许可\n\n本书是独立编写的源码学习教程，项目名称用于说明研究对象，不表示上游维护者为本书背书。 正文未另行设定统一的公开开源许可；引用代码、字体和工具分别保留原有权利与许可。 教学简"
+            }
+          ]
+        }
+      ],
+      "toc": [
+        "阅读指南：把问题带到代码里",
+        "第 01 章 环境、张量与一次最小前向",
+        "第 02 章 从文字到 token",
+        "第 03 章 搭起语言模型骨架",
+        "第 04 章 手算一次注意力",
+        "第 05 章 位置、缓存与逐字生成",
+        "第 06 章 一条训练样本的旅程",
+        "第 07 章 预训练循环与断点恢复",
+        "第 08 章 SFT、评估与训练排错",
+        "第 09 章 MoE 的路由与负载",
+        "第 10 章 LoRA 与知识蒸馏",
+        "第 11 章 DPO 与偏好数据",
+        "第 12 章 从 PPO 概念到 GRPO",
+        "第 13 章 Agent 多轮交互与奖励",
+        "第 14 章 图像怎样进入语言模型",
+        "第 15 章 视觉训练与评估",
+        "第 16 章 音频入门与特征注入",
+        "第 17 章 Thinker、Bridge 与 Talker",
+        "第 18 章 八路码本与时间对齐",
+        "第 19 章 Omni 训练流水线",
+        "第 20 章 流式交互、打断与综合实战",
+        "全书术语表",
+        "附录 A 数学与张量速查",
+        "附录 B 运行与验证方法",
+        "附录 C 源码入口索引",
+        "附录 D 来源与许可"
+      ],
+      "status": "passed"
+    },
+    "foliate": {
+      "reader": "Foliate.js",
+      "revision": "78914aef4466eb960965702401634c2cb348e9b1",
+      "sha256": "a37d7a2b71fdb08de10be05bb731a2cc7f68c1fd1b59ad415fd97e11fd30ad64",
+      "checks": [
+        {
+          "index": 0,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 30,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 390,
+          "size": 16,
+          "theme": "light",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 30,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 390,
+          "size": 22,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 30,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 1000,
+          "size": 16,
+          "theme": "dark",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "16px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 3,
+              "heading": "阅读指南：把问题带到代码里",
+              "images": 8,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 6,
+              "heading": "第 03 章 搭起语言模型骨架",
+              "images": 43,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 15,
+              "heading": "第 12 章 从 PPO 概念到 GRPO",
+              "images": 30,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 20,
+              "heading": "第 17 章 Thinker、Bridge 与 Talker",
+              "images": 7,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 21,
+              "heading": "第 18 章 八路码本与时间对齐",
+              "images": 19,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 23,
+              "heading": "第 20 章 流式交互、打断与综合实战",
+              "images": 3,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 25,
+          "width": 1000,
+          "size": 22,
+          "theme": "light",
+          "state": [
+            {
+              "index": 28,
+              "heading": "附录 D 来源与许可",
+              "images": 0,
+              "broken": 0,
+              "fontSize": "22px",
+              "fonts": [
+                {
+                  "family": "MiniMind Book CJK",
+                  "status": "loaded"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "status": "passed"
+    }
+  },
+  "tool_versions": {
+    "mathjax-full": "3.2.2",
+    "mermaid": "11.17.2",
+    "@mermaid-js/mermaid-cli": "11.17.0",
+    "epubjs": "0.3.93",
+    "puppeteer": "25.10.0",
+    "python": "3.12.14",
+    "node": "v24.15.0",
+    "pandoc": "pandoc 3.9",
+    "tectonic": "Tectonic 0.17.0",
+    "epubcheck": "5.3.0",
+    "foliate_js": "78914aef4466eb960965702401634c2cb348e9b1"
+  },
+  "tool_input_sha256": {
+    "assets/cover.pdf": "cf9496c2c484449c1e1c958486956c7c60f4e9e7ff3a3b5c7a71d742e6df8425",
+    "assets/cover.png": "231a842dcfdd084ac4ea0db6aeda5d61f8b819775c85da4fc3cac309628bbe73",
+    "assets/fonts/MiniMindBookCJK.otf": "6129fc3b77531373e40e7abb2b5d6a0d28bcd6d305ca40ae3394a5c8ed7fd3c2",
+    "assets/fonts/NotoSansCJKsc-Regular.otf": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
+    "assets/fonts/SourceCodePro-Regular.otf": "9f9664e2edf6f045c11e774f9bd0be6993971f2544a39061a5ce478b96b051f8",
+    "meta/chapter-source-map.json": "cb7469b16a8dfffdfda3a51c6fee12fee422e37fa5ae331c1d7314e51e15046b",
+    "meta/consistency-review.md": "a1b4e5f425155a12000b02bd07f8bf8af1a0f8563704c6f48cf2aa51c05bd7c7",
+    "meta/content-review.json": "4dd702700e90a82f290d09a149c6bef706036d1aaa50d850e50cc4e2e5cecdfc",
+    "package-lock.json": "86f28db0d9ffcaed7b6924f4c436dc16d1c1b761c423fff51f6c7fb4378ee1ea",
+    "publishing/book.yaml": "e5f4f1e4b378f33cd3323946c1555131a589da8afe0db96630043afd026fd462",
+    "publishing/epub/style.css": "60b6bb1ed75ce054bdfe8bd9870e3a42171d27058bd49089bd12af47cdcaf626",
+    "publishing/foliate-reader.html": "28623c01c5800b306fc38e62acc957421d95ffaa0bca509e63d9bb0a17605ff6",
+    "publishing/math-descriptions.json": "c67fd374c91998ae43640b410a0cbff796d75555fb9e99d006912eb423693326",
+    "publishing/mermaid.json": "81a1ca3fe4c51becefc3e5a19ab332b3ae5ea2563b7b892c1e9f8af8e376ab53",
+    "publishing/pdf/header.tex": "e7a76ae181f2ed3d388987d61c1992b0a290cf0de701cb56ca2f3078cd73989a",
+    "publishing/puppeteer.json": "c3f75cec23bbabe85cdef1dd731e7d7fe0f981cad3e8a2d19bee6fd7b96d5c84",
+    "publishing/reader.html": "5fa99096ccb75d569541d8d29f300fdb016830fd71d8a91672bd60bd47a48778",
+    "scripts/booklib.py": "d99170a0e7b3b8e1d5d03e0cbb507dfba80ff97b2ae36cd76cfefc565416b184",
+    "scripts/build_book.py": "61adff6be2f7b325c6b5a5a789f10e7582a059ffb7d13a5263a9c0845189b2ec",
+    "scripts/check_book.py": "640056c3a2e5977ea4b0dfeabc6f062c7912063ed952037d435e55c775365f6e",
+    "scripts/check_epub.py": "0cf6331c0eddf5683d3ff9f15ed2bb09ee0cfd2ed08201e437bc3d9f67ed034f",
+    "scripts/check_epub_display.cjs": "18f89c7fbdabd5d8be561dcc46b43a998ed7de1d237398d1660ab79fb410e52f",
+    "scripts/check_epubjs.cjs": "391fe81f62ad3a32597d92c47d0dfc227ef4c1eb7f0a8f87bde43c74b192094b",
+    "scripts/check_evidence.py": "1656fbb3d7ab87fd20bb9a6bd3af5583d5fb5c5f36ab73765639cf68c4f3c307",
+    "scripts/check_foliate.cjs": "b1e99b7808a7ac958548b95d5483e035bc960022c251495635ed8e7bd61abc7e",
+    "scripts/check_pdf.py": "f60b3aa98d33cd0b5925b92873bce139749b9b0ba285c767ba5aa76476140b0a",
+    "scripts/collect_release_review.py": "938614d81dcbedf496d1f7d3cfec18a9ce84d14e5b3540815c1190e056ffad2b",
+    "scripts/content_contract.py": "039341489a2bef28e012a2aababc22fca5cb7e06c590f0aa7634980b7c99fd92",
+    "scripts/publish_book.py": "8f3b0d576f4a070588df6bdf31457c02204ec120fff0b0a152893e22d71a6ca1",
+    "scripts/record_content_review.py": "82af269683fc3a666fa1e1d16fc37903c4a8a3790de1bd84c6a28d10e4f6c9a3",
+    "scripts/render_cover.cjs": "9f165c92b83f034d3bea43ea8262272b79c5e8c24327a488a5fb173a63300dcf",
+    "scripts/render_math.cjs": "64d76580c0410688c4197943998ab6cd1d25e86625165b50365cd8eb65e39ec9",
+    "scripts/render_pdf_review.py": "0faeac0531d150521e65d98e414cdd9c19585610d9f654c0b55495598ae2059f",
+    "scripts/source_snapshot.py": "584408b59f287d270ac9f3e79aaf03c03e21ed8ebf1ab83b6436025b5da2e3a5",
+    "scripts/subset_book_font.py": "be8186c3906dc801adf4d45de84c4edd74842995570ebe0edf5c644e6337790c",
+    "scripts/verify_experiments.py": "abb4511aa457a5c55264d998604546343fbdabc1c04c5f134a5ab6fcd8a5d3fd"
+  },
+  "output_sha256": {
+    "minimind-source-guide.epub": "a37d7a2b71fdb08de10be05bb731a2cc7f68c1fd1b59ad415fd97e11fd30ad64",
+    "minimind-source-guide.pdf": "65f8853e5382e3d7bd06d77ecd5c26741799153df427a405b24ea73be3e4f69f"
+  },
+  "audit_sha256": {
+    "build/consistency-audit/tests.log": "bf1c4faf4df8ee773086c2d481e0ccdcb399a66008b344144255d0ee0873c750",
+    "build/consistency-audit/experiments.json": "b73dc13842ce5845898ab228ad2031265e3dc62b4451d36355164ca814da18bc",
+    "build/consistency-audit/build.log": "eaf969de11cb8f7026feca0d985816e903a4f34bf92a7f9c71a4c4ae761b6366",
+    "build/consistency-audit/epubcheck.log": "1b871a801b1773626c473f38741caef8c98ef34b42c5b60ec1c5109e2bdec171",
+    "build/consistency-audit/pdffonts.txt": "e7af5b0e7763d335782e95cb7ef4b864cd1aea471cbd7687b644f1417b3596b4",
+    "build/consistency-audit/visual-review.json": "bb2c81a5a0c1ce2403afffb72e48fb536c761f4ac3a4a88cd5d165fe8c24c879"
+  },
+  "limits": [
+    "Source/CPU/synthetic-control-flow scope; no full default-weight training, GPU benchmark or audio-quality claim",
+    "No real microphone/speaker latency measurement or full screen-reader certification"
+  ]
+}

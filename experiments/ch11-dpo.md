@@ -1,0 +1,8 @@
+# 第 11 章 DPO 实验
+
+命令：`.venv/bin/python experiments/ch11_dpo.py`。数据与损失版本见 [结果](ch11-results.json)。
+相同策略/参考时 loss 约 0.693147；beta=.15 下 chosen/rejected 的有效 log-prob 梯度分别为 -0.075/+0.075。
+提高 chosen 分数使 loss 降至约 0.663597，忽略位置不影响结果。
+真实 DPODataset 已 shift，y 是合法 ID；全零 mask 仍给出有限 loss。
+固定种子 42 时，即使原始回答相同，两边随机空思考处理也产生不同输入和 5/11 个有效目标。
+实验验证配对、mask 和目标，不报告 DPO 后质量提升。
