@@ -12,8 +12,9 @@
 > 当前状态（2026-09-09，1.0.1）：四篇二十章及阅读指南、术语表、数学/复现/源码/许可附录已成稿，二十章 CPU 实验已重新通过。完整 EPUB 与 194 页 PDF 已完成源码一致性复审与新版出版验收，下载见下方。
 > 本书验证范围是各章声明的机制、数值与控制流；未声称完成默认权重的 GPU 训练、语音质量或真实设备时延评测。
 
-完整交付：[EPUB](dist/minimind-source-guide.epub) · [PDF](dist/minimind-source-guide.pdf) · [Markdown 与教学代码](dist/minimind-reader-source.zip)。
-验收依据：[终审记录](meta/final-review.md)、[本轮复审](meta/consistency-review.md)、[发布清单](dist/release-manifest.json)。
+完整交付：[EPUB](https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.epub) · [PDF](https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.pdf) · [Markdown 与教学代码](https://github.com/cluster1900/minimind_reader/archive/refs/tags/v1.0.1.zip)。
+[Release v1.0.1](https://github.com/cluster1900/minimind_reader/releases/tag/v1.0.1) 提供电子书下载与 SHA-256 校验值。
+验收依据：[终审记录](meta/final-review.md)、[本轮复审](meta/consistency-review.md)、[完整验收清单](meta/final-review.json)。
 维护检查现在会核对固定源码、章节依赖和已复核的正文/公式/图源；改动后须重新复核，具体命令见出版说明。
 
 ## 这本书要帮助你做到什么
