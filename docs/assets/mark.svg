@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">MiniMind Reader</title>
+  <desc id="desc">由三个节点组成的 MiniMind Reader 标志</desc>
+  <rect width="64" height="64" rx="15" fill="#142b3b"/>
+  <path d="M16 20h32v8H16zM16 36h20v8H16z" fill="#8ee5c0"/>
+  <circle cx="46" cy="40" r="6" fill="#77c9d8"/>
+</svg>

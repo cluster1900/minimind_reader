@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="MiniMind 源码阅读与工程实践：从文本模型到视觉、语音与实时交互。" />
+    <meta name="theme-color" content="#09111f" />
+    <title>MiniMind 源码阅读与工程实践</title>
+    <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <div class="site-shell">
+      <aside class="sidebar" id="sidebar" aria-label="站点导航">
+        <div class="brand">
+          <img src="assets/mark.svg" width="42" height="42" alt="MiniMind Reader 标志" />
+          <div><strong>MiniMind Reader</strong><span>源码阅读 · 工程实践</span></div>
+        </div>
+        <div class="release-pill"><span></span> v1.0.1 · 书稿已验收</div>
+        <nav class="side-nav">
+          <p class="nav-label">开始阅读</p>
+          <a class="nav-link is-active" href="#home">首页</a>
+          <a class="nav-link" href="#why">这本书写什么</a>
+          <a class="nav-link" href="#route">怎么读</a>
+          <a class="nav-link" href="#chapters">二十章目录</a>
+          <a class="nav-link" href="#materials">配套材料</a>
+          <p class="nav-label nav-label-spaced">项目</p>
+          <a class="nav-link" href="#baseline">源码基线</a>
+          <a class="nav-link" href="https://github.com/cluster1900/minimind_reader" target="_blank" rel="noreferrer">GitHub 仓库 <span aria-hidden="true">↗</span></a>
+        </nav>
+        <div class="sidebar-foot">
+          <a href="https://github.com/cluster1900/minimind_reader/releases/tag/v1.0.1" target="_blank" rel="noreferrer">查看 v1.0.1 Release ↗</a>
+          <span>© MiniMind Reader</span>
+        </div>
+      </aside>
+
+      <main id="main">
+        <header class="topbar">
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="打开导航" aria-expanded="false"><span></span><span></span><span></span></button>
+          <div class="breadcrumb"><span>MiniMind Reader</span><b>/</b><span>首页</span></div>
+          <div class="topbar-actions">
+            <label class="search-box" for="siteSearch"><span aria-hidden="true">⌕</span><input id="siteSearch" type="search" placeholder="搜索章节、概念或实验" autocomplete="off" /><kbd>/</kbd></label>
+            <button class="icon-button" id="themeToggle" type="button" aria-label="切换主题">◐</button>
+            <a class="github-button" href="https://github.com/cluster1900/minimind_reader" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </header>
+
+        <div class="content-wrap">
+          <section class="hero section-anchor" id="home" aria-labelledby="hero-title">
+            <div class="hero-copy">
+              <p class="eyebrow"><span class="eyebrow-line"></span>中文工程教程 · 二十章</p>
+              <h1 id="hero-title">从一个 <em>token</em> 出发，读懂文本、视觉、语音与实时交互。</h1>
+              <p class="hero-lede">沿着输入、张量、调用链和实验结果，走进 MiniMind、MiniMind-V 与 MiniMind-O。每一章都回答一个可以定位、运行和复核的问题。</p>
+              <div class="hero-actions"><a class="button button-primary" href="#chapters">从第 01 章开始 <span aria-hidden="true">→</span></a><a class="button button-quiet" href="https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.pdf" target="_blank" rel="noreferrer">下载 PDF <span aria-hidden="true">↓</span></a></div>
+              <div class="hero-note"><span class="checkmark">✓</span> CPU 小实验已覆盖二十章；GPU 训练、语音质量与真实设备时延另行标注</div>
+            </div>
+            <div class="hero-art" aria-label="从 token 到多模态系统的示意图">
+              <div class="art-glow"></div><div class="art-grid"></div>
+              <div class="pipeline-card">
+                <div class="pipeline-head"><span>一条可追踪的路径</span><span class="live-dot">● LIVE</span></div>
+                <div class="pipeline-row"><div class="pipeline-node node-token"><small>01</small><strong>token</strong><span>输入</span></div><i>→</i><div class="pipeline-node node-attn"><small>04</small><strong>Q · K · V</strong><span>注意力</span></div></div>
+                <div class="pipeline-line"><span></span></div>
+                <div class="pipeline-row"><div class="pipeline-node node-vision"><small>14</small><strong>pixels</strong><span>视觉</span></div><i>→</i><div class="pipeline-node node-audio"><small>18</small><strong>codes</strong><span>音频</span></div></div>
+                <div class="pipeline-caption">同一套阅读方法，连接四种模态</div>
+              </div>
+              <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+              <span class="art-label label-a">shape</span><span class="art-label label-b">mask</span><span class="art-label label-c">cache</span>
+            </div>
+          </section>
+
+          <section class="stats-row" aria-label="项目概览"><div><strong>20</strong><span>章源码阅读</span></div><div><strong>4</strong><span>条学习路线</span></div><div><strong>2</strong><span>种出版格式</span></div><div><strong>A → C</strong><span>分层实验</span></div></section>
+
+          <section class="section section-anchor" id="why" aria-labelledby="why-title">
+            <div class="section-heading"><p class="eyebrow">这本书写什么</p><h2 id="why-title">把“看过源码”变成“能解释、能定位、能验证”。</h2><p>不从宏大概念开始，而从一个可观察的输入开始：它在哪里被改形？谁消费了它？哪一个实验能证明我们的理解？</p></div>
+            <div class="principles-grid">
+              <article class="principle-card"><span class="card-index">01</span><div class="principle-icon icon-trace">↳</div><h3>沿着调用链</h3><p>从命令入口追到数据集、模型、loss、采样和输出，关键调用边同时定位调用者与被调用者。</p><a href="#chapters">看章节 <span>→</span></a></article>
+              <article class="principle-card"><span class="card-index">02</span><div class="principle-icon icon-shape">▦</div><h3>每一步看 shape</h3><p>用小数字例子补齐张量、广播、矩阵乘法和掩码，把抽象运算落到输入与输出的形状。</p><a href="https://github.com/cluster1900/minimind_reader/blob/main/book/01-start-here/README.md" target="_blank" rel="noreferrer">读第 01 章 <span>↗</span></a></article>
+              <article class="principle-card"><span class="card-index">03</span><div class="principle-icon icon-check">✓</div><h3>用实验验理解</h3><p>A 层 CPU 教学例子、B 层真实源码接入、C 层训练评估分开记录，不把“跑通”写成“有效”。</p><a href="#materials">查看实验 <span>→</span></a></article>
+            </div>
+          </section>
+
+          <section class="section route-section section-anchor" id="route" aria-labelledby="route-title">
+            <div class="section-heading split-heading"><div><p class="eyebrow">怎么读</p><h2 id="route-title">先闭环，再选择方向。</h2></div><p>第一次阅读建议完成 01～08，建立文本模型的完整路径；之后按兴趣进入后训练、视觉或音频实时交互。</p></div>
+            <div class="route-map">
+              <div class="route-line"></div>
+              <article class="route-item route-core"><span class="route-dot">01</span><div><p class="route-kicker">第一篇 · 基础闭环</p><h3>输入 → 模型 → 训练 → 评估</h3><p>01—08：环境、token、注意力、缓存、数据、训练和评估。</p><a href="#chapters" data-filter="第一篇">进入基础篇 →</a></div></article>
+              <article class="route-item route-post"><span class="route-dot">02</span><div><p class="route-kicker">第二篇 · 后训练</p><h3>路由、偏好与 Agent</h3><p>09—13：MoE、LoRA、蒸馏、DPO、GRPO 与多轮工具反馈。</p><a href="#chapters" data-filter="第二篇">进入后训练 →</a></div></article>
+              <article class="route-item route-vision"><span class="route-dot">03</span><div><p class="route-kicker">第三篇 · 视觉</p><h3>图像怎样进入语言模型</h3><p>14—15：图像预处理、patch、projector、冻结策略与视觉评估。</p><a href="#chapters" data-filter="第三篇">进入视觉篇 →</a></div></article>
+              <article class="route-item route-audio"><span class="route-dot">04</span><div><p class="route-kicker">第四篇 · 音频与交互</p><h3>从波形到可打断的会话</h3><p>16—20：特征、Bridge、八路码本、训练流水线和实时播放队列。</p><a href="#chapters" data-filter="第四篇">进入音频篇 →</a></div></article>
+            </div>
+          </section>
+
+          <section class="section chapter-section section-anchor" id="chapters" aria-labelledby="chapters-title">
+            <div class="section-heading split-heading"><div><p class="eyebrow">二十章目录</p><h2 id="chapters-title">每章回答一个具体问题。</h2></div><div class="chapter-tools"><span id="resultCount">显示 20 章</span><div class="filter-row" role="group" aria-label="按篇筛选"><button class="filter-chip is-selected" data-part="all" type="button">全部</button><button class="filter-chip" data-part="第一篇" type="button">基础</button><button class="filter-chip" data-part="第二篇" type="button">后训练</button><button class="filter-chip" data-part="第三篇" type="button">视觉</button><button class="filter-chip" data-part="第四篇" type="button">音频</button></div></div></div>
+            <div class="chapter-grid" id="chapterGrid"></div><p class="empty-state" id="emptyState" hidden>没有找到匹配的章节。试试搜索 “缓存”“视觉” 或 “DPO”。</p>
+          </section>
+
+          <section class="section materials-section section-anchor" id="materials" aria-labelledby="materials-title">
+            <div class="section-heading split-heading"><div><p class="eyebrow">配套材料</p><h2 id="materials-title">书稿、实验和发行文件，都在仓库里。</h2></div><p>页面是入口，仓库是证据。每个下载和链接都指向可追踪的源文件、实验记录或固定版本。</p></div>
+            <div class="materials-grid">
+              <a class="material-card material-featured" href="https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.epub" target="_blank" rel="noreferrer"><div><span class="material-type">完整电子书</span><h3>EPUB3</h3><p>适合窄屏与离线阅读，含目录、公式、图示和完整附录。</p></div><span class="material-arrow">↓</span></a>
+              <a class="material-card" href="https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.pdf" target="_blank" rel="noreferrer"><div><span class="material-type">完整电子书</span><h3>PDF</h3><p>适合打印和固定版式阅读，保留可检索文本与矢量公式。</p></div><span class="material-arrow">↓</span></a>
+              <a class="material-card" href="https://github.com/cluster1900/minimind_reader/tree/main/experiments" target="_blank" rel="noreferrer"><div><span class="material-type">可运行验证</span><h3>20 个实验</h3><p>从 token、Attention 到实时交互，记录预期、实际输出和限制。</p></div><span class="material-arrow">↗</span></a>
+              <a class="material-card" href="https://github.com/cluster1900/minimind_reader/blob/main/book/reading-guide.md" target="_blank" rel="noreferrer"><div><span class="material-type">阅读方法</span><h3>阅读指南</h3><p>统一符号、实验分层、源码基线和建议学习路线。</p></div><span class="material-arrow">↗</span></a>
+            </div>
+            <div class="materials-foot"><span class="lock-icon">⌁</span><span>离线友好：站点不依赖 CDN；书稿资源、字体与出版记录均在仓库中维护。</span><a href="https://github.com/cluster1900/minimind_reader/blob/main/publishing/README.md" target="_blank" rel="noreferrer">查看出版说明 →</a></div>
+          </section>
+
+          <section class="section baseline-section section-anchor" id="baseline" aria-labelledby="baseline-title">
+            <div class="section-heading split-heading"><div><p class="eyebrow">源码基线</p><h2 id="baseline-title">三套仓库，三个固定版本。</h2></div><p>书稿中的实现行为以锁定 commit 为准；上游更新不会自动改变当前章节结论。</p></div>
+            <div class="baseline-table" role="table" aria-label="源码基线">
+              <div class="baseline-row baseline-head" role="row"><span>项目</span><span>绑定版本</span><span>用途</span><span></span></div>
+              <a class="baseline-row" role="row" href="https://github.com/jingyaogong/minimind/tree/6fc918beb68a0d8c40452338df6319fe168014ba" target="_blank" rel="noreferrer"><strong>MiniMind</strong><code>6fc918b</code><span>文本模型与训练主线</span><b>↗</b></a>
+              <a class="baseline-row" role="row" href="https://github.com/jingyaogong/minimind-v/tree/740d467ece78a0b7d2d976fcb424472095d4a688" target="_blank" rel="noreferrer"><strong>MiniMind-V</strong><code>740d467</code><span>视觉编码、projector 与 VLM 训练</span><b>↗</b></a>
+              <a class="baseline-row" role="row" href="https://github.com/jingyaogong/minimind-o/tree/ccab6d98520ac5ac5d7583a3fa21a65105137e28" target="_blank" rel="noreferrer"><strong>MiniMind-O</strong><code>ccab6d9</code><span>音频码本、Omni 与实时交互</span><b>↗</b></a>
+            </div>
+          </section>
+
+          <footer class="site-footer"><div><strong>MiniMind 源码阅读与工程实践</strong><span>从一个 token 出发，读懂模型如何工作。</span></div><div class="footer-links"><a href="https://github.com/cluster1900/minimind_reader" target="_blank" rel="noreferrer">GitHub</a><a href="https://github.com/cluster1900/minimind_reader/releases/tag/v1.0.1" target="_blank" rel="noreferrer">Release v1.0.1</a><a href="#home">回到顶部 ↑</a></div></footer>
+        </div>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

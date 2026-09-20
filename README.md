@@ -17,6 +17,8 @@
 验收依据：[终审记录](meta/final-review.md)、[本轮复审](meta/consistency-review.md)、[完整验收清单](meta/final-review.json)。
 维护检查现在会核对固定源码、章节依赖和已复核的正文/公式/图源；改动后须重新复核，具体命令见出版说明。
 
+在线阅读：[MiniMind Reader GitHub Pages](https://cluster1900.github.io/minimind_reader/)。站点首页提供阅读路线、二十章目录、实验入口、源码基线和 EPUB/PDF 下载；页面源文件位于 [`docs/`](docs/)，不依赖外部 CDN。若要在自己的仓库启用页面，按 [`docs/README.md`](docs/README.md) 在 Settings → Pages 中选择 `main` 分支的 `/docs` 文件夹即可。
+
 ## 这本书要帮助你做到什么
 
 - 用小例子理解 token、张量、注意力、loss 和梯度，能读懂关键公式。
@@ -247,6 +249,7 @@ Pandoc 支持 EPUB 与 LaTeX/PDF 输出；中文 PDF 需要正确配置 CJK 字�
 ## 项目文件与协作
 
 - [AGENTS.md](AGENTS.md)：源码证据、教学、数学、图示、实验和出版规范。
+- [`docs/`](docs/)：GitHub Pages 对外展示页；首页从仓库正文、实验记录和固定源码基线组织阅读入口。
 - [蓝图检查记录](meta/blueprint-review.md)：原蓝图问题、源码依据，以及第二轮设计复审与修复记录。
 - [统一术语表](glossary/terms.md)：覆盖文本、后训练、视觉、音频与实时交互。
 - 本 README：项目定位、完整目录、阅读路线、源码基线与交付计划。
