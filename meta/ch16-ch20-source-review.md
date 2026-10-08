@@ -15,7 +15,7 @@
 
 - processor 的 sampling_rate 参数不代表内部重采样；前端有效长度不能只按注释称为编码器长度。
 - 文本音频标记 ID 16 与声学 pad 2049 不是同一词表；音频注入保留未覆盖位置和总长度。
-- 默认 8 层 Bridge index 3 对应第 4 block；一层默认 index -1 会退回 Embedding。
+- 默认 8 层 Bridge index 3 对应第 4 block；一层默认 index -1 保留进 block 前状态（2026-10-08 更正：可能已含模态注入，仅在原无模态 eval 实验中等于 Embedding）。
 - 声学历史和 speaker 条件只影响当前 Talker 分支，输入音频特征则可先进入 Thinker。
 - 八路是码本通道，不是八个未来文本时间点；Dataset 和流式生成的延迟/shift 已逐项对齐。
 - 默认 enter_token_id=201 不是当前 tokenizer 的换行，换行为 234；装饰生成器创建不自动关闭迭代期间梯度。

@@ -25,6 +25,16 @@ MiniMind-V `740d467ece78a0b7d2d976fcb424472095d4a688`、MiniMind-O `ccab6d98520a
    这只是检测“复核之后发生了变化”，不把哈希检查说成自动证明数学与源码语义正确。
 7. **结构约定缺少固定检查。** 新增前置依赖无环、验证记录存在、章节元信息与源码映射版本一致等检查。
    新增反例测试：改公式、反转图箭头、改说明、改源快照、加入未审阅文档、依赖环和未知前置章都必须失败。
+8. **源码实现边界与关键切片。** 2026-10-08 再次对照锁定源码，保留仍然成立的切片说明，并改正下面几处把推断写成实现的文字：
+   - **第 04 章：** 因果掩码尾部切片 `scores[:, :, :, -seq_len:]` 仍然成立；单步 `(1,1).triu(1)` 为零，历史键不在该切片里。SDPA 回退不是“API 拒绝非方阵”。本书 PyTorch 2.6.0 的 `is_causal=True` 在非方阵上是左上角因果偏置，与显式分支的右下角切片不同；有缓存时若直接调用，新查询看不到全部历史键。`seq_len == 1` 还会单独跳过 SDPA。
+   - **第 05 章：** `past_len` 切片和 Top-P 右移后 `scatter` 回词表，与 `generate` 一致。
+   - **第 12 章：** `CriticModel` 在主干末尾 norm 之后又调用一次 `self.model.norm`。继承来的 `lm_head` 仍在；默认绑定词嵌入时，它的权重就是 `embed_tokens.weight`，Critic 用它做词嵌入，没有执行的是线性层前向。CISPO 节选必须保留 `advantages.unsqueeze(1)`、乘上 `completion_mask` 再求和，以及 `policy_loss` 与 `(policy_loss + aux_loss) / accumulation_steps` 的差别。`.detach()` 切断的是比值系数。
+   - **第 14 章：** 相邻同标记段被 `count_vision_proj` 当成一段；实验里长度 10 的输入变成长度 6，第二张图没有注入。
+   - **第 15 章：** 可训练参数 243648、20224、1632 的顺序是模式 0、1、2，与表格里的 2、1、0 相反。字典路径只有 5 维张量才 `flatten(0, 1)`。
+   - **第 17 章：** 一层时默认 `bridge_layer=-1` 不会命中循环。Bridge 停在进 block 之前的隐藏状态；没有音频/图像注入时，这次调用才等于 `embed_tokens` 的输出。
+   - **第 18 章：** `stream_generate` 每轮先采样文本；EOS 在 `yield` 之后才把 `text_finished` 设为真。紧接着的下一轮改写并可能丢掉的是默认 201；默认 0 只出现在更后面的已结束轮。两者都来自 `args.get`，不是 `tokenizer.pad_token_id`。`break` 在写回 token 之前。循环还受 `start_pos + max_new_tokens` 限制。
+   - **第 19 章：** `apply_scheduled_sampling` 在 `dataset/omni_dataset.py`。`train_sft_omni.py` 没有这个函数，相关内容是一行注释，不是整份文件只有一行注释。`freeze_backbone` 只改 `model.model` 的已注册参数；`last1` 再打开最后一层。Talker 和两个 projector 不在这次循环里。默认绑定时 `lm_head` 随词嵌入冻结。命令行帮助里的“只训练 audio 层”不是这段 `requires_grad` 的范围。stop 权重是 `stop_mask = (target_flat == 2050).float()` 再乘 `1 + stop_mask * 9`。
+   - **第 20 章：** `poll_interrupt` 里，二进制音频只有 `push_chunk` 返回 `'interrupt'` 才停止本轮；`'speech_end'` 与 `'listening'` 不会。JSON 的 `stop` 和 `end` 会停，`context` 不会。
 
 ## 覆盖方法
 
@@ -44,3 +54,8 @@ MiniMind-V `740d467ece78a0b7d2d976fcb424472095d4a688`、MiniMind-O `ccab6d98520a
 - 已实现显式记录内容审阅、渲染并比较页面、收集发布证据的命令；构建不会自动刷新通过状态。
 - 发布脚本自动更新源码 ZIP；1.0 的 EPUB/PDF、源码包和发布清单保留在 `dist/archive/1.0/`。
 - 本轮发现的 A5 图示溢出、状态转移文字重叠和章末练习分页分别修复，受影响页与相邻页重新渲染复查。
+
+## 后续勘误
+
+2026-10-08 的进一步源码对照、边界反例与完整复验见 [本次源码复核](source-audit-2026-10-08.md)。
+本文件的 1.0.1 出版验收属于历史记录，不能据此认定勘误后的 Markdown 已重新生成电子书。

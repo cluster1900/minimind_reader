@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind-o
     commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch16-audio-input.md
   - meta/ch16-ch20-source-review.md
@@ -94,6 +95,11 @@ audio_proj 再映到语言隐藏维度。560、512、768 是不同阶段的维�
 具体帧率与长度变化取决于前端和编码器配置，不能用波形采样率直接代替。
 `SenseVoiceAudioProcessor` 根据前端返回的 flen 构造有效位置 mask。
 因此变量或注释写“encoder 输出帧数”时，也要检查这个长度到底在哪一步产生。
+当前 `MiniMindOmni.encode_audio_inputs` 写的是 `emb, _ = self.audio_encoder(...)`，
+丢弃了编码器返回的长度，再按输入的 `valid_lens` 与 `emb.size(1)` 的较小值裁剪（下限为 1）。
+补充实验让替代编码器返回有效长度 1、输入长度为 3，结果仍投影 3 帧。
+这证明当前接口使用哪份长度，不证明真实 SenseVoice 的长度错误；若换成改变帧率的编码器，
+必须重新核对两种长度的单位，不能假定输出长度会被自动采用。
 
 另一个细节是：这个 processor 虽接收 `sampling_rate` 参数，函数体并没有自行重采样。
 本章实际检查了这一点；重采样发生在数据加载或调用者准备输入的路径中，不能只改实参就假设完成了转换。

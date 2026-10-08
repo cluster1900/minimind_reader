@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind-o
     commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch18-audio-codes.md
   - meta/ch16-ch20-source-review.md
@@ -75,7 +76,11 @@ $$
 
 ## 18.3 Dataset 先延迟各通道，再统一 shift
 
-设 assistant 正文起点为 $a$，第 $i$ 路第 $t$ 帧编号为 $c_{i,t}$。
+设源码最终算出的声学起点为 $a$，第 $i$ 路第 $t$ 帧编号为 $c_{i,t}$。
+没有思考段时，$a$ 是最后一个可见 assistant 段的正文起点；若在该起点后前 50 个位置内
+找到 `</think>\n\n` 的起始位置，则将 $a$ 移到此结束序列之后。
+这个有限搜索并不保证跳过任意长的思考内容：若结束标记在搜索范围之外，声学起点仍在思考段开头。
+推理循环则等待实际生成的结束序列，二者不能无条件视为同一种对齐规则。
 原始声学布局将它放在：
 
 $$
@@ -133,16 +138,51 @@ flowchart TD
 
 ## 18.5 文字结束和音频结束不是一个条件
 
-文本 EOS 被采出后，text_finished 标志改变，后续仍可计算声学输出。
-文本侧先填一个 enter_token_id，再填 pad；对外则可能 yield `None` 文本和一个音频帧。
-完整停止条件还要看八路的停止位置，或最大迭代长度。
+每一轮都先对文本 logits 做 `multinomial`。文本 token 可能被改写之后，才采样八路声学编号；两者都在把 token 写回序列之前。
+`text_finished` 并不是在采到 EOS 的瞬间、声学采样之前就变成真。
+采到 EOS 的那一轮开始时标志仍为假，所以不会改写这个 token，也不会在写回序列前 `break`。
+这一轮先把 EOS 接到 `input_ids` 并 `yield` 文本，`yield` 之后才执行：
 
-名字也要验证：当前默认 enter_token_id 是 201，但所带 tokenizer 的换行 ID 是 234。
+```python
+if text_token == eos_token_id:
+    text_finished = True
+```
+
+下一轮开始时标志已经为真。源码仍会先采样一次文本，再立刻丢掉结果：
+
+```python
+if text_finished:
+    text_token = args.get('enter_token_id', 201) if first_finished else args.get('pad_token_id', 0)
+    first_finished = False
+```
+
+`first_finished` 初始为真，所以文本结束后第一次进入这个分支时，token 被改成默认 201，此后改成默认 0。
+`eval_omni.py` 和 `webui/web_demo.py` 调用 `generate` 时都没有传入这两个参数，因此用的就是默认整数。
+这里不是 `self.tokenizer.pad_token_id`。所带 tokenizer 的 pad 恰好也是 0（`<|endoftext|>`），
+但生成器并不读取 tokenizer，两处不能当成同一次查找。
+
+声学停止位置在改写文本 token 之后、写回序列之前更新。
+只有本轮开始时文本已经结束，并且八路都已记下停止位置，才在写回前退出：
+
+```python
+if text_finished and all(audio_stop_pos[i] is not None for i in range(8)):
+    break
+```
+
+因此采到 EOS 的那一轮即使八路刚好都停下，也不会 `break`：标志要等 `yield` 之后才变真。
+紧接着的下一轮是第一次进入改写分支，`first_finished` 仍为真，来不及写回的是默认 201。
+这一轮若八路已经齐了，201 不会接到 `input_ids` 上，这一步也不再 `yield`，循环也还不会改写成 0。
+默认 0 只出现在更后面的已结束轮；八路若是在那些轮才齐，写回前丢掉的才是 0。
+若这一轮还没齐，改写后的 token 会写回序列，对外 `yield` 的文本是 `None`，音频帧仍按 18.4 节返回。
+循环还有一处长度出口：`while input_ids.shape[1] < start_pos + max_new_tokens`。
+文本结束后是否继续，同时看这个长度上限和上面的 `break`，不是 Talker 另有一条“必须说完”的分支。
+
+名字也要验证：当前默认 `enter_token_id` 是 201，但所带 tokenizer 的换行 ID 是 234。
 实验发现 201 单独解码并不是换行，不能把变量名当作语义证明。
 定制这一处时应从真实 tokenizer 获取对应 ID，并检验与训练序列的关系。
 
-音频采样使用自己的固定温度、近期重复惩罚和 Top-K，而不是简单复用文本温度。
-代码把首次生成 code>=2048 的位置记录为停止位置，因此判定范围比单独的 stop ID 2050 更宽。
+音频采样不使用文本的 `temperature`。当前循环把该路 logits 除以字面量 `0.2`，对这一路最近 3 个编号做系数 `1.05` 的重复惩罚，再在 `topk(50)` 里采样。这三个数写在 `stream_generate` 里，不是命令行参数。
+代码把首次生成 `code >= 2048` 的位置记录为停止位置，因此判定范围比单独的 stop ID 2050 更宽。
 一帧只有在八路都有效时才对外返回，不能把预留特殊值当作合法 Mimi code 解码。
 
 ## 18.6 参考音频与 speaker 位置
@@ -158,11 +198,18 @@ flowchart TD
 ## 18.7 生成器的返回值与梯度上下文
 
 Omni 的 generate 不等于文本模型那个返回完整 ID 张量的接口。
-stream=True 返回可迭代对象，调用者累积文本和音频帧；stream=False 的当前实现仅取最后一次 yield，
-不能据此认为已经拿到全部音频帧。return_audio_codes 控制帧是否返回，也不自动关闭 Talker 计算。
+`stream=True` 返回可迭代对象，每次 yield 为 `(text_ids, audio_frame)`：非空文本是截至当前的
+累计生成前缀，非空音频是新的一帧八路编号。调用者应替换当前文本、追加音频帧；逐次拼接文本会重复内容。
+`stream=False` 在函数内耗尽生成器，却只返回最后一次 yield，并未汇总前面的帧。
+本章三帧脚本化输入下，最后返回的是 `(None, 最后一帧)`，此前的文本与前两帧音频都不能由它恢复。
+`return_audio_codes` 控制帧是否返回，也不自动关闭 Talker 计算。
+
+当前 `stream_generate` 的音频缓冲批大小写死为 1，且文本采样使用第 0 行和 `.item()`。
+因此本章生成接口只验证单样本；`forward` 能处理 batch 不能推出这个生成循环也支持批量。
 
 还有一个 Python 细节：装饰器包住返回生成器的函数，不等于包住未来对生成器的迭代。
-本章探针观察到，没有外层上下文时，stream_generate 的迭代可处在梯度启用状态。
+本章探针观察到，没有外层上下文时，`stream=True` 的实际迭代可处在梯度启用状态。
+`stream=False` 在带装饰器的函数内部消费生成器，探针所见则是关闭梯度；要区分这两条调用路径。
 上游 eval_sample 和 Web 的 run_generate 在实际迭代期间使用 no_grad，正是需要追到调用者的原因。
 
 ## 18.8 实验与自检
@@ -179,7 +226,7 @@ stream=True 返回可迭代对象，调用者累积文本和音频帧；stream=F
 4. 返回生成器的函数被 inference_mode 装饰，是否足以保证迭代也关闭梯度？
 5. 三帧、12.5 Hz、24 kHz 对应多少采样点？
 
-参考解释：第一题八路是共同描述声音的码本通道；因延迟布局，同一次前向的各路目标还可能属于不同帧。第二题再 shift 会使监督比约定多错一位，应在训练器中直接对齐现有 logits 和 labels。第三题文本结束后，生成器仍需把延迟通道补齐并处理音频停止位置。
+参考解释：第一题八路是共同描述声音的码本通道；因延迟布局，同一次前向的各路目标还可能属于不同帧。第二题再 shift 会使监督比约定多错一位，应在训练器中直接对齐现有 logits 和 labels。第三题采到 EOS 的那一轮要等 yield 之后才把 `text_finished` 设为真，生成器仍可能继续产出音频帧；是否退出还要看八路停止位置是否都已记下。
 
 第四题生成器的函数体在迭代时才执行，装饰创建它的外层函数不保证覆盖未来迭代；应核对实际消费循环的 no_grad 上下文。第五题三帧的时长是 3 除以 12.5，即 0.24 秒，再乘每秒 24000 点，得到 5760 点。
 

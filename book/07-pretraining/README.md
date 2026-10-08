@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch07-training-loop.md
   - meta/ch04-ch08-source-review.md

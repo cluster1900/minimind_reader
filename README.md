@@ -9,12 +9,13 @@
 最终交付：一套 Markdown 书稿、配套教学代码与实验，以及方便离线传阅的**完整 EPUB3 和 PDF 各一本**。
 核心模型以 PyTorch 实现为学习对象；Transformers、视觉/音频预训练编码器与 codec 的复用边界会明确说明。
 
-> 当前状态（2026-09-09，1.0.1）：四篇二十章及阅读指南、术语表、数学/复现/源码/许可附录已成稿，二十章 CPU 实验已重新通过。完整 EPUB 与 194 页 PDF 已完成源码一致性复审与新版出版验收，下载见下方。
+> 当前书稿（2026-10-08）：已重新逐章对照锁定源码，修正接口、标签、缓存、损失归约及音频状态边界，补充反例实验。范围与验证见 [本次源码复核](meta/source-audit-2026-10-08.md)。
+> 下方电子书下载仍为 2026-09-09 的 v1.0.1（194 页 PDF）；本次 Markdown 修订尚未重新导出、验收或发布 EPUB/PDF。
 > 本书验证范围是各章声明的机制、数值与控制流；未声称完成默认权重的 GPU 训练、语音质量或真实设备时延评测。
 
 完整交付：[EPUB](https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.epub) · [PDF](https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.pdf) · [Markdown 与教学代码](https://github.com/cluster1900/minimind_reader/archive/refs/tags/v1.0.1.zip)。
 [Release v1.0.1](https://github.com/cluster1900/minimind_reader/releases/tag/v1.0.1) 提供电子书下载与 SHA-256 校验值。
-验收依据：[终审记录](meta/final-review.md)、[本轮复审](meta/consistency-review.md)、[完整验收清单](meta/final-review.json)。
+v1.0.1 的历史验收依据：[终审记录](meta/final-review.md)、[一致性复审](meta/consistency-review.md)、[完整验收清单](meta/final-review.json)。这些记录不代表当前修订已通过新版出版验收。
 维护检查现在会核对固定源码、章节依赖和已复核的正文/公式/图源；改动后须重新复核，具体命令见出版说明。
 
 在线阅读：[MiniMind Reader GitHub Pages](https://cluster1900.github.io/minimind_reader/)。站点首页提供阅读路线、二十章目录、实验入口、源码基线和 EPUB/PDF 下载；页面源文件位于 [`docs/`](docs/)，不依赖外部 CDN。若要在自己的仓库启用页面，按 [`docs/README.md`](docs/README.md) 在 Settings → Pages 中选择 `main` 分支的 `/docs` 文件夹即可。
@@ -52,7 +53,7 @@
 ## 源码基线
 
 源码实际位于 `~/Desktop/minimind_resources/`，不是 `~/Desktop/minimind/`。
-2026-09-09 再核对时，三个仓库均为 `master` 分支，工作区 clean：
+2026-10-08 再核对时，三个仓库均为 detached HEAD，工作区 clean，HEAD 与以下锁定 commit 一致：
 
 | 项目 | 锁定 commit | 本地目录 |
 |---|---|---|

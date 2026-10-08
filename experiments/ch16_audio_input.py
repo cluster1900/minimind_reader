@@ -38,9 +38,15 @@ def main():
     torch.testing.assert_close(out[0,1:4],encoded[0]);torch.testing.assert_close(out[0,4:],hidden[0,4:])
     torch.testing.assert_close(out[1],hidden[1]);assert out.shape==hidden.shape
     assert not any(n.startswith('audio_encoder.') for n,_ in model.named_parameters())
+    class ChangedLengthEncoder(Encoder):
+        def forward(self,x,lengths):return self.proj(x),torch.ones_like(lengths)
+    object.__setattr__(model,'audio_encoder',ChangedLengthEncoder().requires_grad_(False))
+    changed_length=model.encode_audio_inputs(inputs,torch.tensor([3,0]))
+    assert changed_length[0].shape==(3,32)
     record(16,__file__,files,dict(wave_input_samples=800,wave_output_samples=1600,input_sr=8000,target_sr=16000,
         frontend='synthetic output, real processor wrapper',encoder='small Linear substitute, not SenseVoice',
         feature_shape=list(features.shape),valid_length=length,encoded_shape=list(encoded[0].shape),
+        encoder_reported_length=1,retained_length_from_input=changed_length[0].shape[0],
         dummy_row_preserved=True,injection_preserves_length=True,unfilled_marker_preserved=True,
         projector_gradient=True,encoder_not_registered=True,processor_does_not_resample=True),repo='minimind-o')
 if __name__=='__main__':main()

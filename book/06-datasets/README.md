@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch06-datasets.md
   - meta/ch04-ch08-source-review.md
@@ -161,7 +162,12 @@ flowchart TD
 
 第 04 章的 attention_mask 影响可以参考哪些键位置；本章的 labels=-100 影响哪些预测项计分。
 两者解决的问题不同。当前文本 Dataset 返回的是 input_ids 和 labels，并没有返回一份通用的 attention_mask。
-右侧 padding 的标签被忽略，因果性也让较早有效位置看不到后面的 padding，但无效位置仍可能花费计算。
+对于边界完整的 SFT 样本，assistant 的结束序列先于右侧 padding，扫描会在结束序列后停止，
+这些 padding 才不进入监督区。`SFTDataset.generate_labels` 没有像 Pretrain 那样再按 PAD ID
+统一清除标签：缺少结束序列时，它会把后续 padding 也标为目标；回答内部的 PAD ID 也不会自动忽略。
+实验用真实分词器构造“assistant 起始序列 + 答 + 3 个 PAD”，确认这 3 个 PAD 均参与监督；
+补上完整结束序列后，末尾 3 个 PAD 才被忽略。因此要检查模板边界和截断结果，不能只检查是否补齐。
+对正常右侧补齐样本，因果性让较早有效位置看不到后面的 padding，但无效位置仍可能花费计算。
 
 还要避免更隐蔽的误解：prompt 的标签被忽略，并不意味着 prompt 的 Embedding 没有梯度。
 后续回答通过注意力依赖 prompt，回答 loss 可以沿这条路径反传。

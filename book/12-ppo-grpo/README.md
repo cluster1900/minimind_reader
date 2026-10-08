@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch12-rl-objectives.md
   - meta/ch09-ch15-source-review.md
@@ -102,9 +103,20 @@ $r_t$ 是位置奖励，$\gamma$ 为折扣，$\lambda$ 控制递推项的权重�
 本章实验加入一个无效尾位置，得到归一化优势约 `[1,-1,0]`，验证 padding 不作为有效训练目标。
 不同折扣、边界值和任务奖励会改变结果，不能把这个例子的 returns=1 写成一般规律。
 
-`CriticModel.forward` 使用主干隐藏状态再接单值输出头，返回 `(B,S)` 的值序列。
-当前代码在主干已执行末尾 norm 后，又调用了一次 `self.model.norm`；实验钩子实际观察到两次调用。
-它还保留了父类结构，不能只依据“替换 head”的注释推断整个模块已经删掉原输出头。
+`CriticModel.forward` 使用主干隐藏状态再接单值输出头，返回 `(B,S)` 的值序列：
+
+```python
+outputs = self.model(input_ids=input_ids, attention_mask=attention_mask, **kwargs)
+hidden_states = self.model.norm(outputs[0])
+values = self.value_head(hidden_states).squeeze(-1)
+```
+
+注意两处实现细节：第一，主干 `MiniMindModel.forward` 在退出前已经对隐藏状态执行过一次 `self.norm`，
+这里对 `outputs[0]` 又显式调用了一次 `self.model.norm`，实验钩子实际观察到两次归一化调用；
+第二，`CriticModel` 继承自 `MiniMindForCausalLM`，`super().__init__` 仍创建 `lm_head`。
+默认 `tie_word_embeddings=True` 时，`lm_head.weight` 与 `embed_tokens.weight` 是同一参数，
+Critic 前向经 `self.model` 的词嵌入使用它；没有执行的是 `lm_head` 这个线性层的前向。
+源码注释写“替换 lm_head”，实际只是另加 `value_head`，并没有删掉原来的线性层。
 
 ## 12.4 PPO 的剪裁在限制哪一种变化
 
@@ -135,7 +147,9 @@ $$
 
 critic 另有带剪裁的回归损失，拟合先前构造的 returns。
 训练总目标还包括 value 系数、参考约束和可选 MoE 辅助项。
-当前 early-stop 检查会把本次损失乘零以保持前向/反向闭环，不能描述成简单地在任意位置直接 break。
+当前 early-stop 检查置位后会把损失乘零，仍走完当前 PPO epoch 的小批前向/反向；
+下一次 PPO epoch 才在入口停止。累积计数、optimizer 与 scheduler 的 step 路径仍可能执行。
+已有累积梯度、优化器动量和权重衰减都可能影响参数，不能把“损失乘零”解释为“此后参数完全不变”。
 
 ## 12.5 GRPO 用同题多回答建立相对基准
 
@@ -190,13 +204,28 @@ J_{i,t}&=-c_{i,t}A_i\ell_{i,t}+\beta\kappa_{i,t},\\
 \end{aligned}
 $$
 
+`grpo_train_epoch` 里对应的节选是：
+
+```python
+clamped_ratio = torch.clamp(ratio, max=args.epsilon_high).detach()
+per_token_loss = -(clamped_ratio * advantages.unsqueeze(1) * per_token_logps - args.beta * per_token_kl)
+policy_loss = ((per_token_loss * completion_mask).sum(dim=1) / completion_mask.sum(dim=1).clamp(min=1)).mean()
+loss = (policy_loss + aux_loss) / args.accumulation_steps
+```
+
+`advantages` 的形状是 `(M,)`，逐 token 张量是 `(M,R)`，所以要 `unsqueeze(1)` 才按回答广播。
+求和前乘上 `completion_mask`，被挡住的位置不进入分子；若先对整行 `sum` 再除以有效长度，padding 上的值也会被算进去。
+括号决定 KL 的符号：$-(c_{i,t}A_i\ell_{i,t}-\beta\kappa_{i,t})=-c_{i,t}A_i\ell_{i,t}+\beta\kappa_{i,t}$，与上面的 $J_{i,t}$ 一致。
+公式里的 $\mathcal L_{\mathrm{CISPO}}$ 是这里的 `policy_loss`。送进 `backward` 的 `loss` 还加上 MoE 辅助项，并除以梯度累积步数。
+
 这里 $M=BG$ 是本批回答总数，$i$ 遍历回答，$t$ 遍历回答内 token。$A_i$ 由该回答所属题组计算，
 $m_{i,t}$ 对应 `completion_mask`，$J_{i,t}$ 是包含参考惩罚的逐 token 损失。
 $\ell_{i,t}$ 是当前策略对已选 token 的对数概率，$\rho_{i,t}$ 是新旧策略比值，$\kappa_{i,t}$ 在 12.7 节定义。
 第一层平均的分母是各自的有效长度，第二层分母是回答数。逐项损失有限时，
 空回答行贡献零，但仍在第二层分母中；mask 乘零不能清除 NaN。
 $u$ 对应 `epsilon_high`，默认 5；它不是普通 GRPO 分支的 $1+\epsilon$。
-`stopgrad` 表示系数在反向中作为常数，梯度通过后面的 log-prob 而不是再穿过 ratio。
+`stopgrad` 即代码中的 `.detach()`，表示重要性权重系数在反向中作为常数，梯度直接通过后面的对数概率 `per_token_logps`
+流入策略网络，而不是再次穿过比值 $\rho$ 求导。
 这改变了梯度形式，不能把两种分支只当作名字不同的同一公式。
 
 本章实验令 ratio=2、优势为 `[1,-1]`、beta=0。
@@ -234,10 +263,20 @@ Torch 后端记录的 prompt_len 是包含左 padding 的矩形宽度；SGLang �
 
 Torch 后端重新对已生成序列计算原始模型 log-prob，而生成时还使用温度及候选筛选。
 因此这个记录不能直接当作经过所有温度/Top-K/Top-P 处理后的实际采样分布 log-prob。
-SGLang 路径又从服务响应读取 log-prob，其具体语义需要绑定服务版本核实，不能仅看相同 shape 就认为后端等价。
+Torch 后端使用 `no_grad`，但没有自动调用 `eval`；若调用者仍处于 train 且配置非零 dropout，
+采样与 log-prob 重算仍可能受随机失活影响。默认 dropout 为 0，不能据此推广到任意自定义配置。
+它返回的 `completion_mask` 起初全为 1，训练器还会按首个 EOS（含该 EOS）裁剪，不能省略这一步。
 
-服务端策略还需要显式同步权重。`update_policy` 会导出并请求服务加载，失败会报错；
-不能假定本地优化一步后，远端模型自动知道参数已变。当前书稿未启动 SGLang 或奖励模型服务。
+SGLang 路径从服务响应读取 log-prob，具体概率语义需要绑定服务版本核实。
+更直接的边界是：`SGLangRolloutEngine.rollout` 对不足数量的 log-prob 在前面补 0.0，
+过多时取末尾。因此 shape 相等也可能含人为补值；对数概率 0.0 对应概率 1，不是“缺失数据”的数学标记。
+受控响应只为两个 token 返回一个 -0.7 时，本章实测得到 `[0.0, -0.7]`，补值位置仍在有效 mask 内。
+使用远端服务前应逐项检查返回 ID、概率与有效位置，不能把上述对齐处理当作概率正确性的证明。
+
+服务端策略还需要显式同步权重。训练循环在 `save_interval` 边界或最后一批调用 `update_policy`，
+并非每次 optimizer step 都同步。该方法导出权重并请求服务加载，以 HTTP 状态码 200 判断成功，
+没有进一步检查响应体中的加载结果。这个本地检查不能证明远端已正确采用新参数。
+当前书稿未启动 SGLang 或奖励模型服务，相关接口实验使用受控响应。
 
 ## 12.9 验证范围与自检
 

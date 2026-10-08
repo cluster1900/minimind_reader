@@ -25,6 +25,14 @@ def main():
         full=model(torch.cat([ids,torch.tensor([[5]])],1),pixel_values=pixels)
         torch.testing.assert_close(step.logits,full.logits[:,-1:],atol=3e-6,rtol=3e-5)
     h.remove()
+    pixels5={'pixel_values':pixels['pixel_values'].unsqueeze(1)}
+    with torch.no_grad():mapped5=model(ids,pixel_values=pixels5).logits
+    torch.testing.assert_close(mapped5,out.logits.detach())
+    try:model(ids,pixel_values=pixels5['pixel_values'])
+    except TypeError as exc:
+        assert 'mapping' in str(exc),str(exc)
+        tensor_error=str(exc)
+    else:raise AssertionError('Expected the upstream Tensor-to-**kwargs interface failure')
     tokens=torch.tensor([[1,12,12,12,12,3,12,12,12,12,2]])
     hidden=torch.randn(1,11,32);features=torch.stack([torch.ones(4,32),torch.full((4,32),2.)])[None]
     replaced=model.count_vision_proj(tokens,hidden,features,seqlen=11)
@@ -36,5 +44,6 @@ def main():
     record(14,__file__,files,dict(encoder='real tiny randomly initialized SigLIP; loading mocked, no pretrained weights',
         logits_shape=list(out.logits.shape),projector_gradient_nonzero=True,encoder_gradients_none=True,
         cached_decode_error=(step.logits-full.logits[:,-1:]).abs().max().item(),prefill_only_encoder_call=True,
+        dictionary_4d_5d_logits_equal=True,plain_tensor_error=tensor_error,
         separated_images_correct=True,adjacent_marker_input_length=10,adjacent_marker_output_length=6),repo='minimind-v')
 if __name__=='__main__':main()

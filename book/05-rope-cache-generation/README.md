@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch05-rope-cache.md
   - meta/ch04-ch08-source-review.md
@@ -105,6 +106,10 @@ position_embeddings = (
 缓存不仅是一种加速手段，也参与确定当前位置。
 如果缓存来自另一段 prompt，或各层长度不一致，即使张量形状能勉强拼接，语义也已错位。
 调用者应保持每层各一对 K/V，且对应相同历史前缀；不能把任意“长得像缓存”的对象直接塞进来。
+当前 `MiniMindModel.forward` 对带 `layers` 属性的缓存对象直接置为 None，并没有转换其内容；
+随后用 `zip(self.layers, past_key_values)` 遍历。列表过短会少执行 block，而不是可靠地报出层数错误。
+这里要求的是与层数匹配的 K/V 列表；缓存由调用者持有并传回，模型没有一个自动管理会话的全局缓存。
+不再使用时应释放调用者保存的引用。
 
 ## 5.4 缓存到底省去了哪些重复计算
 
@@ -144,6 +149,10 @@ sequenceDiagram
 第三行前向后再采出 C，返回的序列长度为 7，而缓存长度为 6。
 本书实验验证了这项 `return_kv=True` 的行为。继续生成时传回完整序列及对应缓存，
 当前循环用 `input_ids[:, past_len:]` 取尚未处理的尾部，而不是盲目再送整个序列。
+因此两个入口的约定不同：直接调用 `forward` 时传未缓存的尾部；调用 `generate` 续写时，
+传完整 `generated_ids` 和对应的 `past_kv`（参数名仍是 `past_key_values`）。
+若只把最后一个 token 传给带缓存的 `generate`，它还会按历史长度切片，可能得到空输入。
+本章补充实验验证了“先生成 3 个，再携缓存续写 3 个”与一次贪心生成 6 个的结果一致。
 
 ## 5.5 生成循环不是一次输出整段答案
 
@@ -151,7 +160,16 @@ sequenceDiagram
 阅读时应追当前这个方法，不能直接把其他框架的所有 generate 参数和行为套到它上面。
 主流程为：准备输入与 finished 标记，前向，取最后位置 logits，调整候选分布，选 token，拼接结果，检查停止。
 
-没有缓存时 `past_len` 为 0，每轮重新输入当前整段前缀；有缓存时只输入未缓存尾部。
+没有缓存时 `past_len` 为 0，每轮重新输入当前整段前缀；有缓存时只输入未缓存尾部：
+
+```python
+past_len = past_key_values[0][0].shape[1] if past_key_values else 0
+outputs = self.forward(input_ids[:, past_len:], attention_mask, past_key_values, use_cache=use_cache, **kwargs)
+```
+
+在首次 prefill 步，`past_key_values` 为 None，`past_len = 0`，切片 `input_ids[:, 0:]` 完整前向 prompt；
+在随后的 decode 各步，`past_len` 恰好是已缓存的历史键长度，切片 `input_ids[:, past_len:]` 每次仅截出
+最新生成的 1 个 token 喂给模型，避免了重复计算已有前缀。
 模型参数并不在这个循环中更新，生成方法使用 `torch.inference_mode()`。
 随机权重模型仍可能重复输出同一个编号；能运行循环不表示已经有对话能力。
 
@@ -159,6 +177,11 @@ sequenceDiagram
 直到全部结束或达到 `max_new_tokens`。这个参数限制的是新增 token 数，不是 prompt 加输出的总长度。
 prompt 中原本存在 EOS 不等于 finished 一开始就为真。
 上下文还受位置缓存长度等限制，不能单凭一个很大的 max_new_tokens 声称支持可靠长文本。
+
+批量生成还有一条输入约定：代码始终取 `outputs.logits[:, -1, :]`，不会根据
+`attention_mask` 找每行最后一个有效位置。右侧补齐的短 prompt 因而会从 padding 位置的
+logits 选词。不同长度 prompt 应采用左侧补齐并传入正确 mask，同时检查实际生成行为；
+位置编号仍按整批的列和缓存长度推进，并未根据各行有效 token 数单独生成。
 
 ## 5.6 从 logits 到候选分布
 
@@ -183,7 +206,18 @@ Top-K 找第 K 大分数作为阈值，低于阈值的候选被屏蔽。
 K 还不能随意大于词表大小；本书小模型测试显式使用 `top_k=0` 关闭筛选或使用合法值。
 
 Top-P 先排序，累积 softmax 概率，保留累计质量达到阈值所需的前缀。
-源码将“超过阈值”的 mask 右移一位，因此跨过阈值的那一项也保留，至少留下首项。
+源码将“超过阈值”的 mask 右移一位，因此跨过阈值的那一项也保留，至少留下首项：
+
+```python
+sorted_logits, sorted_indices = torch.sort(logits, descending=True)
+mask = torch.cumsum(torch.softmax(sorted_logits, dim=-1), dim=-1) > top_p
+mask[..., 1:], mask[..., 0] = mask[..., :-1].clone(), 0
+logits[mask.scatter(1, sorted_indices, mask)] = -float('inf')
+```
+
+为什么要右移？如果首项概率就达到了 0.7 且阈值取 0.6，累积和在第 0 项即为 True（即超过阈值）；
+若不右移，连概率最高的第一项也会被掩盖。右移并将首位置 0，保证了刚刚累积跨过阈值的边界项与首项必被保留。
+随后的 `mask.scatter(1, sorted_indices, mask)` 依据排序索引，把排序空间里的掩码写回词表原始维度。
 例如概率 `[0.4,0.3,0.2,0.1]`、阈值 0.6，会留下前两项，重新归一化为 `[4/7,3/7,0,0]`。
 这是保留累计质量，不是保留概率单独大于 0.6 的项。
 

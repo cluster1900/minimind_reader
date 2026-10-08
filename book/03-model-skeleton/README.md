@@ -8,12 +8,13 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation:
   static: passed
   cpu: passed
   gpu: not_required
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch03-model-skeleton.md
   - meta/ch03-source-review.md
@@ -90,7 +91,9 @@ MiniMindForCausalLM.forward
 不意味着用这些随机权重就能聊天，也不代表上游训练结果。
 
 几个值必须相互协调。默认 `head_dim` 由隐藏维度除以查询头数得到；
-本书取 $D=32$、查询头数 4，因此每头 8 维。KV 头数取 2，可被查询头数整除。
+本书取 $D=32$、查询头数 4，按默认的 `head_dim = hidden_size // num_attention_heads` 得到每头 8 维。
+KV 头数取 2；查询头数 4 可被 KV 头数 2 整除，因此每组 K/V 对应 2 个查询头。
+`head_dim` 也能显式覆盖，这时不能再只用 $D/H_q$ 推断投影宽度。
 本实现的 RoPE 把向量分成两个等长部分，小实验也保持每头维度为偶数。
 配置对象可以接收很多值，并不表示任意组合都有意义或都提前检查过。
 

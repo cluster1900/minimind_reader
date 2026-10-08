@@ -24,6 +24,12 @@ def main():
         s.reset();s.generating=True
         assert s.push_chunk(np.ones(4096,dtype=np.float32))=='interrupt'
         interrupted_retained=len(s.get_audio());assert interrupted_retained==2048
+        s.reset();assert s.push_chunk(np.ones(2048,dtype=np.float32))=='listening'
+        mixed=np.concatenate([np.zeros(13*1024,dtype=np.float32),np.ones(2048,dtype=np.float32)])
+        assert s.push_chunk(mixed)=='speech_end' and not s.speaking
+        ended_audio=s.get_audio()
+        assert len(ended_audio)==3072 and not ended_audio[-1024:].any()
+        assert s.speech_samples==0 # trailing 2048 speech samples were never consumed
     tree=ast.parse((src/'webui/web_demo.py').read_text())
     names={'_mimi_decode','pcm_bytes','stream_pcm','run_generate','realtime'}
     definitions=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in names]
@@ -75,5 +81,6 @@ process.stdout.write(JSON.stringify({stopped,playing:playing.length,asstPlay,nex
     record(20,__file__,files,dict(validation='real source bodies; synthetic VAD, controlled queue/socket, fake PCM decoder and WebAudio nodes',
         vad_window_samples=1024,speech_trigger_samples=2048,silence_trigger_samples=13312,retained_samples=kept,
         scenarios=scenarios,browser_stop=browser,wrapper_disables_grad=True,
+        speech_end_input_samples=len(mixed),speech_end_dropped_tail_samples=2048,
         interrupted_input_chunk=4096,interrupted_retained_samples=interrupted_retained),repo='minimind-o')
 if __name__=='__main__':main()

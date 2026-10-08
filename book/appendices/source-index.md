@@ -10,6 +10,8 @@
 ## 02 从文字到 token
 
 - [minimind/trainer/train_tokenizer.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_tokenizer.py)：`get_texts`、`train_tokenizer`、`eval_tokenizer`。
+- [minimind/model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_minimind.py)：`MiniMindConfig.__init__`。
+
 
 ## 03 搭起语言模型骨架
 
@@ -76,9 +78,11 @@
 ## 15 视觉训练与评估
 
 - [minimind-v/trainer/trainer_utils.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/trainer/trainer_utils.py)：`init_vlm_model`、`vlm_checkpoint`、`vlm_collate_fn`。
-- [minimind-v/dataset/lm_dataset.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/dataset/lm_dataset.py)：`VLMDataset.__getitem__`、`VLMDataset.create_chat_prompt`。
+- [minimind-v/dataset/lm_dataset.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/dataset/lm_dataset.py)：`VLMDataset.__getitem__`、`VLMDataset.create_chat_prompt`、`VLMDataset.generate_labels`。
 - [minimind-v/trainer/train_pretrain_vlm.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/trainer/train_pretrain_vlm.py)：`train_epoch`。
 - [minimind-v/trainer/train_sft_vlm.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/trainer/train_sft_vlm.py)：`train_epoch`。
+- [minimind-v/model/model_vlm.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/model/model_vlm.py)：`MiniMindVLM.forward`、`MiniMindVLM.get_image_embeddings`。
+
 
 ## 16 音频入门与特征注入
 
@@ -103,6 +107,6 @@
 
 ## 20 流式交互、打断与综合实战
 
-- [minimind-o/model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/model/model_omni.py)：`SileroVAD`、`RealtimeSession.push_chunk`、`RealtimeSession.get_audio`。
+- [minimind-o/model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/model/model_omni.py)：`SileroVAD`、`RealtimeSession.push_chunk`、`RealtimeSession.get_audio`、`RealtimeSession.reset`。
 - [minimind-o/webui/web_demo.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/webui/web_demo.py)：`realtime`、`run_generate`、`prepare_turn`、`stream_pcm`、`pcm_bytes`、`_mimi_decode`。
 

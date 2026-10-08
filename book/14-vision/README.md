@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind-v
     commit: 740d467ece78a0b7d2d976fcb424472095d4a688
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch14-vision.md
   - meta/ch09-ch15-source-review.md
@@ -79,6 +80,14 @@ flowchart TD
 的 `VLMConfig`、`MiniMindVLM.__init__`、`get_image_embeddings` 与 `forward`。
 注意本章引用的是 V 仓库，不能只用同名 `model_minimind.py` 代替多模态逻辑。
 
+**输入边界：** 本章验证可用的是处理器返回的映射，例如单图
+`pixel_values={"pixel_values": tensor}`，其中 tensor 为 `(B,3,H,W)`；同图数批次可用
+`(B,N,3,H,W)`，模型先合并批与图片轴。字典里还可能有处理器要求的其他字段，应一起传递。
+虽然 `MiniMindVLM.forward` 写了普通 Tensor 分支，它会把切出的 Tensor 传给
+`MiniMindVLM.get_image_embeddings`，后者直接执行 `vision_model(**image_inputs)`。
+在锁定版本中，Tensor 不是关键字参数映射，此处会抛出 TypeError；不能把“存在分支”写成“支持该接口”。
+本章用同一份像素验证：两种字典形状得到一致 logits，直接传五维 Tensor 则报错。
+
 ## 14.3 projector 改变特征维度，不自动改变 token 数
 
 `MMVisionProjector` 依次使用 LayerNorm、Linear、GELU、Linear。
@@ -135,11 +144,26 @@ flowchart TD
 
 ## 14.5 连续段与特征数量不匹配会怎样
 
-当前扫描以“连续出现同一标记”为一段。
-两张图的占位符若毫无分隔地相邻，可能被识别成一段，而不是两张图。
-本章用两张各 4-token 的合成特征验证：带分隔时正确替换两段；
-直接连成 8 个标记时，函数只取第一张图的 4 个特征，长度为 10 的输入变成了长度 6 的结果。
+当前扫描以“连续出现同一标记”为一段。非标记位置在 `else` 里把下标加一；下面只保留标记段的拼接：
 
+```python
+while i < len(seq):
+    if seq[i] == marker:
+        start = i
+        while i < len(seq) and seq[i] == marker:
+            i += 1
+        if k < vf.size(1):
+            hb = torch.cat((hb[:start], vf[b][k][:i - start], hb[i:]), dim=0)[:seqlen]
+            k += 1
+```
+
+仔细观察这一拼接：若两张图的占位符毫无分隔地相邻（例如连续 8 个 marker），内层循环会一口气把 `i` 推进 8 位，
+将它们当成同一张图的占位段。然而第一张图只有 $N_v=4$ 个特征，切片 `vf[b][k][:i - start]` 最多提供 4 个特征；
+而随后的 `hb[i:]` 却直接从跳过 8 个位置的 `i` 开始拼接！这导致不仅原本 8 个位置被压缩成 4 个（序列长度意外缩水），
+而且只有图 1 被注入，图 2 的特征被直接遗漏。
+
+本章用两张各 4-token 的合成特征验证：带分隔时正确替换两段；
+直接连成 8 个标记时，长度为 10 的输入变成了长度 6 的结果。
 这是一个输入契约被破坏的反例，不是推荐的压缩方式。
 后续位置编码、batch 堆叠或 loss 对齐可能因此失败。应提前验证每段标记长度、图像数量和排序，
 不能把“函数没有立即抛异常”当作注入正确。

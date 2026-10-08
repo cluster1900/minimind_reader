@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch11-dpo.md
   - meta/ch09-ch15-source-review.md
@@ -85,6 +86,9 @@ x 表示共同输入上下文，$m_t$ 为目标 mask，$\pi_\theta$ 是当前策
 相加对应条件概率连乘后的对数形式，避免直接连乘很多小数。
 当前实现使用总和，不是除以回答长度的平均分。
 不同长度及不同监督区域因此会影响分数，不能在讲解时悄悄加入源码没有的长度归一化。
+`DPODataset.generate_loss_mask` 会扫描序列里的所有 assistant 段，而非只定位最后一个候选回答。
+若 chosen/rejected 包含多轮历史，这些历史回答也在各自的分数中；缺少结束边界时，扫描也可能延伸到 padding。
+只有核对展开后的模板与 mask，才能说清本条偏好对到底比较了哪些位置。
 
 参考模型用同样方式得到 $s_{\mathrm{ref}}$。它通常从同一初始化权重建立并冻结，
 提供一个比较基准；old policy、reference policy 和 reward model 不是三个可以随意替换的名称。
@@ -112,7 +116,9 @@ $$
 
 当策略与参考相同，差为零，单对损失为 $\log2\approx0.6931$。
 若提高 chosen 的有效 log-prob 而其他量不变，损失下降；提高 rejected 则方向相反。
-beta 调整这个偏好差进入目标时的尺度。当前 CLI 默认 beta=0.15，函数本身的默认值和 CLI 传值应分开查看。
+beta 调整这个偏好差进入目标时的尺度。当前 CLI 默认 `beta=0.15`，训练入口把它传给
+`train_epoch`；`train_epoch` 的形参默认值是 0.1，而 `dpo_loss` 本身要求显式传 beta，没有默认值。
+正常从命令行运行时应以实际传入的 0.15 或用户覆盖值为准。
 
 本地用 `-F.logsigmoid(...)` 表达稳定计算，再对样本对求平均。
 它不是对所有候选 token 重新做一次分类交叉熵，也不是让 chosen 的绝对概率无条件变为 1。

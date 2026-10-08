@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch09-moe.md
   - meta/ch09-ch15-source-review.md
@@ -43,8 +44,10 @@ scope: "本地 MoE 的 token 路由、聚合、辅助损失和梯度；不外推
 flowchart TD
     X["输入 token 向量"] --> G["gate：为专家打分"]
     G --> K["Top-K：选择部分专家"]
-    K --> E1["选中专家的前馈计算"]
+    K -->|选择编号| E1["选中专家的前馈计算"]
+    X -->|被选中的 token 向量| E1
     E1 --> W["按路由权重加权"]
+    K -->|路由权重| W
     W --> Y["回填到原 token 位置"]
     G -. "可微分数" .-> A["负载辅助损失"]
     K -. "实际选择频率" .-> A
@@ -52,6 +55,7 @@ flowchart TD
 
 图 9-1：MoE 的主输出与辅助损失。先追实线，回答“向量去了哪里，又如何回来”；
 再看两条虚线：实际选择频率和可微路由分数共同决定辅助项；选择编号本身不提供普通梯度。
+专家接收的是原 token 向量，Top-K 提供的是选哪些专家及对应权重，并非把 gate 分数当成专家输入。
 辅助项不是主输出的一部分，需要上层模型和训练器继续收集。
 图不表示各专家已经分布在不同 GPU 上。
 

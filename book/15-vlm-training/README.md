@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind-v
     commit: 740d467ece78a0b7d2d976fcb424472095d4a688
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch15-vlm-training.md
   - meta/ch09-ch15-source-review.md
@@ -72,8 +73,9 @@ flowchart TD
 冻结语言参数不等于把整个语言前向放进 no_grad：前者允许梯度穿过固定运算回到输入特征，
 后者可能把这条学习路径切断。区别与基础篇“参数是否更新”和“计算图是否记录”完全一致。
 
-本章四层、32 维语言小模型配 16 维视觉特征时，三种模式的实际可训练参数数目分别为
-243648、20224、1632。这些是小配置结果，不是默认发布模型的参数规模。
+本章实验的语言小模型是四层、隐藏维 32、4 个注意力头、2 个 KV 头、中间维 64、词表 6400，视觉特征维 16，并沿用默认的词嵌入绑定。
+模式 0、1、2 的可训练参数数目分别是 243648、20224、1632。顺序与上一节表格里的 2、1、0 相反：模式 0 最多，模式 2 只有 projector 的 1632。
+这些是该小配置的计数，不是默认发布模型的参数规模。
 模式 2 的真实图文 loss 反向后，projector 有非零梯度，其他冻结参数的梯度为 None。
 
 预训练入口的优化器筛选 `requires_grad` 参数；SFT 入口则把 `model.parameters()` 交给优化器。
@@ -108,15 +110,24 @@ flowchart TD
 [dataset/lm_dataset.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/dataset/lm_dataset.py)
 的 `VLMDataset.__getitem__`、`create_chat_prompt` 与 `generate_labels`。
 它替换非 system 消息中的 image 字符串，再执行截断和补齐；监督扫描遵循该库的 assistant 边界。
-不能因为类名接近文本 Dataset，就假设全部字段约定和处理顺序完全相同。
+这里的 labels 与 input_ids 尚未错位，扫描会保留多个 assistant 段；当结束序列位于 padding 之前时，
+末尾 padding 在监督区外。真正的 shift 在 MiniMind-V
+[model/model_vlm.py — MiniMindVLM.forward](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/model/model_vlm.py)
+中：logits 取 `[:-1]`，labels 取 `[1:]`，交叉熵忽略 -100，并对本批有效 token 求均值。
+训练器再加 `aux_loss`、除以累积步数并反向；达到累积边界才裁剪梯度、更新参数及清零。
+不能再在 Dataset 外手动 shift 一遍，也不能把平均单位误写成图片数。
 
 ## 15.4 每条有多图，不等于任意图数都能混成一批
 
 假设一条样本有 N 张图，每张处理后为 `(3,H,W)`，该样本通常形成 `(N,3,H,W)`。
 若 batch 中每条 N 一致，collate 再 stack 成 `(B,N,3,H,W)`。
-模型对字典路径会先合并 B/N 处理图像，再恢复每条样本与图片的位置关系。
+模型收到的若是字典，并且其中张量是 5 维 `(B,N,...)`，才会 `flatten(0, 1)` 合并批和图，再 `view` 回 `(B,N,image_token_len,-1)`。不是 5 维的字典分支不做这一步。普通 Tensor 分支虽然按图片下标循环，
+却会在 `get_image_embeddings` 的关键字参数展开处报错，详见第 14 章的接口实验。
+此处的形状描述以处理器字典及其字段为前提，不表示可以直接把一个五维 Tensor 传给模型。
 
-当前 `vlm_collate_fn` 直接 stack，没有为不同图片数自动 padding。
+当前 `VLMDataset.__getitem__` 会读取 `image_inputs_list[0]`，空图片列表会越界；
+这条数据路径要求至少一张图，不能直接把纯文本记录与图文记录混用。
+`vlm_collate_fn` 直接 stack，没有为不同图片数自动 padding。
 本章真实 Parquet 实验中，一张图样本与另一张一张图样本可组成 `(2,1,3,32,32)`；
 把一张图与两张图样本直接混在一起，则在 stack 时失败。
 所以“模型有多图分支”不等于“数据批处理已自动支持任意混合图数”。

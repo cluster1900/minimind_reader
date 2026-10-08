@@ -46,6 +46,9 @@ def main():
     torch.testing.assert_close(env['text_loss'],torch.tensor(math.log(3.)))
     torch.testing.assert_close(env['audio_loss'],torch.tensor(expected_audio))
     env['loss'].backward();ratio=(heads[0].grad[0,1].norm()/heads[0].grad[0,0].norm()).item();assert abs(ratio-10)<1e-4
+    empty_env={**env,'labels':torch.full_like(labels,-100),'audio_labels':torch.full_like(audio_labels,-100)}
+    exec(compile(ast.Module(body=with_node.body[begin:],type_ignores=[]),str(src/'trainer/train_sft_omni.py'),'exec'),empty_env)
+    assert empty_env['text_loss'].item()==0. and empty_env['audio_loss'].item()==0.
     sample=lambda audio:(torch.zeros(9,8,dtype=torch.long),torch.full((8,),-100),torch.full((8,8),-100),audio,0,None,torch.zeros(192))
     good=omni_collate_fn([sample(torch.ones(1,3,560)),sample(torch.zeros(1,1,560))])
     bad=omni_collate_fn([sample(torch.ones(1,3,560)),sample(None)])
@@ -61,6 +64,7 @@ def main():
     assert all(not key.startswith(('audio_encoder.','vision_encoder.')) for key in checkpoint['model'])
     assert next(iter(checkpoint['model'].values())).dtype==torch.float16
     record(19,__file__,files,dict(talker_copied_from_last_thinker_layers=True,freeze_backbone_counts=frozen,
+        empty_text_loss=empty_env['text_loss'].item(),empty_audio_loss=float(empty_env['audio_loss']),
         projector_modes=counts,text_loss=env['text_loss'].item(),audio_loss=env['audio_loss'].item(),stop_gradient_ratio=ratio,
         valid_audio_batch=list(good[3].shape),none_row_mismatch=[bad[3].shape[0],bad[4].shape[0]],
         scheduled_sampling_is_random_token_corruption=True,image_marker_protected=True,audio_marker_not_explicitly_protected=True,

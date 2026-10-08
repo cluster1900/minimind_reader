@@ -28,6 +28,20 @@ def main():
     fresh=MiniMindForCausalLM(cfg).eval();fresh.load_state_dict(torch.load(stage/'merged.pth'))
     error=(fresh(ids).logits-live_before_merge).abs().max().item();assert error<.002
     assert not any('lora' in k for k in torch.load(stage/'merged.pth'))
+    square_cfg=MiniMindConfig(hidden_size=32,num_hidden_layers=1,num_attention_heads=4,num_key_value_heads=2,
+        intermediate_size=64,vocab_size=32,max_position_embeddings=32,flash_attn=False)
+    square=MiniMindForCausalLM(square_cfg).eval();apply_lora(square,rank=4)
+    assert hasattr(square.lm_head,'lora')
+    with torch.no_grad():
+        square.lm_head.lora.A.weight.zero_()
+        square.lm_head.lora.A.weight[:,:4]=torch.eye(4)*.5
+        square.lm_head.lora.B.weight.fill_(.25)
+        square_live=square(ids).logits.clone();square_embedding=square.model.embed_tokens.weight.clone()
+    save_lora(square,stage/'square-adapter.pth');merge_lora(square,stage/'square-adapter.pth',stage/'square-merged.pth')
+    square_fresh=MiniMindForCausalLM(square_cfg).eval();square_fresh.load_state_dict(torch.load(stage/'square-merged.pth'))
+    square_error=(square_fresh(ids).logits-square_live).abs().max().item()
+    square_embedding_error=(square_fresh.model.embed_tokens.weight-square_embedding).abs().max().item()
+    assert square_error>.01 and square_embedding_error>.1
     s=torch.tensor([[.2,-.1,.3],[1.,-.5,0.]],requires_grad=True)
     t=torch.tensor([[1.,0.,-.2],[.5,.4,.1]],requires_grad=True);T=2.
     actual=distillation_loss(s,t,temperature=T)
@@ -39,6 +53,7 @@ def main():
     # Shape-compatible vocabulary permutation changes meaning and loss.
     permuted=distillation_loss(t.detach(),t.detach()[:,[1,0,2]],temperature=T).item();assert permuted>1e-3
     record(10,__file__,files,dict(injected=targets,lora_trainable=sum(p.numel() for p in model.parameters() if p.requires_grad),
+        square_tied_head_merge_error=square_error,square_tied_embedding_change=square_embedding_error,
         first_a_gradient=a_grad,first_b_gradient=b_grad,merge_max_logit_error=error,
         distillation_loss=actual.item(),equal_distribution_loss=equal,permuted_vocabulary_loss=permuted,teacher_gradient=None))
 if __name__=='__main__':main()

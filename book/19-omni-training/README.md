@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind-o
     commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch19-omni-training.md
   - meta/ch16-ch20-source-review.md
@@ -59,11 +60,14 @@ flowchart TD
 ## 19.2 Dataset 选择的是哪一轮和哪份模态数据
 
 `OmniDataset` 可拼接多个 Parquet 文件，并可能随机截到某一轮 assistant。
-它只保留最后一个 assistant 的文本监督，音频目标也从对应的 answer_audios 读取。
-这与文本 SFT 默认监督多个回答的做法不同。
+它只保留 token 截断后最后一个可见 assistant 段的文本监督；音频目标却先按截断前所选对话的
+assistant 数量索引 `answer_audios`。正常完整样本里二者对应同一轮，这与文本 SFT 监督多个回答不同。
+若模板展开、模态占位或 `max_length` 截断使最后一轮消失，当前代码没有额外保证这两次“最后一个”仍对应。
+应同时检查保留下来的角色边界、有效标签和音频索引，不能把随机截轮与 token 截断当作同一个操作。
 
 输入音频按当前 user 数量选择对应 question_audios；当前图像代码却取 image_bytes 的第一项，
 不能因为旁边注释写“最后 user 图像”就推断它按同样索引取图。
+这条路径没有逐一加载每轮历史音频或每幅历史图片；保留历史对话也不等于保留全部模态内容。
 参考音频和说话人向量另有字段，它们提供条件，不等于目标音频标签。
 
 | 数据对象 | 用途 | 需要核对 |
@@ -79,13 +83,35 @@ flowchart TD
 
 ## 19.3 “scheduled sampling”要看替换值从哪里来
 
-当前同名函数用随机 ID 替换部分历史输入，并不是从当前模型的预测分布采样再放回。
-它更直接体现为一种 token 扰动。解释目的可以说希望提高对历史错误的适应，但不能把实际运算写成另一个算法。
+[Scheduled Sampling 原论文（Bengio 等，2015）](https://arxiv.org/abs/1506.03099v3)
+逐步增加用模型历史预测替换真实 token 的概率。
+MiniMind-O 的随机替换实际发生在 `dataset/omni_dataset.py` 的
+`OmniDataset.apply_scheduled_sampling`；`train_sft_omni.py` 构造 Dataset，由取样过程执行它。
+构造时的默认概率是 `0.05`；不大于 0 就原样返回。`__getitem__` 在九通道输入和标签都完成 shift 之后才调用它。概率为正时，节选为：
 
-音频侧根据是否有有效标签选出时间列，再扰动八路；文本侧排除 image_token_id。
-代码注释中的“保护图像/音频 token”还需细看：明确的文本排除项只有图像标记，正常数据也受监督 mask 限制。
-实验在一个人为设为有效目标的位置放入文本音频标记，观察到它并未受到同样显式保护。
-因此定制模板时不能只依赖注释。
+```python
+audio_mask = (audio_labels != -100).any(dim=0) & (torch.rand(input_ids.size(1)) < self.scheduled_sampling_prob)
+for i in range(8):
+    input_ids[i] = torch.where(audio_mask, torch.randint(0, self.audio_vocab_size, input_ids[i].shape), input_ids[i])
+text_mask = (text_labels != -100) & (input_ids[8] != self.image_token_id) & (torch.rand(input_ids.size(1)) < self.scheduled_sampling_prob)
+input_ids[8] = torch.where(text_mask, torch.randint(0, self.text_vocab_size, input_ids[8].shape), input_ids[8])
+```
+
+九通道输入的前八路是音频，下标 8 是文本。
+音频掩码先看这一列是否至少有一路标签不是 -100，再与一次随机比较相与；命中的列上，八路各自换成 `[0, audio_vocab_size)` 的均匀整数，八次 `randint` 互不共用。
+文本掩码另抽一次随机数，还要求标签有效，且当前位置不是 `image_token_id`，替换范围是 `[0, text_vocab_size)`。
+两边都不是从当前模型的 logits 里采样。
+`text_vocab_size` 取的是 `len(tokenizer)`，不是模型配置里的 `vocab_size` 这个名字本身。
+音频上界是 `audio_vocab_size`，默认 2112，所以随机整数可以落在 2048 及以上的特殊编号上，不只是 Mimi 的普通码。
+
+函数文档字符串写的是“用随机值替代部分 GT，让模型学会从错误历史中恢复”。
+这是作者注释里的意图，不是已经测过的鲁棒性结论，也不能把它写成经典算法的同一种运算。
+
+训练脚本注释里的“保护图像/音频 token”还要对照这两行掩码。
+文本侧明确排除的只有图像标记。实验把一个文本通道上的音频标记放进有效目标，它仍被随机 ID 换掉，没有同样的显式保护。
+音频侧则是：标签有效的时间列会被换掉，并不是把音频 token 保护起来。
+掩码检查的是 shift 后的目标，而被替换的是对应输入，因此也可能改到“第一个有效目标之前的输入”。
+排除原有图像标记也不等于禁止随机抽中新的特殊 ID。定制模板时应核对替换前后的编号与位置，不能只读注释。
 
 ## 19.4 初始化 Talker 需要满足多项条件
 
@@ -99,21 +125,25 @@ flowchart TD
 
 实现位于
 [trainer/trainer_utils.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/trainer/trainer_utils.py)
-的 `init_omni_model`。路径不存在时的行为也要检查，不能让随机初始化悄悄冒充已有基座。
+的 `init_omni_model`。如果权重路径不存在，加载分支会直接跳过，模型仍可保持随机初始化，
+相应的 Thinker→Talker 复制也不会在该分支执行。脚本能启动不能证明已有基座加载成功，必须核对文件与加载结果。
 
 ## 19.5 两种冻结参数的组合
 
-`freeze_backbone` 先作用于 Thinker 主干；随后 `mode` 可进一步限制全部注册参数。
-相同单词 all 出现在不同参数中，含义并不相同：
+`freeze_backbone` 只遍历 `model.model.parameters()`。`MiniMindOmni` 用 `object.__setattr__` 把 `self.thinker` 设成 `self.model` 的别名，所以这里改的是 Thinker 的词嵌入、各 block 和末尾 RMSNorm。挂在 `model.model` 上的 `lm_head` 别名没有注册成子模块，不在这次循环里；外层真正的 `lm_head`、Talker、`audio_proj` 和 `vision_proj` 也不在里面。
+默认 `tie_word_embeddings=True` 时，外层 `lm_head.weight` 与 `embed_tokens.weight` 是同一参数，冻结词嵌入会把这块权重一起冻住。
+随后 `mode` 才可能改全部已注册参数。两个参数都可以取值 `all`，含义并不相同：
 
 | 设置 | 直接行为 |
 |---|---|
-| freeze_backbone=none | 不额外冻结主干 |
-| freeze_backbone=all | 冻结 Thinker 主干，其他分支仍需另看 |
-| freeze_backbone=last1 | 冻结主干后仅开放最后一个 block |
-| mode=all | 保留此前的参数状态 |
-| mode=audio_proj | 全部注册参数冻结后，只开放 audio_proj |
-| mode=vision_proj | 全部注册参数冻结后，只开放 vision_proj |
+| freeze_backbone=none | 不改这些参数的 `requires_grad` |
+| freeze_backbone=all | 冻结上述 Thinker 主干参数；Talker 和两个 projector 保持进入该开关之前的状态 |
+| freeze_backbone=last1 | 先同样冻结，再只把 `model.model.layers[-1]` 设回可训练 |
+| mode=all | 不再改 `requires_grad`，保留 `freeze_backbone` 刚设好的状态 |
+| mode=audio_proj | 全部已注册参数冻结后，只开放 audio_proj |
+| mode=vision_proj | 全部已注册参数冻结后，只开放 vision_proj |
+
+命令行帮助把 `freeze_backbone=all` 写成“只训练 audio 层”，把 `last1` 写成“只训练最后 1 层 + audio 层”，又把 `mode=all` 写成“全量训练”。这些是帮助字符串里的说法。实际范围以上表的 `requires_grad` 为准。
 
 只训练 audio_proj 时，要有真正经过输入音频投影的任务数据。
 若提供的任务只用文本条件生成声音，audio_proj 可能只有乘零的图连接，没有有效数据梯度。
@@ -140,8 +170,14 @@ $$
 $$
 
 分母是有效目标数量，不是加权数量；而且最后固定除以 8，不是只对有目标的头求平均。
-因此修改任务参与程度、stop 比例或码本数，会改变 loss 的量级，不能不加解释地横向比较。
+源码先做 `stop_mask = (target_flat == 2050).float()`，再乘 `1 + stop_mask * 9`。旁边没有注释说明为什么是 10。
+本章实验在均匀 logits 下看到该位置的梯度范数约为普通目标的 10 倍，这只说明权重进了分子。
+它不能单独证明生成时更少出现拖尾，也不能从第 18 章的停止条件推出“不加权就会爆出杂音”。
+修改任务参与程度、stop 比例或码本数，会改变 loss 的量级，不能不加解释地横向比较。
 总损失再加文本项及 aux_loss，并除以梯度累积步数。
+文本项也用有效目标数加 `1e-9` 作分母；有限 logits 下，全 -100 的文本标签得到 0，
+而不是第 06 章模型内置 mean 交叉熵的 NaN。八路音频都无目标时音频项也是 0，aux_loss 仍须单独看。
+实验执行真实损失代码块复现了这两个零值，所以“loss 有限”不足以证明这批样本有任何有效监督。
 
 先用两个相同的逐目标损失 2 来手算：一路中有普通目标和 stop 各一个，分子为 `2+10×2=22`，
 有效数量是 2，忽略极小稳定项后得到 11。若其他七路没有目标，音频总项仍是 `11/8=1.375`。

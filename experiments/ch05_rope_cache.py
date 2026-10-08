@@ -37,6 +37,19 @@ def main():
     b=model.generate(ids[:,:4],use_cache=False,**opts)
     assert torch.equal(a['generated_ids'],b)
     assert a['past_kv'][0][0].shape[1]==a['generated_ids'].shape[1]-1
+    resumed=model.generate(a['generated_ids'],past_key_values=a['past_kv'],use_cache=True,**opts)
+    uninterrupted=model.generate(ids[:,:4],use_cache=True,**{**opts,'max_new_tokens':6})
+    assert torch.equal(resumed,uninterrupted)
+    # Observe the selected logits column directly; do not rely on random argmax differences.
+    distribution=[]
+    padded=torch.tensor([[1,4,0,0]]);padded_mask=torch.tensor([[1,1,0,0]])
+    def capture(probs,num_samples):distribution.append(probs);return probs.argmax(-1,keepdim=True)
+    with torch.no_grad():padded_logits=model(padded,attention_mask=padded_mask).logits
+    with patch('torch.multinomial',side_effect=capture):
+        model.generate(padded,attention_mask=padded_mask,max_new_tokens=1,top_k=0,top_p=1.,
+            temperature=1.,repetition_penalty=1.,eos_token_id=None)
+    torch.testing.assert_close(distribution[0],padded_logits[:,-1].softmax(-1))
+    assert not torch.allclose(distribution[0],padded_logits[:,1].softmax(-1))
     observed=[]
     def sample(probs,num_samples):observed.append(probs.clone());return probs.argmax(-1,keepdim=True)
     toy=MiniMindForCausalLM(MiniMindConfig(hidden_size=8,num_hidden_layers=1,num_attention_heads=2,
@@ -59,6 +72,7 @@ def main():
         rope_relative_error=(lhs-rhs).abs().item(),chunk_cache_error=(full[:,3:]-suffix.logits).abs().max().item(),
         token_cache_error=(full-torch.cat(pieces,1)).abs().max().item(),cache_lengths=lengths,
         generated_ids=b.tolist(),returned_cache_length=a['past_kv'][0][0].shape[1],
+        resumed_generation_matches=True,right_padding_samples_last_column=True,
         nucleus_distribution=nucleus.tolist(),top_k_tie_support=int((ties>0).sum()),penalty_distribution=penalty.tolist())
     target=ROOT/'build/experiments/ch05-results.json';target.parent.mkdir(parents=True,exist_ok=True)
     target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report,ensure_ascii=False,indent=2))

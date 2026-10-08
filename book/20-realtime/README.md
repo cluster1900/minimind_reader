@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind-o
     commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch20-realtime.md
   - meta/ch16-ch20-source-review.md
@@ -77,7 +78,9 @@ T_w=\frac{1024}{16000}=0.064\ \mathrm{s}.
 $$
 
 默认开始语音至少 128 ms，即两个高概率窗口；结束静音阈值 800 ms，按整窗口累计时要 13 个窗口，约 832 ms。
-它不是每个毫秒都连续检查一次。浏览器还以 4096 点的块发送，输入积累与传输也会影响实际响应时间。
+它不是每个毫秒都连续检查一次。浏览器把重采样到 16 kHz 的数据累积为 4096 点再发送，
+这相当于 256 ms 的音频。它与声卡原生采样率下的 4096 点采集回调不是同一个时间尺度；
+输入积累、传输和消费时机都会影响响应，不能把 VAD 的最小窗口累计时间直接当作端到端延迟。
 
 在尚未 speaking 时，低概率窗口会重置未达标的语音累计；进入 speaking 后，短暂停顿可继续累计，
 直到连续静音达到结束阈值。模型检测质量、背景噪声和麦克风回声还需用真实音频评估。
@@ -112,14 +115,16 @@ stateDiagram-v2
 5，当前窗口为高概率、已经确认语音且正在生成，设置 interrupt 并返回。
 停止旧回复由会话消费者处理，不是 VAD 模型自己取消 GPU 计算或播放节点。
 
-还有一个必须检查的分块边界：push_chunk 返回 interrupt 时会提前退出当前大块，
+还有一个必须检查的分块边界：`push_chunk` 返回 `interrupt` 或 `speech_end` 时都会提前退出当前大块，
 剩余窗口没有在这个函数中自动保存。本章给 4096 点高概率块，实际只保留前 2048 点就返回。
+另一个反例是在一块里接上足以触发结束的静音与新语音：返回 `speech_end` 后，块末新语音未被处理。
+`get_audio` 只取出并清空音频缓冲，不等于同时重置 VAD 状态与环形窗口；完整重置要看 `reset`。
 这不等于剩余音频已可靠进入下一轮；改造时应设计未处理片段的保留与重放，不能声称原实现完全无丢失。
 
 ## 20.4 服务端怎样停止旧回复
 
 `realtime` 的接收线程把二进制音频和 JSON 控制消息入队。
-生成迭代期间，`poll_interrupt` 消费新消息：新的语音事件、stop 或 end 都可使本轮停止。
+生成迭代期间，`poll_interrupt` 消费队列里的新消息。二进制音频只有 `push_chunk` 返回 `'interrupt'` 才停止本轮；`'speech_end'` 和 `'listening'` 不会。JSON 的 `stop` 与 `end` 会把 `session.interrupt` 设为真并返回；`context` 只更新历史、图像或音色，然后继续取下一条。
 主循环在拿到一次生成结果后检查中断，再决定是否发送文本和 PCM。
 
 因此取消是迭代边界上的协作式停止。即使停止消息已入队，也可能已有一次前向正在进行。
@@ -146,7 +151,8 @@ stateDiagram-v2
 服务端不再发送数据，并不自动取消这些已排队节点。
 HTML 中的 stopPcm 会逐个 stop，清空列表，并重置播放状态和下一段时间。
 
-收到 interrupted 的 done 消息会调用它；重新检测到用户说话时也有相应停止路径。
+收到 `interrupted` 的 `done` 消息会调用它；收到服务端报告用户正在说话的 VAD 消息时也会停止播放。
+这里的说话判定来自服务端消息，不能把浏览器的处理函数误读成另一个独立 VAD。
 本章执行了真实消息处理和 stopPcm 代码片段，以计数节点代替 WebAudio，验证两个已排队节点均被停止，
 playing 变空、asstPlay 为 false、nextT 重置到当前时间。
 这验证的是代码行为，不是扬声器硬件立即静音的毫秒数。

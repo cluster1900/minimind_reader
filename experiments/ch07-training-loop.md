@@ -15,3 +15,9 @@ checkpoint 调用在控制流测试中记录调用时的参数和梯度，但真
 字段为 model、optimizer、epoch、step、world_size、wandb_id、scaler；没有自动加入待累积梯度和 RNG 快照。
 get_lr 的端点与 SkipBatchSampler 的尾组/跳过行为也已检查。
 未修改上游；未执行 CUDA、NCCL 或性能测试。
+
+## 2026-10-08 复核
+
+按原实验重新运行，并重新核对正文中使用的入口、数值与结论范围。
+旧 JSON 保留历史结果；本次完整命令、环境、脚本哈希及实际输出见
+[同基线复核记录](../meta/source-audit-2026-10-08.md)及其结果快照。

@@ -30,7 +30,12 @@ def main():
     assert execute_tool('calculate_math',{'expression':'1+2'})=={'result':'3'}
     assert execute_tool('not_a_tool',{}) is None
     assert parse_tool_calls('<tool_call>{bad}</tool_call>')==[]
-    assert validate_gt_in_text('答案是13',['3'])=={'3'}
+    array_call='<tool_call>[1]</tool_call>'
+    assert parse_tool_calls(array_call)==[[1]]
+    try:rollout_single(Scripted([array_call]),tok,[dict(m) for m in messages],tools,device='cpu',thinking_ratio=0.)
+    except AttributeError as exc:assert 'get' in str(exc)
+    else:raise AssertionError('Expected missing schema validation to surface at call.get')
+    assert validate_gt_in_text('答案是13' ,['3'])=={'3'}
     one=rollout_single(Scripted([call]),tok,[dict(m) for m in messages],tools,max_turns=1,device='cpu',thinking_ratio=0.)
     assert one[-1] is True and '<tool_response>' in one[1]
     reward=calculate_rewards(['prompt'],[final],[['3']],[tools],1,None,device='cpu',turn_outputs_batch=[turns],unfinished_batch=[False])
@@ -40,5 +45,6 @@ def main():
     record(13,__file__,files,dict(generation='scripted, not a learned policy',turns=engine.calls,
         response_tokens=len(r),generated_tokens=sum(mask),observation_tokens=len(mask)-sum(mask),
         token_reconstruction_exact=True,final_answer=final,reward=reward.item(),unfinished_reward=unfinished_reward.item(),
+        json_array_accepted_then_rollout_errors=True,
         malformed_json_calls=[],unknown_tool=None,max_turns_still_executes_tool=True,numeric_substring_gt_false_positive=True))
 if __name__=='__main__':main()

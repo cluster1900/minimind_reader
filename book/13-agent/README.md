@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch13-agent.md
   - meta/ch09-ch15-source-review.md
@@ -75,7 +76,9 @@ sequenceDiagram
 
 `parse_tool_calls` 对无法解析的 JSON 会忽略，若最终没有解析出调用，循环就可能按普通回答结束。
 因此“没有调用”不等于“输出格式一定正确”。执行未知工具返回 None，也不能被当成成功结果。
-解析成功还不等于参数结构已经验证。执行器按全局工具表找函数，提供给模型的工具定义列表并不是这里的硬性白名单；
+解析成功还不等于参数结构已经验证：`<tool_call>[1]</tool_call>` 中的 `[1]` 是合法 JSON，
+`parse_tool_calls` 会接受其中的数组，随后 `rollout_single` 对它调用 `.get` 就会报错。
+执行器按全局工具表找函数，提供给模型的工具定义列表并不是这里的硬性白名单；
 奖励阶段才另行检查名称和参数。真实工具接入应在执行边界明确检查这些条件，不能只靠事后扣分。
 `execute_tool` 使用 SIGALRM 做时间限制，其平台和线程适用条件需要检查，不是一个完整的任意代码沙箱。
 
@@ -145,6 +148,10 @@ mask 与 log-prob 都必须同步裁剪、错位和补齐。模型 logits 的前
 本章以 max_turns=1 运行调用样例，观察到工具结果仍进入 context，轨迹被标为 unfinished，奖励低于正常完成情况。
 接入真实工具时，轮数、参数校验、失败结果、重复调用和资源边界应有明确设计；
 本地模拟函数的成功不能代替这些外部行为的验证。
+
+归约还有一个与第 12 章不同的边界：`rl_train_epoch` 用 `valid_rows = token_counts > 0`
+排除没有有效动作 token 的行，再对剩余轨迹求均值；GRPO 的相应实现则仍把空行计入回答数。
+因此不能把两个脚本同名的 `policy_loss` 直接当作相同平均口径。
 
 ## 13.7 一个可复现的交互实验
 

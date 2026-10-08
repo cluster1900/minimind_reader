@@ -2,7 +2,9 @@
 
 全书出版顺序由 `book.yaml` 管理，该文件采用 JSON 语法（合法 YAML）。
 正文只维护一套 Markdown；EPUB 的 SVG 数学与 PDF 的原生数学分别从共用 AST 的副本生成。
-当前完整发行版为四篇二十章、阅读指南、术语表及四个附录。最终验收记录见 `meta/final-review.md`。
+已发布的 v1.0.1 为四篇二十章、阅读指南、术语表及四个附录，历史验收记录见 `meta/final-review.md`。
+2026-10-08 的 Markdown 勘误见 [源码复核](../meta/source-audit-2026-10-08.md)；尚未生成新版电子书，
+旧 `meta/final-review.json` 与 dist 仅对应历史发行文件，不能用于证明本次修订的排版或发布已通过。
 
 ## 已实现的命令
 
@@ -35,7 +37,7 @@ node scripts/check_foliate.cjs
 
 ## 固定工具与字体
 
-- Python 3.12，PyTorch 2.6.0、Transformers 4.57.6；出版包见 Python 锁定文件。
+- 文本/视觉/出版 Python 3.12，音频环境 Python 3.11；PyTorch 2.6.0、Transformers 4.57.6。实际运行版本见对应日期的实验记录，依赖包见两个锁定文件。
 - Node 包使用 `package-lock.json`；安装方式为 `npm ci --ignore-scripts`。
 - Pandoc 3.9、MathJax 3.2.2、Mermaid CLI 11.17.0。
 - PDF：Tectonic 0.17.0（XeTeX），A5、11 pt；TeX 资源缓存位于 `.cache/tectonic`。

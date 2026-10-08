@@ -55,6 +55,17 @@ def main():
     with patch('torch.nn.functional.scaled_dot_product_attention',wraps=real_sdpa) as call:
         fast(x[:,:1],(pos[0][:1],pos[1][:1]))
         assert call.call_count==0
+    # PyTorch 2.6 uses upper-left causal alignment for non-square Q/K.
+    rq=torch.zeros(1,1,2,8);rk=torch.zeros(1,1,4,8)
+    rv=torch.arange(1.,5.).view(1,1,4,1).expand(1,1,4,8)
+    rectangular=real_sdpa(rq,rk,rv,is_causal=True)
+    torch.testing.assert_close(rectangular[0,0,:,0],torch.tensor([1.,1.5]))
+    # MiniMind uses its explicit tail-aligned mask when a prefix cache exists.
+    _,prefix_cache=fast(x[:,:2],(pos[0][:2],pos[1][:2]),use_cache=True)
+    with patch('torch.nn.functional.scaled_dot_product_attention',wraps=real_sdpa) as call:
+        cached,_=fast(x[:,2:],(pos[0][2:],pos[1][2:]),past_key_value=prefix_cache)
+        assert call.call_count==0
+    torch.testing.assert_close(cached,a[:,2:],atol=2e-6,rtol=2e-5)
     all_masked,_=manual(x,pos,attention_mask=torch.zeros_like(mask))
     assert torch.isfinite(all_masked).all()
     assert all_masked.abs().sum()>0
@@ -67,7 +78,9 @@ def main():
         future_perturbation_prefix_error=(a[:,:3]-future[:,:3]).abs().max().item(),
         masked_key_valid_query_error=(base[:,[0,2,3]]-masked[:,[0,2,3]]).abs().max().item(),
         all_zero_mask_output_nonzero=True,sdpa_called_for_unmasked_prefill=True,
-        sdpa_skipped_for_padding_and_single_token=True)
+        sdpa_skipped_for_padding_and_single_token=True,
+        rectangular_sdpa_first_channel=rectangular[0,0,:,0].tolist(),
+        cached_multi_token_skips_sdpa=True,cached_multi_token_error=(cached-a[:,2:]).abs().max().item())
     target=ROOT/'build/experiments/ch04-results.json';target.parent.mkdir(parents=True,exist_ok=True)
     target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report,ensure_ascii=False,indent=2))
 

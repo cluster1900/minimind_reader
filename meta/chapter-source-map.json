@@ -330,7 +330,8 @@
     "path": "dataset/lm_dataset.py",
     "symbols": [
       "VLMDataset.__getitem__",
-      "VLMDataset.create_chat_prompt"
+      "VLMDataset.create_chat_prompt",
+      "VLMDataset.generate_labels"
     ]
   },
   {
@@ -454,7 +455,8 @@
     "symbols": [
       "SileroVAD",
       "RealtimeSession.push_chunk",
-      "RealtimeSession.get_audio"
+      "RealtimeSession.get_audio",
+      "RealtimeSession.reset"
     ]
   },
   {
@@ -469,6 +471,25 @@
       "stream_pcm",
       "pcm_bytes",
       "_mimi_decode"
+    ]
+  },
+  {
+    "chapter_id": "ch02",
+    "repository": "minimind",
+    "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+    "path": "model/model_minimind.py",
+    "symbols": [
+      "MiniMindConfig.__init__"
+    ]
+  },
+  {
+    "chapter_id": "ch15",
+    "repository": "minimind-v",
+    "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+    "path": "model/model_vlm.py",
+    "symbols": [
+      "MiniMindVLM.forward",
+      "MiniMindVLM.get_image_embeddings"
     ]
   }
 ]

@@ -5,13 +5,13 @@
 
 ## 两套验证环境
 
-文本、后训练、视觉和出版使用 Python 3.12 的 `.venv`；音频实验使用独立 `.venv-omni`。
+文本、后训练、视觉和出版使用 Python 3.12 的 `.venv`；本轮音频实验使用 Python 3.11 的独立 `.venv-omni`。
 依赖分别由 `requirements-book.lock` 与 `requirements-omni.lock` 固定。
 
 ```bash
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements-book.lock
-python3.12 -m venv .venv-omni
+python3.11 -m venv .venv-omni
 .venv-omni/bin/python -m pip install -r requirements-omni.lock
 ```
 
@@ -35,7 +35,9 @@ CPU 验证环境是 macOS arm64；在其他平台复现时应记录差异，不�
 
 ## 怎样读实验记录
 
-每章在 experiments 目录中有脚本、JSON 结果和说明。先看 scope，再看断言与实际输出。
+每章在 experiments 目录中有脚本、历史 JSON 结果和说明。重新运行时结果写到
+`build/experiments/chNN-results.json`，不会覆盖历史 JSON。先看验证范围（scope），再看断言与实际输出；
+当前修订的复核记录会标出采用哪次运行，不能把旧结果的脚本哈希当成修订后脚本的证据。
 例如源码 AST 片段实验只验证相应算术，脚本化 Agent 只验证控制流；
 随机小 SigLIP/Mimi 则验证真实网络的接口与张量，不证明预训练能力。
 
@@ -46,6 +48,23 @@ CPU 验证环境是 macOS arm64；在其他平台复现时应记录差异，不�
 
 训练损失、实际生成、GPU 性能和设备交互分别记录。若当前机器无法运行某种资源，
 保留待测范围，不伪造输出，也不把相关条件悄悄从结论中删去。
+
+## 跨仓库的标签对齐速查
+
+学完第 06 章后，可以用此表核对后续训练器。表中结论绑定各章声明的固定 commit，详细证据见对应章节。
+shift 指“用当前位置预测下一个 token”，只应在一条训练路径中做一次。
+
+| 路径 | 谁做 shift | 谁选择监督区 | 谁归约目标 |
+|---|---|---|---|
+| [文本 Pretrain/SFT](../06-datasets/README.md) | 模型 forward | Dataset 的 labels | 模型按有效 token 平均 CE |
+| [文本 DPO](../11-dpo/README.md) | DPODataset | Dataset 的 loss_mask | 训练器先对 token 求和，再算偏好目标 |
+| [视觉训练](../15-vlm-training/README.md) | VLM forward | VLMDataset 的 labels | VLM 按有效 token 平均 CE |
+| [Omni 训练](../19-omni-training/README.md) | OmniDataset | 文本与八路音频各自标签 | 训练器分别归约，再加辅助项 |
+
+注意力 mask 决定模型可以读取哪些位置，loss mask/忽略标签决定哪些预测直接计入目标，
+`requires_grad` 决定哪些张量需要求导，`train/eval` 则影响 dropout 等层的行为。
+这四者不能互相替代：prompt 的标签被忽略时，回答仍可以读取它并向其表征反传；
+冻结视觉编码器也不等于永远保持 eval。
 
 ## 出版结果怎样核对
 

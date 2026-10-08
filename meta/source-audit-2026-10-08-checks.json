@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "reviewed_at": "2026-10-08T03:43:12.972042-04:00",
+  "manuscript_base_commit": "5d3f6a81b9eedd7eca0b3742721a5576e210f19d",
+  "manuscript_dirty": true,
+  "initial_dirty_patch_sha256": "2368fc6cc89fbf9aecf98fe53184eed575340daf7723f024aefaa515a2272162",
+  "source_revision_migration": false,
+  "experiments": {
+    "status": "passed",
+    "chapters": 20,
+    "extended_scripts": 12,
+    "record": "meta/source-audit-2026-10-08-experiments.json",
+    "sha256": "9e3568c65e45fe26bd6a18510044699f3dc76c4ad898d161ac514fbe71882e56"
+  },
+  "tests": [
+    {
+      "command": ".venv/bin/python -m unittest discover -s tests -p test_content_contract.py -v",
+      "tests": 3,
+      "status": "passed",
+      "log_sha256": "ecc73a60219c62bca54854930133f3ed51d8b2c2d6922da45ee9e89a96007a75",
+      "output": "test_changed_code_fails (test_content_contract.ContentContract.test_changed_code_fails) ... ok\ntest_dropped_paragraph_fails (test_content_contract.ContentContract.test_dropped_paragraph_fails) ... ok\ntest_unchanged_content (test_content_contract.ContentContract.test_unchanged_content) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tests -p test_markdown_inputs.py -v",
+      "tests": 4,
+      "status": "passed",
+      "log_sha256": "a6e29dc05d687d1fd083494a3d85ec412a44b333caf6781df1f3149d3ff6ea3e",
+      "output": "test_footnote_is_content (test_markdown_inputs.MarkdownInputs.test_footnote_is_content) ... ok\ntest_math_inside_code_not_rendered (test_markdown_inputs.MarkdownInputs.test_math_inside_code_not_rendered) ... ok\ntest_pipe_token_inside_table (test_markdown_inputs.MarkdownInputs.test_pipe_token_inside_table) ... ok\ntest_unclosed_math_rejected (test_markdown_inputs.MarkdownInputs.test_unclosed_math_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.118s\n\nOK\n"
+    },
+    {
+      "command": "GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=commit.gpgsign GIT_CONFIG_VALUE_0=false .venv/bin/python -m unittest discover -s tests -p test_review_contract.py -v",
+      "tests": 9,
+      "status": "passed",
+      "log_sha256": "60091380f725d800a6f799cb113b7821297d2b62463df8311c5fc32be5adbcc9",
+      "output": "test_dependency_cycle_rejected (test_review_contract.Metadata.test_dependency_cycle_rejected) ... ok\ntest_unknown_prerequisite_rejected (test_review_contract.Metadata.test_unknown_prerequisite_rejected) ... ok\ntest_changed_equation_without_new_review_fails (test_review_contract.ReviewedContent.test_changed_equation_without_new_review_fails) ... ok\ntest_changed_explanation_and_source_fail (test_review_contract.ReviewedContent.test_changed_explanation_and_source_fail) ... ok\ntest_reversed_diagram_arrow_fails (test_review_contract.ReviewedContent.test_reversed_diagram_arrow_fails) ... ok\ntest_unchanged_review_passes (test_review_contract.ReviewedContent.test_unchanged_review_passes) ... ok\ntest_unreviewed_document_added_fails (test_review_contract.ReviewedContent.test_unreviewed_document_added_fails) ... ok\ntest_cited_commit_survives_different_head_and_dirty_checkout (test_review_contract.SourceHistory.test_cited_commit_survives_different_head_and_dirty_checkout) ... ok\ntest_optimization_cannot_disable_artifact_checks (test_review_contract.SourceHistory.test_optimization_cannot_disable_artifact_checks) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.408s\n\nOK\n"
+    }
+  ],
+  "manuscript_check": {
+    "command": ".venv/bin/python scripts/check_book.py --edition release",
+    "status": "passed",
+    "documents": 26,
+    "output": "Reviewed prose, formulas, diagrams and immutable source snapshots match\nManuscript checks passed for 26 input documents\n"
+  },
+  "content_snapshot_sha256": "92803cf2e9e95ffe2265866e561a31b6d0a2a65988ede8624ff4c95eef0ce5ce",
+  "post_run_prose_only_changes": {
+    "book/12-ppo-grpo/README.md": {
+      "at_run": "d4cff97e2143fdd4d726786039181d17defdea9730fa7642dee42b05e393db24",
+      "at_review": "5239f682495c273410cf66cd271f5574d51a44917bea38d6e8d2c14479071dfa"
+    },
+    "book/13-agent/README.md": {
+      "at_run": "4e4a98c5d26c5190e9609dee1c8142e0422cace23f771f64e6c7296bc39ff89c",
+      "at_review": "0c80ee0411addf227647b0ffd7c37ab2bebd54d6719fe8f7fa14609081195071"
+    },
+    "book/15-vlm-training/README.md": {
+      "at_run": "7716e4677e1338db126ba80f7d5ffb88525cbead88790988b9e812ecbfe22ad9",
+      "at_review": "4e6616a2cae12a3e3f4db37ba0372b5e05b4e7d73529a1bfb132ece6646016cf"
+    },
+    "glossary/terms.md": {
+      "at_run": "c4a98649adb28ba3257e0f6021c7bdae9cbb5ea8a3f65d17ae13903de06c9a6c",
+      "at_review": "1bc5772205b4c92052f64883a77ab5620a9b93feb93c8bcffea9179ec58f0509"
+    }
+  },
+  "diagram": {
+    "chapter": "ch09",
+    "source_sha256": "85aefd9258206f80a2c7d6a8b7688dd6835e275a1e2faad17f55eb6cba278564",
+    "svg_sha256": "d738cd23f98aeaa42774ee1ae20da93cb383e2c470f56f779b808a608f644042",
+    "png_sha256": "2ef3677e5ff450c4979caca22fb135e2673020c03154cffa83d6d4dca2b3faaa",
+    "render_command": "node_modules/.bin/mmdc -i build/review-2026-10-08/moe.mmd -o build/review-2026-10-08/moe.png -c publishing/mermaid.json -p publishing/puppeteer.json -b white -s 2",
+    "visual_review": "checked arrows, labels and Chinese glyphs in PNG; book page-width review not performed"
+  },
+  "publication": {
+    "new_epub": "not_run",
+    "new_pdf": "not_run",
+    "existing_release": "1.0.1",
+    "reason": "This task revises manuscript and experiments; prior publication records are historical."
+  },
+  "git_diff_check": {
+    "status": "passed",
+    "exit_code": 0
+  }
+}

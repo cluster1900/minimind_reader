@@ -1,6 +1,7 @@
 """Real branch topology, bridge capture, speaker condition and dual cache."""
 from _support import source,record
 import torch
+from unittest.mock import patch
 def main():
     _,files=source('minimind-o',['model/model_omni.py','model/model_minimind.py'])
     from model.model_omni import OmniConfig
@@ -38,8 +39,15 @@ def main():
     h=bad.talker.embed_proj.register_forward_pre_hook(lambda m,a:seen.append(a[0].detach().clone()))
     with torch.no_grad():bad(ids);expected=bad.thinker.embed_tokens(ids)
     h.remove();assert bad.config.bridge_layer==-1;torch.testing.assert_close(seen[0],expected)
+    # The fallback preserves already injected features, not just token embeddings.
+    audio_ids=torch.tensor([[1,16,7]]);seen.clear();feature=torch.full((1,32),.125)
+    h=bad.talker.embed_proj.register_forward_pre_hook(lambda m,a:seen.append(a[0].detach().clone()))
+    with torch.no_grad(),patch.object(bad,'encode_audio_inputs',return_value=[feature]):
+        bad(audio_ids,audio_inputs=torch.ones(1,1,560),audio_lens=torch.tensor([1]))
+    h.remove();torch.testing.assert_close(seen[0][0,1:2],feature)
+    assert not torch.allclose(seen[0][0,1],bad.thinker.embed_tokens(audio_ids)[0,1])
     record(17,__file__,files,dict(real_random_model=True,default_bridge_index=3,tiny_bridge_index=1,
         bridge_matches_second_block=True,text_independent_of_output_audio_history=True,speaker_marker_required=True,
         cache_layers=6,audio_only_loss_reaches_prefix_not_later_blocks=True,
-        invalid_single_layer_bridge=-1,invalid_bridge_falls_back_to_embedding=True),repo='minimind-o')
+        invalid_single_layer_bridge=-1,invalid_bridge_without_modalities_matches_embedding=True,invalid_bridge_preserves_injected_audio=True),repo='minimind-o')
 if __name__=='__main__':main()

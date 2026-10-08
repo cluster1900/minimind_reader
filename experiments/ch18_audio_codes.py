@@ -52,6 +52,13 @@ def main():
     with torch.enable_grad(),patch('torch.multinomial',side_effect=lambda p,n:p.argmax(-1,keepdim=True)):
         stream=probe.generate(torch.tensor([[1]]),stream=True,max_new_tokens=1,use_cache=False);list(stream)
     assert probe.grad==[True] # decorator covered generator creation, not later iteration
+    nonstream=Scripted(False)
+    with torch.enable_grad(),patch('torch.multinomial',side_effect=lambda p,n:p.argmax(-1,keepdim=True)):
+        last=nonstream.generate(torch.tensor([[1,4]]),stream=False,return_audio_codes=True,
+            max_new_tokens=24,use_cache=False)
+    assert last==(None,codes[-1]) and not any(nonstream.grad), (last,nonstream.grad)
+    text_prefixes=[t.tolist()[0] for t,f in generated if t is not None]
+    assert all(b[:len(a)]==a for a,b in zip(text_prefixes,text_prefixes[1:]))
     config=MimiConfig(hidden_size=32,num_filters=4,codebook_dim=16,vector_quantization_hidden_dimension=16,
         num_quantizers=8,num_semantic_quantizers=1,upsample_groups=32,num_hidden_layers=1,intermediate_size=64,
         num_attention_heads=4,num_key_value_heads=4,frame_rate=12.5)
@@ -59,6 +66,7 @@ def main():
     with torch.no_grad():wave=codec.decode(torch.tensor(codes).T[None]).audio_values
     assert wave.shape==(1,1,5760) and torch.isfinite(wave).all()
     record(18,__file__,files,dict(dataset_shape=list(x.shape),assistant_start=start,first_audio_label_positions=first,
+        nonstream_last_yield=list(last),nonstream_disables_grad=True,text_yields_are_prefixes=True,
         streamed=outputs,generator_iteration_grad_enabled_without_outer_context=True,
         codec='real randomly initialized tiny Mimi',decoded_shape=list(wave.shape),sampling_rate=24000,
         frame_rate=12.5,duration_seconds=5760/24000,newline_token_ids=[234],default_enter_id_201_is_not_newline=True),repo='minimind-o')

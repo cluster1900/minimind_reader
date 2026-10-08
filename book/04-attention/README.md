@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch04-attention.md
   - meta/ch04-ch08-source-review.md
@@ -183,11 +184,21 @@ flowchart TD
 **因果 mask** 解决“不偷看未来”。没有缓存时，分数矩阵上三角被屏蔽，位置 $i$ 只能参考不晚于自己的位置。
 **padding mask** 解决“哪些键位置不是有效输入”。它们可以同时存在，不能互相替代。
 
-当前显式分支在分数上加入：
+当前显式分支在计算分数后依次处理两类 mask：
 
 ```python
-scores += (1.0 - attention_mask.unsqueeze(1).unsqueeze(2)) * -1e9
+if self.is_causal:
+    scores[:, :, :, -seq_len:] += torch.full((seq_len, seq_len), float("-inf"), device=scores.device).triu(1)
+if attention_mask is not None:
+    scores += (1.0 - attention_mask.unsqueeze(1).unsqueeze(2)) * -1e9
 ```
+
+因果掩码之所以作用在尾部切片 `scores[:, :, :, -seq_len:]` 上，是因为在带 KV Cache 解码时，
+查询长度为本次输入的 `seq_len`（单步解码时通常为 1），而键的总长度为 $\mathrm{past\_len} + \mathrm{seq\_len}$。
+前 $\mathrm{past\_len}$ 个历史键全部属于已经发生的过去，当前新 token 可以合法关注全部历史，无需掩码；
+只有尾部新来的 $\mathrm{seq\_len}$ 个查询与新对应的 $\mathrm{seq\_len}$ 个键之间，才需要因果三角掩蔽。
+当逐 token 解码时 $\mathrm{seq\_len}=1$，`(1,1)` 张量的 `triu(1)` 为全零，不会屏蔽任何位置，
+当前 token 可以完整参考所有历史及自身。
 
 `attention_mask` 从 `(B,S_k)` 扩为 `(B,1,1,S_k)`，沿头和查询轴广播。
 因此它屏蔽的是作为键的候选位置，不是自动把该位置的所有 query 输出清零。
@@ -204,9 +215,24 @@ SDPA 是 `scaled_dot_product_attention` 的缩写，即一个实现缩放点积�
 源码变量叫 `self.flash`，但这个名字不证明某次执行一定用了 FlashAttention GPU 内核。
 本项目先决定调用哪个 Python 路径，依赖库再根据设备、dtype 等决定底层实现。
 
-当前调用 SDPA 的条件同时包括：API 可用且配置开关打开；本次长度大于 1；
-对于因果注意力，本次没有历史缓存；mask 未提供或所有值都是 1。
+当前调用 SDPA 的条件同时包括：API 可用且配置开关打开；本次查询长度 `seq_len > 1`；
+`not self.is_causal or past_key_value is None`；mask 未提供或所有值都是 1。
 任一条件不满足就走显式的分数、mask、softmax 与矩阵乘法。
+
+`Attention.is_causal` 在构造时固定写成 `True`。因此只要 `past_key_value is not None`，
+无论这次查询是 1 个 token 还是更长的一段，SDPA 分支都不成立，带缓存的多 token 前向同样走显式路径。
+单步解码还被长度条件单独挡住：`seq_len == 1` 时，即使没有历史缓存也不会调用 SDPA。
+
+源码没有注释这次回退。PyTorch 2.6.0 的这个函数也不会因为长度不等而报错。
+[PyTorch 2.6 官方文档](https://docs.pytorch.org/docs/2.6/generated/torch.nn.functional.scaled_dot_product_attention.html)
+写明：方阵时 `is_causal=True` 是下三角；非方阵时是左上角因果偏置，查询从第一个键算起。
+本书 CPU 上的调用与文档一致。掩码前分数全为 0 时，查询长度 1、键长度 4 只保留第一个键；
+查询长度 2、键长度 4 时，两个查询分别只看到前 1 个和前 2 个键。
+4.6 节的尾部切片则是右下角对齐，新的查询可以看到全部历史键，只在新键之间做上三角屏蔽。
+若把带缓存的解码直接交给这个 `is_causal`，新 token 只能看到最早的键，看不到更近的历史。
+从掩码结果看，源码在有 `past_key_value` 时走显式分支，避开了上述错位。
+这是对分支效果的解释；源码未说明作者选择该条件的动机，不能将推断写成作者说明。
+`seq_len == 1` 且没有缓存时，键长同样是 1，两种三角重合；此时不走 SDPA，只是长度条件本身。
 
 显式路径还把 softmax 输入转为 FP32，再把权重转回 Q 的 dtype。
 训练时可能应用 dropout，评估时应关闭随机失活。比较两个分支前先保证权重、输入、位置和 dropout 条件相同，
@@ -223,7 +249,8 @@ SDPA 是 `scaled_dot_product_attention` 的缩写，即一个实现缩放点积�
 | 同权重 SDPA 与显式路径 | 最大误差约 `5.96e-8` | 此 CPU 配置在容差内一致 |
 | 改变最后一个输入位置 | 更早位置输出误差为 0 | 本次因果遮挡成立 |
 | 改变被屏蔽的中间键 | 其他有效查询输出误差为 0 | mask 的键轴语义成立 |
-| padding 或单 token | 未调用 SDPA API | 实际分支条件符合源码 |
+| padding、单 token 或带缓存的多 token | 未调用 SDPA API | 实际分支条件符合源码 |
+| 查询 2、键 4，零分数、V 为 1～4 | SDPA 输出 1、1.5 | 非方阵左上角对齐，非缓存尾部对齐 |
 
 详细数值保存在 `experiments/ch04-results.json`。这不是性能 benchmark，不证明 GPU 加速比例。
 正式排错时，先检查 mask 的形状和语义，再检查具体后端；不要见到变量名 flash 就直接推断内核。

@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind-o
     commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch17-thinker-talker.md
   - meta/ch16-ch20-source-review.md
@@ -70,8 +71,12 @@ flowchart TD
 选择中间层可能有设计动机，但“这个位置最适合语音”需要相应消融证据，不能只由层号推出。
 本章实验用四层小模型，默认 index 1，并通过 hook 核对 Bridge 与第二个 block 输出一致。
 
-还要检查自定义配置。若只设一层，默认公式给出 -1，循环没有匹配项，
-Bridge 会保留初始化时的 Embedding 状态。它仍可产生合法 shape，却不是“中间 block 的语义”。
+还要检查自定义配置。循环开始前，`bridge_states` 取的是当时的 `hidden_states`：
+已经过 Embedding 和 dropout，并且在 `start_pos==0` 时，音频或图像注入也已经写进这份状态。
+若只设一层，默认公式给出 -1。循环里的 `i` 从 0 开始，没有一次相等，
+Bridge 就停在进 block 之前的这份状态，而不是某个 block 的输出。
+没有音频、图像，且模块处于 eval、dropout 不改变数值时，它会和 `embed_tokens` 的输出相同。
+这只是这种调用下的观察，不表示索引未命中就会跳过注入。
 实际改模型时应验证索引位于有效范围，不能只观察代码是否报错。
 
 ## 17.3 两种条件怎样合成 Talker 输入
@@ -165,7 +170,8 @@ Talker 的配置由自己的 MiniMindConfig 创建，并不自动继承 Thinker 
 
 运行 `.venv-omni/bin/python experiments/ch17_thinker_talker.py`。
 它使用真实随机小 Omni，不加载外部编码器，检查别名、Bridge hook、两类条件、双缓存与分支梯度。
-另构造一层配置，复现非法默认 Bridge 索引退回 Embedding 的情况。
+另构造一层、且不提供音频和图像的配置，核对默认索引 -1 时 Bridge 与 `embed_tokens` 输出一致。
+若同一次前向带有注入，未命中的 Bridge 保留的是注入之后的隐藏状态。
 这些结果证明结构关系，不报告语音自然度、音色相似度或端到端响应速度。
 
 1. thinker 是否是 model 的第二份参数副本？

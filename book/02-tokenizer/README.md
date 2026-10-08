@@ -8,12 +8,13 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation:
   static: passed
   cpu: passed
   gpu: not_required
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch02-tokenizer.md
   - meta/ch01-ch02-source-review.md
@@ -144,7 +145,9 @@ trainer = trainers.BpeTrainer(
 将不属于 `special_tokens_list` 的项设为 `special=False`。
 因此只读列表变量名 `all_special_tokens` 就结束调查，会得出错误结论；还要看保存前的属性修改。
 
-配置中 `bos_token_id=1`、`eos_token_id=2`，padding 使用 `<|endoftext|>`，ID 为 0。
+分词器配置用 `bos_token`、`eos_token` 保存边界字符串；加载后，分词器的
+`bos_token_id`、`eos_token_id` 属性分别解析为 1、2，padding 使用 `<|endoftext|>`，ID 为 0。
+模型的 `MiniMindConfig` 则直接保存数值型 `bos_token_id=1`、`eos_token_id=2`；这两份配置应核对一致。
 普通编码是否自动加入开头和结尾标记，要看 tokenizer 配置和具体调用，而不是仅看有没有 BOS/EOS 定义。
 当前配置的 `add_bos_token` 与 `add_eos_token` 均为 false，数据集或聊天模板会在各自路径中显式组织边界。
 

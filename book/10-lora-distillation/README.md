@@ -8,9 +8,10 @@ sources:
   - repository: jingyaogong/minimind
     commit: 6fc918beb68a0d8c40452338df6319fe168014ba
     dirty: false
-verified_at: 2026-09-09
+verified_at: 2026-10-08
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch10-lora-distillation.md
   - meta/ch09-ch15-source-review.md
@@ -109,10 +110,16 @@ B 的梯度非零。更新 B 后再次反向，A 也出现非零梯度。
 当前 `save_lora` 保存适配器参数为 CPU FP16；`merge_lora` 加载适配器，
 把基础权重和增量转换到相应的导出精度后相加，输出不含 LoRA 子模块键的 state_dict。
 保存与加载过程的舍入都可能影响结果。
+`merge_lora` 要求传入已注入 LoRA 的模型；它加载适配器后另存合并的 state_dict，
+并没有在当前模型里拆掉适配器或把基础参数就地替换成合并权重。验证时需另建无 LoRA 分支的模型加载导出文件。
 
 本章用真实函数保存、合并，再加载到没有 LoRA 分支的新模型，比较相同输入的 logits。
 误差在设定容差内，但并非严格为零，因此书中不称其为“完全无损合并”。
 验证合并时既要检查键名和 shape，也要检查真实前向结果；只有文件成功保存还不够。
+尤其当词表大小恰好等于隐藏维度时，输出头也会注入 LoRA；若它与 Embedding 共享权重，
+在线适配器只改输出分支，重新加载合并权重却会一起改变输入查表。
+此时单层的代数等价不能推出整个模型等价。补充实验用 `V=D=32` 复现了这项差异，
+因此本章的合并误差结论只适用于前述注入名单和共享关系。
 
 不同 dtype 的适配器和基础模型也需要核对。设备相同不代表精度相同，
 源码的 `.to(model.device)` 不能自动代替所有混合精度兼容性检查。

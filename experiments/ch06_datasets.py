@@ -49,8 +49,17 @@ def main():
     assert (ty==-100).all()
     empty_loss=model(tx[None],labels=ty[None]).loss
     assert torch.isnan(empty_loss)
-    report=dict(status='passed',source_commit=COMMIT,device='cpu',seed=42,pretrain_ids=x.tolist(),pretrain_labels=y.tolist(),
+    body=tok.encode('答',add_special_tokens=False)
+    missing_end=sft.bos_id+body+[tok.pad_token_id]*3
+    intact=sft.bos_id+body+sft.eos_id+[tok.pad_token_id]*3
+    # The real Dataset always pads/truncates to self.max_length before this helper.
+    sft.max_length=len(missing_end);missing_labels=sft.generate_labels(missing_end)
+    sft.max_length=len(intact);intact_labels=sft.generate_labels(intact)
+    assert missing_labels[-3:]==[tok.pad_token_id]*3
+    assert intact_labels[-3:]==[-100]*3
+    report=dict(status='passed' ,source_commit=COMMIT,device='cpu',seed=42,pretrain_ids=x.tolist(),pretrain_labels=y.tolist(),
         supervised_text=supervised,supervised_count=int((sy[1:]!=-100).sum()),shift_loss=ce.item(),
+        missing_end_supervised_padding=3,intact_end_supervised_padding=0,
         ignored_logits_gradient_zero=True,prompt_embedding_gradient_nonzero=True,empty_target_loss='nan',
         files={p:hashlib.sha256((SOURCE/p).read_bytes()).hexdigest() for p in ['dataset/lm_dataset.py','model/model_minimind.py']},
         script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
