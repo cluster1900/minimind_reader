@@ -1,16 +1,17 @@
 ---
 title: "第 07 章 预训练循环与断点恢复"
 chapter_id: ch07
-status: verified
+status: stale
 audience: core
 prerequisites: [ch01, ch03, ch06]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
-validation: {static: passed, cpu: passed, gpu: not_required}
+verified_at: null
+validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch07-training-loop.md
@@ -19,6 +20,9 @@ scope: "train_pretrain/train_full_sft 的循环顺序、累积/裁剪/AMP、学�
 ---
 
 # 第 07 章 预训练循环与断点恢复
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 上一章把样本变成了可计分的输入和标签。本章继续追问：loss 是怎样真正改变参数的？
 训练中的 step 到底是一个小批次还是一次参数更新？中断后加载 checkpoint，又恢复了多少状态？
@@ -55,9 +59,9 @@ flowchart TD
 
 源码索引包含 MiniMind 的三个文件：
 
-- [trainer/train_pretrain.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_pretrain.py)：预训练入口与循环。
-- [trainer/train_full_sft.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_full_sft.py)：SFT 入口与循环。
-- [trainer/trainer_utils.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/trainer_utils.py)：学习率、采样、加载与保存。
+- [trainer/train_pretrain.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_pretrain.py)：预训练入口与循环。
+- [trainer/train_full_sft.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_full_sft.py)：SFT 入口与循环。
+- [trainer/trainer_utils.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/trainer_utils.py)：学习率、采样、加载与保存。
 
 两个训练器的核心更新顺序相近，但 Dataset、默认学习率、累积步数与初始化权重不同。
 
@@ -75,7 +79,7 @@ scaler.scale(loss).backward()
 ```
 
 这几行只把梯度累计到参数的 `.grad`，并不表示每一小批之后都更新参数。
-当 step 能被累积步数整除时，才依次执行 unscale、梯度裁剪、optimizer step、scaler update 和清空梯度。
+当 step 能被累积步数整除，或到达本 epoch 的最后一批 `step == iters` 时，才依次执行 unscale、梯度裁剪、optimizer step、scaler update 和清空梯度。
 所以日志中的 step 与优化器更新次数不能直接当作同一个计数。
 
 ## 7.3 梯度累积的平均口径
@@ -96,7 +100,7 @@ $$
 而全局 token 平均会让后者占九成。比较实验时，除了 batch size，还要记录监督 token 数及归约口径。
 随机失活、数值精度和更新日程也可能影响等价性。
 
-当前源码在循环结束后会处理不足一组的剩余梯度，但每个小批仍除以原来的 K。
+当前源码在循环内最后一批处理不足一组的剩余梯度，并在之后保存；不再在退出循环后另做 flush。每个小批仍除以原来的 K。
 若最后只剩 $q<K$ 个小批，这组总梯度相对于它们自身的平均值多了一个 $q/K$ 缩放。
 这不是“末尾完全没更新”，也不是“已经按实际剩余数量重新平均”。
 
@@ -164,26 +168,24 @@ $\eta_0$ 是传入初始学习率，$T$ 是总步数，$t$ 是传入当前计数
 默认调用没有保存完整 Python/NumPy/Torch 随机数快照，也没有保存尚未 step 的梯度。
 恢复可继续训练，与精确延续同一条数值轨迹，是不同层次的承诺。
 
-## 7.7 实测一个保存时机的边界
+## 7.7 对照新旧保存时机
 
-我们用真实 `train_epoch`，把模型换成一个参数 $w$ 的标量平方损失，优化器换成 SGD，
-以便把每次变化算清楚。设 3 个小批、累积步数 2。第一次更新在第 2 步，
-第 3 步先进入循环内保存逻辑，退出循环后才处理最后剩余梯度。
+旧基线的标量实验设 3 个小批、累积步数 2，记录到第 2 步更新后参数约 0.065，
+第 3 步先保存同一参数，退出循环后才做第二次更新得到约 0.07435。
+这些是 `6fc918be` 的历史实测，不是新基线的运行结果。
 
-| 时刻 | 已执行更新次数 | 实测参数 |
-|---|---:|---:|
-| 第 2 步更新后 | 1 | 约 0.065 |
-| 第 3 步保存时 | 1 | 约 0.065 |
-| 循环末尾 flush 后 | 2 | 约 0.07435 |
+新基线 `train_pretrain.train_epoch` 与 `train_full_sft.train_epoch` 都将条件改为
+`step % args.accumulation_steps == 0 or step == iters`，并删除循环外 flush。
+因此最后一批的尝试更新、清梯度发生在保存分支之前；原来的“末批保存落后于尾部更新”时序已修复。
+这要求 `iters` 与最后一个枚举 step 一致，不能把提前中断的数据迭代器当作正常走完一个 epoch。
 
-同样的观察在 pretrain 和 full_sft 两个循环中均出现。
-这意味着末步保存的文件可能落后于函数返回时的参数；
-若 checkpoint 的 step 已记录“读过第 3 小批”，恢复后直接跳过它，又没有待累积梯度，就不能恢复那次尾部更新。
-类似问题也可能发生在组内周期保存时。
+周期保存仍可能落在累积组内部。例如累积步数 4、保存间隔 3，第 3 步的梯度尚未提交，
+checkpoint 又不包含 `.grad`；末批修复不等于任意断点都可精确恢复。
+若要实现组内精确续训，仍需保存梯度、累积进度以及必要的数据/随机状态，或只在更新边界保存。
 
-书稿不修改上游来隐藏这个事实。实际工程中的修复思路是：明确“数据读取步”和“优化器更新步”，
-优先在完成更新并清空梯度后保存；末尾先正确处理剩余组，再保存最终状态。
-若必须在组内保存，就需要同时保存梯度、累积进度和足够的数据/随机状态，并设计恢复测试。
+本次对真实训练函数进行了标准库替身控制流检查，验证末批“更新 → 清梯度 → 保存”的事件顺序，
+不是 PyTorch 数值或 AMP 正确性测试。旧 `experiments/ch07_training_loop.py` 绑定旧 commit，
+其中“保存时仅更新一次”的断言不适用于新基线；升级该实验与重跑的要求见本次迁移记录。
 
 ## 7.8 采样顺序、路径与实验
 
@@ -197,7 +199,7 @@ DDP 使用 DistributedSampler 并设置 epoch；当前循环也没有用 `no_syn
 `lm_checkpoint` 的续训目录各有约定；仅修改一个 `--save_dir` 不代表所有读写路径都自动随之改变。
 读者应在自己的训练工作副本中配置数据、模型和输出目录，不在本书的只读源码基线上试跑完整训练。
 
-运行 `.venv/bin/python experiments/ch07_training_loop.py` 可重现本章边界。
+在旧基线运行 `.venv/bin/python experiments/ch07_training_loop.py` 可重现历史边界；不要仅改其 commit 后仍沿用旧断言。
 标量模型只隔离循环，不代替真实语言模型；此外实验调用真实 checkpoint 工具，
 验证保存字段、FP16 权重和优化器动量，再验证学习率端点和 SkipBatchSampler。
 

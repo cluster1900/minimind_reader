@@ -1,16 +1,17 @@
 ---
 title: "第 04 章 手算一次注意力"
 chapter_id: ch04
-status: verified
+status: stale
 audience: core
 prerequisites: [ch01, ch03]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
-validation: {static: passed, cpu: passed, gpu: not_required}
+verified_at: null
+validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch04-attention.md
@@ -19,6 +20,9 @@ scope: "给定 Q/K/V 的手算、投影与头形状、GQA、QK-Norm、两种 mas
 ---
 
 # 第 04 章 手算一次注意力
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 前馈网络可以修改一个位置的向量，但“它”指的是前文哪个对象，需要结合其他位置的信息。
 注意力提供了这种结合方式：当前位置先计算与各候选位置的匹配分数，再按分数加权汇总信息。
@@ -127,7 +131,7 @@ xv = xv.view(bsz, seq_len, self.n_local_kv_heads, self.head_dim)
 阅读时先代入小配置检查元素数，再换成默认配置。默认 768 维、8 个查询头、4 个 KV 头时，
 每头为 96 维；不要把小例子的 8 维写成真实默认值。
 源码锚点：MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_minimind.py)
 的 `Attention.__init__`、`Attention.forward` 与 `repeat_kv`。
 
 ## 4.4 GQA：多个查询头共用一组键和值
@@ -234,7 +238,10 @@ SDPA 是 `scaled_dot_product_attention` 的缩写，即一个实现缩放点积�
 这是对分支效果的解释；源码未说明作者选择该条件的动机，不能将推断写成作者说明。
 `seq_len == 1` 且没有缓存时，键长同样是 1，两种三角重合；此时不走 SDPA，只是长度条件本身。
 
-显式路径还把 softmax 输入转为 FP32，再把权重转回 Q 的 dtype。
+显式路径先计算 `xq @ xk.transpose(-2, -1)`，紧接着将所得分数 `.float()` 转为 FP32，
+再除以 `sqrt(head_dim)` 并叠加两种 mask；softmax 直接消费这份 FP32 分数，再把权重转回 Q 的 dtype。
+与旧版仅在 softmax 前转换不同，缩放和掩码相加现在也在 FP32 分数上进行。
+但矩阵乘法发生在 `.float()` 之前，不能据此声称 QK 点积本身强制使用 FP32，也不能保证已溢出的结果被转换修复。
 训练时可能应用 dropout，评估时应关闭随机失活。比较两个分支前先保证权重、输入、位置和 dropout 条件相同，
 否则输出不一致可能只是比较条件不同。
 

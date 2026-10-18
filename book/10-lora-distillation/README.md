@@ -1,16 +1,17 @@
 ---
 title: "第 10 章 LoRA 与知识蒸馏"
 chapter_id: ch10
-status: verified
+status: stale
 audience: advanced
 prerequisites: [ch03, ch06, ch08]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
-validation: {static: passed, cpu: passed, gpu: not_required}
+verified_at: null
+validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch10-lora-distillation.md
@@ -19,6 +20,9 @@ scope: "原生 LoRA 的注入/冻结/梯度/合并，以及 logits 蒸馏的 KL�
 ---
 
 # 第 10 章 LoRA 与知识蒸馏
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 如果已经有一个模型，能否只训练少量新增参数？如果有一个较强教师，能否让学生学习它的输出分布？
 LoRA 和知识蒸馏分别回答这两个问题。本章把它们放在一起比较，但它们是独立方法，
@@ -68,7 +72,7 @@ flowchart TD
 冻结 W 只是不更新它，并不跳过原 Linear 的计算，也不阻止梯度通过它传到更早的可训练位置。
 
 源码锚点：MiniMind 的
-[model/model_lora.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_lora.py)
+[model/model_lora.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_lora.py)
 中 `LoRA`、`apply_lora`、`save_lora` 和 `merge_lora`。
 
 ## 10.2 初始不改变输出，不表示两个矩阵都立即得到非零梯度
@@ -98,7 +102,7 @@ B 的梯度非零。更新 B 后再次反向，A 也出现非零梯度。
 这是 Python 闭包里的重要细节：循环结束后每层仍需调用自己的通路，而不是全部引用最后一次循环的对象。
 
 训练器的冻结与优化器设置位于
-[trainer/train_lora.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_lora.py)。
+[trainer/train_lora.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_lora.py)。
 它调用 `apply_lora(model)`，随后按参数名称里的 lora 标记设置 requires_grad，并只把这些参数交给 AdamW。
 仅调用注入函数，并不自动完成该训练器的冻结步骤。
 
@@ -123,7 +127,11 @@ B 的梯度非零。更新 B 后再次反向，A 也出现非零梯度。
 
 不同 dtype 的适配器和基础模型也需要核对。设备相同不代表精度相同，
 源码的 `.to(model.device)` 不能自动代替所有混合精度兼容性检查。
-第 07 章讨论的保存时机与续训状态边界，在相似的 LoRA 训练循环里同样需要检查。
+新基线的 LoRA 和蒸馏训练循环均在 `step == iters` 时于循环内提交尾部剩余梯度，再保存；
+不再在循环外 flush。loss 仍除以配置的累积步数，组内周期保存仍不携带未提交梯度，详见第 07 章。
+推理入口 `eval_llm.init_model` 的适配器文件名加入 `moe_suffix`：`{lora_weight}_{hidden_size}{moe_suffix}.pth`。
+API 服务入口也去掉原有额外 `lora/` 子目录并使用该后缀，部署时应分别检查运行目录。
+这些变化没有修改 `model_lora.py` 的注入、合并公式或蒸馏损失函数。
 
 ## 10.5 蒸馏：学习一整排候选之间的关系
 
@@ -168,7 +176,7 @@ flowchart TD
 ## 10.6 PyTorch 参数顺序与总损失
 
 真实 `distillation_loss` 在
-[trainer/train_distillation.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_distillation.py)。
+[trainer/train_distillation.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_distillation.py)。
 它把学生的 log_softmax 作为 `F.kl_div` 输入，把教师概率作为目标；
 不能因函数参数“学生在前”就误写为反方向 KL。
 
