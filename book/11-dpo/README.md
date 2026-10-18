@@ -22,7 +22,7 @@ scope: "DPO 的成对数据、序列 log-prob、参考策略、目标与梯度�
 # 第 11 章 DPO 与偏好数据
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 SFT 通常给模型一份参考答案。偏好数据则告诉模型：对于同一个问题，两个候选中更喜欢哪一个。
 DPO，即 Direct Preference Optimization，直接偏好优化，把这种成对关系变成可优化目标。

@@ -22,7 +22,7 @@ scope: "本地 MoE 的 token 路由、聚合、辅助损失和梯度；不外推
 # 第 09 章 MoE 的路由与负载
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 第 03 章的 Dense 前馈让每个位置都经过同一组参数。MoE，即 Mixture of Experts，混合专家，
 准备多组前馈网络，让路由器为每个 token 选择其中一部分。它提供了另一种分配模型容量的方式，

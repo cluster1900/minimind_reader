@@ -22,7 +22,7 @@ scope: "任务数据、九通道标签、初始化复制、冻结模式、真实
 # 第 19 章 Omni 训练流水线
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 模型能够前向，还要把数据任务、可训练模块和损失连接起来。
 T2A、A2A、I2T 描述不同输入输出任务，而 `mode`、`freeze_backbone` 控制参数是否更新。

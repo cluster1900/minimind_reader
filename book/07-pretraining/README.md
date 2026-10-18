@@ -22,7 +22,7 @@ scope: "train_pretrain/train_full_sft 的循环顺序、累积/裁剪/AMP、学�
 # 第 07 章 预训练循环与断点恢复
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 上一章把样本变成了可计分的输入和标签。本章继续追问：loss 是怎样真正改变参数的？
 训练中的 step 到底是一个小批次还是一次参数更新？中断后加载 checkpoint，又恢复了多少状态？

@@ -22,7 +22,7 @@ scope: "PPO/GAE 的角色与目标、GRPO 分组优势、默认 CISPO 分支、r
 # 第 12 章 从 PPO 概念到 GRPO
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 前一章使用事先给定的偏好对。本章让策略自己生成回答，再根据奖励改进。
 困难在于：一句回答最终得到一个分数，怎样把它变成每个生成位置的更新信号？

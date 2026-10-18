@@ -22,7 +22,7 @@ scope: "全参 SFT 入口、模板与思考开关、token 加权 NLL、生成评
 # 第 08 章 SFT、评估与训练排错
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 当模型终于能把 loss 降下来，很容易想立刻宣布训练成功。但 loss 衡量的是一个明确定义的目标，
 它并不自动回答“会不会正确聊天”。本章把前面学过的模型、模板、Dataset 和训练循环串起来，

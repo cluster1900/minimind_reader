@@ -22,7 +22,7 @@ scope: "真实 rollout_single、工具解析与反馈、生成/观察 mask、打
 # 第 13 章 Agent 多轮交互与奖励
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 单轮回答结束后才评分，仍不足以描述工具交互。模型可能先请求计算，收到结果后再继续回答。
 这意味着一条训练轨迹交替包含模型自己生成的内容，以及环境提供的观察。

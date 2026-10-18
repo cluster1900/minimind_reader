@@ -25,7 +25,7 @@ scope: "Byte-level BPE 入门、已有 tokenizer、特殊 token 属性、聊天�
 # 第 02 章 从文字到 token
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 上一章直接给模型一串整数。真实用户不会这样提问，而是输入“你好，MiniMind！”这样的文字。
 分词器负责把文字转换成模型能索引的编号，并在输出后把编号还原成文字。
