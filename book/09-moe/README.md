@@ -1,16 +1,17 @@
 ---
 title: "第 09 章 MoE 的路由与负载"
 chapter_id: ch09
-status: verified
+status: stale
 audience: advanced
 prerequisites: [ch03, ch07]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
-validation: {static: passed, cpu: passed, gpu: not_required}
+verified_at: null
+validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch09-moe.md
@@ -19,6 +20,9 @@ scope: "本地 MoE 的 token 路由、聚合、辅助损失和梯度；不外推
 ---
 
 # 第 09 章 MoE 的路由与负载
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
 
 第 03 章的 Dense 前馈让每个位置都经过同一组参数。MoE，即 Mixture of Experts，混合专家，
 准备多组前馈网络，让路由器为每个 token 选择其中一部分。它提供了另一种分配模型容量的方式，
@@ -60,7 +64,7 @@ flowchart TD
 图不表示各专家已经分布在不同 GPU 上。
 
 源码入口：MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_minimind.py)
 的 `MOEFeedForward.forward`、`MiniMindBlock.__init__` 与 `MiniMindModel.forward`。
 
 ## 9.2 把批与位置展平，再给专家打分
@@ -77,7 +81,7 @@ $p_n$ 的 E 项表示本次路由使用的分数归一化结果，不是模型�
 `torch.topk` 为每行选出 K 个专家编号及对应分数，形状均为 `(N,K)`。
 默认 E=4、K=1；这只是本次源码配置，不是 MoE 必须采用的专家数量。
 
-若启用 `norm_topk_prob`，代码只在选中的分数之间重新归一化：
+若启用 `norm_topk_prob` 且 K>1，代码只在选中的分数之间重新归一化：
 
 $$
 w_{n,e}=\frac{p_{n,e}}{\sum_{j\in\mathcal T_n}p_{n,j}+10^{-20}},
@@ -142,29 +146,36 @@ $$
 `MiniMindModel.forward` 汇总各层的 `aux_loss`，训练器再与主损失相加。
 如果只调用前馈并对输出算损失，却忘了辅助项，训练目标就与上游训练器不同。
 
-## 9.5 Top-1 归一化的梯度边界
+## 9.5 Top-1 的直通梯度与输入分离
 
-当 K=1 且重归一化开启，选中权重约为 $p/p=1$。
-在选中专家不变的局部区域内，主输出对这条分数的连续变化几乎不敏感；
-topk 的离散编号也不提供“换到另一个专家”的普通导数。
-因此不能想当然地认为主损失总会为 gate 提供强梯度。
+旧基线在 K=1 时也做 $p/p$ 归一化，主输出对 gate 分数几乎不敏感。
+新基线单独处理 `norm_topk_prob=True` 且 K=1：再次用 `gate(x_flat.detach())` 算 softmax，
+取最大分数 `top1`，并令 `topk_weight = top1 - top1.detach() + 1.0`。
+
+前向数值仍为 1，但反向保留了 `top1` 对 gate 参数的导数，这叫直通估计（straight-through）。
+它不是常数函数“1”的真实导数，而是代码有意构造的代理梯度。
+`x_flat.detach()` 切断这次重算分数到输入的路径，却没有冻结 gate 参数。
+专家输出依然使用未 detach 的输入，原始 `scores` 也仍用于辅助项，所以不能说输入整体没有梯度。
+例如两个专家概率为 0.6 和 0.4，选中专家输出暂按标量 2 处理，
+这条代理路径对两个 gate logits 的局部梯度为 0.48 与 -0.48，而前向权重仍为 1。
+这是解析示例，不是本次 PyTorch 实测。
 
 ```mermaid
 flowchart TD
-    S["路由分数 p"] --> N["Top-1 归一化：约为 1"]
-    N --> O["选中专家的输出"]
+    X["输入 detach"] --> G["再次计算 gate 与 Top-1 分数"]
+    G --> W["前向为 1，反向保留 top1 梯度"]
+    W --> O["乘以选中专家输出"]
     O --> L["主损失"]
-    S --> A["平均路由概率参与 aux_loss"]
-    A --> G["路由器的另一条梯度路径"]
+    S["原始可微路由分数"] --> A["aux_loss"]
 ```
 
-图 9-2：为什么必须分别检查两条梯度路径。先看权重被归一化后的局部行为，
-再看辅助项仍然直接依赖分数。图解释当前默认结构，不声称所有 Top-K 或所有 MoE 的梯度都相同。
-改变 K、关闭重归一化或采用另一种路由算法后，都应重新验证。
+图 9-2：Top-1 的代理梯度路径。先看前向权重仍为 1，再区分 gate 参数梯度与被截断的输入梯度。
+图省略专家对原始输入的直接路径；Top-K 编号仍是离散选择，没有普通的“换专家”导数。
+K>1 沿用选中分数重归一化；关闭 `norm_topk_prob` 时不进入该代理分支。
+辅助项继续存在，不能把主损失现在可训练 gate 理解为不再需要检查负载目标。
 
-还有一个工程细节：训练时，未被选中的专家通过一个乘零的表达式连到输出。
-它让参数处于计算图中，但贡献为零，不意味着这些专家真的处理了有效 token。
-所以“梯度不是 None”与“这一批给了有意义的训练信号”也要区分。
+训练时，未被选中的专家仍通过乘零表达式连到输出，梯度存在但为零不表示有效学习。
+旧实验关于 Top-1 主损失 gate 梯度的观察绑定旧版本，新分支需要独立反向重验。
 
 ## 9.6 实验、误解与自检
 
@@ -185,6 +196,6 @@ flowchart TD
 
 参考解释：第一题没有人工预分配语义类别，路由与专家参数共同从目标中学习。第二题专家收集后的行顺序已经不同，必须按原索引回填；Top-K 大于 1 时还要累加同一个 token 的多路贡献。
 
-第三题每个 token 贡献 K 次选择，按 token 数归一化后各专家选择频率合计为 K。第四题 Top-1 归一化把选中权重变成近似 1，固定选择下主输出对路由分数几乎不敏感，需另外检查辅助损失路径。第五题零梯度不能证明这一批给它提供了有效学习信号；后续优化器状态或权重衰减也应与本批数据梯度区分。
+第三题每个 token 贡献 K 次选择，按 token 数归一化后各专家选择频率合计为 K。第四题新 Top-1 分支前向权重为 1，但通过直通表达式给 gate 参数代理梯度；重算时 detach 输入，需分别检查 gate、输入、专家和辅助项的路径。第五题零梯度不能证明这一批给它提供了有效学习信号；后续优化器状态或权重衰减也应与本批数据梯度区分。
 
 可选练习：将 K 改成 2，检查辅助项量级和主损失的 gate 梯度，说明哪些结论需要随配置改变。

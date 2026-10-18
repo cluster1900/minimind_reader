@@ -1,16 +1,17 @@
 ---
 title: "第 08 章 SFT、评估与训练排错"
 chapter_id: ch08
-status: verified
+status: stale
 audience: core
 prerequisites: [ch02, ch05, ch06, ch07]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
-validation: {static: passed, cpu: passed, gpu: not_required}
+verified_at: null
+validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch08-sft-evaluation.md
@@ -19,6 +20,9 @@ scope: "全参 SFT 入口、模板与思考开关、token 加权 NLL、生成评
 ---
 
 # 第 08 章 SFT、评估与训练排错
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
 
 当模型终于能把 loss 降下来，很容易想立刻宣布训练成功。但 loss 衡量的是一个明确定义的目标，
 它并不自动回答“会不会正确聊天”。本章把前面学过的模型、模板、Dataset 和训练循环串起来，
@@ -54,9 +58,10 @@ SFT 默认从预训练权重开始，是因为实际目标是在已有能力基�
 本章的小模型从随机权重训练，仅为了隔离并验证学习闭环。
 
 源码入口是 MiniMind
-[trainer/train_full_sft.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_full_sft.py)。
+[trainer/train_full_sft.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_full_sft.py)。
 `init_model` 创建并加载模型，`SFTDataset` 提供监督标签，AdamW 接收模型参数。
 当前主路径没有 LoRA 的冻结/注入步骤，参数高效微调在第 10 章另讲。
+本次更新把末批剩余梯度的尝试更新移到循环内、保存之前；组内周期保存与精确恢复的限制仍见第 07 章。
 读取权重时还需核对配置、词表和加载结果；`strict=False` 不能替代形状与语义兼容性检查。
 
 ## 8.2 从一条问答追到参数更新
@@ -146,8 +151,10 @@ NLL 适合追踪目标分布的变化，实际生成能暴露重复、格式和�
 `eval_llm.py` 中的输出示例是观察入口；其 Speed 计时覆盖 generate 调用及相关输出过程，
 不能直接当成排除了 prefill 和输出开销的纯 decode 内核速度。
 
-源码定位：[eval_llm.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/eval_llm.py)
+源码定位：[eval_llm.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/eval_llm.py)
 的 `main`，重点看模板、计时开始位置和 generate 参数。
+新基线的脚本入口捕获 EOF 与键盘中断后打印换行；LoRA 加载路径补上与 MoE 权重对应的 `_moe` 后缀。
+这些入口修正不改变本章的 NLL/PPL 定义，也不提供新的吞吐或模型质量证据。
 
 ## 8.6 思考开关先改变模板，再观察行为
 

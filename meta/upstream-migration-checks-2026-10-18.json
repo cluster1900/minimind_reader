@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "Focused standard-library AST, helper and scalar-control-flow checks only; no torch/transformers, GPU, multi-process, browser or publication acceptance",
+  "checks": [
+    "28 source files match fixed-candidate SHA-256 and Git blob manifest",
+    "get_texts: text/conversations, malformed/blank records, yielded-record cap, empty-corpus rejection",
+    "DPO: shared explicit removal decision at both call sites; helper true/false behavior",
+    "safe_math_eval: permitted arithmetic and aliases; import/attribute/empty/oversize/huge-power rejection (not a sandbox proof)",
+    "original pretrain/full_sft train_epoch AST: 3 batches, K=2, two updates before final save, zero residual gradient; scalar doubles, not torch/AMP",
+    "10 trainer ASTs: in-loop final-step update condition, no post-loop conditional flush",
+    "three model cores byte-identical; FP32 conversion placement and detached-input straight-through branch present (static only)",
+    "RL/Agent static call-site guards: DDP wrappers, no SIGALRM, preserved token history, marker and completion mask"
+  ]
+}

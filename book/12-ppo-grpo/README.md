@@ -1,16 +1,17 @@
 ---
 title: "第 12 章 从 PPO 概念到 GRPO"
 chapter_id: ch12
-status: verified
+status: stale
 audience: advanced
 prerequisites: [ch05, ch08, ch11]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
-validation: {static: passed, cpu: passed, gpu: not_required}
+verified_at: null
+validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch12-rl-objectives.md
@@ -19,6 +20,9 @@ scope: "PPO/GAE 的角色与目标、GRPO 分组优势、默认 CISPO 分支、r
 ---
 
 # 第 12 章 从 PPO 概念到 GRPO
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
 
 前一章使用事先给定的偏好对。本章让策略自己生成回答，再根据奖励改进。
 困难在于：一句回答最终得到一个分数，怎样把它变成每个生成位置的更新信号？
@@ -48,16 +52,16 @@ scope: "PPO/GAE 的角色与目标、GRPO 分组优势、默认 CISPO 分支、r
 旧策略随采样批次而变，参考策略通常在这轮训练中保持固定。
 
 源码索引是 MiniMind 的
-[train_ppo.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_ppo.py)、
-[train_grpo.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_grpo.py)
-以及 [rollout_engine.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/rollout_engine.py)。
+[train_ppo.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_ppo.py)、
+[train_grpo.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_grpo.py)
+以及 [rollout_engine.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/rollout_engine.py)。
 以下每次说“当前实现”，都指这些固定版本的代码，不泛指所有同名算法库。
 
 ## 12.2 rollout 先生成，再准备学习材料
 
 `RLAIFDataset` 从对话中移除最后一条示例答案，再用剩余消息构造 prompt；
 因此数据末条需要满足这个约定，不能把最后一个用户问题也意外删掉。
-其实现见 [dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/dataset/lm_dataset.py)。
+其实现见 [dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/dataset/lm_dataset.py)。
 
 rollout 可以理解为让策略试做一次：输入 prompt，生成回答，记录 token、文本、log-prob 与长度。
 `RolloutResult` 把这些量打包返回，训练器再计算奖励、优势、mask 和目标。
@@ -266,6 +270,10 @@ Torch 后端重新对已生成序列计算原始模型 log-prob，而生成时�
 Torch 后端使用 `no_grad`，但没有自动调用 `eval`；若调用者仍处于 train 且配置非零 dropout，
 采样与 log-prob 重算仍可能受随机失活影响。默认 dropout 为 0，不能据此推广到任意自定义配置。
 它返回的 `completion_mask` 起初全为 1，训练器还会按首个 EOS（含该 EOS）裁剪，不能省略这一步。
+新 Torch 后端重算 log-prob 的 `full_mask` 拼接原 prompt attention mask 与生成段全 1 mask，
+不再简单用 token ID 是否等于 PAD 推断整个序列的有效性。PPO/GRPO 的训练前向也用 `completion_mask`
+按 `logp_pos + 1` 回填生成位置的 attention mask，避免有效生成 token 恰等于 PAD ID 时被错误遮住。
+attention mask 与之后用于损失的 EOS/策略 mask 仍是两层不同含义。
 
 SGLang 路径从服务响应读取 log-prob，具体概率语义需要绑定服务版本核实。
 更直接的边界是：`SGLangRolloutEngine.rollout` 对不足数量的 log-prob 在前面补 0.0，
@@ -277,6 +285,11 @@ SGLang 路径从服务响应读取 log-prob，具体概率语义需要绑定服�
 并非每次 optimizer step 都同步。该方法导出权重并请求服务加载，以 HTTP 状态码 200 判断成功，
 没有进一步检查响应体中的加载结果。这个本地检查不能证明远端已正确采用新参数。
 当前书稿未启动 SGLang 或奖励模型服务，相关接口实验使用受控响应。
+
+PPO 更新现在调用 `actor_model` 与 `critic_model`，GRPO 调用 `model`，不再在训练前向中绕过 DDP 包装。
+构造 DDP 时显式设置 `broadcast_buffers=False`；这是当前实现选择，不是任意模型都可关闭 buffer 同步的建议。
+rollout policy 在可选编译与 DDP 包装之后更新一次。GRPO 末批更新也移到保存之前，组内周期保存限制仍在。
+本次只静态核对这些调用点，没有运行多进程、多 GPU 或 SGLang 集成测试。
 
 ## 12.9 验证范围与自检
 

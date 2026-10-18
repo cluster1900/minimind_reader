@@ -1,16 +1,17 @@
 ---
 title: "第 11 章 DPO 与偏好数据"
 chapter_id: ch11
-status: verified
+status: stale
 audience: advanced
 prerequisites: [ch06, ch08]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
-validation: {static: passed, cpu: passed, gpu: not_required}
+verified_at: null
+validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch11-dpo.md
@@ -19,6 +20,9 @@ scope: "DPO 的成对数据、序列 log-prob、参考策略、目标与梯度�
 ---
 
 # 第 11 章 DPO 与偏好数据
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
 
 SFT 通常给模型一份参考答案。偏好数据则告诉模型：对于同一个问题，两个候选中更喜欢哪一个。
 DPO，即 Direct Preference Optimization，直接偏好优化，把这种成对关系变成可优化目标。
@@ -54,8 +58,8 @@ flowchart TD
 图中的共同上下文是数据要求，不表示当前 Dataset 已经自动验证了所有成对样本。
 
 源码位于 MiniMind 的
-[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/dataset/lm_dataset.py)
-与 [trainer/train_dpo.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_dpo.py)。
+[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/dataset/lm_dataset.py)
+与 [trainer/train_dpo.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_dpo.py)。
 重点追 `DPODataset.__getitem__`、`logits_to_log_probs`、`dpo_loss` 及 `train_epoch`。
 
 ## 11.2 这条路径由 Dataset 负责 shift
@@ -151,10 +155,11 @@ flowchart TD
 
 ## 11.6 随机模板与空 mask 会让直觉失效
 
-当前 Dataset 对 chosen 和 rejected 分别调用空思考后处理，因此两个分支可能做出不同随机选择。
-在固定种子 42 的实验里，即使两边原始回答完全相同，也得到不同输入与监督数量：5 和 11。
-多出的目标来自不同空思考格式，而不只是答案内容。
-这不是说随机处理一定错误，而是比较偏好时必须检查模型实际看到的序列。
+新基线的 `DPODataset.__getitem__` 每对只抽一次 `remove_empty_think = random.random() > 0.2`，
+再显式把同一布尔值传给 chosen 和 rejected 的 `post_processing_chat`。两边不再各自随机决定是否删除空思考段。
+旧基线固定种子 42 时相同回答却得到 5 和 11 个监督目标的记录，是被本次修复针对的历史反例，不能继续当作新版结果。
+这个改动只统一空思考删除决策，不验证两份原始对话确实共享上下文，也不消除不同回答长度或截断带来的监督差异。
+未传 `remove_empty_think` 的 SFT 调用仍使用原来的随机行为。
 
 还有一个与 SFT 不同的边界：若两边 mask 全为零，序列分数都为零，DPO loss 仍是约 0.6931，
 而不会像平均空目标 CE 那样直接出现 NaN。有限 loss 因而不能证明样本提供了有效训练信号。
@@ -165,11 +170,11 @@ flowchart TD
 运行 `.venv/bin/python experiments/ch11_dpo.py`。
 实验对真实损失函数做梯度检查：beta=0.15 的零差案例中，chosen 有效项梯度为 -0.075，
 rejected 为 +0.075，忽略位置为零；把一个 chosen log-prob 提高 0.4 后，loss 降至约 0.6636。
-还验证真实 Dataset 的 shift、gather 对齐及随机模板反例。
+旧版记录还验证真实 Dataset 的 shift、gather 对齐及随机模板反例；新版应改为检查同一偏好对共用删除决策。
 
 它验证的是目标与数据语义，不是经过 DPO 后模型质量提升的证据。
 输出和源文件哈希保存在 `experiments/ch11-results.json`。
-训练循环的累积与保存状态也需沿用第 07 章的检查方法，不能因为换了算法名就假设边界消失。
+DPO 训练循环已改为在最后一批的保存之前提交尾部剩余梯度；组内周期保存与恢复限制仍需沿用第 07 章的检查方法。
 
 1. DPO 是否只需要 chosen 的前向？
 2. 这条路径为什么不能再让模型内置 loss 做一次 shift？

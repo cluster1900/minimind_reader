@@ -1,19 +1,20 @@
 ---
 title: "第 02 章 从文字到 token"
 chapter_id: ch02
-status: verified
+status: stale
 audience: core
 prerequisites: [ch01]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: 2026-10-08
+verified_at: null
 validation:
   static: passed
-  cpu: passed
+  cpu: not_run
   gpu: not_required
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch02-tokenizer.md
@@ -22,6 +23,9 @@ scope: "Byte-level BPE 入门、已有 tokenizer、特殊 token 属性、聊天�
 ---
 
 # 第 02 章 从文字到 token
+
+> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](../../meta/upstream-impact-2026-10-18.md)。
 
 上一章直接给模型一串整数。真实用户不会这样提问，而是输入“你好，MiniMind！”这样的文字。
 分词器负责把文字转换成模型能索引的编号，并在输出后把编号还原成文字。
@@ -58,8 +62,8 @@ flowchart TD
 并不表示它们在概念上变成了同一件事。
 
 本章的两个关键源码位置是 MiniMind 的
-[trainer/train_tokenizer.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/trainer/train_tokenizer.py)
-和 [model/tokenizer_config.json](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/tokenizer_config.json)。
+[trainer/train_tokenizer.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_tokenizer.py)
+和 [model/tokenizer_config.json](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/tokenizer_config.json)。
 前者解释词表怎样训练并导出配置；后者是读取现有 tokenizer 时实际使用的配置和模板。
 训练脚本不等于模型每次聊天时都会重新运行的步骤。
 
@@ -120,7 +124,9 @@ trainer = trainers.BpeTrainer(
 ```
 
 `train_from_iterator` 从 `get_texts` 返回的文本迭代器读取内容。
-当前 `get_texts` 最多检查前 10000 行，提取 `conversations` 中非空的 `content`，用换行连接。
+当前 `get_texts(data_path, max_lines=MAX_LINES)` 优先读取 `text` 字段，否则提取 `conversations` 中非空的 `content` 并用换行连接。
+`MAX_LINES=0` 表示读取全部；正数限制的是实际产出的非空文本条数，不是原始文件行号。无效 JSON 和空文本不计数，
+遍历结束仍无可用文本会抛出 `ValueError`，不再静默用空语料训练。旧版“最多检查前 10000 行”不再适用。
 它不会自动把所有角色、工具字段和思考字段都作为同样的训练文本；字段的选择是脚本明确写出的。
 
 训练结束后保存 `tokenizer.json`、BPE 相关文件和 `tokenizer_config.json`。
