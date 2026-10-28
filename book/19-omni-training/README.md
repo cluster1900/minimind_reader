@@ -6,11 +6,12 @@ audience: advanced
 prerequisites: [ch07, ch08, ch17, ch18]
 sources:
   - repository: jingyaogong/minimind-o
-    commit: f900448c608318c53314ebf8a947ab05cd8c038e
+    commit: b5d1bc11ece8de17404cbc034c3e09718d0fecdf
     dirty: false
 verified_at: null
 validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
@@ -22,7 +23,7 @@ scope: "任务数据、九通道标签、初始化复制、冻结模式、真实
 # 第 19 章 Omni 训练流水线
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 模型能够前向，还要把数据任务、可训练模块和损失连接起来。
 T2A、A2A、I2T 描述不同输入输出任务，而 `mode`、`freeze_backbone` 控制参数是否更新。
@@ -57,8 +58,8 @@ flowchart TD
 脚本注释中的耗时属于特定条件说明，本书没有把它们改写成任意硬件上的保证。
 
 源码索引为 MiniMind-O 的
-[trainer/train_sft_omni.py](https://github.com/jingyaogong/minimind-o/blob/f900448c608318c53314ebf8a947ab05cd8c038e/trainer/train_sft_omni.py)
-和 [trainer/train.sh](https://github.com/jingyaogong/minimind-o/blob/f900448c608318c53314ebf8a947ab05cd8c038e/trainer/train.sh)。
+[trainer/train_sft_omni.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/trainer/train_sft_omni.py)
+和 [trainer/train.sh](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/trainer/train.sh)。
 默认 data_path 与示例中显式指定的文件名也可能不同，运行前应核对实际数据，而不是只复制默认参数。
 
 ## 19.2 Dataset 选择的是哪一轮和哪份模态数据
@@ -82,7 +83,7 @@ assistant 数量索引 `answer_audios`。正常完整样本里二者对应同一
 | ref_audios / spk_emb | 参考声音与音色条件 | 是否启用、截断和位置预留 |
 | image_bytes | 输入图像 | 实际选取索引与占位段 |
 
-源码在 [dataset/omni_dataset.py](https://github.com/jingyaogong/minimind-o/blob/f900448c608318c53314ebf8a947ab05cd8c038e/dataset/omni_dataset.py)。
+源码在 [dataset/omni_dataset.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/dataset/omni_dataset.py)。
 最后返回九通道输入、文本标签、八路音频标签、输入特征和其他条件，shift 已在这里完成。
 
 ## 19.3 “scheduled sampling”要看替换值从哪里来
@@ -128,7 +129,7 @@ input_ids[8] = torch.where(text_mask, torch.randint(0, self.text_vocab_size, inp
 读取成功、跳过不兼容键和完整初始化成功，也是不同层次，不能只看一条“已加载”日志。
 
 实现位于
-[trainer/trainer_utils.py](https://github.com/jingyaogong/minimind-o/blob/f900448c608318c53314ebf8a947ab05cd8c038e/trainer/trainer_utils.py)
+[trainer/trainer_utils.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/trainer/trainer_utils.py)
 的 `init_omni_model`。如果权重路径不存在，加载分支会直接跳过，模型仍可保持随机初始化，
 相应的 Thinker→Talker 复制也不会在该分支执行。脚本能启动不能证明已有基座加载成功，必须核对文件与加载结果。
 
@@ -207,8 +208,7 @@ collate 会对有效音频特征按时间补齐；Dataset 在处理器存在而�
 若自定义数据把其中一行改成 None，collate 会过滤它，但 audio_lens 仍保留原批大小，可能失去样本对应。
 本章实验复现了音频批变成 1 行、长度表仍为 2 行的情况，不能把“支持变长”理解成任意混合 None 都正确。
 
-`omni_checkpoint` 排除外部编码器并将保存的模型状态转为 CPU FP16，resume 也使用这份状态。
-这与视觉篇 resume 保留原完整 state_dict 的行为不同。真实 dtype 和字段应逐仓库检查。
+`omni_checkpoint`（[`trainer/trainer_utils.py`](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/trainer/trainer_utils.py) 约 108 行）仍排除 `audio_encoder.` / `vision_encoder.`。推理用的 `*.pth` 由过滤后的 CPU 副本再 `.half()` 写出；`resume_data['model']` 则保留同一过滤结果的 **CPU FP32**，不再与推理权重共用一份 FP16 dict。这与视觉篇 resume 保留**完整** state_dict（含编码器、dtype 随模型）仍不同。真实 dtype 和字段应逐仓库检查。`eval_omni.py` 的 `load_from` 判定同样改为目录名等于 `model`。
 新基线将最后一批的尝试更新放到保存之前，删除循环外 flush，修复旧版末批保存落后于剩余梯度更新的顺序问题。
 组内周期保存不含未提交梯度的限制仍然存在；末批修复不能代替精确恢复验证。
 

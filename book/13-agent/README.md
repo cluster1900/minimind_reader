@@ -6,11 +6,12 @@ audience: advanced
 prerequisites: [ch02, ch06, ch12]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
 verified_at: null
 validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
@@ -22,7 +23,7 @@ scope: "真实 rollout_single、工具解析与反馈、生成/观察 mask、打
 # 第 13 章 Agent 多轮交互与奖励
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 单轮回答结束后才评分，仍不足以描述工具交互。模型可能先请求计算，收到结果后再继续回答。
 这意味着一条训练轨迹交替包含模型自己生成的内容，以及环境提供的观察。
@@ -43,14 +44,14 @@ scope: "真实 rollout_single、工具解析与反馈、生成/观察 mask、打
 真正执行工作的是外部 Python 代码。聊天模板只负责组织文本，不会因为出现一个标签就自己访问网络或运行函数。
 
 源码入口是 MiniMind
-[trainer/train_agent.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_agent.py)
+[trainer/train_agent.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_agent.py)
 中的 `parse_tool_calls`、`execute_tool`、`rollout_single`、`calculate_rewards` 和 `rl_train_epoch`。
 `rollout_engine.py` 提供采样后端，但不独自负责全部 Agent 循环。
 
 当前工具集合里，天气、时间、汇率和翻译等来自本地模拟数据；计算器等通过本地函数处理。
 所以这个仓库的多轮示例可以教学交互机制，却不能被描述成已经验证了真实在线天气或金融服务。
 
-数据入口是 [AgentRLDataset](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/dataset/lm_dataset.py)。
+数据入口是 [AgentRLDataset](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/dataset/lm_dataset.py)。
 它读取 conversations 与 gt，从 system 消息提取工具定义，并移除最后一条示例消息供后续生成。
 应核对末条确实是参考回答，以及 gt 的具体评判含义；数据类不会自动把任意对话修成合法任务。
 
@@ -78,10 +79,8 @@ sequenceDiagram
 同一条轨迹不只有一个生成片段，也包含执行器提供的观察。图中的工具是本地模拟集合，
 没有隐藏的联网请求；真实服务接入需要另行实现并验证其契约。
 
-`parse_tool_calls` 对无法解析的 JSON 会忽略，若最终没有解析出调用，循环就可能按普通回答结束。
-因此“没有调用”不等于“输出格式一定正确”。执行未知工具返回 None，也不能被当成成功结果。
-解析成功还不等于参数结构已经验证：`<tool_call>[1]</tool_call>` 中的 `[1]` 是合法 JSON，
-`parse_tool_calls` 会接受其中的数组，随后 `rollout_single` 对它调用 `.get` 就会报错。
+`parse_tool_calls`（[`train_agent.py`](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_agent.py) 约 76 行）对无法解析的 JSON 会 `continue` 跳过；即使解析成功，也只有 `isinstance(call, dict)` 的对象才会进入列表。因此 `<tool_call>[1]</tool_call>` 这类合法但非对象的 JSON **不会**再被收下，旧基线上随后 `rollout_single` 对数组调用 `.get` 崩溃的路径已被堵上。若最终列表为空，循环仍可能按普通回答结束——“没有调用”不等于“输出格式一定正确”。
+执行阶段对 `arguments` 若得到非 dict（含解析失败后的占位），会置为 `{}` 再交给 `execute_tool`；奖励阶段的参数检查同样先做这一层兜底。执行未知工具返回 None，也不能被当成成功结果。
 执行器按全局工具表找函数，提供给模型的工具定义列表并不是这里的硬性白名单；
 奖励阶段才另行检查名称和参数。真实工具接入应在执行边界明确检查这些条件，不能只靠事后扣分。
 计算器已改用 `trainer_utils.safe_math_eval` 的 AST 白名单解析，不再使用 `eval`；只允许指定算术运算、math 函数及 pi/e/tau 常量。

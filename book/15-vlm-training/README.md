@@ -6,11 +6,12 @@ audience: core
 prerequisites: [ch07, ch08, ch14]
 sources:
   - repository: jingyaogong/minimind-v
-    commit: 1862b633fc082a723e78dbead9777545f09d960c
+    commit: 041d528e037a8a373c3c8aa7278a3ba3bd26b6dc
     dirty: false
 verified_at: null
 validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
@@ -22,7 +23,7 @@ scope: "真实三种冻结策略、VLMDataset/Parquet/批处理、projector 梯�
 # 第 15 章 视觉训练与评估
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 图像能够注入语言模型，还需要训练让两种表征有效配合。最直接的工程问题是：
 这一阶段究竟允许哪些参数变化？数据中有几张图，又怎样与预留位置组成一批？
@@ -66,9 +67,9 @@ flowchart TD
 视觉编码器仍被调用，只是参数冻结；如果显式改变模式，应重新画更新范围，不能继续沿用默认图。
 
 源码索引：MiniMind-V 的
-[train_pretrain_vlm.py](https://github.com/jingyaogong/minimind-v/blob/1862b633fc082a723e78dbead9777545f09d960c/trainer/train_pretrain_vlm.py)、
-[train_sft_vlm.py](https://github.com/jingyaogong/minimind-v/blob/1862b633fc082a723e78dbead9777545f09d960c/trainer/train_sft_vlm.py)
-与 [trainer_utils.py](https://github.com/jingyaogong/minimind-v/blob/1862b633fc082a723e78dbead9777545f09d960c/trainer/trainer_utils.py)。
+[train_pretrain_vlm.py](https://github.com/jingyaogong/minimind-v/blob/041d528e037a8a373c3c8aa7278a3ba3bd26b6dc/trainer/train_pretrain_vlm.py)、
+[train_sft_vlm.py](https://github.com/jingyaogong/minimind-v/blob/041d528e037a8a373c3c8aa7278a3ba3bd26b6dc/trainer/train_sft_vlm.py)
+与 [trainer_utils.py](https://github.com/jingyaogong/minimind-v/blob/041d528e037a8a373c3c8aa7278a3ba3bd26b6dc/trainer/trainer_utils.py)。
 检查 CLI 默认值后，还要进入 `init_vlm_model` 看实际 requires_grad 设置。
 
 ## 15.2 冻结语言模型，梯度仍可以流到 projector
@@ -111,12 +112,12 @@ flowchart TD
 文字中出现 image 标记，不会自动验证图片字节正确；图片能解码，也不保证文本预留了匹配数量的位置。
 
 源码锚点是
-[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind-v/blob/1862b633fc082a723e78dbead9777545f09d960c/dataset/lm_dataset.py)
+[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind-v/blob/041d528e037a8a373c3c8aa7278a3ba3bd26b6dc/dataset/lm_dataset.py)
 的 `VLMDataset.__getitem__`、`create_chat_prompt` 与 `generate_labels`。
 它替换非 system 消息中的 image 字符串，再执行截断和补齐；监督扫描遵循该库的 assistant 边界。
 这里的 labels 与 input_ids 尚未错位，扫描会保留多个 assistant 段；当结束序列位于 padding 之前时，
 末尾 padding 在监督区外。真正的 shift 在 MiniMind-V
-[model/model_vlm.py — MiniMindVLM.forward](https://github.com/jingyaogong/minimind-v/blob/1862b633fc082a723e78dbead9777545f09d960c/model/model_vlm.py)
+[model/model_vlm.py — MiniMindVLM.forward](https://github.com/jingyaogong/minimind-v/blob/041d528e037a8a373c3c8aa7278a3ba3bd26b6dc/model/model_vlm.py)
 中：logits 取 `[:-1]`，labels 取 `[1:]`，交叉熵忽略 -100，并对本批有效 token 求均值。
 训练器再加 `aux_loss`、除以累积步数并反向；达到累积边界才裁剪梯度、更新参数及清零。
 不能再在 Dataset 外手动 shift 一遍，也不能把平均单位误写成图片数。
@@ -151,6 +152,7 @@ flowchart TD
 | resume 字典的 model | 保留完整模型 state_dict | 含编码器，本实验为 FP32 |
 
 resume 的 dtype 跟随实际模型状态，不保证所有环境都必为 FP32。
+本轮 V 仅 `eval_vlm.py` 将原生/transformers 分界改为目录名等于 `model`（与 M/O 对齐）；`vlm_checkpoint` 的推理过滤与 resume 完整 state_dict 行为未改，**不要**把 M/O 的 resume-FP32 修复误写进视觉章。
 推理导出不含编码器，所以重载时还需要正确的外部视觉模型、处理器和配置。
 只分发一个小权重文件，不能自动重建整个视觉系统。
 
