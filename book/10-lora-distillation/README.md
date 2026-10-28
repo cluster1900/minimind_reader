@@ -6,11 +6,12 @@ audience: advanced
 prerequisites: [ch03, ch06, ch08]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
 verified_at: null
 validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
@@ -22,7 +23,7 @@ scope: "原生 LoRA 的注入/冻结/梯度/合并，以及 logits 蒸馏的 KL�
 # 第 10 章 LoRA 与知识蒸馏
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 如果已经有一个模型，能否只训练少量新增参数？如果有一个较强教师，能否让学生学习它的输出分布？
 LoRA 和知识蒸馏分别回答这两个问题。本章把它们放在一起比较，但它们是独立方法，
@@ -72,7 +73,7 @@ flowchart TD
 冻结 W 只是不更新它，并不跳过原 Linear 的计算，也不阻止梯度通过它传到更早的可训练位置。
 
 源码锚点：MiniMind 的
-[model/model_lora.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_lora.py)
+[model/model_lora.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_lora.py)
 中 `LoRA`、`apply_lora`、`save_lora` 和 `merge_lora`。
 
 ## 10.2 初始不改变输出，不表示两个矩阵都立即得到非零梯度
@@ -102,8 +103,8 @@ B 的梯度非零。更新 B 后再次反向，A 也出现非零梯度。
 这是 Python 闭包里的重要细节：循环结束后每层仍需调用自己的通路，而不是全部引用最后一次循环的对象。
 
 训练器的冻结与优化器设置位于
-[trainer/train_lora.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_lora.py)。
-它调用 `apply_lora(model)`，随后按参数名称里的 lora 标记设置 requires_grad，并只把这些参数交给 AdamW。
+[trainer/train_lora.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_lora.py)。
+它调用 `apply_lora(model, rank=args.lora_rank)`（`--lora_rank` 默认 16，需与后续 `eval_llm` / API 加载一致），随后按参数名称里的 lora 标记设置 requires_grad，并只把这些参数交给 AdamW。
 仅调用注入函数，并不自动完成该训练器的冻结步骤。
 
 ## 10.4 合并是代数等价，导出还涉及浮点精度
@@ -176,7 +177,7 @@ flowchart TD
 ## 10.6 PyTorch 参数顺序与总损失
 
 真实 `distillation_loss` 在
-[trainer/train_distillation.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_distillation.py)。
+[trainer/train_distillation.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_distillation.py)。
 它把学生的 log_softmax 作为 `F.kl_div` 输入，把教师概率作为目标；
 不能因函数参数“学生在前”就误写为反方向 KL。
 

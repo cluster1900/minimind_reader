@@ -96,7 +96,7 @@
   {
     "chapter_id": "ch07",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_pretrain.py",
     "symbols": [
       "train_epoch"
@@ -105,7 +105,7 @@
   {
     "chapter_id": "ch07",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_full_sft.py",
     "symbols": [
       "train_epoch"
@@ -114,7 +114,7 @@
   {
     "chapter_id": "ch07",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/trainer_utils.py",
     "symbols": [
       "get_lr",
@@ -127,7 +127,7 @@
   {
     "chapter_id": "ch08",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_full_sft.py",
     "symbols": [
       "train_epoch"
@@ -136,7 +136,7 @@
   {
     "chapter_id": "ch08",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/trainer_utils.py",
     "symbols": [
       "init_model"
@@ -145,7 +145,7 @@
   {
     "chapter_id": "ch08",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "dataset/lm_dataset.py",
     "symbols": [
       "SFTDataset"
@@ -154,7 +154,7 @@
   {
     "chapter_id": "ch08",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "model/model_minimind.py",
     "symbols": [
       "MiniMindForCausalLM.forward",
@@ -164,7 +164,7 @@
   {
     "chapter_id": "ch08",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "eval_llm.py",
     "symbols": [
       "main"
@@ -184,7 +184,7 @@
   {
     "chapter_id": "ch10",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "model/model_lora.py",
     "symbols": [
       "LoRA.forward",
@@ -196,7 +196,7 @@
   {
     "chapter_id": "ch10",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_lora.py",
     "symbols": [
       "train_epoch"
@@ -205,7 +205,7 @@
   {
     "chapter_id": "ch10",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_distillation.py",
     "symbols": [
       "distillation_loss",
@@ -277,7 +277,7 @@
   {
     "chapter_id": "ch13",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_agent.py",
     "symbols": [
       "parse_tool_calls",
@@ -292,7 +292,7 @@
   {
     "chapter_id": "ch13",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "dataset/lm_dataset.py",
     "symbols": [
       "AgentRLDataset.parse_conversations"
@@ -315,7 +315,7 @@
   {
     "chapter_id": "ch15",
     "repository": "minimind-v",
-    "commit": "1862b633fc082a723e78dbead9777545f09d960c",
+    "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
     "path": "trainer/trainer_utils.py",
     "symbols": [
       "init_vlm_model",
@@ -326,7 +326,7 @@
   {
     "chapter_id": "ch15",
     "repository": "minimind-v",
-    "commit": "1862b633fc082a723e78dbead9777545f09d960c",
+    "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
     "path": "dataset/lm_dataset.py",
     "symbols": [
       "VLMDataset.__getitem__",
@@ -337,7 +337,7 @@
   {
     "chapter_id": "ch15",
     "repository": "minimind-v",
-    "commit": "1862b633fc082a723e78dbead9777545f09d960c",
+    "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
     "path": "trainer/train_pretrain_vlm.py",
     "symbols": [
       "train_epoch"
@@ -346,7 +346,7 @@
   {
     "chapter_id": "ch15",
     "repository": "minimind-v",
-    "commit": "1862b633fc082a723e78dbead9777545f09d960c",
+    "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
     "path": "trainer/train_sft_vlm.py",
     "symbols": [
       "train_epoch"
@@ -420,7 +420,7 @@
   {
     "chapter_id": "ch19",
     "repository": "minimind-o",
-    "commit": "f900448c608318c53314ebf8a947ab05cd8c038e",
+    "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
     "path": "trainer/train_sft_omni.py",
     "symbols": [
       "omni_collate_fn",
@@ -430,7 +430,7 @@
   {
     "chapter_id": "ch19",
     "repository": "minimind-o",
-    "commit": "f900448c608318c53314ebf8a947ab05cd8c038e",
+    "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
     "path": "trainer/trainer_utils.py",
     "symbols": [
       "init_omni_model",
@@ -440,7 +440,7 @@
   {
     "chapter_id": "ch19",
     "repository": "minimind-o",
-    "commit": "f900448c608318c53314ebf8a947ab05cd8c038e",
+    "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
     "path": "dataset/omni_dataset.py",
     "symbols": [
       "OmniDataset.__getitem__",
@@ -485,11 +485,20 @@
   {
     "chapter_id": "ch15",
     "repository": "minimind-v",
-    "commit": "1862b633fc082a723e78dbead9777545f09d960c",
+    "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
     "path": "model/model_vlm.py",
     "symbols": [
       "MiniMindVLM.forward",
       "MiniMindVLM.get_image_embeddings"
+    ]
+  },
+  {
+    "chapter_id": "ch15",
+    "repository": "minimind-v",
+    "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
+    "path": "eval_vlm.py",
+    "symbols": [
+      "init_model"
     ]
   }
 ]

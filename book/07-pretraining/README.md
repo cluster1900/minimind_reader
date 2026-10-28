@@ -6,11 +6,12 @@ audience: core
 prerequisites: [ch01, ch03, ch06]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
 verified_at: null
 validation: {static: passed, cpu: not_run, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
@@ -22,7 +23,7 @@ scope: "train_pretrain/train_full_sft 的循环顺序、累积/裁剪/AMP、学�
 # 第 07 章 预训练循环与断点恢复
 
 > 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
+> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 上一章把样本变成了可计分的输入和标签。本章继续追问：loss 是怎样真正改变参数的？
 训练中的 step 到底是一个小批次还是一次参数更新？中断后加载 checkpoint，又恢复了多少状态？
@@ -59,9 +60,9 @@ flowchart TD
 
 源码索引包含 MiniMind 的三个文件：
 
-- [trainer/train_pretrain.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_pretrain.py)：预训练入口与循环。
-- [trainer/train_full_sft.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_full_sft.py)：SFT 入口与循环。
-- [trainer/trainer_utils.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/trainer_utils.py)：学习率、采样、加载与保存。
+- [trainer/train_pretrain.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_pretrain.py)：预训练入口与循环。
+- [trainer/train_full_sft.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_full_sft.py)：SFT 入口与循环。
+- [trainer/trainer_utils.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/trainer_utils.py)：学习率、采样、加载与保存。
 
 两个训练器的核心更新顺序相近，但 Dataset、默认学习率、累积步数与初始化权重不同。
 
@@ -158,15 +159,16 @@ $\eta_0$ 是传入初始学习率，$T$ 是总步数，$t$ 是传入当前计数
 
 | 字段 | 恢复什么 | 不能据此推断什么 |
 |---|---|---|
-| model | 模型权重，保存时转为 CPU FP16 | 不保证与原 FP32 参数逐位相同 |
+| model（`*_resume.pth`） | 模型权重的 CPU **FP32** 副本 | 不等于推理用的 `*.pth`；旧版曾把 FP16 写入 resume，续训会静默丢掉小于半个 fp16 ulp 的更新 |
+| 推理权重（同函数写出的 `*.pth`） | 由上述 CPU 副本再 `.half()` 保存 | 加载推理权重不能当作 resume 的 dtype 证据 |
 | optimizer | AdamW 等优化器状态 | 不包含参数 `.grad` 的待累积值 |
 | scaler | 混合精度缩放状态 | 不代替随机数状态 |
 | epoch、step | 数据推进位置 | 不保证任意新 batch 配置下样本完全相同 |
 | world_size、wandb_id | 并行规模、跟踪标识 | 不保证跨规模恢复的数值轨迹相同 |
 
-`lm_checkpoint` 允许额外 kwargs，但这里应以训练器实际传入的字段为准。
+`lm_checkpoint`（[`trainer/trainer_utils.py`](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/trainer_utils.py) 约 65 行起）先把 `state_dict` 拷到 CPU 且保持 FP32，作为 `resume_data['model']`；推理文件另存 FP16。先 `.cpu()` 是为避免 GPU 上再留一份副本（与历史 #559 显存问题相关）。允许额外 kwargs，但应以训练器实际传入的字段为准。
 默认调用没有保存完整 Python/NumPy/Torch 随机数快照，也没有保存尚未 step 的梯度。
-恢复可继续训练，与精确延续同一条数值轨迹，是不同层次的承诺。
+恢复可继续训练，与精确延续同一条数值轨迹，是不同层次的承诺。已有的 FP16 resume 文件精度已经丢失：从它续训的那一次仍会舍入，之后新保存的才是 FP32。
 
 ## 7.7 对照新旧保存时机
 

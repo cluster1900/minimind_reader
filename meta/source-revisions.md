@@ -28,3 +28,11 @@ MiniMind 02、04、07—13 改绑 `f659b55761b754d306bd140573493a6543cafd7f`；V
 其余九章与旧实验记录保持原引用。受影响章节暂为 stale，cpu 为 not_run，未宣称新数值验证通过。
 本次使用 GitHub 固定版本读取，不曾接入、切换或检查用户桌面工作区；不继承历史的本地 clean 声明。
 详见 [影响评估、证据与复验要求](upstream-impact-2026-10-18.md)。本次不更新电子书或正式发布版号。
+
+## 2026-10-28 候选迁移（bot-hub #102）
+
+在 2026-10-18 候选终点之上继续定点迁移：
+MiniMind `f659b55761b754d306bd140573493a6543cafd7f` → `233d00fa068ec2b8c0d4f07b703934d6391a5a73`（13 commits，改 07/08/10/13）；
+MiniMind-V `1862b633fc082a723e78dbead9777545f09d960c` → `041d528e037a8a373c3c8aa7278a3ba3bd26b6dc`（1 commit，改 15 评估入口说明）；
+MiniMind-O `f900448c608318c53314ebf8a947ab05cd8c038e` → `b5d1bc11ece8de17404cbc034c3e09718d0fecdf`（1 commit，改 19）。
+受影响章保持 stale、cpu: not_run。详见 [upstream-impact-2026-10-28.md](upstream-impact-2026-10-28.md)。不更新电子书正式版号。
