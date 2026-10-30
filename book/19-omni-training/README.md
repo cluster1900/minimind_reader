@@ -208,7 +208,7 @@ collate 会对有效音频特征按时间补齐；Dataset 在处理器存在而�
 若自定义数据把其中一行改成 None，collate 会过滤它，但 audio_lens 仍保留原批大小，可能失去样本对应。
 本章实验复现了音频批变成 1 行、长度表仍为 2 行的情况，不能把“支持变长”理解成任意混合 None 都正确。
 
-`omni_checkpoint`（[`trainer/trainer_utils.py`](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/trainer/trainer_utils.py) 约 108 行）仍排除 `audio_encoder.` / `vision_encoder.`。推理用的 `*.pth` 由过滤后的 CPU 副本再 `.half()` 写出；`resume_data['model']` 则保留同一过滤结果的 **CPU FP32**，不再与推理权重共用一份 FP16 dict。这与视觉篇 resume 保留**完整** state_dict（含编码器、dtype 随模型）仍不同。真实 dtype 和字段应逐仓库检查。`eval_omni.py` 的 `load_from` 判定同样改为目录名等于 `model`。
+`omni_checkpoint`（[`trainer/trainer_utils.py`](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/trainer/trainer_utils.py) 约 108 行）仍排除 `audio_encoder.` / `vision_encoder.`。推理用的 `*.pth` 由过滤后的 CPU 副本再 `.half()` 写出；`resume_data['model']` 则保留同一过滤结果的 **CPU FP32**，不再与推理权重共用一份 FP16 dict。这与视觉篇 resume 保留**完整** state_dict（含编码器、dtype 随模型）仍不同。真实 dtype 和字段应逐仓库检查。[`eval_omni.py`](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/eval_omni.py#L19) 的 `load_from` 判定同样改为目录名等于 `model`。
 新基线将最后一批的尝试更新放到保存之前，删除循环外 flush，修复旧版末批保存落后于剩余梯度更新的顺序问题。
 组内周期保存不含未提交梯度的限制仍然存在；末批修复不能代替精确恢复验证。
 
