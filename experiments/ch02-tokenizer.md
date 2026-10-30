@@ -22,3 +22,25 @@
 按原实验重新运行，并重新核对正文中使用的入口、数值与结论范围。
 旧 JSON 保留历史结果；本次完整命令、环境、脚本哈希及实际输出见
 [同基线复核记录](../meta/source-audit-2026-10-08.md)及其结果快照。
+
+## 2026-10-30 按新基线重验
+
+日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
+命令：`MINIMIND_SOURCE_ROOT=/workspace/repos/minimind_resources /workspace/repos/.venv-mm/bin/python experiments/ch02_tokenizer.py`。
+环境：Python venv `/workspace/repos/.venv-mm`，torch `2.6.0+cpu`，无 CUDA。
+结构化输出见 [ch02-results.json](ch02-results.json)。
+
+已有词表与模板哈希未变：`tokenizer.json` / `tokenizer_config.json` 仍为
+`71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668` /
+`d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110`；
+`train_tokenizer.py` 现为 `0d6d6dcb21a066b7cc579d2be557fa8f266f3d6e6db0f665e0cc12ce8b6f0068`。
+词表长度 6400，BOS/EOS/PAD 仍为 1/2/0；三条往返样本与特殊 token 行为与旧记录相同。
+
+`get_texts` 新增断言按新基线行为通过：
+
+- 同一文件中 `{"text": ...}` 与 `{"conversations": [...]}` 均可产出；非法 JSON、空白 `text`、空 `content` 不计数。
+- 产出为 `["one", "two\\nthree", "four"]`；`max_lines=1` 得 `["one"]`，`max_lines=2` 得前两条，上限按有效文本条数而非原始行号。
+- 仅有非法行/空白/`conversations: []` 的语料，`get_texts` 与 `train_tokenizer` 均抛出 `ValueError`（含“没有可用文本”）。
+
+隔离小词表目标 384，实际 364 项，往返 ID `[350, 354]`。未修改上游，不对其编码质量作优劣判断。
+

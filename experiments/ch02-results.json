@@ -1,10 +1,11 @@
 {
   "status": "passed",
-  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+  "torch": "2.6.0+cpu",
   "files": {
     "model/tokenizer.json": "71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668",
     "model/tokenizer_config.json": "d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110",
-    "trainer/train_tokenizer.py": "41c996fe0384b036972e9830731236ef47d34e5dcb10f13dbd134c1c578ca1a1"
+    "trainer/train_tokenizer.py": "0d6d6dcb21a066b7cc579d2be557fa8f266f3d6e6db0f665e0cc12ce8b6f0068"
   },
   "vocabulary": 6400,
   "bos": 1,
@@ -84,11 +85,26 @@
     "True": "<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n"
   },
   "assistant_training_template": "<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n你好！<|im_end|>\n",
+  "get_texts": {
+    "yielded": [
+      "one",
+      "two\nthree",
+      "four"
+    ],
+    "max_lines_1": [
+      "one"
+    ],
+    "max_lines_2": [
+      "one",
+      "two\nthree"
+    ],
+    "empty_error": "/workspace/repos/minimind_reader/build/experiments/ch02-toy/empty.jsonl 中没有可用文本：每行应为 {\"text\": ...} 或 {\"conversations\": [{\"role\":..., \"content\":...}, ...]}。继续训练只会得到一个空词表。"
+  },
   "toy_vocabulary": 364,
   "toy_ids": [
     350,
     354
   ],
   "toy_roundtrip": "你好 hello",
-  "script_sha256": "754b6a5d426f153293fc6b45f640cf496316c32061d056e48513beaae7b2cd69"
+  "script_sha256": "8152e01d17de3d4ee7cf4e1746d42401f6fd62b45bf62d95e4556f10f8f3d34e"
 }

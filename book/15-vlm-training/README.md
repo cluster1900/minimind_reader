@@ -1,15 +1,15 @@
 ---
 title: "第 15 章 视觉训练与评估"
 chapter_id: ch15
-status: stale
+status: verified
 audience: core
 prerequisites: [ch07, ch08, ch14]
 sources:
   - repository: jingyaogong/minimind-v
     commit: 041d528e037a8a373c3c8aa7278a3ba3bd26b6dc
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
@@ -21,9 +21,6 @@ scope: "真实三种冻结策略、VLMDataset/Parquet/批处理、projector 梯�
 ---
 
 # 第 15 章 视觉训练与评估
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 图像能够注入语言模型，还需要训练让两种表征有效配合。最直接的工程问题是：
 这一阶段究竟允许哪些参数变化？数据中有几张图，又怎样与预留位置组成一批？

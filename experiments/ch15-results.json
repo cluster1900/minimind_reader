@@ -1,18 +1,19 @@
 {
   "status": "passed",
-  "source_commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+  "source_commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
   "source_repository": "minimind-v",
   "files": {
     "trainer/trainer_utils.py": "c8c3c1da9dec56deba447f59a84388106e14194a1b058a0817cd7204549a1ff2",
     "dataset/lm_dataset.py": "3b7816ffb72d7d6232a54bb776ff2ed73a8fc1fcdcd67501480f7e00be5e3d24",
-    "trainer/train_pretrain_vlm.py": "b9fb840aa9cd0da6e3a3b09839ee2d4a8139dc365edb16245742cd37739a1fc7",
-    "trainer/train_sft_vlm.py": "bca6bab569964a828c644a7eb8986181e19f443ea48557e5fdda7a576583393d"
+    "trainer/train_pretrain_vlm.py": "126967eae153ec70d512af8d3a4f0a8841da61777b78abc4a82981be04732404",
+    "trainer/train_sft_vlm.py": "5c7d27bd05ff0fb473d5c6450f7a09f4abd440260671839af59ef3a4d30514f2",
+    "eval_vlm.py": "4a172286c8008e81cc8c80e6c23906b3cda36469d9cfa2bcd47f64a93dc48af0"
   },
-  "script_sha256": "0e4220533ee4cc3c737e00eba2218c0e6e663ab0df6962e14e354005aeaca707",
+  "script_sha256": "642ed66b864a335f35e0bc63daddf057cc692f38450320a614db0790e5989510",
   "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-  "torch": "2.6.0",
-  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+  "torch": "2.6.0+cpu",
+  "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
   "device": "cpu",
   "seed": 42,
   "results": {
@@ -124,10 +125,93 @@
       32
     ],
     "unequal_image_count_collate_rejected": true,
-    "projector_gradient_with_frozen_llm": 3.5333184264600277,
+    "projector_gradient_with_frozen_llm": 3.5333178006112576,
     "export_excludes_encoder": true,
     "resume_contains_encoder": true,
+    "resume_is_full_state_dict": true,
     "export_dtype": "float16",
-    "resume_dtype": "float32"
+    "resume_dtype": "float32",
+    "resume_tiny": 1e-08,
+    "inference_tiny": 0.0,
+    "load_from_routing": {
+      "model": "native",
+      "../model": "native",
+      "./model": "native",
+      "model/": "native",
+      "/abs/path/model": "native",
+      "foo_model_bar": "transformers",
+      "../foo_model_bar": "transformers",
+      "out/foo_model_bar": "transformers",
+      "my_model": "transformers",
+      "model_ckpt": "transformers",
+      "../model_out": "transformers"
+    },
+    "control_flow": {
+      "train_pretrain_vlm": {
+        "snapshot": {
+          "step": 3,
+          "weight": 0.07434999942779541,
+          "grad": null,
+          "updates": 2
+        },
+        "final_weight": 0.07434999942779541,
+        "updates": 2
+      },
+      "train_sft_vlm": {
+        "snapshot": {
+          "step": 3,
+          "weight": 0.07434999942779541,
+          "grad": null,
+          "updates": 2
+        },
+        "final_weight": 0.07434999942779541,
+        "updates": 2
+      },
+      "full_group": {
+        "snapshot": {
+          "step": 4,
+          "weight": 0.12780000269412994,
+          "grad": null,
+          "updates": 2
+        },
+        "final_weight": 0.12780000269412994,
+        "updates": 2
+      },
+      "mid_accumulation_save": {
+        "snapshots": [
+          {
+            "step": 3,
+            "weight": 0.0,
+            "grad": -1.5,
+            "updates": 0
+          },
+          {
+            "step": 5,
+            "weight": 0.04200252890586853,
+            "grad": null,
+            "updates": 2
+          }
+        ],
+        "final_weight": 0.04200252890586853,
+        "updates": 2
+      },
+      "start_step_resume": {
+        "start_step": 2,
+        "iters": 4,
+        "loader_len": 2,
+        "snapshot": {
+          "step": 4,
+          "weight": 0.019999999552965164,
+          "grad": null,
+          "updates": 1
+        },
+        "updates": 1
+      },
+      "empty_loader": {
+        "updates": 0,
+        "saves": 0,
+        "iters": 3
+      }
+    }
   }
 }
