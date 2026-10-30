@@ -79,7 +79,7 @@ def load(edition, chosen=None, smoke=False):
     return config,docs
 
 
-def combined(config, docs):
+def combined(config, docs, allow_missing_internal=False):
     document={'pandoc-api-version':docs[0]['ast']['pandoc-api-version'],'meta':{},'blocks':[]}
     targets={}
     for d in docs:
@@ -97,6 +97,16 @@ def combined(config, docs):
                 path,_,anchor=url.partition('#')
                 target=(d['file'].parent/path).resolve() if path else d['file']
                 if target not in targets or anchor not in targets[target]:
+                    if allow_missing_internal and target not in targets:
+                        try:
+                            target.relative_to(ROOT)
+                        except ValueError:
+                            raise ValueError(f'Unresolved book link: {d["path"]}: {url}')
+                        if target.is_file():
+                            n['c'][2][0]='https://github.com/cluster1900/minimind_reader/blob/main/'+target.relative_to(ROOT).as_posix()
+                            if anchor:
+                                n['c'][2][0]+='#'+anchor
+                            continue
                     raise ValueError(f'Unresolved book link: {d["path"]}: {url}')
                 n['c'][2][0]='#'+targets[target][anchor]
         blocks=d['ast']['blocks']

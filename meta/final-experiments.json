@@ -1,30 +1,30 @@
 {
-  "started_at": "2026-09-09T10:32:08.227391+08:00",
-  "working_directory": "/Users/hawkwu/Desktop/minimind_reader",
-  "hardware": "macOS-26.6.2-arm64-arm-64bit",
+  "started_at": "2026-10-30T19:27:27.949224+08:00",
+  "working_directory": "/workspace/mmr-116",
+  "hardware": "Linux-6.12.94+-x86_64-with-glibc2.41",
   "status": "passed",
   "experiments": [
     {
       "chapter": "ch01",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch01_start_here.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch01_start_here.py"
       ],
-      "started_at": "2026-09-09T10:32:08.541359+08:00",
+      "started_at": "2026-10-30T19:27:28.409042+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch01.log",
-      "log_sha256": "92b4b4d66423c1390cd2102e4ed380e6a0477ed41a42e7425c43c1720e9a7baa",
+      "log_sha256": "cc28c5ca700e5f67640098454816f8eb1cf95e3211efd49345b5b0d02b7678d9",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "device": "cpu",
         "seed": 42,
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
         "transformers": "4.57.6",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
-        "script_sha256": "9912bf9ad28f0ea67cdba843a755129f7c0d5c809e854c717400ce1da3332e96",
-        "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
+        "script_sha256": "9267fdc3d4d938a617094a7d51e1494d59cdb6d2e57d3d5c6e4eef53c6f9cb01",
+        "source_sha256": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
         "tensor_last_value": 23.0,
         "linear_output": [
           [
@@ -45,25 +45,26 @@
         "model_loss": 3.5718185901641846,
         "parameters": 19648
       },
-      "result_sha256": "92b4b4d66423c1390cd2102e4ed380e6a0477ed41a42e7425c43c1720e9a7baa"
+      "result_sha256": "cc28c5ca700e5f67640098454816f8eb1cf95e3211efd49345b5b0d02b7678d9"
     },
     {
       "chapter": "ch02",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch02_tokenizer.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch02_tokenizer.py"
       ],
-      "started_at": "2026-09-09T10:32:10.305892+08:00",
+      "started_at": "2026-10-30T19:27:35.969355+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch02.log",
-      "log_sha256": "0fee2e01eb433ba7f6f834d5148c8327feaaaf7ebf09464334767635d61208cf",
+      "log_sha256": "8f4d246ed7319ea2e875eba9f9be0e5a682efe53b6ebdc52ea20fda88afdf267",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+        "torch": "2.6.0+cpu",
         "files": {
           "model/tokenizer.json": "71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668",
           "model/tokenizer_config.json": "d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110",
-          "trainer/train_tokenizer.py": "41c996fe0384b036972e9830731236ef47d34e5dcb10f13dbd134c1c578ca1a1"
+          "trainer/train_tokenizer.py": "0d6d6dcb21a066b7cc579d2be557fa8f266f3d6e6db0f665e0cc12ce8b6f0068"
         },
         "vocabulary": 6400,
         "bos": 1,
@@ -143,34 +144,49 @@
           "True": "<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n"
         },
         "assistant_training_template": "<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n你好！<|im_end|>\n",
+        "get_texts": {
+          "yielded": [
+            "one",
+            "two\nthree",
+            "four"
+          ],
+          "max_lines_1": [
+            "one"
+          ],
+          "max_lines_2": [
+            "one",
+            "two\nthree"
+          ],
+          "empty_error": "build/experiments/ch02-toy/empty.jsonl 中没有可用文本：每行应为 {\"text\": ...} 或 {\"conversations\": [{\"role\":..., \"content\":...}, ...]}。继续训练只会得到一个空词表。"
+        },
         "toy_vocabulary": 364,
         "toy_ids": [
           350,
           354
         ],
         "toy_roundtrip": "你好 hello",
-        "script_sha256": "754b6a5d426f153293fc6b45f640cf496316c32061d056e48513beaae7b2cd69"
+        "script_sha256": "f7324d5beb0ac725299ac3fef4ce27c5b5debd0e6c77cfe23dd635ed5f8d8089"
       },
-      "result_sha256": "1fd99c78cb5f106e49cc3869122c88811cc4f8971405c37529c6832c137f513c"
+      "result_sha256": "81b5b8b47ef590a61df0ecf9536ef320e6216d26fbb7622b25368cc01e4f4bd4"
     },
     {
       "chapter": "ch03",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch03_model_skeleton.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch03_model_skeleton.py"
       ],
-      "started_at": "2026-09-09T10:32:12.050078+08:00",
+      "started_at": "2026-10-30T19:27:41.510884+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch03.log",
-      "log_sha256": "53e61d2c9be4f1bcb22b9f778e310d0bb89d94db51d0f84dce603779d960d4c4",
+      "log_sha256": "d1f922d2693faf6eaa672cb82a2eb65f65122ff298919eb153170ce064b19d70",
       "result": {
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-        "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
-        "script_sha256": "0ed5506f26e6fec092c46d2b8040260843e9daad8e2886e3f0c9f4101cf50877",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+        "source_sha256": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
+        "script_sha256": "9ff540a1ae782f2acda8dd449872d7c071ba6ba71811b105594cfe86558466b6",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
         "transformers": "4.57.6",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -197,26 +213,26 @@
         },
         "status": "passed"
       },
-      "result_sha256": "53e61d2c9be4f1bcb22b9f778e310d0bb89d94db51d0f84dce603779d960d4c4"
+      "result_sha256": "d1f922d2693faf6eaa672cb82a2eb65f65122ff298919eb153170ce064b19d70"
     },
     {
       "chapter": "ch04",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch04_attention.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch04_attention.py"
       ],
-      "started_at": "2026-09-09T10:32:13.808644+08:00",
+      "started_at": "2026-10-30T19:27:46.329784+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch04.log",
-      "log_sha256": "820c141aafdea99365dc597e9aa0f6e7241880dc7f4463c97a809fb5aa556ce8",
+      "log_sha256": "30188a1ed112fb6d5ea0bb11f47a64d644e2d76c353c723db4804a5cb57c80ed",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "device": "cpu",
-        "torch": "2.6.0",
+        "torch": "2.6.0+cpu",
         "seed": 42,
-        "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
-        "script_sha256": "7cd664985e37a103d1a5adc59279fb65bb1a670e0d79e8436c1239c6a39bc32b",
+        "source_sha256": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
+        "script_sha256": "f42a5255141610e54e71360d44637ed6e2550587e8b4ad748a64a7e4a00d8db2",
         "toy_weights": [
           [
             1.0,
@@ -248,36 +264,50 @@
           2,
           8
         ],
-        "sdpa_manual_max_error": 5.960464477539063e-08,
+        "sdpa_manual_max_error": 8.940696716308594e-08,
         "future_perturbation_prefix_error": 0.0,
         "masked_key_valid_query_error": 0.0,
         "all_zero_mask_output_nonzero": true,
         "sdpa_called_for_unmasked_prefill": true,
-        "sdpa_skipped_for_padding_and_single_token": true
+        "sdpa_skipped_for_padding_and_single_token": true,
+        "rectangular_sdpa_first_channel": [
+          1.0,
+          1.5
+        ],
+        "cached_multi_token_skips_sdpa": true,
+        "cached_multi_token_error": 0.0,
+        "fp16_explicit_output_dtype": "torch.float16",
+        "fp16_explicit_softmax_scores_dtype": "torch.float32",
+        "fp16_explicit_padded_key_residual": 0.0,
+        "fp16_all_zero_fp32_mask_finite": true,
+        "fp16_qk_matmul_overflows": true,
+        "fp16_cast_after_overflow_stays_inf": true,
+        "fp16_matmul_in_fp32_recovers": 8000000.0,
+        "fp16_large_qk_norm_output_finite": false
       },
-      "result_sha256": "820c141aafdea99365dc597e9aa0f6e7241880dc7f4463c97a809fb5aa556ce8"
+      "result_sha256": "30188a1ed112fb6d5ea0bb11f47a64d644e2d76c353c723db4804a5cb57c80ed"
     },
     {
       "chapter": "ch05",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch05_rope_cache.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch05_rope_cache.py"
       ],
-      "started_at": "2026-09-09T10:32:15.533667+08:00",
+      "started_at": "2026-10-30T19:27:51.157445+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch05.log",
-      "log_sha256": "8b324d6fb606e16ac0f1755592a7f6aa4f99aa8479c93c6760dddf61ef2405c9",
+      "log_sha256": "02cec9a84a9914e3811664479eb241b8459af06754b1b701575218b920e83472",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "device": "cpu",
         "seed": 42,
-        "torch": "2.6.0",
-        "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
-        "script_sha256": "49deb7e05a055aa80163ea37201116860a1816148f5aac9bdbe147e07838f81f",
+        "torch": "2.6.0+cpu",
+        "source_sha256": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
+        "script_sha256": "f6084225804acef62888e4940d9e08cec604a42b65d2a1a9d9f837e4127b2b2f",
         "rope_relative_error": 2.384185791015625e-07,
-        "chunk_cache_error": 2.9802322387695312e-08,
-        "token_cache_error": 5.960464477539063e-08,
+        "chunk_cache_error": 2.2351741790771484e-08,
+        "token_cache_error": 7.450580596923828e-08,
         "cache_lengths": [
           1,
           2,
@@ -297,6 +327,8 @@
           ]
         ],
         "returned_cache_length": 6,
+        "resumed_generation_matches": true,
+        "right_padding_samples_last_column": true,
         "nucleus_distribution": [
           0.5714285969734192,
           0.4285714626312256,
@@ -311,21 +343,21 @@
           0.4211204946041107
         ]
       },
-      "result_sha256": "8b324d6fb606e16ac0f1755592a7f6aa4f99aa8479c93c6760dddf61ef2405c9"
+      "result_sha256": "02cec9a84a9914e3811664479eb241b8459af06754b1b701575218b920e83472"
     },
     {
       "chapter": "ch06",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch06_datasets.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch06_datasets.py"
       ],
-      "started_at": "2026-09-09T10:32:17.256131+08:00",
+      "started_at": "2026-10-30T19:27:55.787260+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch06.log",
-      "log_sha256": "673a73132e158e546df020c0516b37feac68da6d13a54fa561a78ab1d4809ee0",
+      "log_sha256": "c56b5f8eea7f14d3cd6f5555c69f0f3efb919b08bea6b093165ac9c33deaef19",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "device": "cpu",
         "seed": 42,
         "pretrain_ids": [
@@ -359,38 +391,41 @@
         "supervised_text": "甲答案<|im_end|>\n乙答案<|im_end|>\n",
         "supervised_count": 9,
         "shift_loss": 8.741042137145996,
+        "missing_end_supervised_padding": 3,
+        "intact_end_supervised_padding": 0,
         "ignored_logits_gradient_zero": true,
         "prompt_embedding_gradient_nonzero": true,
         "empty_target_loss": "nan",
         "files": {
-          "dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
-          "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+          "dataset/lm_dataset.py": "7e6eb82f760d2e7db3cfbc60a74bed9a179b7d8667fd8b49e4a3c010391707ab",
+          "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f"
         },
-        "script_sha256": "beb86fb13f0ca4dd79b23b99a2b02cc0856d93fe0577e86daed77aa2fac0d2ee"
+        "script_sha256": "3e32f61351848d21c125b0402a33d3a7913017e44bfc23ff020f7fccaf7a326a"
       },
-      "result_sha256": "84d92ff4b65a0f13e85e57a322b5a1768ff398f50ed20593bd24f9376b25f15d"
+      "result_sha256": "86f55f37a1896af11454e7dd6a8bad55a7d92e3d72134a1fdc6fff36afb47505"
     },
     {
       "chapter": "ch07",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch07_training_loop.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch07_training_loop.py"
       ],
-      "started_at": "2026-09-09T10:32:19.388814+08:00",
+      "started_at": "2026-10-30T19:28:00.661995+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch07.log",
-      "log_sha256": "2b26e3fb6b6291019088d235a630345e426de6d624d10f735520621f535b51f4",
+      "log_sha256": "f5c0cf26952cedab835f13cd5814955add6e3f117446b5421d2ae8e23f94fbb0",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "device": "cpu",
+        "torch": "2.6.0+cpu",
         "control_flow": {
           "train_pretrain": {
             "snapshot": {
               "step": 3,
-              "weight": 0.06499999761581421,
-              "grad": -0.9350000023841858,
-              "updates": 1
+              "weight": 0.07434999942779541,
+              "grad": null,
+              "updates": 2
             },
             "final_weight": 0.07434999942779541,
             "updates": 2
@@ -398,12 +433,57 @@
           "train_full_sft": {
             "snapshot": {
               "step": 3,
-              "weight": 0.06499999761581421,
-              "grad": -0.9350000023841858,
-              "updates": 1
+              "weight": 0.07434999942779541,
+              "grad": null,
+              "updates": 2
             },
             "final_weight": 0.07434999942779541,
             "updates": 2
+          },
+          "full_group": {
+            "snapshot": {
+              "step": 4,
+              "weight": 0.12780000269412994,
+              "grad": null,
+              "updates": 2
+            },
+            "final_weight": 0.12780000269412994,
+            "updates": 2
+          },
+          "mid_accumulation_save": {
+            "snapshots": [
+              {
+                "step": 3,
+                "weight": 0.0,
+                "grad": -1.5,
+                "updates": 0
+              },
+              {
+                "step": 5,
+                "weight": 0.04200252890586853,
+                "grad": null,
+                "updates": 2
+              }
+            ],
+            "final_weight": 0.04200252890586853,
+            "updates": 2
+          },
+          "start_step_resume": {
+            "start_step": 2,
+            "iters": 4,
+            "loader_len": 2,
+            "snapshot": {
+              "step": 4,
+              "weight": 0.019999999552965164,
+              "grad": null,
+              "updates": 1
+            },
+            "updates": 1
+          },
+          "empty_loader": {
+            "updates": 0,
+            "saves": 0,
+            "iters": 3
           }
         },
         "checkpoint_fields": [
@@ -415,7 +495,10 @@
           "wandb_id",
           "world_size"
         ],
-        "checkpoint_model_dtype": "torch.float16",
+        "checkpoint_model_dtype": "torch.float32",
+        "checkpoint_inference_dtype": "torch.float16",
+        "resume_weight": 9.99999993922529e-09,
+        "inference_weight": 0.0,
         "skip_batches": [
           [
             2,
@@ -426,28 +509,29 @@
           ]
         ],
         "files": {
-          "trainer/train_pretrain.py": "2009187e9b701f682292ebfc697bc3bfcd34c222848c00930cb88754374ae240",
-          "trainer/train_full_sft.py": "a9758012e7f2917420d7c42ea4d67a2e02ebfeaf1b746c35b43e6d47c5dc87b3",
-          "trainer/trainer_utils.py": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b"
+          "trainer/train_pretrain.py": "103e4fdbe60e2adf6905fab899e8acba35128c0cec2de9f46831ebf98e288a9c",
+          "trainer/train_full_sft.py": "e4259c38677ea7b710aab60cd1ef75d3429499414aa76b8188154b8d0404accd",
+          "trainer/trainer_utils.py": "a994037fb4f3cb0ad8a86ebdcbe2620045d1ca128a4c7733cb90a26aa9c2942d"
         },
-        "script_sha256": "4d49ec7715eabd87e790d4a28b83105ba1f40a8baf61dffb0d14e7c76d6c4998"
+        "script_sha256": "4a891b10d9d492535df8b8dab1afe6eee32dc67062e00e8aa868f71a5f6ba46a"
       },
-      "result_sha256": "2b26e3fb6b6291019088d235a630345e426de6d624d10f735520621f535b51f4"
+      "result_sha256": "f5c0cf26952cedab835f13cd5814955add6e3f117446b5421d2ae8e23f94fbb0"
     },
     {
       "chapter": "ch08",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch08_sft_evaluation.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch08_sft_evaluation.py"
       ],
-      "started_at": "2026-09-09T10:32:21.456897+08:00",
+      "started_at": "2026-10-30T19:28:06.548188+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch08.log",
-      "log_sha256": "4a280b482bab2f0f6c3a5a385fe8aa9bf2452bb9c0deb63942bd9b4a35ba84e4",
+      "log_sha256": "55d37b720e09765b25cb9d33096673b0491c18454510c3d2da5f691c87ac81f5",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "device": "cpu",
+        "torch": "2.6.0+cpu",
         "seed": 42,
         "steps": 80,
         "learning_rate": 0.003,
@@ -460,10 +544,10 @@
           "perplexity": 6483.5544366751665
         },
         "after_train": {
-          "nll_sum": 1.0073451101779938,
+          "nll_sum": 1.023040622472763,
           "valid_tokens": 9,
-          "nll": 0.11192723446422154,
-          "perplexity": 1.1184314744185573
+          "nll": 0.11367118027475145,
+          "perplexity": 1.1203836600609478
         },
         "before_held_out": {
           "nll_sum": 43.99115753173828,
@@ -472,10 +556,10 @@
           "perplexity": 6622.521756282219
         },
         "after_held_out": {
-          "nll_sum": 33.130191802978516,
+          "nll_sum": 33.978206634521484,
           "valid_tokens": 5,
-          "nll": 6.626038360595703,
-          "perplexity": 754.487235769565
+          "nll": 6.795641326904297,
+          "perplexity": 893.9423851039302
         },
         "history": [
           {
@@ -484,15 +568,15 @@
           },
           {
             "step": 20,
-            "loss": 5.202970027923584
+            "loss": 5.203004837036133
           },
           {
             "step": 40,
-            "loss": 1.8596545457839966
+            "loss": 1.8596463203430176
           },
           {
             "step": 80,
-            "loss": 0.12018837034702301
+            "loss": 0.1222476065158844
           }
         ],
         "generated": [
@@ -525,43 +609,63 @@
           "token_mean": 2.8,
           "batch_mean": 2.0
         },
+        "load_from_routing": {
+          "model": "native",
+          "../model": "native",
+          "./model": "native",
+          "model/": "native",
+          "/abs/path/model": "native",
+          "foo_model_bar": "transformers",
+          "../foo_model_bar": "transformers",
+          "out/foo_model_bar": "transformers",
+          "my_model": "transformers",
+          "model_ckpt": "transformers",
+          "../model_out": "transformers"
+        },
         "corpus_sha256": "cc033befe5d600256f593063a0ae505ef4513991aaa9d596a311fdf5bda09cfe",
-        "script_sha256": "25a8b8207744688a64f12e125e19432e7044743c4ee74bd026c3cc35eef02eb6",
+        "script_sha256": "6e8ebbc37b006fb9de1ae9a760c08dad28ede9411d9316f53c2cc29b386bed36",
         "files": {
-          "dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
-          "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+          "dataset/lm_dataset.py": "7e6eb82f760d2e7db3cfbc60a74bed9a179b7d8667fd8b49e4a3c010391707ab",
+          "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
+          "eval_llm.py": "af0f0c72b9e06ceb9662a5ad4fb320efb73116eb8c2ca33fdad8b40208e15b82"
         }
       },
-      "result_sha256": "cf4f97dfde1347a8ed826b8c6bd9bcd5f3577ab91f1347376a71e38babdf56e4"
+      "result_sha256": "c51f8fd62066c47d03b46b1f120cda841913208f11f32877345310b4bea1bf91"
     },
     {
       "chapter": "ch09",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch09_moe.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch09_moe.py"
       ],
-      "started_at": "2026-09-09T10:32:24.010619+08:00",
+      "started_at": "2026-10-30T19:28:13.437044+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch09.log",
-      "log_sha256": "4684076b246db1486970cc141075b71eb1d1da744409eafb14f341499fac600b",
+      "log_sha256": "f051a851aa3a12cc1a6e816d2cd11a8843916e25f8ca0e29b6183809c528338f",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "source_repository": "minimind",
         "files": {
-          "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+          "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f"
         },
-        "script_sha256": "355fbf0432a7337be1af20605cb78da825ad2c877ba7400dfd48705c58142371",
+        "script_sha256": "10fdc66b7ef11fe65569f7d032cfc577d6b64670f17c92d6d1e46f156fd6cd01",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
-          "top1_main_gate_grad": 2.8271981977745497e-10,
-          "gate_grad_with_aux": 0.007734269369393587,
+          "top1_main_gate_grad": 0.009189479984343052,
+          "top1_main_input_grad": 0.018535858020186424,
+          "top1_selected_expert_grad": 0.106538787484169,
           "inactive_expert_grads": "present and zero",
+          "top1_main_input_matches_expert_only": true,
+          "top1_aux_gate_grad": 0.0077342689037323,
+          "top1_aux_input_grad": 0.004282622132450342,
+          "top1_aux_expert_grads": "none",
+          "gate_grad_with_aux": 0.016923747956752777,
           "token_permutation_equivariant": true,
           "uniform_prob_aux_k1_k2": [
             0.009999999776482582,
@@ -570,33 +674,35 @@
           "model_aux_sum": 0.0010190577013418078
         }
       },
-      "result_sha256": "4684076b246db1486970cc141075b71eb1d1da744409eafb14f341499fac600b"
+      "result_sha256": "f051a851aa3a12cc1a6e816d2cd11a8843916e25f8ca0e29b6183809c528338f"
     },
     {
       "chapter": "ch10",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch10_lora_distillation.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch10_lora_distillation.py"
       ],
-      "started_at": "2026-09-09T10:32:25.752594+08:00",
+      "started_at": "2026-10-30T19:28:17.392499+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch10.log",
-      "log_sha256": "7fb3639c549f7b206525e4ccc6ceabe3970b6f53b52524075cb79e756cccd824",
+      "log_sha256": "c04c4de4b6adee1d23d8e081bd356c1bcb9863da432c62625095d51fb1868dda",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "source_repository": "minimind",
         "files": {
-          "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+          "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
           "model/model_lora.py": "dcb5196e968be99a4059416f165014bd4cb2bffbf33c74ed445266a1a689c5a5",
-          "trainer/train_lora.py": "e710463862139d1b9876728fda21e455f899b66f7c67c7f7010410224851067a",
-          "trainer/train_distillation.py": "cc588e9aaf95ede7189833f7100fec320d6bac45d491ecad88d7622374e44107"
+          "trainer/train_lora.py": "1a0339e4f5f5bae06baacd0ebec78882b28febdfbfe0f45ef3d57a1fe5cf05d0",
+          "trainer/train_distillation.py": "3f41c9c5caf90e90e04bc104b196cef5bceda981510e78b1beecc33b216b23a7",
+          "eval_llm.py": "af0f0c72b9e06ceb9662a5ad4fb320efb73116eb8c2ca33fdad8b40208e15b82",
+          "scripts/serve_openai_api.py": "0bf94942af70ea01175dd324335b0d5ec91f221a377b2597fc4a4b2163a85499"
         },
-        "script_sha256": "76a24b691a0f278c323b6288b79e9fef283273c5d2f41ea576922124c1282789",
+        "script_sha256": "8a941a8d9e314a73a04bef79a6d419add5051f2a4fd23006c91da8324728814c",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -607,40 +713,48 @@
             "model.layers.1.self_attn.o_proj"
           ],
           "lora_trainable": 1024,
+          "square_tied_head_merge_error": 1.8208376169204712,
+          "square_tied_embedding_change": 0.1250705122947693,
           "first_a_gradient": 0.0,
-          "first_b_gradient": 1.118733286857605,
-          "merge_max_logit_error": 0.00015908479690551758,
+          "first_b_gradient": 1.1187331303954124,
+          "merge_max_logit_error": 0.00015778839588165283,
+          "apply_lora_default_rank": 16,
+          "cli_lora_rank_default": 16,
+          "train_rank": 4,
+          "eval_default_rank": 16,
+          "matching_rank_load_max_logit_error": 1.1622905731201172e-06,
+          "wrong_rank_load": "size_mismatch",
           "distillation_loss": 0.15789097547531128,
           "equal_distribution_loss": 5.960464477539063e-08,
           "permuted_vocabulary_loss": 0.1843162178993225,
           "teacher_gradient": null
         }
       },
-      "result_sha256": "7fb3639c549f7b206525e4ccc6ceabe3970b6f53b52524075cb79e756cccd824"
+      "result_sha256": "c04c4de4b6adee1d23d8e081bd356c1bcb9863da432c62625095d51fb1868dda"
     },
     {
       "chapter": "ch11",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch11_dpo.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch11_dpo.py"
       ],
-      "started_at": "2026-09-09T10:32:27.903231+08:00",
+      "started_at": "2026-10-30T19:28:21.122213+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch11.log",
-      "log_sha256": "0308e2b03f44a3471c47ecc8ad9b1a78805bdb33c79152ca0ae10211bb1ece6c",
+      "log_sha256": "047ec256fa8e163531930de021363ab6625c752c7291896645a98a9ecd174ea6",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "source_repository": "minimind",
         "files": {
-          "trainer/train_dpo.py": "842e10371c7189b77835b23632afb9d65806af2f621c72361a6dd9a864a6d81e",
-          "dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8"
+          "trainer/train_dpo.py": "a25c707baf672fff28d8a2776a0c3b621fe4a4bff1ad26eea340f204546d9286",
+          "dataset/lm_dataset.py": "7e6eb82f760d2e7db3cfbc60a74bed9a179b7d8667fd8b49e4a3c010391707ab"
         },
-        "script_sha256": "48d410dc603ca3bcdf9583f4cb4839901a1811ac5ec4a75e7b78192334704b77",
+        "script_sha256": "13049ade97c22f98b65fdd4fa28cc9e90335347ef88c4d23d442f7a3676802af",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -659,45 +773,59 @@
           "empty_mask_loss": 0.6931471824645996,
           "dataset_length": 63,
           "chosen_supervised": 5,
-          "rejected_supervised": 11,
-          "identical_answers_augmented_differently": true,
+          "rejected_supervised": 5,
+          "identical_answers_share_decision": true,
           "identical_pair_counts": [
             5,
-            11
-          ]
+            5
+          ],
+          "different_pair_keeps_empty_think": false,
+          "identical_pair_keeps_empty_think": false
         }
       },
-      "result_sha256": "22dcca4452fa797be827f7905505eb0739fcc3ac1c06fa7c3c03f7058a619995"
+      "result_sha256": "7b8e9e150abef3c6990dce39551e1b97428ad0694d7a275daa92d0ddb3ca147d"
     },
     {
       "chapter": "ch12",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch12_rl_objectives.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch12_rl_objectives.py"
       ],
-      "started_at": "2026-09-09T10:32:30.072974+08:00",
+      "started_at": "2026-10-30T19:28:24.778169+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch12.log",
-      "log_sha256": "bc32ab78596f3ecbedfb414029a4f346bbe1013fadb3153698e049dd7d819d63",
+      "log_sha256": "c3e772dc8bc6e7a20e57c4959d4479bc0b738e7b87df055cddb0e402aff916db",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "source_repository": "minimind",
         "files": {
-          "trainer/train_ppo.py": "c8fa026fcbf8613039dbb388807d794c6b73d93803f12e237fcc81b40d992ed4",
-          "trainer/train_grpo.py": "485765a15db7a7d8dca950ffc3f98dc8624a7f52be88c813b78ec8fc0431f5ae",
-          "trainer/rollout_engine.py": "a01891b6855dfd9b2bfc4dcea5e3cf549ce20454966f28a10eab7cb2461c78be",
-          "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+          "trainer/train_ppo.py": "813583b7d9cead9b303d467858011a5b4d8e2ef5e4ae141c1268d65cb801e19e",
+          "trainer/train_grpo.py": "449d070bc1e1fc43aeb5554fb132bc26a201458e5cbb563c918f85cc74f68406",
+          "trainer/rollout_engine.py": "04ccde11243c17e992f1d7b1fc11483e437b20a1404099c3ccd9cff5850a8502",
+          "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f"
         },
-        "script_sha256": "7954291cfe95819b063c370ef38a1e152f5c7281f6af14c39310f8dd573fba8d",
+        "script_sha256": "b6e6519bca85cc0fa5256d375bd951e3e438e00062d19c6c2982703c6e038af2",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
           "validation": "source AST arithmetic blocks and real Critic/logprob helper; no full RL run",
+          "missing_remote_logprobs": [
+            [
+              0.0,
+              -0.699999988079071
+            ]
+          ],
+          "missing_remote_logprob_mask": [
+            [
+              1,
+              1
+            ]
+          ],
           "gae_returns": [
             [
               1.0,
@@ -753,78 +881,222 @@
                 0.1666666716337204
               ]
             ]
-          }
+          },
+          "pad_id_naive_mask": [
+            [
+              0,
+              1,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "pad_id_restored_mask": [
+            [
+              0,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "eos_completion_mask": [
+            [
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          "ppo_eos_policy_mask": [
+            [
+              1.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "torch_prompt_lens": [
+            4,
+            4
+          ],
+          "torch_completion_mask": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "sglang_stripped_input_ids": [
+            [
+              1,
+              4
+            ],
+            [
+              5,
+              6,
+              7
+            ]
+          ],
+          "sglang_prompt_lens": [
+            2,
+            3
+          ],
+          "sglang_right_padded_completion_ids": [
+            [
+              8,
+              2
+            ],
+            [
+              9,
+              0
+            ]
+          ],
+          "sglang_right_padded_output_ids": [
+            [
+              1,
+              4,
+              8,
+              2,
+              0
+            ],
+            [
+              5,
+              6,
+              7,
+              9,
+              0
+            ]
+          ],
+          "sglang_completion_mask": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "sglang_right_padded_logps": [
+            [
+              -0.5,
+              -0.699999988079071
+            ],
+            [
+              -0.30000001192092896,
+              0.0
+            ]
+          ],
+          "ddp": {
+            "ok": true,
+            "rank": 0,
+            "backend": "gloo",
+            "world_size": 2,
+            "broadcast_buffers": false,
+            "logps_unwrapped": true,
+            "training_forward_through_ddp": true,
+            "critic_through_ddp": true,
+            "buffers_not_broadcast": true,
+            "grads_equal_after_backward": true,
+            "buffer_deltas": [
+              1.0,
+              0.0
+            ]
+          },
+          "real_sglang_service": false,
+          "ddp_device_ids_cuda_path": false
         }
       },
-      "result_sha256": "bc32ab78596f3ecbedfb414029a4f346bbe1013fadb3153698e049dd7d819d63"
+      "result_sha256": "c3e772dc8bc6e7a20e57c4959d4479bc0b738e7b87df055cddb0e402aff916db"
     },
     {
       "chapter": "ch13",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch13_agent.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch13_agent.py"
       ],
-      "started_at": "2026-09-09T10:32:32.207038+08:00",
+      "started_at": "2026-10-30T19:28:32.580272+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch13.log",
-      "log_sha256": "57637b478ebd6d89330cad122b68cd213929b3593b5a7978b15323ce3ee4786d",
+      "log_sha256": "e9f6de6a14448f0c3cdc7401ec9fa1a118f032c5474dce7520335ac205f92d5a",
       "result": {
         "status": "passed",
-        "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+        "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
         "source_repository": "minimind",
         "files": {
-          "trainer/train_agent.py": "57e4c8c19052eaf62e3660102fdeb8985c412c96f5f666818a1db6508a699a80",
-          "trainer/rollout_engine.py": "a01891b6855dfd9b2bfc4dcea5e3cf549ce20454966f28a10eab7cb2461c78be",
+          "trainer/train_agent.py": "676e6c392636cc2a84ffc092a0246849497353b700bbc929beb9e534aad1438a",
+          "trainer/rollout_engine.py": "04ccde11243c17e992f1d7b1fc11483e437b20a1404099c3ccd9cff5850a8502",
           "model/tokenizer_config.json": "d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110"
         },
-        "script_sha256": "4ccf3f762121984fb533bb30deb7146b2088d91cc0d1a81a22290e363c7796cd",
+        "script_sha256": "d690798c1dc3a93b7f3a2164a2d00af7af64600086277a0fb174f2f08fab9b74",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
           "generation": "scripted, not a learned policy",
           "turns": 2,
-          "response_tokens": 70,
+          "response_tokens": 71,
           "generated_tokens": 39,
-          "observation_tokens": 31,
-          "token_reconstruction_exact": true,
+          "observation_tokens": 32,
+          "token_reconstruction_exact": false,
+          "next_round_input_equals_retained_trajectory": true,
+          "eos_retained_in_response": true,
+          "eos_policy_mask_zero": true,
+          "observation_appended_once": true,
+          "ids_mask_logps_aligned": true,
           "final_answer": "计算结果是3。",
           "reward": 3.0,
           "unfinished_reward": -0.03333333507180214,
+          "non_object_json_calls": [],
+          "non_object_json_rollout_no_get_crash": true,
+          "marker_missing_raises": true,
+          "logprob_length_mismatch_raises": true,
+          "noncontiguous_mask_uses_prefix_sum": true,
           "malformed_json_calls": [],
           "unknown_tool": null,
           "max_turns_still_executes_tool": true,
           "numeric_substring_gt_false_positive": true
         }
       },
-      "result_sha256": "57637b478ebd6d89330cad122b68cd213929b3593b5a7978b15323ce3ee4786d"
+      "result_sha256": "e9f6de6a14448f0c3cdc7401ec9fa1a118f032c5474dce7520335ac205f92d5a"
     },
     {
       "chapter": "ch14",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch14_vision.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch14_vision.py"
       ],
-      "started_at": "2026-09-09T10:32:34.316111+08:00",
+      "started_at": "2026-10-30T19:28:36.249328+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch14.log",
-      "log_sha256": "1df855ae7a3d9322a42969788d143595667a57b80e96c3dea1767065184a92c5",
+      "log_sha256": "70c940a8ea118e770de25ba0f7f46ae314f49fda80ae12fb08382cb688467196",
       "result": {
         "status": "passed",
-        "source_commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+        "source_commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
         "source_repository": "minimind-v",
         "files": {
           "model/model_vlm.py": "02f175bd2ef75dbf4d5f22f5f9f09234922acca4ebe7340d0dfefa813343baf3",
-          "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+          "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f"
         },
-        "script_sha256": "2c998aedec95c7faec93a1314a70c7f6d6111bb892ae9709a6f6a75c6c1bd6c2",
+        "script_sha256": "9f51933a3eb0ff2d20a8255681e4106bd65e6ce762c1e2c7486c1084dc492759",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -836,40 +1108,43 @@
           ],
           "projector_gradient_nonzero": true,
           "encoder_gradients_none": true,
-          "cached_decode_error": 1.4901161193847656e-07,
+          "cached_decode_error": 1.1920928955078125e-07,
           "prefill_only_encoder_call": true,
+          "dictionary_4d_5d_logits_equal": true,
+          "plain_tensor_error": "SiglipVisionModel(\n  (vision_model): SiglipVisionTransformer(\n    (embeddings): SiglipVisionEmbeddings(\n      (patch_embedding): Conv2d(3, 16, kernel_size=(16, 16), stride=(16, 16), padding=valid)\n      (position_embedding): Embedding(4, 16)\n    )\n    (encoder): SiglipEncoder(\n      (layers): ModuleList(\n        (0): SiglipEncoderLayer(\n          (layer_norm1): LayerNorm((16,), eps=1e-06, elementwise_affine=True)\n          (self_attn): SiglipAttention(\n            (k_proj): Linear(in_features=16, out_features=16, bias=True)\n            (v_proj): Linear(in_features=16, out_features=16, bias=True)\n            (q_proj): Linear(in_features=16, out_features=16, bias=True)\n            (out_proj): Linear(in_features=16, out_features=16, bias=True)\n          )\n          (layer_norm2): LayerNorm((16,), eps=1e-06, elementwise_affine=True)\n          (mlp): SiglipMLP(\n            (activation_fn): GELUTanh()\n            (fc1): Linear(in_features=16, out_features=32, bias=True)\n            (fc2): Linear(in_features=32, out_features=16, bias=True)\n          )\n        )\n      )\n    )\n    (post_layernorm): LayerNorm((16,), eps=1e-06, elementwise_affine=True)\n    (head): SiglipMultiheadAttentionPoolingHead(\n      (attention): MultiheadAttention(\n        (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)\n      )\n      (layernorm): LayerNorm((16,), eps=1e-06, elementwise_affine=True)\n      (mlp): SiglipMLP(\n        (activation_fn): GELUTanh()\n        (fc1): Linear(in_features=16, out_features=32, bias=True)\n        (fc2): Linear(in_features=32, out_features=16, bias=True)\n      )\n    )\n  )\n) argument after ** must be a mapping, not Tensor",
           "separated_images_correct": true,
           "adjacent_marker_input_length": 10,
           "adjacent_marker_output_length": 6
         }
       },
-      "result_sha256": "1df855ae7a3d9322a42969788d143595667a57b80e96c3dea1767065184a92c5"
+      "result_sha256": "70c940a8ea118e770de25ba0f7f46ae314f49fda80ae12fb08382cb688467196"
     },
     {
       "chapter": "ch15",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch15_vlm_training.py"
+        "/workspace/mmr-116/.venv/bin/python",
+        "/workspace/mmr-116/experiments/ch15_vlm_training.py"
       ],
-      "started_at": "2026-09-09T10:32:36.086343+08:00",
+      "started_at": "2026-10-30T19:28:39.739364+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch15.log",
-      "log_sha256": "46a7b7a2293f5d885113b3045275f73220b6c61850069862d739e8496c9d6e30",
+      "log_sha256": "b243a89b1c547ec8f0e656e4f0525a83ef11af1a618ceec362e63a33bfc1e064",
       "result": {
         "status": "passed",
-        "source_commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+        "source_commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
         "source_repository": "minimind-v",
         "files": {
           "trainer/trainer_utils.py": "c8c3c1da9dec56deba447f59a84388106e14194a1b058a0817cd7204549a1ff2",
           "dataset/lm_dataset.py": "3b7816ffb72d7d6232a54bb776ff2ed73a8fc1fcdcd67501480f7e00be5e3d24",
-          "trainer/train_pretrain_vlm.py": "b9fb840aa9cd0da6e3a3b09839ee2d4a8139dc365edb16245742cd37739a1fc7",
-          "trainer/train_sft_vlm.py": "bca6bab569964a828c644a7eb8986181e19f443ea48557e5fdda7a576583393d"
+          "trainer/train_pretrain_vlm.py": "126967eae153ec70d512af8d3a4f0a8841da61777b78abc4a82981be04732404",
+          "trainer/train_sft_vlm.py": "5c7d27bd05ff0fb473d5c6450f7a09f4abd440260671839af59ef3a4d30514f2",
+          "eval_vlm.py": "4a172286c8008e81cc8c80e6c23906b3cda36469d9cfa2bcd47f64a93dc48af0"
         },
-        "script_sha256": "0e4220533ee4cc3c737e00eba2218c0e6e663ab0df6962e14e354005aeaca707",
+        "script_sha256": "642ed66b864a335f35e0bc63daddf057cc692f38450320a614db0790e5989510",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -981,38 +1256,121 @@
             32
           ],
           "unequal_image_count_collate_rejected": true,
-          "projector_gradient_with_frozen_llm": 3.5333184264600277,
+          "projector_gradient_with_frozen_llm": 3.5333178006112576,
           "export_excludes_encoder": true,
           "resume_contains_encoder": true,
+          "resume_is_full_state_dict": true,
           "export_dtype": "float16",
-          "resume_dtype": "float32"
+          "resume_dtype": "float32",
+          "resume_tiny": 1e-08,
+          "inference_tiny": 0.0,
+          "load_from_routing": {
+            "model": "native",
+            "../model": "native",
+            "./model": "native",
+            "model/": "native",
+            "/abs/path/model": "native",
+            "foo_model_bar": "transformers",
+            "../foo_model_bar": "transformers",
+            "out/foo_model_bar": "transformers",
+            "my_model": "transformers",
+            "model_ckpt": "transformers",
+            "../model_out": "transformers"
+          },
+          "control_flow": {
+            "train_pretrain_vlm": {
+              "snapshot": {
+                "step": 3,
+                "weight": 0.07434999942779541,
+                "grad": null,
+                "updates": 2
+              },
+              "final_weight": 0.07434999942779541,
+              "updates": 2
+            },
+            "train_sft_vlm": {
+              "snapshot": {
+                "step": 3,
+                "weight": 0.07434999942779541,
+                "grad": null,
+                "updates": 2
+              },
+              "final_weight": 0.07434999942779541,
+              "updates": 2
+            },
+            "full_group": {
+              "snapshot": {
+                "step": 4,
+                "weight": 0.12780000269412994,
+                "grad": null,
+                "updates": 2
+              },
+              "final_weight": 0.12780000269412994,
+              "updates": 2
+            },
+            "mid_accumulation_save": {
+              "snapshots": [
+                {
+                  "step": 3,
+                  "weight": 0.0,
+                  "grad": -1.5,
+                  "updates": 0
+                },
+                {
+                  "step": 5,
+                  "weight": 0.04200252890586853,
+                  "grad": null,
+                  "updates": 2
+                }
+              ],
+              "final_weight": 0.04200252890586853,
+              "updates": 2
+            },
+            "start_step_resume": {
+              "start_step": 2,
+              "iters": 4,
+              "loader_len": 2,
+              "snapshot": {
+                "step": 4,
+                "weight": 0.019999999552965164,
+                "grad": null,
+                "updates": 1
+              },
+              "updates": 1
+            },
+            "empty_loader": {
+              "updates": 0,
+              "saves": 0,
+              "iters": 3
+            }
+          }
         }
       },
-      "result_sha256": "546f912a49e87358431f6ef5d5362c65cc5e11330a4c089b4cada03c13893ab7"
+      "result_sha256": "c4cf089347e19b0339e2ff235adce541866ed9e6ad8073b840572e6be20b672f"
     },
     {
       "chapter": "ch16",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv-omni/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch16_audio_input.py"
+        "/workspace/mmr-116/.venv-omni/bin/python",
+        "/workspace/mmr-116/experiments/ch16_audio_input.py"
       ],
-      "started_at": "2026-09-09T10:32:38.352381+08:00",
+      "started_at": "2026-10-30T19:28:43.505950+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch16.log",
-      "log_sha256": "2b2c6df319c2268e908ad93416eaa2fd1726ad3574d183c4123ec32d6b188773",
+      "log_sha256": "6fbac466cfc38147c06d8401119e2c059bf5dc9550e057b662190edb96fe52be",
       "result": {
         "status": "passed",
-        "source_commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+        "source_commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
         "source_repository": "minimind-o",
         "files": {
           "model/model_omni.py": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c",
           "dataset/omni_dataset.py": "06c305bf010dc47dcbe812b0b01316563e10537c32b61efdfa37ad7065fdff56"
         },
-        "script_sha256": "0898ff0cbaeeb5d067e86bb8da158e6d1c39d1056bbdee5734f36f23680d89b8",
+        "script_sha256": "22f46d2cb80db7475d421b1228382bb7cc005622c36f8138b5ca33d13964e251",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -1031,6 +1389,8 @@
             3,
             32
           ],
+          "encoder_reported_length": 1,
+          "retained_length_from_input": 3,
           "dummy_row_preserved": true,
           "injection_preserves_length": true,
           "unfilled_marker_preserved": true,
@@ -1039,31 +1399,31 @@
           "processor_does_not_resample": true
         }
       },
-      "result_sha256": "3e34675e56c984b4d7c9c2bccc979dce39cce1613afe26ac4ffd1af89218b405"
+      "result_sha256": "052aa33bc4fa99a36b4cb69b552a7867620d6feddb67a181e53cee690bd63a5d"
     },
     {
       "chapter": "ch17",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv-omni/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch17_thinker_talker.py"
+        "/workspace/mmr-116/.venv-omni/bin/python",
+        "/workspace/mmr-116/experiments/ch17_thinker_talker.py"
       ],
-      "started_at": "2026-09-09T10:32:43.767100+08:00",
+      "started_at": "2026-10-30T19:28:47.350021+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch17.log",
-      "log_sha256": "73203b9cde75b07ec7353c10a68938b50fcbf8be997d1fef0a1e5d8a4aea51e1",
+      "log_sha256": "8bbf1db1056730615671cf93795968e36908c9b6404d37267a5ab328ce176853",
       "result": {
         "status": "passed",
-        "source_commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+        "source_commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
         "source_repository": "minimind-o",
         "files": {
           "model/model_omni.py": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c",
-          "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+          "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f"
         },
-        "script_sha256": "cc3d9174703514e8c001e4fe3658424c8367e32bfd237194339742ef05bf5683",
+        "script_sha256": "84da93d62343c7d4ecdb4a7ed1d3ce3eb1961154e0e73169ea230ef9ad4a48f6",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -1076,35 +1436,36 @@
           "cache_layers": 6,
           "audio_only_loss_reaches_prefix_not_later_blocks": true,
           "invalid_single_layer_bridge": -1,
-          "invalid_bridge_falls_back_to_embedding": true
+          "invalid_bridge_without_modalities_matches_embedding": true,
+          "invalid_bridge_preserves_injected_audio": true
         }
       },
-      "result_sha256": "ceb7fe148d3abea107e5cd6f1fc6e8f39332f9116edc4c34669d78e69db5a3c9"
+      "result_sha256": "805be18644577b4770f8d495de505aa32fe2957254aa8fa4815939d98580f51e"
     },
     {
       "chapter": "ch18",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv-omni/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch18_audio_codes.py"
+        "/workspace/mmr-116/.venv-omni/bin/python",
+        "/workspace/mmr-116/experiments/ch18_audio_codes.py"
       ],
-      "started_at": "2026-09-09T10:32:46.410613+08:00",
+      "started_at": "2026-10-30T19:28:50.920476+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch18.log",
-      "log_sha256": "a95f307cc8d9b97eb97650df3134b1d21eb7ba4f21f667f92a74f97e36d6c07c",
+      "log_sha256": "157c959924065a255a904a14f149c50807081d4291d9c572b732a4a2038951b4",
       "result": {
         "status": "passed",
-        "source_commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+        "source_commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
         "source_repository": "minimind-o",
         "files": {
           "model/model_omni.py": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c",
           "dataset/omni_dataset.py": "06c305bf010dc47dcbe812b0b01316563e10537c32b61efdfa37ad7065fdff56",
-          "eval_omni.py": "fcb81cef734a2a1b8ac56bd686798c44b178b809efd38ead43d9bd7a3de0554c"
+          "eval_omni.py": "0a13b6161c0ea11d8260a083e5a6ca5a064eca1708894916053cd7d0411c384c"
         },
-        "script_sha256": "9e4b7a2b75b4a33d5ec799687908c8c23555c8e626fb346248a50d064e62e748",
+        "script_sha256": "33a71dfb08f7db4a32ef053d74ee84e592e87d5e3120f80d5753eea2aa7af946",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -1123,6 +1484,21 @@
             26,
             27
           ],
+          "nonstream_last_yield": [
+            null,
+            [
+              12,
+              112,
+              212,
+              312,
+              412,
+              512,
+              612,
+              712
+            ]
+          ],
+          "nonstream_disables_grad": true,
+          "text_yields_are_prefixes": true,
           "streamed": {
             "False": {
               "frames": [
@@ -1213,34 +1589,35 @@
           "default_enter_id_201_is_not_newline": true
         }
       },
-      "result_sha256": "03e4f0d8e50c1728c11373da7fbf4ca8339e8adafc1c60925bb05e0d65deb40b"
+      "result_sha256": "157c959924065a255a904a14f149c50807081d4291d9c572b732a4a2038951b4"
     },
     {
       "chapter": "ch19",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv-omni/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch19_omni_training.py"
+        "/workspace/mmr-116/.venv-omni/bin/python",
+        "/workspace/mmr-116/experiments/ch19_omni_training.py"
       ],
-      "started_at": "2026-09-09T10:32:49.039861+08:00",
+      "started_at": "2026-10-30T19:28:54.290789+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch19.log",
-      "log_sha256": "5ef1d373011f3f66c286f09640b5bc619f8d48f3f045afbccdf220038b6fd1d4",
+      "log_sha256": "4b2e216cf260ff79b78fef92f26c05b453eeae876a6e461112e570a384214cb4",
       "result": {
         "status": "passed",
-        "source_commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+        "source_commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
         "source_repository": "minimind-o",
         "files": {
-          "trainer/train_sft_omni.py": "270b65e682816968fe5edf2440936e1a702ea677b4f0d81d9a66e2ac7feb688a",
-          "trainer/trainer_utils.py": "61bf26516a60f808aaa117617c874d2bd4898b6583cb527df4603e95d334a708",
+          "trainer/train_sft_omni.py": "886f12d2024ad3ec7c8cf5526af487b693fd34fc26414cf6a40a07b8ad41b7c1",
+          "trainer/trainer_utils.py": "2516beba1d0237b8f2e8ac64526c648fbb92b26c83aea1ca6715d9c7c59e64f9",
           "dataset/omni_dataset.py": "06c305bf010dc47dcbe812b0b01316563e10537c32b61efdfa37ad7065fdff56",
           "model/model_omni.py": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c",
-          "trainer/train.sh": "dc1758ddca19bcf3a78ab7367c3725b14c4027569c2e5df6117d28d1a3d0f8a4"
+          "trainer/train.sh": "dc1758ddca19bcf3a78ab7367c3725b14c4027569c2e5df6117d28d1a3d0f8a4",
+          "eval_omni.py": "0a13b6161c0ea11d8260a083e5a6ca5a064eca1708894916053cd7d0411c384c"
         },
-        "script_sha256": "50203a72873ed061616cab3b5769cd70a2c7d6dc74d12d87f2e0ce3df25f5a18",
+        "script_sha256": "9658593c67aa4b0833d94a94c5af985d78b13208c64ac6229edce7fd2b176c53",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -1250,13 +1627,15 @@
             "all": 9004018,
             "last1": 9019450
           },
+          "empty_text_loss": 0.0,
+          "empty_audio_loss": 0.0,
           "projector_modes": {
             "audio_proj": 18496,
             "vision_proj": 27200
           },
           "text_loss": 1.0986123085021973,
           "audio_loss": 5.263081073760986,
-          "stop_gradient_ratio": 9.999961853027344,
+          "stop_gradient_ratio": 9.999981880187988,
           "valid_audio_batch": [
             2,
             3,
@@ -1269,36 +1648,109 @@
           "scheduled_sampling_is_random_token_corruption": true,
           "image_marker_protected": true,
           "audio_marker_not_explicitly_protected": true,
-          "resume_model_dtype": "float16",
-          "resume_excludes_external_encoders": true
+          "resume_model_dtype": "float32",
+          "resume_excludes_external_encoders": true,
+          "inference_dtype": "float16",
+          "resume_weight": 9.99999993922529e-09,
+          "inference_weight": 0.0,
+          "load_from_routing": {
+            "model": "native",
+            "../model": "native",
+            "./model": "native",
+            "model/": "native",
+            "/abs/path/model": "native",
+            "foo_model_bar": "transformers",
+            "../foo_model_bar": "transformers",
+            "out/foo_model_bar": "transformers",
+            "my_model": "transformers",
+            "model_ckpt": "transformers",
+            "../model_out": "transformers"
+          },
+          "control_flow": {
+            "tail_group": {
+              "snapshot": {
+                "step": 3,
+                "weight": 0.07434999942779541,
+                "grad": null,
+                "updates": 2
+              },
+              "final_weight": 0.07434999942779541,
+              "updates": 2
+            },
+            "full_group": {
+              "snapshot": {
+                "step": 4,
+                "weight": 0.12780000269412994,
+                "grad": null,
+                "updates": 2
+              },
+              "final_weight": 0.12780000269412994,
+              "updates": 2
+            },
+            "mid_accumulation_save": {
+              "snapshots": [
+                {
+                  "step": 3,
+                  "weight": 0.0,
+                  "grad": -1.5,
+                  "updates": 0
+                },
+                {
+                  "step": 5,
+                  "weight": 0.04200252890586853,
+                  "grad": null,
+                  "updates": 2
+                }
+              ],
+              "final_weight": 0.04200252890586853,
+              "updates": 2
+            },
+            "start_step_resume": {
+              "start_step": 2,
+              "iters": 4,
+              "loader_len": 2,
+              "snapshot": {
+                "step": 4,
+                "weight": 0.019999999552965164,
+                "grad": null,
+                "updates": 1
+              },
+              "updates": 1
+            },
+            "empty_loader": {
+              "updates": 0,
+              "saves": 0,
+              "iters": 3
+            }
+          }
         }
       },
-      "result_sha256": "e31aeed5cbae6808383aef36a36e88ee8031cf337c40881386c606f2cdccb597"
+      "result_sha256": "aa54e9a55b896a7d64f43839882fd29bef00faf1091f80bef2169946ce3545e3"
     },
     {
       "chapter": "ch20",
       "command": [
-        "/Users/hawkwu/Desktop/minimind_reader/.venv-omni/bin/python",
-        "/Users/hawkwu/Desktop/minimind_reader/experiments/ch20_realtime.py"
+        "/workspace/mmr-116/.venv-omni/bin/python",
+        "/workspace/mmr-116/experiments/ch20_realtime.py"
       ],
-      "started_at": "2026-09-09T10:32:52.312181+08:00",
+      "started_at": "2026-10-30T19:28:58.185535+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch20.log",
-      "log_sha256": "8a7d3ee8d08209be45f8b500ca098e186b379f6efe001d88c3177eb1b958c8be",
+      "log_sha256": "a6a456976f6688d5a158952ea4c9d60eff5fb1a288f1331f81839f8c599edab6",
       "result": {
         "status": "passed",
-        "source_commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+        "source_commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
         "source_repository": "minimind-o",
         "files": {
           "model/model_omni.py": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c",
           "webui/web_demo.py": "37aaf0a59cd60cddc52b356f4d3861344879b5ce6337a8b1d6008857c79f9bac",
           "webui/web_demo.html": "46c540562fafc8de78dc3f8e717d5d0dcf4e3a3a85cb40c805cef1c7edff29a0"
         },
-        "script_sha256": "28dd4d32a75827ffdd337195012b8540c1b2846f02b3134e8ef7bb8dabd13f64",
+        "script_sha256": "5be77c19a62cb8eb02689a7fd2dd0ee9ca9d148442eae57df9632cf4977f15e8",
         "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-        "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-        "torch": "2.6.0",
-        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+        "torch": "2.6.0+cpu",
+        "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
         "device": "cpu",
         "seed": 42,
         "results": {
@@ -1346,11 +1798,13 @@
             ]
           },
           "wrapper_disables_grad": true,
+          "speech_end_input_samples": 15360,
+          "speech_end_dropped_tail_samples": 2048,
           "interrupted_input_chunk": 4096,
           "interrupted_retained_samples": 2048
         }
       },
-      "result_sha256": "8a7d3ee8d08209be45f8b500ca098e186b379f6efe001d88c3177eb1b958c8be"
+      "result_sha256": "a6a456976f6688d5a158952ea4c9d60eff5fb1a288f1331f81839f8c599edab6"
     }
   ],
   "environments": {
@@ -1404,12 +1858,20 @@
         "3.5.1"
       ],
       [
+        "cloudpickle",
+        "3.1.2"
+      ],
+      [
         "cssselect2",
         "0.10.1"
       ],
       [
         "datasets",
         "3.6.0"
+      ],
+      [
+        "decorator",
+        "5.3.1"
       ],
       [
         "defusedxml",
@@ -1422,6 +1884,10 @@
       [
         "filelock",
         "3.32.5"
+      ],
+      [
+        "flatbuffers",
+        "25.12.19"
       ],
       [
         "fonttools",
@@ -1448,12 +1914,32 @@
         "3.19"
       ],
       [
+        "joblib",
+        "1.6.0"
+      ],
+      [
+        "lazy-loader",
+        "0.6"
+      ],
+      [
+        "librosa",
+        "1.0.0"
+      ],
+      [
+        "llvmlite",
+        "0.50.0"
+      ],
+      [
         "lxml",
         "6.1.3"
       ],
       [
         "mpmath",
         "1.3.0"
+      ],
+      [
+        "msgpack",
+        "1.2.4"
       ],
       [
         "multidict",
@@ -1464,12 +1950,24 @@
         "0.70.16"
       ],
       [
+        "narwhals",
+        "2.28.0"
+      ],
+      [
         "networkx",
         "3.6.1"
       ],
       [
+        "numba",
+        "0.68.1"
+      ],
+      [
         "numpy",
         "1.26.4"
+      ],
+      [
+        "onnxruntime",
+        "1.31.1"
       ],
       [
         "packaging",
@@ -1484,8 +1982,20 @@
         "12.3.0"
       ],
       [
+        "platformdirs",
+        "4.14.0"
+      ],
+      [
+        "pooch",
+        "1.9.0"
+      ],
+      [
         "propcache",
         "0.5.2"
+      ],
+      [
+        "protobuf",
+        "7.36.2"
       ],
       [
         "psutil",
@@ -1528,6 +2038,14 @@
         "0.8.0"
       ],
       [
+        "scikit-learn",
+        "1.9.1"
+      ],
+      [
+        "scipy",
+        "1.14.1"
+      ],
+      [
         "setuptools",
         "84.0.0"
       ],
@@ -1536,8 +2054,20 @@
         "1.17.0"
       ],
       [
+        "soundfile",
+        "0.14.0"
+      ],
+      [
+        "soxr",
+        "1.1.0"
+      ],
+      [
         "sympy",
         "1.13.1"
+      ],
+      [
+        "threadpoolctl",
+        "3.7.0"
       ],
       [
         "tinycss2",
@@ -1549,7 +2079,7 @@
       ],
       [
         "torch",
-        "2.6.0"
+        "2.6.0+cpu"
       ],
       [
         "tqdm",
@@ -1582,6 +2112,10 @@
     ],
     ".venv-omni": [
       [
+        "CairoSVG",
+        "2.9.1"
+      ],
+      [
         "Jinja2",
         "3.1.6"
       ],
@@ -1590,12 +2124,8 @@
         "3.0.3"
       ],
       [
-        "Pillow",
-        "9.5.0"
-      ],
-      [
         "PyYAML",
-        "6.0.3"
+        "6.0.2"
       ],
       [
         "aiohappyeyeballs",
@@ -1614,8 +2144,8 @@
         "26.1.0"
       ],
       [
-        "audioread",
-        "3.1.0"
+        "cairocffi",
+        "1.7.1"
       ],
       [
         "certifi",
@@ -1634,8 +2164,8 @@
         "3.1.2"
       ],
       [
-        "coloredlogs",
-        "15.0.1"
+        "cssselect2",
+        "0.10.1"
       ],
       [
         "datasets",
@@ -1644,6 +2174,10 @@
       [
         "decorator",
         "5.3.1"
+      ],
+      [
+        "defusedxml",
+        "0.7.1"
       ],
       [
         "dill",
@@ -1656,6 +2190,10 @@
       [
         "flatbuffers",
         "25.12.19"
+      ],
+      [
+        "fonttools",
+        "4.60.1"
       ],
       [
         "frozenlist",
@@ -1674,10 +2212,6 @@
         "0.36.2"
       ],
       [
-        "humanfriendly",
-        "10.0"
-      ],
-      [
         "idna",
         "3.19"
       ],
@@ -1687,15 +2221,19 @@
       ],
       [
         "lazy-loader",
-        "0.5"
+        "0.6"
       ],
       [
         "librosa",
-        "0.11.0"
+        "1.0.0"
       ],
       [
         "llvmlite",
-        "0.49.0"
+        "0.50.0"
+      ],
+      [
+        "lxml",
+        "6.1.3"
       ],
       [
         "mpmath",
@@ -1703,7 +2241,7 @@
       ],
       [
         "msgpack",
-        "1.2.2"
+        "1.2.4"
       ],
       [
         "multidict",
@@ -1715,7 +2253,7 @@
       ],
       [
         "narwhals",
-        "2.25.0"
+        "2.28.0"
       ],
       [
         "networkx",
@@ -1723,7 +2261,7 @@
       ],
       [
         "numba",
-        "0.67.0"
+        "0.68.1"
       ],
       [
         "numpy",
@@ -1731,7 +2269,7 @@
       ],
       [
         "onnxruntime",
-        "1.23.2"
+        "1.31.1"
       ],
       [
         "packaging",
@@ -1742,8 +2280,12 @@
         "3.0.5"
       ],
       [
+        "pillow",
+        "12.3.0"
+      ],
+      [
         "platformdirs",
-        "4.11.7"
+        "4.14.0"
       ],
       [
         "pooch",
@@ -1755,15 +2297,31 @@
       ],
       [
         "protobuf",
-        "7.36.1"
+        "7.36.2"
+      ],
+      [
+        "psutil",
+        "5.9.8"
       ],
       [
         "pyarrow",
-        "23.0.1"
+        "25.0.1"
       ],
       [
         "pycparser",
         "3.0"
+      ],
+      [
+        "pymupdf",
+        "1.28.2"
+      ],
+      [
+        "pypandoc_binary",
+        "1.17"
+      ],
+      [
+        "pypdf",
+        "6.18.0"
       ],
       [
         "python-dateutil",
@@ -1783,11 +2341,11 @@
       ],
       [
         "scikit-learn",
-        "1.9.0"
+        "1.9.1"
       ],
       [
         "scipy",
-        "1.15.3"
+        "1.14.1"
       ],
       [
         "setuptools",
@@ -1799,7 +2357,7 @@
       ],
       [
         "soundfile",
-        "0.13.1"
+        "0.14.0"
       ],
       [
         "soxr",
@@ -1811,7 +2369,11 @@
       ],
       [
         "threadpoolctl",
-        "3.6.0"
+        "3.7.0"
+      ],
+      [
+        "tinycss2",
+        "1.5.1"
       ],
       [
         "tokenizers",
@@ -1819,7 +2381,7 @@
       ],
       [
         "torch",
-        "2.6.0"
+        "2.6.0+cpu"
       ],
       [
         "tqdm",
@@ -1838,6 +2400,10 @@
         "2.7.0"
       ],
       [
+        "webencodings",
+        "0.6.1"
+      ],
+      [
         "xxhash",
         "4.0.1"
       ],
@@ -1848,75 +2414,75 @@
     ]
   },
   "input_sha256": {
-    "book/01-start-here/README.md": "129fbf87f337da364cd68509fbf091eeda8f0d7a02dfd9a49ac470e1f19f7d1f",
-    "book/02-tokenizer/README.md": "0c8abd9508304416b8df43a884338bf259b0b604ab7e839162e220ddcef04101",
-    "book/03-model-skeleton/README.md": "e8fd5b6fc7a96f3df9edc227833600211da7829daf61191f7e0dc46cca4d25d6",
-    "book/04-attention/README.md": "1ba6bb9d081eaac84a371ad60cb3a3d288a49bd847fc2b66ae22e9fd8b686758",
-    "book/05-rope-cache-generation/README.md": "7a4110db40df81bc5e62740b51008212c4463c2af386b2cb64d3c5920604c343",
-    "book/06-datasets/README.md": "c919162f6409911013e5f2edb0c05cf4b5dc123247dff0e635f15ddaafd9dc9d",
-    "book/07-pretraining/README.md": "a785a88cd7f0c2d959000a786b6d71b5400393470fb0a8cb00e5e340531fa37a",
-    "book/08-sft-evaluation/README.md": "54b67d2ab3edfe804068efa0f716ebcc9ffb39ad41ccdccb29d5aacbcdd9e57a",
-    "book/09-moe/README.md": "5dfbf03e4080d48a1e35fd6c1c304227dbd0098ab8c1386dfb76175df60774bc",
-    "book/10-lora-distillation/README.md": "e4a2d38503ad032289053eb045819232d26ad004485a06896e7538836c41cdb8",
-    "book/11-dpo/README.md": "24d938989e84e48fd3c5768660d6045a67d7c0708e8a569964132162ad632f11",
-    "book/12-ppo-grpo/README.md": "579458c6ae5a8e0a7b7b9a618bb4fb6b0ad7a0bec0236cdb4067d8c333162a1e",
-    "book/13-agent/README.md": "30ea606d5a7a396051ad2c364ce566cf76d95abd4e4621fb269dfe990204a78a",
-    "book/14-vision/README.md": "f65a330eddba7334a537e0c5edc2e750aab26258d8e088b0fa510e4c79c583fd",
-    "book/15-vlm-training/README.md": "ae5daff98be76216fe5da7f047bbf8a345b8d247b0294654e1799ef631e97fc3",
-    "book/16-audio-basics/README.md": "4cdc2d8468787569df4270e84050ebe3aff1be38b168828d790b1087b79e4550",
-    "book/17-thinker-talker/README.md": "b4fa670b009395268a246fdf7c2a4661e4fc0654c528a8fe343a345feedfd2e2",
-    "book/18-audio-codebooks/README.md": "d6803c9e78000b92dc7df2496929a0b25b5c7a9fa92458f57d4f640a9c94dbac",
-    "book/19-omni-training/README.md": "d0efbedb1249aca0cdd719ad8081562b3f4f2d5e94af33bbbd2a606cace9764e",
-    "book/20-realtime/README.md": "b6e3bf748dbb553758d142936640990d373bec2e04f7963d5901d628c8f84f48",
+    "book/01-start-here/README.md": "7f53b11329aae3d14c6221f3f6d2ca25d3e97cd8cd589a1c4b88636f4f671b99",
+    "book/02-tokenizer/README.md": "51cd97722a029d3b99f344da6c5fdc096f30731d88865783b983d6f21d079a30",
+    "book/03-model-skeleton/README.md": "790e8bb13b184d7ccc788123c1ecc4d9e48891dece03dabe4a750d655c1dc06c",
+    "book/04-attention/README.md": "b3f1ac27383ea71832a1d2a3143abc55a0c6084954fdcef37acf5b3ad2a4da13",
+    "book/05-rope-cache-generation/README.md": "3782e5b4d1e05e2258f189c3ebde87af0cb7b43b9eddc4be453e42d9641d739b",
+    "book/06-datasets/README.md": "c3735ac7b030b23e1ce48c61552f0c7facfca0b0fc761ed37849315d59456796",
+    "book/07-pretraining/README.md": "fa4b6cac8d5950ccddd7bd3646ad6a0ed44f464e60178b48c75d0e49506747bb",
+    "book/08-sft-evaluation/README.md": "b0241e34f7f483b5cd79b1a73a4b87c82d89dd0f11355759cf7b3a537b165c22",
+    "book/09-moe/README.md": "14dd54a9b036952cb6d4f78d2c062bbc2cb48e3ecf21da361a7f79592d733557",
+    "book/10-lora-distillation/README.md": "fdd628c34a8783c17fcf870456088d51cd30a2b3cfd11a4655cc96a3d1b9dfa8",
+    "book/11-dpo/README.md": "c1ba08526031ddb7593eba10e20ba21487af8bd37908140aa4a7d08a0d95c79f",
+    "book/12-ppo-grpo/README.md": "641f46d4e036bb4e385e583a52a51b71fdbb1e1ef1b497ed1455ca1cc90e154c",
+    "book/13-agent/README.md": "524952434abde7aba207ee4516f84e0108455118d2fd05189a857ca842adcd9d",
+    "book/14-vision/README.md": "f38337e05c9640f5feacf87af43871a66571847eda580d396a1cd92e528cce4e",
+    "book/15-vlm-training/README.md": "d7767f786f57ffcad2827bafa96f58fb38c3fc44faf08fa90747ddd5a9173068",
+    "book/16-audio-basics/README.md": "77f6dc0f94268737ae2bc6345941773b514a9e09571ceb6afbd58e0da70c8cca",
+    "book/17-thinker-talker/README.md": "86434e172a1351acbd76d3e103c150bd9a0b61045c304bda50f03bcf4d3128b2",
+    "book/18-audio-codebooks/README.md": "16c6ae1ae499c69054c822154d75f63626cc70e3944efaf97425219886541f09",
+    "book/19-omni-training/README.md": "a53b6004172c49e3ae49cdd604c6162ab9043c636e60bff17d07e2ba672d863b",
+    "book/20-realtime/README.md": "577fe38876c07142f7c728f3f4b5838727f1d9e4f543eef1320380d31ec996ed",
     "book/appendices/licenses.md": "7d21a01b384cae23d7f2e1698e6758d2d60dd5fb30ebee0048b9de280b45c59d",
     "book/appendices/math-and-tensors.md": "1199d2404c681e2d8831a396e4a11c7b620330445fbb12b65f6bb05881a4b53f",
-    "book/appendices/reproduction.md": "a09a9be0244fd38953b5099cc4f7c36b1af2d581805986fcf8b6cbb03fff8350",
-    "book/appendices/source-index.md": "18322e323bbba142523dc956f65b452ec47b9f53fdebb83219c413f366a8b991",
+    "book/appendices/reproduction.md": "f64cccd65638ce7315956b80be4713bda5b42b34b7e31babc701ca488a398b09",
+    "book/appendices/source-index.md": "72e840a8c569400b625abbee57836b6bbafcc88c222911bd2289dd0b20daf2ce",
     "book/reading-guide.md": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209",
     "experiments/_omni_fixture.py": "1d7934dd2c0c340abdd5d4c37d2974b8893e39a92534f2f9b4b9528d60a4d172",
     "experiments/_support.py": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
     "experiments/_tiny_vision.py": "e125107b0be332e0d1617e3083607199b5dd34f06197a07cfc651003cad8ec3c",
-    "experiments/ch01_start_here.py": "9912bf9ad28f0ea67cdba843a755129f7c0d5c809e854c717400ce1da3332e96",
-    "experiments/ch02_tokenizer.py": "754b6a5d426f153293fc6b45f640cf496316c32061d056e48513beaae7b2cd69",
-    "experiments/ch03_model_skeleton.py": "0ed5506f26e6fec092c46d2b8040260843e9daad8e2886e3f0c9f4101cf50877",
-    "experiments/ch04_attention.py": "7cd664985e37a103d1a5adc59279fb65bb1a670e0d79e8436c1239c6a39bc32b",
-    "experiments/ch05_rope_cache.py": "49deb7e05a055aa80163ea37201116860a1816148f5aac9bdbe147e07838f81f",
-    "experiments/ch06_datasets.py": "beb86fb13f0ca4dd79b23b99a2b02cc0856d93fe0577e86daed77aa2fac0d2ee",
-    "experiments/ch07_training_loop.py": "4d49ec7715eabd87e790d4a28b83105ba1f40a8baf61dffb0d14e7c76d6c4998",
-    "experiments/ch08_sft_evaluation.py": "25a8b8207744688a64f12e125e19432e7044743c4ee74bd026c3cc35eef02eb6",
-    "experiments/ch09_moe.py": "355fbf0432a7337be1af20605cb78da825ad2c877ba7400dfd48705c58142371",
-    "experiments/ch10_lora_distillation.py": "76a24b691a0f278c323b6288b79e9fef283273c5d2f41ea576922124c1282789",
-    "experiments/ch11_dpo.py": "48d410dc603ca3bcdf9583f4cb4839901a1811ac5ec4a75e7b78192334704b77",
-    "experiments/ch12_rl_objectives.py": "7954291cfe95819b063c370ef38a1e152f5c7281f6af14c39310f8dd573fba8d",
-    "experiments/ch13_agent.py": "4ccf3f762121984fb533bb30deb7146b2088d91cc0d1a81a22290e363c7796cd",
-    "experiments/ch14_vision.py": "2c998aedec95c7faec93a1314a70c7f6d6111bb892ae9709a6f6a75c6c1bd6c2",
-    "experiments/ch15_vlm_training.py": "0e4220533ee4cc3c737e00eba2218c0e6e663ab0df6962e14e354005aeaca707",
-    "experiments/ch16_audio_input.py": "0898ff0cbaeeb5d067e86bb8da158e6d1c39d1056bbdee5734f36f23680d89b8",
-    "experiments/ch17_thinker_talker.py": "cc3d9174703514e8c001e4fe3658424c8367e32bfd237194339742ef05bf5683",
-    "experiments/ch18_audio_codes.py": "9e4b7a2b75b4a33d5ec799687908c8c23555c8e626fb346248a50d064e62e748",
-    "experiments/ch19_omni_training.py": "50203a72873ed061616cab3b5769cd70a2c7d6dc74d12d87f2e0ce3df25f5a18",
-    "experiments/ch20_realtime.py": "28dd4d32a75827ffdd337195012b8540c1b2846f02b3134e8ef7bb8dabd13f64",
-    "glossary/terms.md": "c13863a364b8f17c25d4dfe1a00c0a53ed53c4f582a1ce7777b03911e9d4ced7",
-    "publishing/book.yaml": "e5f4f1e4b378f33cd3323946c1555131a589da8afe0db96630043afd026fd462",
+    "experiments/ch01_start_here.py": "9267fdc3d4d938a617094a7d51e1494d59cdb6d2e57d3d5c6e4eef53c6f9cb01",
+    "experiments/ch02_tokenizer.py": "f7324d5beb0ac725299ac3fef4ce27c5b5debd0e6c77cfe23dd635ed5f8d8089",
+    "experiments/ch03_model_skeleton.py": "9ff540a1ae782f2acda8dd449872d7c071ba6ba71811b105594cfe86558466b6",
+    "experiments/ch04_attention.py": "f42a5255141610e54e71360d44637ed6e2550587e8b4ad748a64a7e4a00d8db2",
+    "experiments/ch05_rope_cache.py": "f6084225804acef62888e4940d9e08cec604a42b65d2a1a9d9f837e4127b2b2f",
+    "experiments/ch06_datasets.py": "3e32f61351848d21c125b0402a33d3a7913017e44bfc23ff020f7fccaf7a326a",
+    "experiments/ch07_training_loop.py": "4a891b10d9d492535df8b8dab1afe6eee32dc67062e00e8aa868f71a5f6ba46a",
+    "experiments/ch08_sft_evaluation.py": "6e8ebbc37b006fb9de1ae9a760c08dad28ede9411d9316f53c2cc29b386bed36",
+    "experiments/ch09_moe.py": "10fdc66b7ef11fe65569f7d032cfc577d6b64670f17c92d6d1e46f156fd6cd01",
+    "experiments/ch10_lora_distillation.py": "8a941a8d9e314a73a04bef79a6d419add5051f2a4fd23006c91da8324728814c",
+    "experiments/ch11_dpo.py": "13049ade97c22f98b65fdd4fa28cc9e90335347ef88c4d23d442f7a3676802af",
+    "experiments/ch12_rl_objectives.py": "b6e6519bca85cc0fa5256d375bd951e3e438e00062d19c6c2982703c6e038af2",
+    "experiments/ch13_agent.py": "d690798c1dc3a93b7f3a2164a2d00af7af64600086277a0fb174f2f08fab9b74",
+    "experiments/ch14_vision.py": "9f51933a3eb0ff2d20a8255681e4106bd65e6ce762c1e2c7486c1084dc492759",
+    "experiments/ch15_vlm_training.py": "642ed66b864a335f35e0bc63daddf057cc692f38450320a614db0790e5989510",
+    "experiments/ch16_audio_input.py": "22f46d2cb80db7475d421b1228382bb7cc005622c36f8138b5ca33d13964e251",
+    "experiments/ch17_thinker_talker.py": "84da93d62343c7d4ecdb4a7ed1d3ce3eb1961154e0e73169ea230ef9ad4a48f6",
+    "experiments/ch18_audio_codes.py": "33a71dfb08f7db4a32ef053d74ee84e592e87d5e3120f80d5753eea2aa7af946",
+    "experiments/ch19_omni_training.py": "9658593c67aa4b0833d94a94c5af985d78b13208c64ac6229edce7fd2b176c53",
+    "experiments/ch20_realtime.py": "5be77c19a62cb8eb02689a7fd2dd0ee9ca9d148442eae57df9632cf4977f15e8",
+    "glossary/terms.md": "1bc5772205b4c92052f64883a77ab5620a9b93feb93c8bcffea9179ec58f0509",
+    "publishing/book.yaml": "36ae89a6a80707144e378e93f5a8f54384474b28eaf2b61a35557de78e49ca61",
     "requirements-book.lock": "871da74147a5bc00677d4fce66b2f4f4cba816275817f0d8c1f1ab25378cf1e1",
     "requirements-omni.lock": "409f05e29fd607037364f8dcbc9b8566e812fb8d70c197e4abe3a05e4f93ee75"
   },
   "sources": {
     "minimind": {
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
       "dirty": false,
-      "remote": "https://github.com/jingyaogong/minimind"
+      "remote": "https://github.com/jingyaogong/minimind.git"
     },
     "minimind-v": {
-      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
       "dirty": false,
-      "remote": "https://github.com/jingyaogong/minimind-v"
+      "remote": "https://github.com/jingyaogong/minimind-v.git"
     },
     "minimind-o": {
-      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
       "dirty": false,
-      "remote": "https://github.com/jingyaogong/minimind-o"
+      "remote": "https://github.com/jingyaogong/minimind-o.git"
     }
   },
-  "completed_at": "2026-09-09T10:32:54.833973+08:00"
+  "completed_at": "2026-10-30T19:29:01.572282+08:00"
 }

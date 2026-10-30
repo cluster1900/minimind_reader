@@ -22,3 +22,18 @@ logits 形状 `[1,4,32]`，loss 约 3.580651；模型 loss 的反向传播通过
 按原实验重新运行，并重新核对正文中使用的入口、数值与结论范围。
 旧 JSON 保留历史结果；本次完整命令、环境、脚本哈希及实际输出见
 [同基线复核记录](../meta/source-audit-2026-10-08.md)及其结果快照。
+
+## 2026-10-30 按新基线重验
+
+日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
+命令：项目根目录运行 `.venv/bin/python experiments/ch03_model_skeleton.py`（`MINIMIND_SOURCE_ROOT` 指向三个上游仓库的父目录）。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
+结构化输出见 [ch03-results.json](ch03-results.json)。
+
+RMSNorm 手算输出 `[0.8485280871, 1.1313707829]`，输入梯度 `[0.0452548563, -0.0339410901]`。
+零输入输出为零且反向有限；权重改为 2 后输出 RMS 约为 2。
+FP16 输入 300 直接平方为 Inf，上游 RMSNorm 的 FP32 中间运算给出有限输出。
+小配置前馈参数 6144，两层小模型参数 19648；Embedding 与输出头为同一 Parameter。
+logits 形状 `[1,4,32]`，loss 约 3.580651。
+
+未修改上游；本记录支持当前源码的小配置行为，不涉及收敛、语言质量或 GPU 性能。

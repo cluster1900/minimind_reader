@@ -1,5 +1,7 @@
 """Real waveform loading/resampling and injection, with explicit encoder substitutes."""
 from _support import source,record,ROOT
+import _support
+_support.REVISIONS={**_support.REVISIONS,'minimind-o':'b5d1bc11ece8de17404cbc034c3e09718d0fecdf'}
 import numpy as np
 import torch
 import soundfile as sf

@@ -1,5 +1,7 @@
 """Real branch topology, bridge capture, speaker condition and dual cache."""
 from _support import source,record
+import _support
+_support.REVISIONS={**_support.REVISIONS,'minimind-o':'b5d1bc11ece8de17404cbc034c3e09718d0fecdf'}
 import torch
 from unittest.mock import patch
 def main():

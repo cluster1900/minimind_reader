@@ -6,11 +6,13 @@ audience: advanced
 prerequisites: [ch03, ch05, ch16]
 sources:
   - repository: jingyaogong/minimind-o
-    commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
+    commit: b5d1bc11ece8de17404cbc034c3e09718d0fecdf
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch17-thinker-talker.md
@@ -59,7 +61,7 @@ flowchart TD
 输入音频可影响 Thinker；输出声学历史在当前 forward 中则进入 Talker 路径。
 
 源码在 MiniMind-O
-[model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/model/model_omni.py)
+[model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/model/model_omni.py)
 的 `MiniMindOmni.__init__`、`forward`、`TalkerModule` 与 `OmniConfig`。
 
 ## 17.2 Bridge 的位置要按索引数

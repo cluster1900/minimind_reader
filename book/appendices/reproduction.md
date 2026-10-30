@@ -5,8 +5,9 @@
 
 ## 两套验证环境
 
-文本、后训练、视觉和出版使用 Python 3.12 的 `.venv`；本轮音频实验使用 Python 3.11 的独立 `.venv-omni`。
-依赖分别由 `requirements-book.lock` 与 `requirements-omni.lock` 固定。
+文本、后训练、视觉和出版使用 Python 3.12 的 `.venv`；音频实验默认使用 Python 3.11 的独立 `.venv-omni`。
+依赖分别由 `requirements-book.lock`{.nobreak} 与 `requirements-omni.lock`{.nobreak} 固定。
+2026-10-30 按当前基线的 CPU 复验在 Linux、Python 3.12、torch 2.6.0+cpu 的同一个环境里完成，音频章 16—20 也在这个环境里重新验证；音频依赖用的是该环境现有的版本（如 librosa 1.0.0、soundfile 0.14.0、scipy 1.14.1），没有按 `requirements-omni.lock`{.nobreak} 重装，与其锁定版本不完全一致，实际版本见 `meta/final-experiments.json`{.nobreak}。上文与出版说明记载的音频环境为 Python 3.11，本次未用 Python 3.11 重建或复跑。
 
 ```bash
 python3.12 -m venv .venv
@@ -17,7 +18,7 @@ python3.11 -m venv .venv-omni
 
 安装需要网络，已经准备好的小实验通常不再下载模型权重。
 声明使用随机模型或替身的实验，不会因为安装了依赖就变成默认预训练模型测试。
-CPU 验证环境是 macOS arm64；在其他平台复现时应记录差异，不能直接沿用本机的性能或数值结论。
+早期 CPU 验证环境是 macOS arm64；2026-10-30 复验在 Linux CPU 上完成。在其他平台复现时应记录差异，不能直接沿用某次本机的性能或数值结论。
 
 ## 源码路径与版本
 
@@ -26,9 +27,9 @@ CPU 验证环境是 macOS arm64；在其他平台复现时应记录差异，不�
 
 | 仓库 | 本书基线 |
 |---|---|
-| MiniMind | `6fc918beb68a0d8c40452338df6319fe168014ba` |
-| MiniMind-V | `740d467ece78a0b7d2d976fcb424472095d4a688` |
-| MiniMind-O | `ccab6d98520ac5ac5d7583a3fa21a65105137e28` |
+| MiniMind | `233d00fa068ec2b8c0d4f07b703934d6391a5a73` |
+| MiniMind-V | `041d528e037a8a373c3c8aa7278a3ba3bd26b6dc` |
+| MiniMind-O | `b5d1bc11ece8de17404cbc034c3e09718d0fecdf` |
 
 修改代码做练习时，另建自己的工作副本，并记录修改内容。
 上游发布新版本不自动使旧版书籍无效，但迁移后必须重新验证受影响的结论。

@@ -5,7 +5,7 @@
     "MiniMind Reader 项目"
   ],
   "lang": "zh-CN",
-  "date": "2026-09-09",
+  "date": "2026-10-30",
   "identifier": "urn:uuid:e511cc04-1cc8-44a0-94fc-3c87540b451e",
   "frontmatter": [
     {
@@ -209,6 +209,6 @@
       ]
     }
   ],
-  "version": "1.0.1",
+  "version": "1.1.0",
   "rights": "本书正文未另设统一开源许可；引用代码和字体保留各自许可，详见来源与许可附录。"
 }

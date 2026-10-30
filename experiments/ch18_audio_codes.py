@@ -1,5 +1,7 @@
 """Real dataset delay layout, scripted logits through real stream loop, and tiny Mimi decode."""
 from _support import source,record,ROOT
+import _support
+_support.REVISIONS={**_support.REVISIONS,'minimind-o':'b5d1bc11ece8de17404cbc034c3e09718d0fecdf'}
 import json,random,types
 from unittest.mock import patch
 import torch

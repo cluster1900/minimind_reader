@@ -6,14 +6,15 @@ audience: core
 prerequisites: []
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation:
   static: passed
   cpu: passed
   gpu: not_required
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch01-start-here.md
@@ -241,14 +242,14 @@ logits 是候选分数，loss 是与目标比较后的训练标量。最后一�
 本章的小模型没有执行优化器更新，也没有训练出语言能力。
 
 源码入口在 MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)
 的 `MiniMindConfig`、`MiniMindForCausalLM.__init__` 和 `MiniMindForCausalLM.forward`。
 暂时不要进入 RoPE 或 MoE 的细节；先把每次输入输出的类型和形状写到纸上。
 
 ## 1.7 真实推理入口和最小实验有什么区别
 
 仓库的
-[eval_llm.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/eval_llm.py)
+[eval_llm.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/eval_llm.py)
 包含命令行参数、权重加载、聊天模板、生成和输出打印。
 `main` 调用 `init_model` 准备模型和 tokenizer，再为用户输入构造 token，最后调用 `generate`。
 这是你以后跑真实模型时要追的入口，但它需要与配置匹配的权重等资源。

@@ -139,12 +139,15 @@ def render_assets(source, stage):
         '%':r'\%','#':r'\#','_':r'\_','^':r'\textasciicircum{}','~':r'\textasciitilde{}'}
     for node in visit(pdf):
         if node['t']=='Code':
-            text=node['c'][1];pieces=[];span=0
-            for i,char in enumerate(text):
-                pieces.append(escaped.get(char,char));span+=1
-                boundary=char in '_./=,()|:-' or (i+1<len(text) and char.islower() and text[i+1].isupper())
-                if boundary or span>=8:pieces.append(r'\allowbreak{}');span=0
-            replacement={'t':'RawInline','c':['latex',r'\texttt{'+''.join(pieces)+'}']}
+            if 'nobreak' in node['c'][0][1]:
+                replacement={'t':'RawInline','c':['latex',r'\mbox{\texttt{'+''.join(escaped.get(char,char) for char in node['c'][1])+'}}']}
+            else:
+                text=node['c'][1];pieces=[];span=0
+                for i,char in enumerate(text):
+                    pieces.append(escaped.get(char,char));span+=1
+                    boundary=char in '_./=,()|:-' or (i+1<len(text) and char.islower() and text[i+1].isupper())
+                    if boundary or span>=8:pieces.append(r'\allowbreak{}');span=0
+                replacement={'t':'RawInline','c':['latex',r'\texttt{'+''.join(pieces)+'}']}
             node.clear();node.update(replacement)
     hashes={f'{key}.svg':hashlib.sha256((media/f'{key}.svg').read_bytes()).hexdigest() for key in set(math_items)|set(diagrams)}
     return epub,pdf,dict(math=list(math_items.values()),diagrams=diagrams,svg_sha256=hashes)
@@ -163,7 +166,7 @@ def main():
             if not config.get(key):raise ValueError(f'Missing release metadata: {key}')
         for path in ['assets/cover.png','assets/cover.pdf','book/appendices/licenses.md']:
             if not (ROOT/path).is_file():raise ValueError(f'Missing release resource: {path}')
-    source=combined(config,docs)
+    source=combined(config,docs,allow_missing_internal=(args.edition=='preview'))
     stage=ROOT/'build'/args.edition;stage.mkdir(parents=True,exist_ok=True)
     (stage/'source.json').write_text(json.dumps(source,ensure_ascii=False,indent=2))
     (stage/'inputs.json').write_text(json.dumps([{k:d[k] for k in ['id','path','sha256']} for d in docs],ensure_ascii=False,indent=2))

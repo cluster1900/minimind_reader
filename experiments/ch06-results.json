@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
   "device": "cpu",
   "seed": 42,
   "pretrain_ids": [
@@ -34,12 +34,14 @@
   "supervised_text": "甲答案<|im_end|>\n乙答案<|im_end|>\n",
   "supervised_count": 9,
   "shift_loss": 8.741042137145996,
+  "missing_end_supervised_padding": 3,
+  "intact_end_supervised_padding": 0,
   "ignored_logits_gradient_zero": true,
   "prompt_embedding_gradient_nonzero": true,
   "empty_target_loss": "nan",
   "files": {
-    "dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
-    "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+    "dataset/lm_dataset.py": "7e6eb82f760d2e7db3cfbc60a74bed9a179b7d8667fd8b49e4a3c010391707ab",
+    "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f"
   },
-  "script_sha256": "beb86fb13f0ca4dd79b23b99a2b02cc0856d93fe0577e86daed77aa2fac0d2ee"
+  "script_sha256": "3e32f61351848d21c125b0402a33d3a7913017e44bfc23ff020f7fccaf7a326a"
 }

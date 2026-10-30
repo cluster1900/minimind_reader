@@ -6,14 +6,15 @@ audience: core
 prerequisites: [ch01, ch02]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation:
   static: passed
   cpu: passed
   gpu: not_required
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch03-model-skeleton.md
@@ -81,7 +82,7 @@ MiniMindForCausalLM.forward
 “任务外壳、模型主干、一个 block”，再回到具体符号定位。
 
 源码依据：MiniMind 的
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_minimind.py)，
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)，
 重点看这三个 `forward`，不要把另外两个仓库里的同名文件混进本章。
 
 ## 3.2 配置像尺寸说明书，不是一组独立旋钮

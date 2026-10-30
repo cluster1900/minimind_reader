@@ -9,16 +9,16 @@
 最终交付：一套 Markdown 书稿、配套教学代码与实验，以及方便离线传阅的**完整 EPUB3 和 PDF 各一本**。
 核心模型以 PyTorch 实现为学习对象；Transformers、视觉/音频预训练编码器与 codec 的复用边界会明确说明。
 
-> 2026-10-30 CPU 复验（bot-hub #111）：2026-10-18 标为 stale 的 11 章（02、04、07—13、15、19）已在 torch 2.6.0+cpu 上按新基线实跑并改为 verified；电子书尚未重新导出或发布。
-> 2026-10-18 迁移候选：已按上游指定提交逐章评估，11 章有针对性修订并标为 stale，其余 9 章保留旧基线与正文；不是新版出版验收通过。见[20 章影响与复验清单](meta/upstream-impact-2026-10-18.md)。
-> 以下 2026-10-08 状态及电子书下载是迁移前历史记录。
+> 2026-10-30 CPU 复验：bot-hub #111 将 2026-10-18 标为 stale 的 11 章（02、04、07—13、15、19）在 torch 2.6.0+cpu 上按新基线实跑并改为 verified；bot-hub #116 完成其余 9 章（01、03、05、06、14、16、17、18、20）的 SHA 迁移与 CPU 复验。二十章现均绑定当前基线。电子书按此书稿导出为 v1.1.0。
+> 2026-10-18 迁移评估：已按上游指定提交逐章评估，11 章有针对性修订；完整影响见[20 章影响与复验清单](meta/upstream-impact-2026-10-18.md)。
+> 以下 2026-10-08 状态是迁移前历史记录。
 > 历史书稿（2026-10-08）：已重新逐章对照锁定源码，修正接口、标签、缓存、损失归约及音频状态边界，补充反例实验。范围与验证见 [本次源码复核](meta/source-audit-2026-10-08.md)。
-> 下方电子书下载仍为 2026-09-09 的 v1.0.1（194 页 PDF）；本次 Markdown 修订尚未重新导出、验收或发布 EPUB/PDF。
+> 下方电子书下载为 2026-10-30 的 v1.1.0（210 页 PDF），对应二十章全部绑定当前基线后的书稿；2026-09-09 的 v1.0.1（194 页 PDF）见 [Release v1.0.1](https://github.com/cluster1900/minimind_reader/releases/tag/v1.0.1)。
 > 本书验证范围是各章声明的机制、数值与控制流；未声称完成默认权重的 GPU 训练、语音质量或真实设备时延评测。
 
-完整交付：[EPUB](https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.epub) · [PDF](https://github.com/cluster1900/minimind_reader/releases/download/v1.0.1/minimind-source-guide.pdf) · [Markdown 与教学代码](https://github.com/cluster1900/minimind_reader/archive/refs/tags/v1.0.1.zip)。
-[Release v1.0.1](https://github.com/cluster1900/minimind_reader/releases/tag/v1.0.1) 提供电子书下载与 SHA-256 校验值。
-v1.0.1 的历史验收依据：[终审记录](meta/final-review.md)、[一致性复审](meta/consistency-review.md)、[完整验收清单](meta/final-review.json)。这些记录不代表当前修订已通过新版出版验收。
+完整交付：[EPUB](https://github.com/cluster1900/minimind_reader/releases/download/v1.1.0/minimind-source-guide.epub) · [PDF](https://github.com/cluster1900/minimind_reader/releases/download/v1.1.0/minimind-source-guide.pdf) · [Markdown 与教学代码](https://github.com/cluster1900/minimind_reader/archive/refs/tags/v1.1.0.zip)。
+[Release v1.1.0](https://github.com/cluster1900/minimind_reader/releases/tag/v1.1.0) 提供电子书下载与 SHA-256 校验值。
+v1.1.0 的出版验收清单为 [meta/final-review.json](meta/final-review.json)，在 review 逐页审读签署后由 `scripts/collect_release_review.py` 生成；[终审记录](meta/final-review.md) 与 [一致性复审](meta/consistency-review.md) 是 v1.0.1（2026-09-09）的历史验收记录，不代表 v1.1.0 的验收。
 维护检查现在会核对固定源码、章节依赖和已复核的正文/公式/图源；改动后须重新复核，具体命令见出版说明。
 
 在线阅读：[MiniMind Reader GitHub Pages](https://cluster1900.github.io/minimind_reader/)。站点首页提供阅读路线、二十章目录、实验入口、源码基线和 EPUB/PDF 下载；页面源文件位于 [`docs/`](docs/)，不依赖外部 CDN。若要在自己的仓库启用页面，按 [`docs/README.md`](docs/README.md) 在 Settings → Pages 中选择 `main` 分支的 `/docs` 文件夹即可。
@@ -56,7 +56,23 @@ v1.0.1 的历史验收依据：[终审记录](meta/final-review.md)、[一致性
 ## 源码基线
 
 源码实际位于 `~/Desktop/minimind_resources/`，不是 `~/Desktop/minimind/`。
-2026-10-08 再核对时，三个仓库均为 detached HEAD，工作区 clean，HEAD 与以下锁定 commit 一致：
+
+### 当前基线
+
+2026-10-30 已完成全书二十章的 CPU 复验：bot-hub #111 覆盖当时受影响的 11 章（02、04、07—13、15、19），bot-hub #116 覆盖其余 9 章（01、03、05、06、14、16、17、18、20）。当前锁定 commit 如下；三个仓库工作区应保持 clean，HEAD 与下列提交一致：
+
+| 项目 | 锁定 commit | 本地目录 |
+|---|---|---|
+| [MiniMind](https://github.com/jingyaogong/minimind/tree/233d00fa068ec2b8c0d4f07b703934d6391a5a73) | `233d00fa068ec2b8c0d4f07b703934d6391a5a73` | `../minimind_resources/minimind` |
+| [MiniMind-V](https://github.com/jingyaogong/minimind-v/tree/041d528e037a8a373c3c8aa7278a3ba3bd26b6dc) | `041d528e037a8a373c3c8aa7278a3ba3bd26b6dc` | `../minimind_resources/minimind-v` |
+| [MiniMind-O](https://github.com/jingyaogong/minimind-o/tree/b5d1bc11ece8de17404cbc034c3e09718d0fecdf) | `b5d1bc11ece8de17404cbc034c3e09718d0fecdf` | `../minimind_resources/minimind-o` |
+
+三个仓库的 `model/model_minimind.py` 可能具有相同 SHA-256，但仍各自独立绑定版本。
+未来升级不会自动改变本书基线，也不自动使旧版书稿失效；决定迁移时才记录差异并重验受影响章节。
+
+### 历史基线
+
+2026-10-08 锁定版本（当时三个仓库均为 detached HEAD，工作区 clean，HEAD 与下列提交一致）：
 
 | 项目 | 锁定 commit | 本地目录 |
 |---|---|---|
@@ -64,35 +80,20 @@ v1.0.1 的历史验收依据：[终审记录](meta/final-review.md)、[一致性
 | [MiniMind-V](https://github.com/jingyaogong/minimind-v/tree/740d467ece78a0b7d2d976fcb424472095d4a688) | `740d467ece78a0b7d2d976fcb424472095d4a688` | `../minimind_resources/minimind-v` |
 | [MiniMind-O](https://github.com/jingyaogong/minimind-o/tree/ccab6d98520ac5ac5d7583a3fa21a65105137e28) | `ccab6d98520ac5ac5d7583a3fa21a65105137e28` | `../minimind_resources/minimind-o` |
 
-本次三个 `model/model_minimind.py` 的 SHA-256 相同，但各仓库仍独立绑定版本。
-未来升级不会自动改变本书基线，也不自动使旧版书稿失效；决定迁移时才记录差异并重验受影响章节。
+2026-10-18 候选终点（issue #10 指定的比较终点；11 章曾据此修订）：
 
-### 2026-10-18 候选迁移基线
-
-| 项目 | 候选 commit | 迁移章节 |
+| 项目 | 当时候选 commit | 当时迁移章节 |
 |---|---|---|
 | MiniMind | `f659b55761b754d306bd140573493a6543cafd7f` | 02、04、07—13 |
 | MiniMind-V | `1862b633fc082a723e78dbead9777545f09d960c` | 15 |
 | MiniMind-O | `f900448c608318c53314ebf8a947ab05cd8c038e` | 19 |
 
-上表是 issue #10 指定的比较终点。完整变更见[迁移记录](meta/upstream-impact-2026-10-18.md)。
-
-### 2026-10-28 候选迁移基线（bot-hub #102，待审核）
-
-| 项目 | 候选 commit | 本轮迁移章节 |
-|---|---|---|
-| MiniMind | `233d00fa068ec2b8c0d4f07b703934d6391a5a73` | 07、08、10、13 |
-| MiniMind-V | `041d528e037a8a373c3c8aa7278a3ba3bd26b6dc` | 15 |
-| MiniMind-O | `b5d1bc11ece8de17404cbc034c3e09718d0fecdf` | 19 |
-
-比较起点为上表 2026-10-18 候选终点（M `f659b557…` / V `1862b633…` / O `f900448c…`）。
-01–06、09、11、12、14、16–18、20 正文不改；受影响章保持 stale / cpu: not_run，不把旧 CPU 结果当新版验证。
-详见[2026-10-28 迁移记录](meta/upstream-impact-2026-10-28.md)。
+完整变更见[2026-10-18 迁移记录](meta/upstream-impact-2026-10-18.md)。随后比较到当前基线提交的记录见[2026-10-28 迁移记录](meta/upstream-impact-2026-10-28.md)；该次候选现已作为当前基线，并由 2026-10-30 的 #111 / #116 CPU 复验覆盖全书。
 
 ## 全书设计
 
-下表是完整出版范围；二十章在旧基线均已成稿并完成当时声明范围的源码与 CPU 核验。
-本次候选采用逐章迁移：受影响 11 章已切换新源码引用、等待新版 CPU 复验，其余 9 章保留旧版绑定；不能将历史验证整体移植到新版本。
+下表是完整出版范围；二十章均已成稿，并在当前基线上完成 2026-10-30 声明范围内的源码与 CPU 核验（bot-hub #111 覆盖 11 章，#116 覆盖其余 9 章）。
+不能把 2026-10-08 的历史验证整体移植到新版本；本次是在新基线上重新核验。
 实际进度见 [实施路线图](meta/roadmap.md)。`M`、`V`、`O` 分别指上表三个仓库，
 源码入口为仓库内相对路径，不能省略仓库区分。
 
