@@ -54,6 +54,6 @@ Inventory payload 为 `InlineMath` 换行后加 `w`，哈希 `da88938b2680676a44
 | 20 | `SileroVAD`、`RealtimeSession.push_chunk`/`get_audio`/`reset`、`web_demo.py` 的 `realtime`/`run_generate`/`stream_pcm` 以及 HTML `stopPcm` 均与旧 SHA 相同。 | `ch20-results.json`（VAD 窗 1024；interrupt 保留 2048；stop/speech `interrupted = true`；浏览器停止 2 个节点） | 通过 |
 | README.md | 当前基线表改为三仓库新 SHA、二十章均绑定；#111/#116 复验已完成。2026-10-08 锁与 2026-10-18 候选改为历史表，并保留两份 impact 文档链接。已去掉「待审核 / 保留旧版绑定 / 等待新版 CPU 复验」。 | 与本表各章 `source_commit` 及 #111 表一致 | 通过 |
 | docs/index.html | 基线行 href 与 7 字符短链改为 `233d00f` / `041d528` / `b5d1bc1`。 | 与当前锁定 commit 一致 | 通过 |
-| reproduction.md | 附录 B 基线表改为新 SHA。补充说明 2026-10-30 复验在 Linux、torch 2.6.0+cpu 上完成，音频章使用装有相同音频依赖的 Python 3.12 环境（未按 3.11 重建）；`.venv-omni` 仍为音频命令入口。注明早期验证在 macOS arm64。 | ch16–20 实验记录 `source_commit` 为 `b5d1bc11…` | 通过 |
+| reproduction.md | 附录 B 基线表改为新 SHA。补充说明 2026-10-30 复验在 Linux、torch 2.6.0+cpu 上完成，音频章 16—20 在装有 `requirements-omni.lock` 依赖的 Python 3.12 `.venv-omni` 上重新验证（文中记载的音频环境为 Python 3.11，本次未用 3.11 重建或复跑）；`.venv-omni` 仍为音频命令入口。注明早期验证在 macOS arm64。 | ch16–20 实验记录 `source_commit` 为 `b5d1bc11…` | 通过 |
 
 限制：本补充只覆盖上表 9 章的已核对机制与对外基线说明，证据是 CPU 小配置实验与静态 diff/AST，不证明 GPU 行为、训练质量、语音/视觉质量或真实设备时延。MiniMind 文件级 diff 中的 Attention fp16 与 MoE Top-1 STE 仍归第 04/09 章，不在这 9 章的断言范围内。`ch07-math-013` 的删除已在上方补记。
