@@ -45,3 +45,12 @@ MiniMind-O `f900448c608318c53314ebf8a947ab05cd8c038e` → `b5d1bc11ece8de17404cb
 未启动真实 SGLang 服务，也未走 NCCL/多 GPU。不更新电子书正式版号。
 02、04、09、11、12 章的 frontmatter、正文链接与来源映射统一钉到 MiniMind `233d00fa…`（实验即在该提交运行；`f659b557…`→`233d00fa…` 未改这些章引用的文件）。
 内容复核记录见 [content-review-2026-10-30.md](content-review-2026-10-30.md)。
+
+## 2026-10-30 其余 9 章迁移与 CPU 复验、v1.1.0 版本号（bot-hub #116）
+
+01、03、05、06 章由 MiniMind `6fc918be…` 改为 `233d00fa…`，14 章由 MiniMind-V `740d467e…` 改为 `041d528e…`，
+16、17、18、20 章由 MiniMind-O `ccab6d98…` 改为 `b5d1bc11…`。逐章核对正文引用的文件与符号（这 9 章无 `#L` 行号锚点），
+并在 torch `2.6.0+cpu` 上按新基线实跑配套实验，9 章均为 `verified`（`verified_at: 2026-10-30`，`cpu: passed`）；未沿用旧 CPU 结果。
+`experiments/_support.py` 未改，脚本按 #111 方式单独覆盖提交。二十章现均绑定当前基线。
+`publishing/book.yaml` 版本改为 `1.1.0`、日期 `2026-10-30`，并重新生成字体子集；正式发布仍需逐页人工审读与新的终审记录。
+内容复核记录见 [content-review-2026-10-30.md](content-review-2026-10-30.md)。
