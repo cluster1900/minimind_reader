@@ -26,8 +26,8 @@
 ## 2026-10-30 按新基线重验
 
 日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
-命令：`MINIMIND_SOURCE_ROOT=/workspace/repos/minimind_resources /workspace/repos/.venv-mm/bin/python experiments/ch02_tokenizer.py`。
-环境：Python venv `/workspace/repos/.venv-mm`，torch `2.6.0+cpu`，无 CUDA。
+命令：项目根目录运行 `.venv/bin/python experiments/ch02_tokenizer.py`（`MINIMIND_SOURCE_ROOT` 指向三个上游仓库的父目录）。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
 结构化输出见 [ch02-results.json](ch02-results.json)。
 
 已有词表与模板哈希未变：`tokenizer.json` / `tokenizer_config.json` 仍为

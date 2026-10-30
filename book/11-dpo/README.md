@@ -6,7 +6,7 @@ audience: advanced
 prerequisites: [ch06, ch08]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
 verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
@@ -55,8 +55,8 @@ flowchart TD
 图中的共同上下文是数据要求，不表示当前 Dataset 已经自动验证了所有成对样本。
 
 源码位于 MiniMind 的
-[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/dataset/lm_dataset.py)
-与 [trainer/train_dpo.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_dpo.py)。
+[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/dataset/lm_dataset.py)
+与 [trainer/train_dpo.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_dpo.py)。
 重点追 `DPODataset.__getitem__`、`logits_to_log_probs`、`dpo_loss` 及 `train_epoch`。
 
 ## 11.2 这条路径由 Dataset 负责 shift

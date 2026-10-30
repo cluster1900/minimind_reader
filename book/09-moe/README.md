@@ -6,7 +6,7 @@ audience: advanced
 prerequisites: [ch03, ch07]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
 verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
@@ -61,7 +61,7 @@ flowchart TD
 图不表示各专家已经分布在不同 GPU 上。
 
 源码入口：MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)
 的 `MOEFeedForward.forward`、`MiniMindBlock.__init__` 与 `MiniMindModel.forward`。
 
 ## 9.2 把批与位置展平，再给专家打分

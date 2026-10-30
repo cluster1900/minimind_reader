@@ -16,8 +16,8 @@
 ## 2026-10-30 按新基线重验
 
 日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
-命令：`MINIMIND_SOURCE_ROOT=/workspace/repos/minimind_resources /workspace/repos/.venv-mm/bin/python experiments/ch11_dpo.py`。
-环境：Python venv `/workspace/repos/.venv-mm`，torch `2.6.0+cpu`，无 CUDA。
+命令：项目根目录运行 `.venv/bin/python experiments/ch11_dpo.py`（`MINIMIND_SOURCE_ROOT` 指向三个上游仓库的父目录）。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
 结构化输出见 [ch11-results.json](ch11-results.json)。
 
 断言已改为成对共享决策，不再沿用“相同回答被两边各自随机处理成 5/11”：

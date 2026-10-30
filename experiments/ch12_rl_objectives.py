@@ -90,7 +90,7 @@ def run_ddp():
         for old in stage.glob('rank*.json'):old.unlink()
     else:stage.mkdir(parents=True,exist_ok=True)
     env={**os.environ,'CH12_DDP_WORKER':'1','CH12_DDP_PORT':str(port),'CH12_DDP_OUT':str(stage),
-         'MINIMIND_SOURCE_ROOT':os.environ.get('MINIMIND_SOURCE_ROOT','/workspace/repos/minimind_resources')}
+         'MINIMIND_SOURCE_ROOT':os.environ.get('MINIMIND_SOURCE_ROOT',str(_support.ROOT.parent/'minimind_resources'))}
     procs=[]
     try:
         for rank in range(2):

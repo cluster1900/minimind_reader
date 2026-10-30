@@ -69,7 +69,7 @@ def main():
         raise AssertionError('empty corpus accepted')
     except ValueError as exc:
         assert '没有可用文本' in str(exc)
-        empty_error=str(exc)
+        empty_error=str(exc).replace(str(ROOT)+'/','')
     try:
         module.train_tokenizer(str(empty),str(stage/'empty-tokenizer'),vocab_size=384)
         raise AssertionError('empty corpus training accepted')

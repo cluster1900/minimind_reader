@@ -18,8 +18,8 @@ RoPE 在本实验被设为恒等旋转以隔离机制；未测试 GPU 内核速�
 ## 2026-10-30 按新基线重验
 
 日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
-命令：`MINIMIND_SOURCE_ROOT=/workspace/repos/minimind_resources /workspace/repos/.venv-mm/bin/python experiments/ch04_attention.py`。
-环境：Python venv `/workspace/repos/.venv-mm`，torch `2.6.0+cpu`，无 CUDA，种子 42、单计算线程。
+命令：项目根目录运行 `.venv/bin/python experiments/ch04_attention.py`（`MINIMIND_SOURCE_ROOT` 指向三个上游仓库的父目录）。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA，种子 42、单计算线程。
 结构化输出见 [ch04-results.json](ch04-results.json)。
 
 原有手算、因果/padding、SDPA 分支与非方阵对齐断言仍通过。补充低精度显式路径断言，对应新基线 `(xq @ xk.T).float()` 发生在缩放和 mask 之前：

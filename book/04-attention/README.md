@@ -6,7 +6,7 @@ audience: core
 prerequisites: [ch01, ch03]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
 verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
@@ -128,7 +128,7 @@ xv = xv.view(bsz, seq_len, self.n_local_kv_heads, self.head_dim)
 阅读时先代入小配置检查元素数，再换成默认配置。默认 768 维、8 个查询头、4 个 KV 头时，
 每头为 96 维；不要把小例子的 8 维写成真实默认值。
 源码锚点：MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)
 的 `Attention.__init__`、`Attention.forward` 与 `repeat_kv`。
 
 ## 4.4 GQA：多个查询头共用一组键和值

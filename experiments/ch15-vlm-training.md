@@ -16,8 +16,8 @@
 ## 2026-10-30 按新基线重验
 
 日期：2026-10-30。MiniMind-V commit `041d528e037a8a373c3c8aa7278a3ba3bd26b6dc`，工作区干净。
-命令：`/workspace/repos/.venv-mm/bin/python experiments/ch15_vlm_training.py`。
-环境：Python venv `/workspace/repos/.venv-mm`，torch `2.6.0+cpu`，无 CUDA。
+命令：项目根目录运行 `.venv/bin/python experiments/ch15_vlm_training.py`。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
 结构化输出见 [ch15-results.json](ch15-results.json)。
 
 断言已按新基线补齐，冻结计数与旧小配置一致：

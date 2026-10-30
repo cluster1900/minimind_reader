@@ -6,7 +6,7 @@ audience: core
 prerequisites: [ch01]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
 verified_at: 2026-10-30
 validation:
@@ -59,8 +59,8 @@ flowchart TD
 并不表示它们在概念上变成了同一件事。
 
 本章的两个关键源码位置是 MiniMind 的
-[trainer/train_tokenizer.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/trainer/train_tokenizer.py)
-和 [model/tokenizer_config.json](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/tokenizer_config.json)。
+[trainer/train_tokenizer.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/trainer/train_tokenizer.py)
+和 [model/tokenizer_config.json](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/tokenizer_config.json)。
 前者解释词表怎样训练并导出配置；后者是读取现有 tokenizer 时实际使用的配置和模板。
 训练脚本不等于模型每次聊天时都会重新运行的步骤。
 

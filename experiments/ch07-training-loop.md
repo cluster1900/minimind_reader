@@ -25,8 +25,8 @@ get_lr 的端点与 SkipBatchSampler 的尾组/跳过行为也已检查。
 ## 2026-10-30 按 233d00fa 重验
 
 日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
-命令：`/workspace/repos/.venv-mm/bin/python experiments/ch07_training_loop.py`。
-环境：Python venv `/workspace/repos/.venv-mm`，torch `2.6.0+cpu`，无 CUDA。
+命令：项目根目录运行 `.venv/bin/python experiments/ch07_training_loop.py`。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
 结构化输出见 [ch07-results.json](ch07-results.json)。
 
 断言已改为新基线行为，不再沿用“保存时仅一次更新”和 resume=fp16：

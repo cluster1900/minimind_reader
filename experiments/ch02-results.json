@@ -98,7 +98,7 @@
       "one",
       "two\nthree"
     ],
-    "empty_error": "/workspace/repos/minimind_reader/build/experiments/ch02-toy/empty.jsonl 中没有可用文本：每行应为 {\"text\": ...} 或 {\"conversations\": [{\"role\":..., \"content\":...}, ...]}。继续训练只会得到一个空词表。"
+    "empty_error": "build/experiments/ch02-toy/empty.jsonl 中没有可用文本：每行应为 {\"text\": ...} 或 {\"conversations\": [{\"role\":..., \"content\":...}, ...]}。继续训练只会得到一个空词表。"
   },
   "toy_vocabulary": 364,
   "toy_ids": [
@@ -106,5 +106,5 @@
     354
   ],
   "toy_roundtrip": "你好 hello",
-  "script_sha256": "8152e01d17de3d4ee7cf4e1746d42401f6fd62b45bf62d95e4556f10f8f3d34e"
+  "script_sha256": "f7324d5beb0ac725299ac3fef4ce27c5b5debd0e6c77cfe23dd635ed5f8d8089"
 }
