@@ -1,15 +1,15 @@
 ---
 title: "第 11 章 DPO 与偏好数据"
 chapter_id: ch11
-status: stale
+status: verified
 audience: advanced
 prerequisites: [ch06, ch08]
 sources:
   - repository: jingyaogong/minimind
     commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
@@ -20,9 +20,6 @@ scope: "DPO 的成对数据、序列 log-prob、参考策略、目标与梯度�
 ---
 
 # 第 11 章 DPO 与偏好数据
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 SFT 通常给模型一份参考答案。偏好数据则告诉模型：对于同一个问题，两个候选中更喜欢哪一个。
 DPO，即 Direct Preference Optimization，直接偏好优化，把这种成对关系变成可优化目标。
@@ -170,7 +167,7 @@ flowchart TD
 运行 `.venv/bin/python experiments/ch11_dpo.py`。
 实验对真实损失函数做梯度检查：beta=0.15 的零差案例中，chosen 有效项梯度为 -0.075，
 rejected 为 +0.075，忽略位置为零；把一个 chosen log-prob 提高 0.4 后，loss 降至约 0.6636。
-旧版记录还验证真实 Dataset 的 shift、gather 对齐及随机模板反例；新版应改为检查同一偏好对共用删除决策。
+本次实验同时验证真实 Dataset 的 shift、gather 对齐，以及同一偏好对共用空思考删除决策。
 
 它验证的是目标与数据语义，不是经过 DPO 后模型质量提升的证据。
 输出和源文件哈希保存在 `experiments/ch11-results.json`。

@@ -1,11 +1,11 @@
 {
   "status": "passed",
-  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
   "device": "cpu",
-  "torch": "2.6.0",
+  "torch": "2.6.0+cpu",
   "seed": 42,
-  "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
-  "script_sha256": "7cd664985e37a103d1a5adc59279fb65bb1a670e0d79e8436c1239c6a39bc32b",
+  "source_sha256": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
+  "script_sha256": "f42a5255141610e54e71360d44637ed6e2550587e8b4ad748a64a7e4a00d8db2",
   "toy_weights": [
     [
       1.0,
@@ -37,10 +37,24 @@
     2,
     8
   ],
-  "sdpa_manual_max_error": 5.960464477539063e-08,
+  "sdpa_manual_max_error": 8.940696716308594e-08,
   "future_perturbation_prefix_error": 0.0,
   "masked_key_valid_query_error": 0.0,
   "all_zero_mask_output_nonzero": true,
   "sdpa_called_for_unmasked_prefill": true,
-  "sdpa_skipped_for_padding_and_single_token": true
+  "sdpa_skipped_for_padding_and_single_token": true,
+  "rectangular_sdpa_first_channel": [
+    1.0,
+    1.5
+  ],
+  "cached_multi_token_skips_sdpa": true,
+  "cached_multi_token_error": 0.0,
+  "fp16_explicit_output_dtype": "torch.float16",
+  "fp16_explicit_softmax_scores_dtype": "torch.float32",
+  "fp16_explicit_padded_key_residual": 0.0,
+  "fp16_all_zero_fp32_mask_finite": true,
+  "fp16_qk_matmul_overflows": true,
+  "fp16_cast_after_overflow_stays_inf": true,
+  "fp16_matmul_in_fp32_recovers": 8000000.0,
+  "fp16_large_qk_norm_output_finite": false
 }
