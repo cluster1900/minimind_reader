@@ -17,5 +17,5 @@ python3 -m http.server 8000 --directory docs
 然后访问 <http://localhost:8000/>。站点不依赖 CDN；封面与字体资源从 `docs/assets/` 读取。
 
 页面内容以仓库正文、实验记录和 `publishing/book.yaml` 为准。章节卡片链接到 GitHub 上的 Markdown，
-下载按钮链接到 `v1.0.1` Release 的 EPUB/PDF。更新书稿或发行版本时，应同步检查 `index.html` 中的版本号、
+下载按钮链接到 `v1.1.0` Release 的 EPUB/PDF。更新书稿或发行版本时，应同步检查 `index.html` 中的版本号、
 Release 地址、章节目录和源码 commit。

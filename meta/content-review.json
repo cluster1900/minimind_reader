@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "reviewed_at": "2026-10-30T18:11:09.733276+08:00",
+  "reviewed_at": "2026-10-30T18:29:42.463053+08:00",
   "record": "meta/content-review-2026-10-30.md",
   "documents": [
     {
@@ -636,7 +636,7 @@
     {
       "id": "ch05",
       "path": "book/05-rope-cache-generation/README.md",
-      "body_sha256": "131f7be84bab0cd81b235546a9858afc3ab459aedf425df096e638a2b616a4da",
+      "body_sha256": "a0acaa23ae0f4a59d142bfdb7bf5d1c6f0725990ca4f0939c5965bf97040ecf8",
       "items": [
         {
           "id": "ch05-math-001",
@@ -1349,7 +1349,7 @@
     {
       "id": "ch14",
       "path": "book/14-vision/README.md",
-      "body_sha256": "c1372f50093eb66524633ad93dd63dd3b5f9c6d42bc6ee9c0b54d82f0d5c8d44",
+      "body_sha256": "626d93fc90f8ddc82f70484d85d1f401164449d887e1962e853326ec35f2ed91",
       "items": [
         {
           "id": "ch14-math-001",
@@ -1696,7 +1696,7 @@
     {
       "id": "appendix-reproduction",
       "path": "book/appendices/reproduction.md",
-      "body_sha256": "990a00af1a1fa7e5b5d4c62722320fb0c49f2becad8a6584963c7031a286d9b4",
+      "body_sha256": "d0db01535139d27a2d95d74a2dbcaafd5739e93baa9646fc0261436fcb9009b7",
       "items": []
     },
     {

@@ -7,7 +7,7 @@
 
 文本、后训练、视觉和出版使用 Python 3.12 的 `.venv`；音频实验默认使用 Python 3.11 的独立 `.venv-omni`。
 依赖分别由 `requirements-book.lock` 与 `requirements-omni.lock` 固定。
-2026-10-30 按当前基线的 CPU 复验在 Linux、torch 2.6.0+cpu 上完成；其中音频章 16—20 是在装有 `requirements-omni.lock` 依赖的 Python 3.12 `.venv-omni` 上重新验证的；上文与出版说明记载的音频环境为 Python 3.11，本次未用 Python 3.11 重建或复跑。
+2026-10-30 按当前基线的 CPU 复验在 Linux、torch 2.6.0+cpu 上完成；其中音频章 16—20 是在装有 `requirements-omni.lock` 依赖的 Python 3.12 `.venv-omni` 上重新验证的；上文与出版说明记载的音频环境为 Python 3.11，本次未用 Python 3.11 重建或复跑。结果 JSON 中的 `torch` 字段（ch06 不记录该字段）为 `2.6.0+cpu`：这些结果由装有 CPU 版 PyTorch wheel（`2.6.0+cpu`）的 Python 3.12 环境直接运行实验脚本写出；发布前用 `scripts/verify_experiments.py` 复跑时，01—15 章使用的仓库 `.venv` 装的是 `2.6.0+cu124` wheel（本机无 CUDA，按 CPU 运行），因此 `build/final-audit/experiments.json` 与 `meta/final-experiments.json` 对这些章记录 `2.6.0+cu124`。两者都满足锁定文件的 `torch==2.6.0`，复跑结果除 `torch` 字段外与提交的 JSON 一致。
 
 ```bash
 python3.12 -m venv .venv

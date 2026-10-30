@@ -18,7 +18,7 @@
 
 完整交付：[EPUB](https://github.com/cluster1900/minimind_reader/releases/download/v1.1.0/minimind-source-guide.epub) · [PDF](https://github.com/cluster1900/minimind_reader/releases/download/v1.1.0/minimind-source-guide.pdf) · [Markdown 与教学代码](https://github.com/cluster1900/minimind_reader/archive/refs/tags/v1.1.0.zip)。
 [Release v1.1.0](https://github.com/cluster1900/minimind_reader/releases/tag/v1.1.0) 提供电子书下载与 SHA-256 校验值。
-v1.0.1 的历史验收依据：[终审记录](meta/final-review.md)、[一致性复审](meta/consistency-review.md)、[完整验收清单](meta/final-review.json)。这些记录不代表当前修订已通过新版出版验收。
+v1.1.0 的出版验收清单为 [meta/final-review.json](meta/final-review.json)，在 review 逐页审读签署后由 `scripts/collect_release_review.py` 生成；[终审记录](meta/final-review.md) 与 [一致性复审](meta/consistency-review.md) 是 v1.0.1（2026-09-09）的历史验收记录，不代表 v1.1.0 的验收。
 维护检查现在会核对固定源码、章节依赖和已复核的正文/公式/图源；改动后须重新复核，具体命令见出版说明。
 
 在线阅读：[MiniMind Reader GitHub Pages](https://cluster1900.github.io/minimind_reader/)。站点首页提供阅读路线、二十章目录、实验入口、源码基线和 EPUB/PDF 下载；页面源文件位于 [`docs/`](docs/)，不依赖外部 CDN。若要在自己的仓库启用页面，按 [`docs/README.md`](docs/README.md) 在 Settings → Pages 中选择 `main` 分支的 `/docs` 文件夹即可。
