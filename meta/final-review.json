@@ -1,8 +1,8 @@
 {
   "title": "MiniMind 源码阅读与工程实践",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "status": "passed",
-  "verified_at": "2026-09-09T11:18:59.572255+08:00",
+  "verified_at": "2026-10-30T19:04:37.762323+08:00",
   "inputs": [
     {
       "id": "reading-guide",
@@ -12,107 +12,107 @@
     {
       "id": "ch01",
       "path": "book/01-start-here/README.md",
-      "sha256": "129fbf87f337da364cd68509fbf091eeda8f0d7a02dfd9a49ac470e1f19f7d1f"
+      "sha256": "7f53b11329aae3d14c6221f3f6d2ca25d3e97cd8cd589a1c4b88636f4f671b99"
     },
     {
       "id": "ch02",
       "path": "book/02-tokenizer/README.md",
-      "sha256": "0c8abd9508304416b8df43a884338bf259b0b604ab7e839162e220ddcef04101"
+      "sha256": "51cd97722a029d3b99f344da6c5fdc096f30731d88865783b983d6f21d079a30"
     },
     {
       "id": "ch03",
       "path": "book/03-model-skeleton/README.md",
-      "sha256": "e8fd5b6fc7a96f3df9edc227833600211da7829daf61191f7e0dc46cca4d25d6"
+      "sha256": "790e8bb13b184d7ccc788123c1ecc4d9e48891dece03dabe4a750d655c1dc06c"
     },
     {
       "id": "ch04",
       "path": "book/04-attention/README.md",
-      "sha256": "1ba6bb9d081eaac84a371ad60cb3a3d288a49bd847fc2b66ae22e9fd8b686758"
+      "sha256": "b3f1ac27383ea71832a1d2a3143abc55a0c6084954fdcef37acf5b3ad2a4da13"
     },
     {
       "id": "ch05",
       "path": "book/05-rope-cache-generation/README.md",
-      "sha256": "7a4110db40df81bc5e62740b51008212c4463c2af386b2cb64d3c5920604c343"
+      "sha256": "3782e5b4d1e05e2258f189c3ebde87af0cb7b43b9eddc4be453e42d9641d739b"
     },
     {
       "id": "ch06",
       "path": "book/06-datasets/README.md",
-      "sha256": "c919162f6409911013e5f2edb0c05cf4b5dc123247dff0e635f15ddaafd9dc9d"
+      "sha256": "c3735ac7b030b23e1ce48c61552f0c7facfca0b0fc761ed37849315d59456796"
     },
     {
       "id": "ch07",
       "path": "book/07-pretraining/README.md",
-      "sha256": "a785a88cd7f0c2d959000a786b6d71b5400393470fb0a8cb00e5e340531fa37a"
+      "sha256": "fa4b6cac8d5950ccddd7bd3646ad6a0ed44f464e60178b48c75d0e49506747bb"
     },
     {
       "id": "ch08",
       "path": "book/08-sft-evaluation/README.md",
-      "sha256": "54b67d2ab3edfe804068efa0f716ebcc9ffb39ad41ccdccb29d5aacbcdd9e57a"
+      "sha256": "b0241e34f7f483b5cd79b1a73a4b87c82d89dd0f11355759cf7b3a537b165c22"
     },
     {
       "id": "ch09",
       "path": "book/09-moe/README.md",
-      "sha256": "5dfbf03e4080d48a1e35fd6c1c304227dbd0098ab8c1386dfb76175df60774bc"
+      "sha256": "14dd54a9b036952cb6d4f78d2c062bbc2cb48e3ecf21da361a7f79592d733557"
     },
     {
       "id": "ch10",
       "path": "book/10-lora-distillation/README.md",
-      "sha256": "e4a2d38503ad032289053eb045819232d26ad004485a06896e7538836c41cdb8"
+      "sha256": "fdd628c34a8783c17fcf870456088d51cd30a2b3cfd11a4655cc96a3d1b9dfa8"
     },
     {
       "id": "ch11",
       "path": "book/11-dpo/README.md",
-      "sha256": "24d938989e84e48fd3c5768660d6045a67d7c0708e8a569964132162ad632f11"
+      "sha256": "c1ba08526031ddb7593eba10e20ba21487af8bd37908140aa4a7d08a0d95c79f"
     },
     {
       "id": "ch12",
       "path": "book/12-ppo-grpo/README.md",
-      "sha256": "fba2504263774c581a5c7203f26ef95797ad9c68b7cb4a7e347c68b03c992e89"
+      "sha256": "641f46d4e036bb4e385e583a52a51b71fdbb1e1ef1b497ed1455ca1cc90e154c"
     },
     {
       "id": "ch13",
       "path": "book/13-agent/README.md",
-      "sha256": "30ea606d5a7a396051ad2c364ce566cf76d95abd4e4621fb269dfe990204a78a"
+      "sha256": "524952434abde7aba207ee4516f84e0108455118d2fd05189a857ca842adcd9d"
     },
     {
       "id": "ch14",
       "path": "book/14-vision/README.md",
-      "sha256": "f65a330eddba7334a537e0c5edc2e750aab26258d8e088b0fa510e4c79c583fd"
+      "sha256": "f38337e05c9640f5feacf87af43871a66571847eda580d396a1cd92e528cce4e"
     },
     {
       "id": "ch15",
       "path": "book/15-vlm-training/README.md",
-      "sha256": "ae5daff98be76216fe5da7f047bbf8a345b8d247b0294654e1799ef631e97fc3"
+      "sha256": "d7767f786f57ffcad2827bafa96f58fb38c3fc44faf08fa90747ddd5a9173068"
     },
     {
       "id": "ch16",
       "path": "book/16-audio-basics/README.md",
-      "sha256": "4cdc2d8468787569df4270e84050ebe3aff1be38b168828d790b1087b79e4550"
+      "sha256": "77f6dc0f94268737ae2bc6345941773b514a9e09571ceb6afbd58e0da70c8cca"
     },
     {
       "id": "ch17",
       "path": "book/17-thinker-talker/README.md",
-      "sha256": "b4fa670b009395268a246fdf7c2a4661e4fc0654c528a8fe343a345feedfd2e2"
+      "sha256": "86434e172a1351acbd76d3e103c150bd9a0b61045c304bda50f03bcf4d3128b2"
     },
     {
       "id": "ch18",
       "path": "book/18-audio-codebooks/README.md",
-      "sha256": "8221b28b4444716d77e082ea788f696cdff6bc551d9f5d5c844660ac1a4ca8c0"
+      "sha256": "16c6ae1ae499c69054c822154d75f63626cc70e3944efaf97425219886541f09"
     },
     {
       "id": "ch19",
       "path": "book/19-omni-training/README.md",
-      "sha256": "d0efbedb1249aca0cdd719ad8081562b3f4f2d5e94af33bbbd2a606cace9764e"
+      "sha256": "a53b6004172c49e3ae49cdd604c6162ab9043c636e60bff17d07e2ba672d863b"
     },
     {
       "id": "ch20",
       "path": "book/20-realtime/README.md",
-      "sha256": "28a2375e79fe43fc161908f43000d2c05f581aa530f3e0378d0f6e30ad4a63e4"
+      "sha256": "577fe38876c07142f7c728f3f4b5838727f1d9e4f543eef1320380d31ec996ed"
     },
     {
       "id": "glossary",
       "path": "glossary/terms.md",
-      "sha256": "c13863a364b8f17c25d4dfe1a00c0a53ed53c4f582a1ce7777b03911e9d4ced7"
+      "sha256": "1bc5772205b4c92052f64883a77ab5620a9b93feb93c8bcffea9179ec58f0509"
     },
     {
       "id": "appendix-math",
@@ -122,12 +122,12 @@
     {
       "id": "appendix-reproduction",
       "path": "book/appendices/reproduction.md",
-      "sha256": "a09a9be0244fd38953b5099cc4f7c36b1af2d581805986fcf8b6cbb03fff8350"
+      "sha256": "d922894830bd7e3c29c66eb5388207bbac617f50ac73a23768abda2130a6cebd"
     },
     {
       "id": "appendix-source",
       "path": "book/appendices/source-index.md",
-      "sha256": "18322e323bbba142523dc956f65b452ec47b9f53fdebb83219c413f366a8b991"
+      "sha256": "72e840a8c569400b625abbee57836b6bbafcc88c222911bd2289dd0b20daf2ce"
     },
     {
       "id": "appendix-licenses",
@@ -137,19 +137,19 @@
   ],
   "sources": {
     "minimind": {
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
       "dirty": false,
-      "remote": "https://github.com/jingyaogong/minimind"
+      "remote": "https://github.com/jingyaogong/minimind.git"
     },
     "minimind-v": {
-      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
       "dirty": false,
-      "remote": "https://github.com/jingyaogong/minimind-v"
+      "remote": "https://github.com/jingyaogong/minimind-v.git"
     },
     "minimind-o": {
-      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
       "dirty": false,
-      "remote": "https://github.com/jingyaogong/minimind-o"
+      "remote": "https://github.com/jingyaogong/minimind-o.git"
     }
   },
   "checks": {
@@ -159,83 +159,231 @@
     "publication_tests": 29,
     "epubcheck": "passed: zero errors/warnings",
     "epub_documents": 26,
-    "formula_resources": 201,
+    "formula_resources": 210,
     "diagrams": 38,
-    "pdf_text_probes": 1861,
-    "pdf_visual_pages": 194,
+    "pdf_text_probes": 1960,
+    "pdf_visual_pages": 210,
     "epubjs_cases": 5,
     "foliate_cases": 28,
     "xhtml_display_cases": 78,
-    "embedded_font_resources": 1098,
+    "embedded_font_resources": 1101,
     "pdf_chapter_order": "passed"
   },
   "pdf_text_check": {
-    "pages": 194,
-    "bookmarks": 221,
-    "text_probes": 1861,
+    "pages": 210,
+    "bookmarks": 222,
+    "text_probes": 1960,
     "missing": [],
     "bounds": [],
     "scope": "Paragraph fragments, code lines, table text and page bounds. Formula meaning and visual layout need separate review."
   },
   "pdf_visual": {
     "passed": true,
-    "pages": 194,
-    "pdf_sha256": "65f8853e5382e3d7bd06d77ecd5c26741799153df427a405b24ea73be3e4f69f",
-    "reviewed_at": "2026-09-09T11:18:42.623957+08:00",
-    "baseline_pdf_sha256": "ffda26d428e6c2675ac95a5e4cefad64ea56227adaf33917ac3ff81a2388eebf",
+    "pages": 210,
+    "pdf_sha256": "34c69ef2ae43b19b72d2ad960f4d50a411d833a968c67fa0b9b1c236e3339392",
+    "epub_sha256": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
+    "head_commit": "a38519a83a8b24f03b38f3aaf64c2224f3cb7583",
+    "reviewed_at": "2026-10-30T18:57:09+08:00",
+    "baseline_pdf_sha256": "65f8853e5382e3d7bd06d77ecd5c26741799153df427a405b24ea73be3e4f69f",
     "changed_body_pages": [
       2,
-      6,
-      7,
-      8,
-      17,
-      18,
-      42,
-      50,
-      76,
-      82,
-      84,
-      87,
-      90,
-      97,
-      103,
-      104,
-      106,
-      107,
-      108,
-      136,
-      137,
-      142,
-      143,
-      144,
-      145,
-      152,
-      158,
-      159,
-      160
-    ],
-    "review_pages_with_neighbors": [
-      1,
-      2,
-      3,
+      4,
       5,
       6,
       7,
       8,
       9,
-      16,
-      17,
-      18,
+      14,
+      20,
+      25,
+      26,
+      27,
+      28,
+      32,
+      33,
+      34,
+      43,
+      46,
+      47,
+      48,
+      49,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      63,
+      64,
+      65,
+      68,
+      69,
+      70,
+      72,
+      73,
+      74,
+      76,
+      77,
+      79,
+      80,
+      81,
+      82,
+      84,
+      85,
+      87,
+      88,
+      89,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      124,
+      125,
+      126,
+      127,
+      128,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      139,
+      140,
+      141,
+      142,
+      144,
+      145,
+      147,
+      148,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194
+    ],
+    "review_pages_with_neighbors": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
       19,
-      41,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
       42,
       43,
+      44,
+      45,
+      46,
+      47,
+      48,
       49,
       50,
       51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
       75,
       76,
       77,
+      78,
+      79,
+      80,
       81,
       82,
       83,
@@ -247,9 +395,16 @@
       89,
       90,
       91,
+      92,
+      93,
+      94,
+      95,
       96,
       97,
       98,
+      99,
+      100,
+      101,
       102,
       103,
       104,
@@ -258,32 +413,99 @@
       107,
       108,
       109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
       135,
       136,
-      137,
       138,
+      139,
+      140,
       141,
       142,
       143,
       144,
       145,
       146,
+      147,
+      148,
+      149,
+      150,
       151,
       152,
       153,
+      154,
+      155,
+      156,
       157,
       158,
       159,
       160,
-      161
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195
     ],
-    "method": "Compared every final page raster to reviewed 1.0. Reviewed 63 affected/adjacent pages of first candidate, then corrected state-diagram overlap and inspected final changed pages 8,9,158,159,160,161. Final chapter-end exercise fits preceding page; no clipped glyphs, equation or diagram content found.",
-    "record": "meta/consistency-review.md"
+    "method": "Rendered all 210 A5 pages and compared each raster to reviewed 1.0.1 (194 pages): 133 changed body pages, 177 with neighbours, all inspected (p195-210 equal v1.0.1 p179-194). Full 210-page read of a93ceef candidate carried over; a38519a differs from it only on p57, p128, p186 (raster diff), which were re-inspected with p56-58, p127-129, p185-187. p57/p128 numbers now match experiments/ch05,ch14-results.json; p186 lock file names no longer break. Independent fresh-clone rebuild is raster- and text-identical on all 210 pages. No clipped glyphs, overlaps, broken equations/diagrams or blank pages; non-blocking: p188 two overfull code lines (<7.3pt), p186 loose CJK spacing, cosmetic p18/p49/p148.",
+    "record": "meta/content-review-2026-10-30.md"
   },
   "readers": {
     "epubjs": {
       "reader": "EPUB.js 0.3.93",
-      "sha256": "a37d7a2b71fdb08de10be05bb731a2cc7f68c1fd1b59ad415fd97e11fd30ad64",
+      "sha256": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
       "checks": [
         {
           "index": 0,
@@ -311,7 +533,7 @@
           "state": [
             {
               "heading": "第 03 章 搭起语言模型骨架",
-              "images": 43,
+              "images": 44,
               "broken": 0,
               "fonts": [
                 {
@@ -330,7 +552,7 @@
           "state": [
             {
               "heading": "第 12 章 从 PPO 概念到 GRPO",
-              "images": 30,
+              "images": 34,
               "broken": 0,
               "fonts": [
                 {
@@ -349,7 +571,7 @@
           "state": [
             {
               "heading": "第 18 章 八路码本与时间对齐",
-              "images": 19,
+              "images": 21,
               "broken": 0,
               "fonts": [
                 {
@@ -414,7 +636,7 @@
     "foliate": {
       "reader": "Foliate.js",
       "revision": "78914aef4466eb960965702401634c2cb348e9b1",
-      "sha256": "a37d7a2b71fdb08de10be05bb731a2cc7f68c1fd1b59ad415fd97e11fd30ad64",
+      "sha256": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
       "checks": [
         {
           "index": 0,
@@ -446,7 +668,7 @@
             {
               "index": 6,
               "heading": "第 03 章 搭起语言模型骨架",
-              "images": 43,
+              "images": 44,
               "broken": 0,
               "fontSize": "16px",
               "fonts": [
@@ -467,7 +689,7 @@
             {
               "index": 15,
               "heading": "第 12 章 从 PPO 概念到 GRPO",
-              "images": 30,
+              "images": 34,
               "broken": 0,
               "fontSize": "16px",
               "fonts": [
@@ -509,7 +731,7 @@
             {
               "index": 21,
               "heading": "第 18 章 八路码本与时间对齐",
-              "images": 19,
+              "images": 21,
               "broken": 0,
               "fontSize": "16px",
               "fonts": [
@@ -593,7 +815,7 @@
             {
               "index": 6,
               "heading": "第 03 章 搭起语言模型骨架",
-              "images": 43,
+              "images": 44,
               "broken": 0,
               "fontSize": "22px",
               "fonts": [
@@ -614,7 +836,7 @@
             {
               "index": 15,
               "heading": "第 12 章 从 PPO 概念到 GRPO",
-              "images": 30,
+              "images": 34,
               "broken": 0,
               "fontSize": "22px",
               "fonts": [
@@ -656,7 +878,7 @@
             {
               "index": 21,
               "heading": "第 18 章 八路码本与时间对齐",
-              "images": 19,
+              "images": 21,
               "broken": 0,
               "fontSize": "22px",
               "fonts": [
@@ -740,7 +962,7 @@
             {
               "index": 6,
               "heading": "第 03 章 搭起语言模型骨架",
-              "images": 43,
+              "images": 44,
               "broken": 0,
               "fontSize": "16px",
               "fonts": [
@@ -761,7 +983,7 @@
             {
               "index": 15,
               "heading": "第 12 章 从 PPO 概念到 GRPO",
-              "images": 30,
+              "images": 34,
               "broken": 0,
               "fontSize": "16px",
               "fonts": [
@@ -803,7 +1025,7 @@
             {
               "index": 21,
               "heading": "第 18 章 八路码本与时间对齐",
-              "images": 19,
+              "images": 21,
               "broken": 0,
               "fontSize": "16px",
               "fonts": [
@@ -887,7 +1109,7 @@
             {
               "index": 6,
               "heading": "第 03 章 搭起语言模型骨架",
-              "images": 43,
+              "images": 44,
               "broken": 0,
               "fontSize": "22px",
               "fonts": [
@@ -908,7 +1130,7 @@
             {
               "index": 15,
               "heading": "第 12 章 从 PPO 概念到 GRPO",
-              "images": 30,
+              "images": 34,
               "broken": 0,
               "fontSize": "22px",
               "fonts": [
@@ -950,7 +1172,7 @@
             {
               "index": 21,
               "heading": "第 18 章 八路码本与时间对齐",
-              "images": 19,
+              "images": 21,
               "broken": 0,
               "fontSize": "22px",
               "fonts": [
@@ -1014,8 +1236,8 @@
     "@mermaid-js/mermaid-cli": "11.17.0",
     "epubjs": "0.3.93",
     "puppeteer": "25.10.0",
-    "python": "3.12.14",
-    "node": "v24.15.0",
+    "python": "3.12.16",
+    "node": "v24.22.1",
     "pandoc": "pandoc 3.9",
     "tectonic": "Tectonic 0.17.0",
     "epubcheck": "5.3.0",
@@ -1024,14 +1246,14 @@
   "tool_input_sha256": {
     "assets/cover.pdf": "cf9496c2c484449c1e1c958486956c7c60f4e9e7ff3a3b5c7a71d742e6df8425",
     "assets/cover.png": "231a842dcfdd084ac4ea0db6aeda5d61f8b819775c85da4fc3cac309628bbe73",
-    "assets/fonts/MiniMindBookCJK.otf": "6129fc3b77531373e40e7abb2b5d6a0d28bcd6d305ca40ae3394a5c8ed7fd3c2",
+    "assets/fonts/MiniMindBookCJK.otf": "68027f54720e030cd6dd36e52e1d9dad4af23f4f6074013ea7c8c4231666291e",
     "assets/fonts/NotoSansCJKsc-Regular.otf": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
     "assets/fonts/SourceCodePro-Regular.otf": "9f9664e2edf6f045c11e774f9bd0be6993971f2544a39061a5ce478b96b051f8",
-    "meta/chapter-source-map.json": "cb7469b16a8dfffdfda3a51c6fee12fee422e37fa5ae331c1d7314e51e15046b",
-    "meta/consistency-review.md": "a1b4e5f425155a12000b02bd07f8bf8af1a0f8563704c6f48cf2aa51c05bd7c7",
-    "meta/content-review.json": "4dd702700e90a82f290d09a149c6bef706036d1aaa50d850e50cc4e2e5cecdfc",
+    "meta/chapter-source-map.json": "11f87001189f50b38cca0783dff6fd7b749bf484c2600e9599a466edfca00cd2",
+    "meta/content-review-2026-10-30.md": "3ca5c66902c4ad6d082345c6ef3aaf767e9aa8a16b492603ad850080afa6df66",
+    "meta/content-review.json": "d9f785b290b65f59c72280127bacf0dc37ff5de0cc60a6c78806290059ddfe73",
     "package-lock.json": "86f28db0d9ffcaed7b6924f4c436dc16d1c1b761c423fff51f6c7fb4378ee1ea",
-    "publishing/book.yaml": "e5f4f1e4b378f33cd3323946c1555131a589da8afe0db96630043afd026fd462",
+    "publishing/book.yaml": "36ae89a6a80707144e378e93f5a8f54384474b28eaf2b61a35557de78e49ca61",
     "publishing/epub/style.css": "60b6bb1ed75ce054bdfe8bd9870e3a42171d27058bd49089bd12af47cdcaf626",
     "publishing/foliate-reader.html": "28623c01c5800b306fc38e62acc957421d95ffaa0bca509e63d9bb0a17605ff6",
     "publishing/math-descriptions.json": "c67fd374c91998ae43640b410a0cbff796d75555fb9e99d006912eb423693326",
@@ -1039,9 +1261,9 @@
     "publishing/pdf/header.tex": "e7a76ae181f2ed3d388987d61c1992b0a290cf0de701cb56ca2f3078cd73989a",
     "publishing/puppeteer.json": "c3f75cec23bbabe85cdef1dd731e7d7fe0f981cad3e8a2d19bee6fd7b96d5c84",
     "publishing/reader.html": "5fa99096ccb75d569541d8d29f300fdb016830fd71d8a91672bd60bd47a48778",
-    "scripts/booklib.py": "d99170a0e7b3b8e1d5d03e0cbb507dfba80ff97b2ae36cd76cfefc565416b184",
-    "scripts/build_book.py": "61adff6be2f7b325c6b5a5a789f10e7582a059ffb7d13a5263a9c0845189b2ec",
-    "scripts/check_book.py": "640056c3a2e5977ea4b0dfeabc6f062c7912063ed952037d435e55c775365f6e",
+    "scripts/booklib.py": "c6080d433a950889f14fa455bafdfe6ff1246905ba58ce6483e2a36785076098",
+    "scripts/build_book.py": "30c5dda53a8906fb5ec0e708aa54b7bf6a0e132b4158d14a37340c5ec549001a",
+    "scripts/check_book.py": "669d15a7e548874cb2deb9c95e7e382654e345be2321954392f797435c886572",
     "scripts/check_epub.py": "0cf6331c0eddf5683d3ff9f15ed2bb09ee0cfd2ed08201e437bc3d9f67ed034f",
     "scripts/check_epub_display.cjs": "18f89c7fbdabd5d8be561dcc46b43a998ed7de1d237398d1660ab79fb410e52f",
     "scripts/check_epubjs.cjs": "391fe81f62ad3a32597d92c47d0dfc227ef4c1eb7f0a8f87bde43c74b192094b",
@@ -1060,16 +1282,16 @@
     "scripts/verify_experiments.py": "abb4511aa457a5c55264d998604546343fbdabc1c04c5f134a5ab6fcd8a5d3fd"
   },
   "output_sha256": {
-    "minimind-source-guide.epub": "a37d7a2b71fdb08de10be05bb731a2cc7f68c1fd1b59ad415fd97e11fd30ad64",
-    "minimind-source-guide.pdf": "65f8853e5382e3d7bd06d77ecd5c26741799153df427a405b24ea73be3e4f69f"
+    "minimind-source-guide.epub": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
+    "minimind-source-guide.pdf": "34c69ef2ae43b19b72d2ad960f4d50a411d833a968c67fa0b9b1c236e3339392"
   },
   "audit_sha256": {
-    "build/consistency-audit/tests.log": "bf1c4faf4df8ee773086c2d481e0ccdcb399a66008b344144255d0ee0873c750",
-    "build/consistency-audit/experiments.json": "b73dc13842ce5845898ab228ad2031265e3dc62b4451d36355164ca814da18bc",
-    "build/consistency-audit/build.log": "eaf969de11cb8f7026feca0d985816e903a4f34bf92a7f9c71a4c4ae761b6366",
+    "build/consistency-audit/tests.log": "b09284625d7729a91b6dd323997840aafbbac9b38857281b39e9de8c5a1b26a4",
+    "build/consistency-audit/experiments.json": "889e36d40579300687b61f37e33e4e86c15bd959503eec524a8cf2179e76b15e",
+    "build/consistency-audit/build.log": "5cdc5f6e664285a138a6bb93e8f8c307b2d8ebd356879eae82061628efd52e8c",
     "build/consistency-audit/epubcheck.log": "1b871a801b1773626c473f38741caef8c98ef34b42c5b60ec1c5109e2bdec171",
-    "build/consistency-audit/pdffonts.txt": "e7af5b0e7763d335782e95cb7ef4b864cd1aea471cbd7687b644f1417b3596b4",
-    "build/consistency-audit/visual-review.json": "bb2c81a5a0c1ce2403afffb72e48fb536c761f4ac3a4a88cd5d165fe8c24c879"
+    "build/consistency-audit/pdffonts.txt": "d994255d1394d1ca11e641b3c025752da286a13a9e89671eda1db3693285ac00",
+    "build/consistency-audit/visual-review.json": "75d9dcfd0eb7fd61d87102826a0aa9d99b01b751449819bc47a3283af09b4a8d"
   },
   "limits": [
     "Source/CPU/synthetic-control-flow scope; no full default-weight training, GPU benchmark or audio-quality claim",
