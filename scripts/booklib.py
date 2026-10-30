@@ -103,6 +103,9 @@ def combined(config, docs, allow_missing_internal=False):
                         except ValueError:
                             raise ValueError(f'Unresolved book link: {d["path"]}: {url}')
                         if target.is_file():
+                            n['c'][2][0]='https://github.com/cluster1900/minimind_reader/blob/main/'+target.relative_to(ROOT).as_posix()
+                            if anchor:
+                                n['c'][2][0]+='#'+anchor
                             continue
                     raise ValueError(f'Unresolved book link: {d["path"]}: {url}')
                 n['c'][2][0]='#'+targets[target][anchor]
