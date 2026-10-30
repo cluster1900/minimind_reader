@@ -1,15 +1,15 @@
 ---
 title: "第 10 章 LoRA 与知识蒸馏"
 chapter_id: ch10
-status: stale
+status: verified
 audience: advanced
 prerequisites: [ch03, ch06, ch08]
 sources:
   - repository: jingyaogong/minimind
     commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
@@ -21,9 +21,6 @@ scope: "原生 LoRA 的注入/冻结/梯度/合并，以及 logits 蒸馏的 KL�
 ---
 
 # 第 10 章 LoRA 与知识蒸馏
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 如果已经有一个模型，能否只训练少量新增参数？如果有一个较强教师，能否让学生学习它的输出分布？
 LoRA 和知识蒸馏分别回答这两个问题。本章把它们放在一起比较，但它们是独立方法，
