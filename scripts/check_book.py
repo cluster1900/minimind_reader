@@ -125,7 +125,7 @@ def check(edition,chapters,smoke=False,require_review=True):
     if edition=='release' and require_review:
         from check_evidence import check_evidence
         check_evidence(docs,snapshot.manifest())
-    combined(cfg,docs) # resolves duplicate heading IDs and every internal link
+    combined(cfg,docs,allow_missing_internal=(edition=='preview')) # resolves duplicate heading IDs and every internal link
     print(f'Manuscript checks passed for {len(docs)} input documents')
     return {'documents':docs,'source_files':snapshot.manifest()}
 

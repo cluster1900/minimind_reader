@@ -163,7 +163,7 @@ def main():
             if not config.get(key):raise ValueError(f'Missing release metadata: {key}')
         for path in ['assets/cover.png','assets/cover.pdf','book/appendices/licenses.md']:
             if not (ROOT/path).is_file():raise ValueError(f'Missing release resource: {path}')
-    source=combined(config,docs)
+    source=combined(config,docs,allow_missing_internal=(args.edition=='preview'))
     stage=ROOT/'build'/args.edition;stage.mkdir(parents=True,exist_ok=True)
     (stage/'source.json').write_text(json.dumps(source,ensure_ascii=False,indent=2))
     (stage/'inputs.json').write_text(json.dumps([{k:d[k] for k in ['id','path','sha256']} for d in docs],ensure_ascii=False,indent=2))
