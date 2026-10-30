@@ -1,7 +1,7 @@
 {
   "source_sha256": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
-  "text_sha256": "9b946797cc61cce8c64e5064281a6ce36d8d9dd7df3b53e5fefc6e178f346f94",
-  "output_sha256": "ba4d3c58911a19185980285ed2c9563ccc1621232bb8327aba387afb3e5d794e",
+  "text_sha256": "fbc3d9714cf5c84ebd7bc387afce967ad718c091ea1e8b87d4742dbcbc12c18e",
+  "output_sha256": "27f4859556d59eff582ef88df9a87281f66f5d40aa0901f3994f59d281c60366",
   "bytes": 480796,
   "glyphs": 2322,
   "license": "SIL OFL 1.1; renamed subset, original copyright retained"
