@@ -7,7 +7,7 @@
 
 文本、后训练、视觉和出版使用 Python 3.12 的 `.venv`；音频实验默认使用 Python 3.11 的独立 `.venv-omni`。
 依赖分别由 `requirements-book.lock`{.nobreak} 与 `requirements-omni.lock`{.nobreak} 固定。
-2026-10-30 按当前基线的 CPU 复验在 Linux、torch 2.6.0+cpu 上完成；其中音频章 16—20 是在装有 `requirements-omni.lock`{.nobreak} 依赖的 Python 3.12 `.venv-omni` 上重新验证的；上文与出版说明记载的音频环境为 Python 3.11，本次未用 Python 3.11 重建或复跑。
+2026-10-30 按当前基线的 CPU 复验在 Linux、Python 3.12、torch 2.6.0+cpu 的同一个环境里完成，音频章 16—20 也在这个环境里重新验证；音频依赖用的是该环境现有的版本（如 librosa 1.0.0、soundfile 0.14.0、scipy 1.14.1），没有按 `requirements-omni.lock`{.nobreak} 重装，与其锁定版本不完全一致，实际版本见仓库中的 `meta/final-experiments.json`。上文与出版说明记载的音频环境为 Python 3.11，本次未用 Python 3.11 重建或复跑。
 
 ```bash
 python3.12 -m venv .venv
