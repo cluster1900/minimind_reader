@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "reviewed_at": "2026-10-30T18:32:30.633206+08:00",
+  "reviewed_at": "2026-10-30T18:40:29.995651+08:00",
   "record": "meta/content-review-2026-10-30.md",
   "documents": [
     {
@@ -1696,7 +1696,7 @@
     {
       "id": "appendix-reproduction",
       "path": "book/appendices/reproduction.md",
-      "body_sha256": "5853d7f498d0cf8c71ed5e591edb8119bc1335a12a48852039cdc82b4db48a63",
+      "body_sha256": "d922894830bd7e3c29c66eb5388207bbac617f50ac73a23768abda2130a6cebd",
       "items": []
     },
     {

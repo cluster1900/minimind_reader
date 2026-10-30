@@ -6,7 +6,7 @@
 ## 两套验证环境
 
 文本、后训练、视觉和出版使用 Python 3.12 的 `.venv`；音频实验默认使用 Python 3.11 的独立 `.venv-omni`。
-依赖分别由 `requirements-book.lock` 与 `requirements-omni.lock` 固定。
+依赖分别由 `requirements-book.lock`{.nobreak} 与 `requirements-omni.lock`{.nobreak} 固定。
 2026-10-30 按当前基线的 CPU 复验在 Linux、torch 2.6.0+cpu 上完成；其中音频章 16—20 是在装有 `requirements-omni.lock`{.nobreak} 依赖的 Python 3.12 `.venv-omni` 上重新验证的；上文与出版说明记载的音频环境为 Python 3.11，本次未用 Python 3.11 重建或复跑。
 
 ```bash
