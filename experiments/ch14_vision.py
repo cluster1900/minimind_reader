@@ -1,5 +1,7 @@
 """Actual VLM forward with tiny real SigLIP, plus placeholder boundary checks."""
 from _support import source,record,ROOT
+import _support
+_support.REVISIONS={**_support.REVISIONS,'minimind-v':'041d528e037a8a373c3c8aa7278a3ba3bd26b6dc'}
 import torch
 def main():
     _,files=source('minimind-v',['model/model_vlm.py','model/model_minimind.py'])

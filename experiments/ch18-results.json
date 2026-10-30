@@ -1,17 +1,17 @@
 {
   "status": "passed",
-  "source_commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+  "source_commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
   "source_repository": "minimind-o",
   "files": {
     "model/model_omni.py": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c",
     "dataset/omni_dataset.py": "06c305bf010dc47dcbe812b0b01316563e10537c32b61efdfa37ad7065fdff56",
-    "eval_omni.py": "fcb81cef734a2a1b8ac56bd686798c44b178b809efd38ead43d9bd7a3de0554c"
+    "eval_omni.py": "0a13b6161c0ea11d8260a083e5a6ca5a064eca1708894916053cd7d0411c384c"
   },
-  "script_sha256": "9e4b7a2b75b4a33d5ec799687908c8c23555c8e626fb346248a50d064e62e748",
+  "script_sha256": "33a71dfb08f7db4a32ef053d74ee84e592e87d5e3120f80d5753eea2aa7af946",
   "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-  "torch": "2.6.0",
-  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+  "torch": "2.6.0+cpu",
+  "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
   "device": "cpu",
   "seed": 42,
   "results": {
@@ -30,6 +30,21 @@
       26,
       27
     ],
+    "nonstream_last_yield": [
+      null,
+      [
+        12,
+        112,
+        212,
+        312,
+        412,
+        512,
+        612,
+        712
+      ]
+    ],
+    "nonstream_disables_grad": true,
+    "text_yields_are_prefixes": true,
     "streamed": {
       "False": {
         "frames": [

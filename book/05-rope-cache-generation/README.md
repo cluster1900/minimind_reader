@@ -6,11 +6,12 @@ audience: core
 prerequisites: [ch02, ch04]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch05-rope-cache.md
@@ -85,7 +86,7 @@ def rotate_half(x):
 若把别的项目中“偶数位与奇数位交错”的写法直接换过来，而没有同时处理权重/布局，可能改变计算含义。
 
 源码锚点：MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)
 中的 `precompute_freqs_cis`、`apply_rotary_pos_emb` 及 `MiniMindModel.forward`。
 普通旋转保持范数的结论以标准 cos/sin 缩放为前提；若额外乘 attention factor，还要计算它的尺度影响。
 

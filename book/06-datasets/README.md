@@ -6,11 +6,12 @@ audience: core
 prerequisites: [ch02, ch04, ch05]
 sources:
   - repository: jingyaogong/minimind
-    commit: 6fc918beb68a0d8c40452338df6319fe168014ba
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch06-datasets.md
@@ -55,9 +56,9 @@ flowchart TD
 两者组织 labels 的规则并不相同。
 
 源码入口是 MiniMind
-[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/dataset/lm_dataset.py)
+[dataset/lm_dataset.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/dataset/lm_dataset.py)
 的 `PretrainDataset` 和 `SFTDataset`，以及
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/6fc918beb68a0d8c40452338df6319fe168014ba/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)
 的 `MiniMindForCausalLM.forward`。读取时把数据集的返回值和模型的消费位置连起来。
 
 ## 6.2 预训练样本：先保持输入和标签等长

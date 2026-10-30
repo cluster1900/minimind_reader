@@ -6,11 +6,13 @@ audience: core
 prerequisites: [ch03, ch05, ch06]
 sources:
   - repository: jingyaogong/minimind-v
-    commit: 740d467ece78a0b7d2d976fcb424472095d4a688
+    commit: 041d528e037a8a373c3c8aa7278a3ba3bd26b6dc
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch14-vision.md
@@ -76,7 +78,7 @@ flowchart TD
 图中“冻结”指参数更新策略，不意味着图像编码可以跳过。
 
 源码锚点是 MiniMind-V
-[model/model_vlm.py](https://github.com/jingyaogong/minimind-v/blob/740d467ece78a0b7d2d976fcb424472095d4a688/model/model_vlm.py)
+[model/model_vlm.py](https://github.com/jingyaogong/minimind-v/blob/041d528e037a8a373c3c8aa7278a3ba3bd26b6dc/model/model_vlm.py)
 的 `VLMConfig`、`MiniMindVLM.__init__`、`get_image_embeddings` 与 `forward`。
 注意本章引用的是 V 仓库，不能只用同名 `model_minimind.py` 代替多模态逻辑。
 

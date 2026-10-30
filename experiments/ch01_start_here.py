@@ -9,7 +9,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=Path(os.environ.get('MINIMIND_SOURCE_ROOT',ROOT.parent/'minimind_resources'))/'minimind'
-COMMIT='6fc918beb68a0d8c40452338df6319fe168014ba'
+COMMIT='233d00fa068ec2b8c0d4f07b703934d6391a5a73'
 
 
 def main():

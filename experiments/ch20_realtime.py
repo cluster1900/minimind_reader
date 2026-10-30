@@ -1,5 +1,7 @@
 """Actual session/consumer/PCM and browser handler code with controlled external boundaries."""
 from _support import source,record
+import _support
+_support.REVISIONS={**_support.REVISIONS,'minimind-o':'b5d1bc11ece8de17404cbc034c3e09718d0fecdf'}
 import ast,base64,json,queue,subprocess,threading,types
 from unittest.mock import patch
 import numpy as np

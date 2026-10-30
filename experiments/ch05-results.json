@@ -1,14 +1,14 @@
 {
   "status": "passed",
-  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
   "device": "cpu",
   "seed": 42,
-  "torch": "2.6.0",
-  "source_sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
-  "script_sha256": "49deb7e05a055aa80163ea37201116860a1816148f5aac9bdbe147e07838f81f",
+  "torch": "2.6.0+cpu",
+  "source_sha256": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
+  "script_sha256": "f6084225804acef62888e4940d9e08cec604a42b65d2a1a9d9f837e4127b2b2f",
   "rope_relative_error": 2.384185791015625e-07,
-  "chunk_cache_error": 2.9802322387695312e-08,
-  "token_cache_error": 5.960464477539063e-08,
+  "chunk_cache_error": 2.2351741790771484e-08,
+  "token_cache_error": 7.450580596923828e-08,
   "cache_lengths": [
     1,
     2,
@@ -28,6 +28,8 @@
     ]
   ],
   "returned_cache_length": 6,
+  "resumed_generation_matches": true,
+  "right_padding_samples_last_column": true,
   "nucleus_distribution": [
     0.5714285969734192,
     0.4285714626312256,

@@ -6,11 +6,13 @@ audience: advanced
 prerequisites: [ch05, ch16, ch17]
 sources:
   - repository: jingyaogong/minimind-o
-    commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
+    commit: b5d1bc11ece8de17404cbc034c3e09718d0fecdf
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch18-audio-codes.md
@@ -71,7 +73,7 @@ $$
 某个模型位置上这八路历史来自哪个声学时间，取决于 delay 布局；不能因它们被一起平均就说它们总是同一帧。
 
 源码锚点：MiniMind-O
-[model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/model/model_omni.py)
+[model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/model/model_omni.py)
 中的 `TalkerHead`、`TalkerEmbedding` 和 `stream_generate`。
 
 ## 18.3 Dataset 先延迟各通道，再统一 shift
@@ -107,7 +109,7 @@ $$
 再沿斜线寻找同一帧的八个编号，就能区分“模型位置”和“声学帧”。
 
 实现位于
-[dataset/omni_dataset.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/dataset/omni_dataset.py)
+[dataset/omni_dataset.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/dataset/omni_dataset.py)
 的 `OmniDataset.__getitem__`。源码中“7 层 audio targets”的注释与实际 `range(8)` 不一致，书中以执行代码为准。
 
 ## 18.4 生成时把错开的预测重新拼成同一帧

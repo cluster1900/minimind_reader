@@ -1,17 +1,17 @@
 {
   "status": "passed",
-  "source_commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+  "source_commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
   "source_repository": "minimind-o",
   "files": {
     "model/model_omni.py": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c",
     "webui/web_demo.py": "37aaf0a59cd60cddc52b356f4d3861344879b5ce6337a8b1d6008857c79f9bac",
     "webui/web_demo.html": "46c540562fafc8de78dc3f8e717d5d0dcf4e3a3a85cb40c805cef1c7edff29a0"
   },
-  "script_sha256": "28dd4d32a75827ffdd337195012b8540c1b2846f02b3134e8ef7bb8dabd13f64",
+  "script_sha256": "5be77c19a62cb8eb02689a7fd2dd0ee9ca9d148442eae57df9632cf4977f15e8",
   "support_sha256": "a1799dacca613627180e4f07546da72be330ae249bd7982233e7206a361d9ba3",
-  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
-  "torch": "2.6.0",
-  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+  "torch": "2.6.0+cpu",
+  "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
   "device": "cpu",
   "seed": 42,
   "results": {
@@ -59,6 +59,8 @@
       ]
     },
     "wrapper_disables_grad": true,
+    "speech_end_input_samples": 15360,
+    "speech_end_dropped_tail_samples": 2048,
     "interrupted_input_chunk": 4096,
     "interrupted_retained_samples": 2048
   }

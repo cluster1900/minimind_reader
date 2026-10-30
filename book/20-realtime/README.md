@@ -6,11 +6,13 @@ audience: advanced
 prerequisites: [ch05, ch17, ch18, ch19]
 sources:
   - repository: jingyaogong/minimind-o
-    commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
+    commit: b5d1bc11ece8de17404cbc034c3e09718d0fecdf
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch20-realtime.md
@@ -61,9 +63,9 @@ sequenceDiagram
 
 源码入口分为三个位置：
 
-- [webui/web_demo.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/webui/web_demo.py)：会话、生成和解码包装。
-- [webui/web_demo.html](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/webui/web_demo.html)：采音、消息与播放队列。
-- [model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/model/model_omni.py)：VAD 与会话状态。
+- [webui/web_demo.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/webui/web_demo.py)：会话、生成和解码包装。
+- [webui/web_demo.html](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/webui/web_demo.html)：采音、消息与播放队列。
+- [model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/model/model_omni.py)：VAD 与会话状态。
 
 ## 20.2 VAD 判断有没有语音，不识别说了什么
 

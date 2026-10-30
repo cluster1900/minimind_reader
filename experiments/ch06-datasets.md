@@ -18,3 +18,19 @@ PretrainDataset 返回未错位的同长标签，并忽略 PAD。
 对长度与 max_length 一致的人工序列，缺少结束序列时末尾 3 个 PAD 被监督；补齐结束边界后 PAD 被忽略。
 旧 JSON 保留历史结果；本次完整命令、环境、脚本哈希及实际输出见
 [同基线复核记录](../meta/source-audit-2026-10-08.md)及其结果快照。
+
+## 2026-10-30 按新基线重验
+
+日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
+命令：项目根目录运行 `.venv/bin/python experiments/ch06_datasets.py`（`MINIMIND_SOURCE_ROOT` 指向三个上游仓库的父目录）。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
+结构化输出见 [ch06-results.json](ch06-results.json)。
+
+PretrainDataset 返回未错位的同长标签，PAD 位置为 -100。
+两轮 SFT 有效目标解码为 `甲答案<|im_end|>\n乙答案<|im_end|>\n`，共 9 个有效目标。
+模型 loss 与独立 shift/交叉熵一致，约 8.741042。
+忽略目标的 logits 梯度为零，prompt 首位置 Embedding 输出仍有非零梯度。
+截断到长度 4 时 labels 全为 -100，真实 forward loss 为 NaN。
+缺少结束序列时末尾 3 个 PAD 被监督；补齐结束边界后监督 PAD 数为 0。
+
+未修改上游；本实验验证数据/监督语义，不报告训练质量或语言能力。

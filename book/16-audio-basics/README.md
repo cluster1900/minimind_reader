@@ -6,11 +6,13 @@ audience: core
 prerequisites: [ch03, ch05, ch06]
 sources:
   - repository: jingyaogong/minimind-o
-    commit: ccab6d98520ac5ac5d7583a3fa21a65105137e28
+    commit: b5d1bc11ece8de17404cbc034c3e09718d0fecdf
     dirty: false
-verified_at: 2026-10-08
+verified_at: 2026-10-30
 validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
+  - meta/upstream-impact-2026-10-28.md
+  - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
   - meta/consistency-review.md
   - experiments/ch16-audio-input.md
@@ -76,8 +78,8 @@ flowchart TD
 双声道求均值是一种下混方式，若两路相位相反，还可能相互抵消，实际数据应检查。
 
 源码入口：MiniMind-O 的
-[dataset/omni_dataset.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/dataset/omni_dataset.py)
-与 [model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/ccab6d98520ac5ac5d7583a3fa21a65105137e28/model/model_omni.py)。
+[dataset/omni_dataset.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/dataset/omni_dataset.py)
+与 [model/model_omni.py](https://github.com/jingyaogong/minimind-o/blob/b5d1bc11ece8de17404cbc034c3e09718d0fecdf/model/model_omni.py)。
 
 ## 16.3 声学特征帧不是波形采样点
 
