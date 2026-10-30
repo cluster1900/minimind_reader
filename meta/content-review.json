@@ -1,7 +1,7 @@
 {
   "status": "passed",
-  "reviewed_at": "2026-10-08T03:41:44.182796-04:00",
-  "record": "meta/source-audit-2026-10-08.md",
+  "reviewed_at": "2026-10-30T13:04:31.647349+08:00",
+  "record": "meta/content-review-2026-10-30.md",
   "documents": [
     {
       "id": "reading-guide",
@@ -160,7 +160,7 @@
     {
       "id": "ch02",
       "path": "book/02-tokenizer/README.md",
-      "body_sha256": "08e550560e331aa692f9862e8656cb382ca84ef456883bc8c188872b3bf2915f",
+      "body_sha256": "b37d754cf48102c8735341d06b0aea3d4563b4f038181e96501e95ff7afa54fd",
       "items": [
         {
           "id": "ch02-diagram-001",
@@ -439,7 +439,7 @@
     {
       "id": "ch04",
       "path": "book/04-attention/README.md",
-      "body_sha256": "d540555a39e38de3322ce56acf3aa3602d02a3b243d96637a111fcda2fec071c",
+      "body_sha256": "598856fc69cbf940128440b92c8427a94022e6ab822f1483226edfc2b0efa7a5",
       "items": [
         {
           "id": "ch04-math-001",
@@ -810,7 +810,7 @@
     {
       "id": "ch07",
       "path": "book/07-pretraining/README.md",
-      "body_sha256": "a2cd2ee0d25d8102729cbf3eb3e134499159b462ec4c70de7e0a5c087131ce4f",
+      "body_sha256": "f9a275ad697f00ac0ff33104d8a3ad724f41093634e02890ad4db032f7961606",
       "items": [
         {
           "id": "ch07-diagram-001",
@@ -881,18 +881,13 @@
           "id": "ch07-math-012",
           "kind": "math",
           "sha256": "6df8c9572997e8f2a6310dde0593b54d0829cd4fb20c69c2a64c45369ed8d6e3"
-        },
-        {
-          "id": "ch07-math-013",
-          "kind": "math",
-          "sha256": "da88938b2680676a440c3ecf9b379bd7fd89eaabce992a8a4be72c89ee054865"
         }
       ]
     },
     {
       "id": "ch08",
       "path": "book/08-sft-evaluation/README.md",
-      "body_sha256": "d5cb2a4b6648be4485f90f7c1e45dba8b00e35b24a6a27c0fd1369abdbd27bc4",
+      "body_sha256": "d75a1ebf357b5c0aca3a956e80d78ea1f1af56525fea43a41b12c8d2afc53427",
       "items": [
         {
           "id": "ch08-diagram-001",
@@ -934,7 +929,7 @@
     {
       "id": "ch09",
       "path": "book/09-moe/README.md",
-      "body_sha256": "2292184c68ada3b7701c1e8300a1441fd2771024f3c6fd2dd1a37efa669de340",
+      "body_sha256": "658c04217a4cfc0de20be6090aab50fb6b4ce484a86fc8945034d4ceb3e06aec",
       "items": [
         {
           "id": "ch09-diagram-001",
@@ -1014,19 +1009,19 @@
         {
           "id": "ch09-math-015",
           "kind": "math",
-          "sha256": "fd26526cc2014e28cf26bf27635119dc0f2d94bd744e5bfc09d217d8411b497f"
+          "sha256": "dd2e8427c5f24d87c769ecc11cb2042dc52a2e7ceb36068c9510eb214ade99b2"
         },
         {
           "id": "ch09-diagram-002",
           "kind": "diagram",
-          "sha256": "d09b15ce18f03892aa2329967f9eebf5866977318550c726c0919ffffa7af56a"
+          "sha256": "8d10edde839e2c672a64e2423ba38aada6874f9252d3dd67faebda5d2a77294e"
         }
       ]
     },
     {
       "id": "ch10",
       "path": "book/10-lora-distillation/README.md",
-      "body_sha256": "eeb50a8915aa9570f9f82953c5d60c8217f907047eb99775ab9e78b007a5d940",
+      "body_sha256": "ea8a8b5ac9b18e929f1ad7b47decede7b4e309f8773faf893fb8ec41ef1d35dd",
       "items": [
         {
           "id": "ch10-math-001",
@@ -1098,7 +1093,7 @@
     {
       "id": "ch11",
       "path": "book/11-dpo/README.md",
-      "body_sha256": "b495a7e7989994ad0eb97e83693541ac633348fd4b7f7cc6478aacc936f73bbf",
+      "body_sha256": "507820c9a5a7fdf68ba7d199777ed3178728aef3615faa07b19929a546f96c06",
       "items": [
         {
           "id": "ch11-diagram-001",
@@ -1160,7 +1155,7 @@
     {
       "id": "ch12",
       "path": "book/12-ppo-grpo/README.md",
-      "body_sha256": "04b60e187c2cabb7fcaba1170bef59eba5f3c4e0a0abd558f5f48586f2a40313",
+      "body_sha256": "db6ef562fbf71db39a4294f8a69d9e7562f52562bd478b4c418bc28930106405",
       "items": [
         {
           "id": "ch12-diagram-001",
@@ -1337,12 +1332,12 @@
     {
       "id": "ch13",
       "path": "book/13-agent/README.md",
-      "body_sha256": "13e38488276cbc4d379b60d17eb3692938ee1dd066c12904162ae3c771b40df9",
+      "body_sha256": "0a3f1e0ba6c1eab2ae2d5b53a5056af79924b29d00c25fa97aa3d8c5b81674c9",
       "items": [
         {
           "id": "ch13-diagram-001",
           "kind": "diagram",
-          "sha256": "e437ba9cc8d6dfacfaaa26677b924c8281332e5879d9194acc798702da6410f3"
+          "sha256": "f79c47d5aac93f19893e42d0e8499a4693d4d4defa4cc334e1c9467f28724835"
         },
         {
           "id": "ch13-diagram-002",
@@ -1396,7 +1391,7 @@
     {
       "id": "ch15",
       "path": "book/15-vlm-training/README.md",
-      "body_sha256": "f720cceb18a73ad0977aedb6136e90319986807928e76386470592d64a3a7a2d",
+      "body_sha256": "bd18f7f9be1747776c2d69f13ac6cc5c6fc2b3fd73f381eb71752b1305a7fd91",
       "items": [
         {
           "id": "ch15-diagram-001",
@@ -1619,7 +1614,7 @@
     {
       "id": "ch19",
       "path": "book/19-omni-training/README.md",
-      "body_sha256": "35e8aaa84290d02cd97c1130c4498899052ccb4ffe5f7d0a10817cfbd2ab3eee",
+      "body_sha256": "9003507e202ffc57ea342055356420d8476e426ca0e6b50900c9c590a48eca1e",
       "items": [
         {
           "id": "ch19-diagram-001",
@@ -1707,7 +1702,7 @@
     {
       "id": "appendix-source",
       "path": "book/appendices/source-index.md",
-      "body_sha256": "05dcc34fb80962f57354b690bf3976508974839cc0a551d868277c23dccf81fd",
+      "body_sha256": "72e840a8c569400b625abbee57836b6bbafcc88c222911bd2289dd0b20daf2ce",
       "items": []
     },
     {
@@ -1718,6 +1713,102 @@
     }
   ],
   "source_files": [
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "dataset/lm_dataset.py",
+      "sha256": "7e6eb82f760d2e7db3cfbc60a74bed9a179b7d8667fd8b49e4a3c010391707ab"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "eval_llm.py",
+      "sha256": "af0f0c72b9e06ceb9662a5ad4fb320efb73116eb8c2ca33fdad8b40208e15b82"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "model/model_lora.py",
+      "sha256": "dcb5196e968be99a4059416f165014bd4cb2bffbf33c74ed445266a1a689c5a5"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "model/model_minimind.py",
+      "sha256": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "model/tokenizer_config.json",
+      "sha256": "d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/rollout_engine.py",
+      "sha256": "04ccde11243c17e992f1d7b1fc11483e437b20a1404099c3ccd9cff5850a8502"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_agent.py",
+      "sha256": "676e6c392636cc2a84ffc092a0246849497353b700bbc929beb9e534aad1438a"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_distillation.py",
+      "sha256": "3f41c9c5caf90e90e04bc104b196cef5bceda981510e78b1beecc33b216b23a7"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_dpo.py",
+      "sha256": "a25c707baf672fff28d8a2776a0c3b621fe4a4bff1ad26eea340f204546d9286"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_full_sft.py",
+      "sha256": "e4259c38677ea7b710aab60cd1ef75d3429499414aa76b8188154b8d0404accd"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_grpo.py",
+      "sha256": "449d070bc1e1fc43aeb5554fb132bc26a201458e5cbb563c918f85cc74f68406"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_lora.py",
+      "sha256": "1a0339e4f5f5bae06baacd0ebec78882b28febdfbfe0f45ef3d57a1fe5cf05d0"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_ppo.py",
+      "sha256": "813583b7d9cead9b303d467858011a5b4d8e2ef5e4ae141c1268d65cb801e19e"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_pretrain.py",
+      "sha256": "103e4fdbe60e2adf6905fab899e8acba35128c0cec2de9f46831ebf98e288a9c"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/train_tokenizer.py",
+      "sha256": "0d6d6dcb21a066b7cc579d2be557fa8f266f3d6e6db0f665e0cc12ce8b6f0068"
+    },
+    {
+      "repository": "minimind",
+      "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
+      "path": "trainer/trainer_utils.py",
+      "sha256": "a994037fb4f3cb0ad8a86ebdcbe2620045d1ca128a4c7733cb90a26aa9c2942d"
+    },
     {
       "repository": "minimind",
       "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
@@ -1733,86 +1824,50 @@
     {
       "repository": "minimind",
       "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "model/model_lora.py",
-      "sha256": "dcb5196e968be99a4059416f165014bd4cb2bffbf33c74ed445266a1a689c5a5"
-    },
-    {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
       "path": "model/model_minimind.py",
       "sha256": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
     },
     {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "model/tokenizer_config.json",
-      "sha256": "d7cd6a60c9f191c4f9ffec69b2eb289ad2f960366724f328b681ae1e46e4c110"
+      "repository": "minimind-o",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
+      "path": "dataset/omni_dataset.py",
+      "sha256": "06c305bf010dc47dcbe812b0b01316563e10537c32b61efdfa37ad7065fdff56"
     },
     {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/rollout_engine.py",
-      "sha256": "a01891b6855dfd9b2bfc4dcea5e3cf549ce20454966f28a10eab7cb2461c78be"
+      "repository": "minimind-o",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
+      "path": "eval_omni.py",
+      "sha256": "0a13b6161c0ea11d8260a083e5a6ca5a064eca1708894916053cd7d0411c384c"
     },
     {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_agent.py",
-      "sha256": "57e4c8c19052eaf62e3660102fdeb8985c412c96f5f666818a1db6508a699a80"
+      "repository": "minimind-o",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
+      "path": "model/model_omni.py",
+      "sha256": "9a0de2b438b8927a170fe12636e01c00dbfec463ea5c4a81efdfc1cca6a6696c"
     },
     {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_distillation.py",
-      "sha256": "cc588e9aaf95ede7189833f7100fec320d6bac45d491ecad88d7622374e44107"
+      "repository": "minimind-o",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
+      "path": "trainer/train.sh",
+      "sha256": "dc1758ddca19bcf3a78ab7367c3725b14c4027569c2e5df6117d28d1a3d0f8a4"
     },
     {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_dpo.py",
-      "sha256": "842e10371c7189b77835b23632afb9d65806af2f621c72361a6dd9a864a6d81e"
+      "repository": "minimind-o",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
+      "path": "trainer/train_sft_omni.py",
+      "sha256": "886f12d2024ad3ec7c8cf5526af487b693fd34fc26414cf6a40a07b8ad41b7c1"
     },
     {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_full_sft.py",
-      "sha256": "a9758012e7f2917420d7c42ea4d67a2e02ebfeaf1b746c35b43e6d47c5dc87b3"
-    },
-    {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_grpo.py",
-      "sha256": "485765a15db7a7d8dca950ffc3f98dc8624a7f52be88c813b78ec8fc0431f5ae"
-    },
-    {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_lora.py",
-      "sha256": "e710463862139d1b9876728fda21e455f899b66f7c67c7f7010410224851067a"
-    },
-    {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_ppo.py",
-      "sha256": "c8fa026fcbf8613039dbb388807d794c6b73d93803f12e237fcc81b40d992ed4"
-    },
-    {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_pretrain.py",
-      "sha256": "2009187e9b701f682292ebfc697bc3bfcd34c222848c00930cb88754374ae240"
-    },
-    {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
-      "path": "trainer/train_tokenizer.py",
-      "sha256": "41c996fe0384b036972e9830731236ef47d34e5dcb10f13dbd134c1c578ca1a1"
-    },
-    {
-      "repository": "minimind",
-      "commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+      "repository": "minimind-o",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
       "path": "trainer/trainer_utils.py",
-      "sha256": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b"
+      "sha256": "2516beba1d0237b8f2e8ac64526c648fbb92b26c83aea1ca6715d9c7c59e64f9"
+    },
+    {
+      "repository": "minimind-o",
+      "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
+      "path": "webui/web_demo.py",
+      "sha256": "37aaf0a59cd60cddc52b356f4d3861344879b5ce6337a8b1d6008857c79f9bac"
     },
     {
       "repository": "minimind-o",
@@ -1835,24 +1890,6 @@
     {
       "repository": "minimind-o",
       "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
-      "path": "trainer/train.sh",
-      "sha256": "dc1758ddca19bcf3a78ab7367c3725b14c4027569c2e5df6117d28d1a3d0f8a4"
-    },
-    {
-      "repository": "minimind-o",
-      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
-      "path": "trainer/train_sft_omni.py",
-      "sha256": "270b65e682816968fe5edf2440936e1a702ea677b4f0d81d9a66e2ac7feb688a"
-    },
-    {
-      "repository": "minimind-o",
-      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
-      "path": "trainer/trainer_utils.py",
-      "sha256": "61bf26516a60f808aaa117617c874d2bd4898b6583cb527df4603e95d334a708"
-    },
-    {
-      "repository": "minimind-o",
-      "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
       "path": "webui/web_demo.html",
       "sha256": "46c540562fafc8de78dc3f8e717d5d0dcf4e3a3a85cb40c805cef1c7edff29a0"
     },
@@ -1864,33 +1901,45 @@
     },
     {
       "repository": "minimind-v",
-      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
       "path": "dataset/lm_dataset.py",
       "sha256": "3b7816ffb72d7d6232a54bb776ff2ed73a8fc1fcdcd67501480f7e00be5e3d24"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
+      "path": "eval_vlm.py",
+      "sha256": "4a172286c8008e81cc8c80e6c23906b3cda36469d9cfa2bcd47f64a93dc48af0"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
+      "path": "model/model_vlm.py",
+      "sha256": "02f175bd2ef75dbf4d5f22f5f9f09234922acca4ebe7340d0dfefa813343baf3"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
+      "path": "trainer/train_pretrain_vlm.py",
+      "sha256": "126967eae153ec70d512af8d3a4f0a8841da61777b78abc4a82981be04732404"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
+      "path": "trainer/train_sft_vlm.py",
+      "sha256": "5c7d27bd05ff0fb473d5c6450f7a09f4abd440260671839af59ef3a4d30514f2"
+    },
+    {
+      "repository": "minimind-v",
+      "commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
+      "path": "trainer/trainer_utils.py",
+      "sha256": "c8c3c1da9dec56deba447f59a84388106e14194a1b058a0817cd7204549a1ff2"
     },
     {
       "repository": "minimind-v",
       "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
       "path": "model/model_vlm.py",
       "sha256": "02f175bd2ef75dbf4d5f22f5f9f09234922acca4ebe7340d0dfefa813343baf3"
-    },
-    {
-      "repository": "minimind-v",
-      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
-      "path": "trainer/train_pretrain_vlm.py",
-      "sha256": "b9fb840aa9cd0da6e3a3b09839ee2d4a8139dc365edb16245742cd37739a1fc7"
-    },
-    {
-      "repository": "minimind-v",
-      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
-      "path": "trainer/train_sft_vlm.py",
-      "sha256": "bca6bab569964a828c644a7eb8986181e19f443ea48557e5fdda7a576583393d"
-    },
-    {
-      "repository": "minimind-v",
-      "commit": "740d467ece78a0b7d2d976fcb424472095d4a688",
-      "path": "trainer/trainer_utils.py",
-      "sha256": "c8c3c1da9dec56deba447f59a84388106e14194a1b058a0817cd7204549a1ff2"
     }
   ],
   "math_descriptions_sha256": "c67fd374c91998ae43640b410a0cbff796d75555fb9e99d006912eb423693326",

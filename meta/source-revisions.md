@@ -43,3 +43,5 @@ MiniMind-O `f900448c608318c53314ebf8a947ab05cd8c038e` → `b5d1bc11ece8de17404cb
 基线为 MiniMind `233d00fa…`、MiniMind-V `041d528e…`、MiniMind-O `b5d1bc11…`；未沿用旧 CPU 结果。
 11 章均改为 `verified`（`verified_at: 2026-10-30`，`cpu: passed`）。12 章的 SGLang 右补齐用受控 HTTP 响应、DDP 用 CPU gloo 测，
 未启动真实 SGLang 服务，也未走 NCCL/多 GPU。不更新电子书正式版号。
+02、04、09、11、12 章的 frontmatter、正文链接与来源映射统一钉到 MiniMind `233d00fa…`（实验即在该提交运行；`f659b557…`→`233d00fa…` 未改这些章引用的文件）。
+内容复核记录见 [content-review-2026-10-30.md](content-review-2026-10-30.md)。
