@@ -1,15 +1,15 @@
 ---
 title: "第 12 章 从 PPO 概念到 GRPO"
 chapter_id: ch12
-status: stale
+status: verified
 audience: advanced
 prerequisites: [ch05, ch08, ch11]
 sources:
   - repository: jingyaogong/minimind
     commit: f659b55761b754d306bd140573493a6543cafd7f
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
@@ -20,9 +20,6 @@ scope: "PPO/GAE 的角色与目标、GRPO 分组优势、默认 CISPO 分支、r
 ---
 
 # 第 12 章 从 PPO 概念到 GRPO
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 前一章使用事先给定的偏好对。本章让策略自己生成回答，再根据奖励改进。
 困难在于：一句回答最终得到一个分数，怎样把它变成每个生成位置的更新信号？
@@ -289,7 +286,7 @@ SGLang 路径从服务响应读取 log-prob，具体概率语义需要绑定服�
 PPO 更新现在调用 `actor_model` 与 `critic_model`，GRPO 调用 `model`，不再在训练前向中绕过 DDP 包装。
 构造 DDP 时显式设置 `broadcast_buffers=False`；这是当前实现选择，不是任意模型都可关闭 buffer 同步的建议。
 rollout policy 在可选编译与 DDP 包装之后更新一次。GRPO 末批更新也移到保存之前，组内周期保存限制仍在。
-本次只静态核对这些调用点，没有运行多进程、多 GPU 或 SGLang 集成测试。
+本次用 CPU gloo、单机 world_size=2 核了对 DDP 包装的 log-prob 解包、训练前向与 buffer 不同步；没有运行 NCCL/多 GPU，也没有启动真实 SGLang 服务。
 
 ## 12.9 验证范围与自检
 
