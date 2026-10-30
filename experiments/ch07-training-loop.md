@@ -21,3 +21,21 @@ get_lr 的端点与 SkipBatchSampler 的尾组/跳过行为也已检查。
 按原实验重新运行，并重新核对正文中使用的入口、数值与结论范围。
 旧 JSON 保留历史结果；本次完整命令、环境、脚本哈希及实际输出见
 [同基线复核记录](../meta/source-audit-2026-10-08.md)及其结果快照。
+
+## 2026-10-30 按 233d00fa 重验
+
+日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
+命令：项目根目录运行 `.venv/bin/python experiments/ch07_training_loop.py`。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
+结构化输出见 [ch07-results.json](ch07-results.json)。
+
+断言已改为新基线行为，不再沿用“保存时仅一次更新”和 resume=fp16：
+
+- 尾组（3 小批、K=2）：保存时已更新 2 次，参数约 0.07435，梯度已清空；推理 `*.pth` 与该最终权重的 fp16 副本一致。
+- 整组（4 小批、K=2）：末步同时是累积边界与 `iters`，保存时更新 2 次、梯度为空。
+- 周期组内保存（K=4、间隔 3、5 小批）：第 3 步仍有待处理梯度 -1.5、更新 0 次；第 5 步先更新再保存。
+- `start_step=2` 续训：剩余 2 批从 step 3 起算，保存发生在 step 4。
+- 空 loader：即使 `iters=3` 也不更新、不保存。
+- `lm_checkpoint`：resume 字典的 model 为 float32（`1e-8` 得以保留），推理 `*.pth` 为 float16（该值下溢为 0）。
+
+未修改上游；未执行 CUDA、NCCL 或真实语言模型训练。

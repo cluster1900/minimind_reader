@@ -1,7 +1,8 @@
 {
   "status": "passed",
-  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
   "device": "cpu",
+  "torch": "2.6.0+cpu",
   "seed": 42,
   "steps": 80,
   "learning_rate": 0.003,
@@ -14,10 +15,10 @@
     "perplexity": 6483.5544366751665
   },
   "after_train": {
-    "nll_sum": 1.0073451101779938,
+    "nll_sum": 1.023040622472763,
     "valid_tokens": 9,
-    "nll": 0.11192723446422154,
-    "perplexity": 1.1184314744185573
+    "nll": 0.11367118027475145,
+    "perplexity": 1.1203836600609478
   },
   "before_held_out": {
     "nll_sum": 43.99115753173828,
@@ -26,10 +27,10 @@
     "perplexity": 6622.521756282219
   },
   "after_held_out": {
-    "nll_sum": 33.130191802978516,
+    "nll_sum": 33.978206634521484,
     "valid_tokens": 5,
-    "nll": 6.626038360595703,
-    "perplexity": 754.487235769565
+    "nll": 6.795641326904297,
+    "perplexity": 893.9423851039302
   },
   "history": [
     {
@@ -38,15 +39,15 @@
     },
     {
       "step": 20,
-      "loss": 5.202970027923584
+      "loss": 5.203004837036133
     },
     {
       "step": 40,
-      "loss": 1.8596545457839966
+      "loss": 1.8596463203430176
     },
     {
       "step": 80,
-      "loss": 0.12018837034702301
+      "loss": 0.1222476065158844
     }
   ],
   "generated": [
@@ -79,10 +80,24 @@
     "token_mean": 2.8,
     "batch_mean": 2.0
   },
+  "load_from_routing": {
+    "model": "native",
+    "../model": "native",
+    "./model": "native",
+    "model/": "native",
+    "/abs/path/model": "native",
+    "foo_model_bar": "transformers",
+    "../foo_model_bar": "transformers",
+    "out/foo_model_bar": "transformers",
+    "my_model": "transformers",
+    "model_ckpt": "transformers",
+    "../model_out": "transformers"
+  },
   "corpus_sha256": "cc033befe5d600256f593063a0ae505ef4513991aaa9d596a311fdf5bda09cfe",
-  "script_sha256": "25a8b8207744688a64f12e125e19432e7044743c4ee74bd026c3cc35eef02eb6",
+  "script_sha256": "6e8ebbc37b006fb9de1ae9a760c08dad28ede9411d9316f53c2cc29b386bed36",
   "files": {
-    "dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
-    "model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860"
+    "dataset/lm_dataset.py": "7e6eb82f760d2e7db3cfbc60a74bed9a179b7d8667fd8b49e4a3c010391707ab",
+    "model/model_minimind.py": "548f1203282dccb3be43227b11463f469b976afbab614df52828bdd246c3786f",
+    "eval_llm.py": "af0f0c72b9e06ceb9662a5ad4fb320efb73116eb8c2ca33fdad8b40208e15b82"
   }
 }

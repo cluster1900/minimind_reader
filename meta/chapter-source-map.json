@@ -39,7 +39,7 @@
   {
     "chapter_id": "ch02",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_tokenizer.py",
     "symbols": [
       "get_texts",
@@ -50,7 +50,7 @@
   {
     "chapter_id": "ch04",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "model/model_minimind.py",
     "symbols": [
       "Attention.__init__",
@@ -173,7 +173,7 @@
   {
     "chapter_id": "ch09",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "model/model_minimind.py",
     "symbols": [
       "MOEFeedForward.forward",
@@ -215,7 +215,7 @@
   {
     "chapter_id": "ch11",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_dpo.py",
     "symbols": [
       "logits_to_log_probs",
@@ -226,7 +226,7 @@
   {
     "chapter_id": "ch11",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "dataset/lm_dataset.py",
     "symbols": [
       "DPODataset.__getitem__",
@@ -236,7 +236,7 @@
   {
     "chapter_id": "ch12",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_ppo.py",
     "symbols": [
       "CriticModel.forward",
@@ -246,7 +246,7 @@
   {
     "chapter_id": "ch12",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/train_grpo.py",
     "symbols": [
       "grpo_train_epoch",
@@ -256,7 +256,7 @@
   {
     "chapter_id": "ch12",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "trainer/rollout_engine.py",
     "symbols": [
       "compute_per_token_logps",
@@ -268,7 +268,7 @@
   {
     "chapter_id": "ch12",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "dataset/lm_dataset.py",
     "symbols": [
       "RLAIFDataset.create_chat_prompt"
@@ -485,7 +485,7 @@
   {
     "chapter_id": "ch02",
     "repository": "minimind",
-    "commit": "f659b55761b754d306bd140573493a6543cafd7f",
+    "commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
     "path": "model/model_minimind.py",
     "symbols": [
       "MiniMindConfig.__init__"

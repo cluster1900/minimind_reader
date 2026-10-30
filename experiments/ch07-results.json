@@ -1,14 +1,15 @@
 {
   "status": "passed",
-  "source_commit": "6fc918beb68a0d8c40452338df6319fe168014ba",
+  "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
   "device": "cpu",
+  "torch": "2.6.0+cpu",
   "control_flow": {
     "train_pretrain": {
       "snapshot": {
         "step": 3,
-        "weight": 0.06499999761581421,
-        "grad": -0.9350000023841858,
-        "updates": 1
+        "weight": 0.07434999942779541,
+        "grad": null,
+        "updates": 2
       },
       "final_weight": 0.07434999942779541,
       "updates": 2
@@ -16,12 +17,57 @@
     "train_full_sft": {
       "snapshot": {
         "step": 3,
-        "weight": 0.06499999761581421,
-        "grad": -0.9350000023841858,
-        "updates": 1
+        "weight": 0.07434999942779541,
+        "grad": null,
+        "updates": 2
       },
       "final_weight": 0.07434999942779541,
       "updates": 2
+    },
+    "full_group": {
+      "snapshot": {
+        "step": 4,
+        "weight": 0.12780000269412994,
+        "grad": null,
+        "updates": 2
+      },
+      "final_weight": 0.12780000269412994,
+      "updates": 2
+    },
+    "mid_accumulation_save": {
+      "snapshots": [
+        {
+          "step": 3,
+          "weight": 0.0,
+          "grad": -1.5,
+          "updates": 0
+        },
+        {
+          "step": 5,
+          "weight": 0.04200252890586853,
+          "grad": null,
+          "updates": 2
+        }
+      ],
+      "final_weight": 0.04200252890586853,
+      "updates": 2
+    },
+    "start_step_resume": {
+      "start_step": 2,
+      "iters": 4,
+      "loader_len": 2,
+      "snapshot": {
+        "step": 4,
+        "weight": 0.019999999552965164,
+        "grad": null,
+        "updates": 1
+      },
+      "updates": 1
+    },
+    "empty_loader": {
+      "updates": 0,
+      "saves": 0,
+      "iters": 3
     }
   },
   "checkpoint_fields": [
@@ -33,7 +79,10 @@
     "wandb_id",
     "world_size"
   ],
-  "checkpoint_model_dtype": "torch.float16",
+  "checkpoint_model_dtype": "torch.float32",
+  "checkpoint_inference_dtype": "torch.float16",
+  "resume_weight": 9.99999993922529e-09,
+  "inference_weight": 0.0,
   "skip_batches": [
     [
       2,
@@ -44,9 +93,9 @@
     ]
   ],
   "files": {
-    "trainer/train_pretrain.py": "2009187e9b701f682292ebfc697bc3bfcd34c222848c00930cb88754374ae240",
-    "trainer/train_full_sft.py": "a9758012e7f2917420d7c42ea4d67a2e02ebfeaf1b746c35b43e6d47c5dc87b3",
-    "trainer/trainer_utils.py": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b"
+    "trainer/train_pretrain.py": "103e4fdbe60e2adf6905fab899e8acba35128c0cec2de9f46831ebf98e288a9c",
+    "trainer/train_full_sft.py": "e4259c38677ea7b710aab60cd1ef75d3429499414aa76b8188154b8d0404accd",
+    "trainer/trainer_utils.py": "a994037fb4f3cb0ad8a86ebdcbe2620045d1ca128a4c7733cb90a26aa9c2942d"
   },
-  "script_sha256": "4d49ec7715eabd87e790d4a28b83105ba1f40a8baf61dffb0d14e7c76d6c4998"
+  "script_sha256": "4a891b10d9d492535df8b8dab1afe6eee32dc67062e00e8aa868f71a5f6ba46a"
 }

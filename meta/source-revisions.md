@@ -36,3 +36,12 @@ MiniMind `f659b55761b754d306bd140573493a6543cafd7f` → `233d00fa068ec2b8c0d4f07
 MiniMind-V `1862b633fc082a723e78dbead9777545f09d960c` → `041d528e037a8a373c3c8aa7278a3ba3bd26b6dc`（1 commit，改 15 评估入口说明）；
 MiniMind-O `f900448c608318c53314ebf8a947ab05cd8c038e` → `b5d1bc11ece8de17404cbc034c3e09718d0fecdf`（1 commit，改 19）。
 受影响章保持 stale、cpu: not_run。详见 [upstream-impact-2026-10-28.md](upstream-impact-2026-10-28.md)。不更新电子书正式版号。
+
+## 2026-10-30 CPU 复验（bot-hub #111）
+
+按 [复验清单](upstream-impact-2026-10-18.md) 第 3–6 条，在 torch `2.6.0+cpu` 上对 02、04、07—13、15、19 共 11 章实跑配套实验，
+基线为 MiniMind `233d00fa…`、MiniMind-V `041d528e…`、MiniMind-O `b5d1bc11…`；未沿用旧 CPU 结果。
+11 章均改为 `verified`（`verified_at: 2026-10-30`，`cpu: passed`）。12 章的 SGLang 右补齐用受控 HTTP 响应、DDP 用 CPU gloo 测，
+未启动真实 SGLang 服务，也未走 NCCL/多 GPU。不更新电子书正式版号。
+02、04、09、11、12 章的 frontmatter、正文链接与来源映射统一钉到 MiniMind `233d00fa…`（实验即在该提交运行；`f659b557…`→`233d00fa…` 未改这些章引用的文件）。
+内容复核记录见 [content-review-2026-10-30.md](content-review-2026-10-30.md)。

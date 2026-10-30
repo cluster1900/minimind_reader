@@ -1,15 +1,15 @@
 ---
 title: "第 07 章 预训练循环与断点恢复"
 chapter_id: ch07
-status: stale
+status: verified
 audience: core
 prerequisites: [ch01, ch03, ch06]
 sources:
   - repository: jingyaogong/minimind
     commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
@@ -21,9 +21,6 @@ scope: "train_pretrain/train_full_sft 的循环顺序、累积/裁剪/AMP、学�
 ---
 
 # 第 07 章 预训练循环与断点恢复
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 上一章把样本变成了可计分的输入和标签。本章继续追问：loss 是怎样真正改变参数的？
 训练中的 step 到底是一个小批次还是一次参数更新？中断后加载 checkpoint，又恢复了多少状态？
@@ -185,9 +182,8 @@ $\eta_0$ 是传入初始学习率，$T$ 是总步数，$t$ 是传入当前计数
 checkpoint 又不包含 `.grad`；末批修复不等于任意断点都可精确恢复。
 若要实现组内精确续训，仍需保存梯度、累积进度以及必要的数据/随机状态，或只在更新边界保存。
 
-本次对真实训练函数进行了标准库替身控制流检查，验证末批“更新 → 清梯度 → 保存”的事件顺序，
-不是 PyTorch 数值或 AMP 正确性测试。旧 `experiments/ch07_training_loop.py` 绑定旧 commit，
-其中“保存时仅更新一次”的断言不适用于新基线；升级该实验与重跑的要求见本次迁移记录。
+实验已按 `233d00fa` 升级并在 torch 2.6.0+cpu 上重跑，覆盖尾组、整组、组内周期保存、`start_step` 与空 loader，
+仍是标量替身控制流检查，而不是 PyTorch 数值或 AMP 正确性测试。
 
 ## 7.8 采样顺序、路径与实验
 
@@ -201,9 +197,9 @@ DDP 使用 DistributedSampler 并设置 epoch；当前循环也没有用 `no_syn
 `lm_checkpoint` 的续训目录各有约定；仅修改一个 `--save_dir` 不代表所有读写路径都自动随之改变。
 读者应在自己的训练工作副本中配置数据、模型和输出目录，不在本书的只读源码基线上试跑完整训练。
 
-在旧基线运行 `.venv/bin/python experiments/ch07_training_loop.py` 可重现历史边界；不要仅改其 commit 后仍沿用旧断言。
+在当前基线运行 `.venv/bin/python experiments/ch07_training_loop.py`。
 标量模型只隔离循环，不代替真实语言模型；此外实验调用真实 checkpoint 工具，
-验证保存字段、FP16 权重和优化器动量，再验证学习率端点和 SkipBatchSampler。
+验证保存字段、resume 为 FP32、推理 `*.pth` 为 FP16 和优化器动量，再验证学习率端点和 SkipBatchSampler。
 
 1. backward 次数一定等于优化器更新次数吗？
 2. 两个有效目标数不同的小批，各自 mean 后再平均，是否等于全体 token 平均？

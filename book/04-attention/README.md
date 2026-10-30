@@ -1,15 +1,15 @@
 ---
 title: "第 04 章 手算一次注意力"
 chapter_id: ch04
-status: stale
+status: verified
 audience: core
 prerequisites: [ch01, ch03]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
@@ -20,9 +20,6 @@ scope: "给定 Q/K/V 的手算、投影与头形状、GQA、QK-Norm、两种 mas
 ---
 
 # 第 04 章 手算一次注意力
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 前馈网络可以修改一个位置的向量，但“它”指的是前文哪个对象，需要结合其他位置的信息。
 注意力提供了这种结合方式：当前位置先计算与各候选位置的匹配分数，再按分数加权汇总信息。
@@ -131,7 +128,7 @@ xv = xv.view(bsz, seq_len, self.n_local_kv_heads, self.head_dim)
 阅读时先代入小配置检查元素数，再换成默认配置。默认 768 维、8 个查询头、4 个 KV 头时，
 每头为 96 维；不要把小例子的 8 维写成真实默认值。
 源码锚点：MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)
 的 `Attention.__init__`、`Attention.forward` 与 `repeat_kv`。
 
 ## 4.4 GQA：多个查询头共用一组键和值
@@ -253,7 +250,7 @@ SDPA 是 `scaled_dot_product_attention` 的缩写，即一个实现缩放点积�
 | 实验 | 实际观察 | 支持的结论 |
 |---|---|---|
 | 手算两个位置 | 权重和输出与 4.2 节一致 | 给定 Q/K/V 的计算正确 |
-| 同权重 SDPA 与显式路径 | 最大误差约 `5.96e-8` | 此 CPU 配置在容差内一致 |
+| 同权重 SDPA 与显式路径 | 最大误差约 `8.94e-8` | 此 CPU 配置在容差内一致 |
 | 改变最后一个输入位置 | 更早位置输出误差为 0 | 本次因果遮挡成立 |
 | 改变被屏蔽的中间键 | 其他有效查询输出误差为 0 | mask 的键轴语义成立 |
 | padding、单 token 或带缓存的多 token | 未调用 SDPA API | 实际分支条件符合源码 |

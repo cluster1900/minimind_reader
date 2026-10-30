@@ -1,15 +1,15 @@
 ---
 title: "第 09 章 MoE 的路由与负载"
 chapter_id: ch09
-status: stale
+status: verified
 audience: advanced
 prerequisites: [ch03, ch07]
 sources:
   - repository: jingyaogong/minimind
-    commit: f659b55761b754d306bd140573493a6543cafd7f
+    commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-18.md
   - meta/source-audit-2026-10-08.md
@@ -20,9 +20,6 @@ scope: "本地 MoE 的 token 路由、聚合、辅助损失和梯度；不外推
 ---
 
 # 第 09 章 MoE 的路由与负载
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-18.md)。
 
 第 03 章的 Dense 前馈让每个位置都经过同一组参数。MoE，即 Mixture of Experts，混合专家，
 准备多组前馈网络，让路由器为每个 token 选择其中一部分。它提供了另一种分配模型容量的方式，
@@ -64,7 +61,7 @@ flowchart TD
 图不表示各专家已经分布在不同 GPU 上。
 
 源码入口：MiniMind
-[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/f659b55761b754d306bd140573493a6543cafd7f/model/model_minimind.py)
+[model/model_minimind.py](https://github.com/jingyaogong/minimind/blob/233d00fa068ec2b8c0d4f07b703934d6391a5a73/model/model_minimind.py)
 的 `MOEFeedForward.forward`、`MiniMindBlock.__init__` 与 `MiniMindModel.forward`。
 
 ## 9.2 把批与位置展平，再给专家打分
@@ -175,7 +172,7 @@ K>1 沿用选中分数重归一化；关闭 `norm_topk_prob` 时不进入该代�
 辅助项继续存在，不能把主损失现在可训练 gate 理解为不再需要检查负载目标。
 
 训练时，未被选中的专家仍通过乘零表达式连到输出，梯度存在但为零不表示有效学习。
-旧实验关于 Top-1 主损失 gate 梯度的观察绑定旧版本，新分支需要独立反向重验。
+本次 CPU 实验已按 gate、输入、专家、辅助项四路实际反向：主损失经直通表达式给 gate 非零代理梯度；该重算 detach 输入，主损失的输入梯度与只走选中专家时一致；未选专家梯度存在但为零；辅助项单独反向时 gate 与输入有梯度、专家无梯度。
 
 ## 9.6 实验、误解与自检
 

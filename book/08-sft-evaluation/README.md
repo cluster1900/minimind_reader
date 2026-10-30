@@ -1,15 +1,15 @@
 ---
 title: "第 08 章 SFT、评估与训练排错"
 chapter_id: ch08
-status: stale
+status: verified
 audience: core
 prerequisites: [ch02, ch05, ch06, ch07]
 sources:
   - repository: jingyaogong/minimind
     commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
@@ -21,9 +21,6 @@ scope: "全参 SFT 入口、模板与思考开关、token 加权 NLL、生成评
 ---
 
 # 第 08 章 SFT、评估与训练排错
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 当模型终于能把 loss 降下来，很容易想立刻宣布训练成功。但 loss 衡量的是一个明确定义的目标，
 它并不自动回答“会不会正确聊天”。本章把前面学过的模型、模板、Dataset 和训练循环串起来，
@@ -181,9 +178,9 @@ NLL 适合追踪目标分布的变化，实际生成能暴露重复、格式和�
 | 指标 | 更新前 | 更新后 |
 |---|---:|---:|
 | 训练集有效目标数 | 9 | 9 |
-| 训练 NLL | 约 8.7770 | 约 0.1119 |
+| 训练 NLL | 约 8.7770 | 约 0.1137 |
 | 留出集有效目标数 | 5 | 5 |
-| 留出 NLL | 约 8.7982 | 约 6.6260 |
+| 留出 NLL | 约 8.7982 | 约 6.7956 |
 
 两条训练问答在贪心生成中分别输出了“答甲”和“答乙”并结束。
 对“未见问题丙”，模型却输出“答甲”，没有得到规定的“答丙”。

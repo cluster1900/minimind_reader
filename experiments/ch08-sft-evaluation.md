@@ -19,3 +19,16 @@
 按原实验重新运行，并重新核对正文中使用的入口、数值与结论范围。
 旧 JSON 保留历史结果；本次完整命令、环境、脚本哈希及实际输出见
 [同基线复核记录](../meta/source-audit-2026-10-08.md)及其结果快照。
+
+## 2026-10-30 按新基线重验
+
+日期：2026-10-30。MiniMind commit `233d00fa068ec2b8c0d4f07b703934d6391a5a73`，工作区干净。
+命令：项目根目录运行 `.venv/bin/python experiments/ch08_sft_evaluation.py`（`MINIMIND_SOURCE_ROOT` 指向三个上游仓库的父目录）。
+环境：Python 3.12 venv，torch `2.6.0+cpu`，无 CUDA。
+结构化输出见 [ch08-results.json](ch08-results.json)。
+
+- 训练有效目标数 9，NLL 从 8.7770 降至 0.1137；留出有效目标数 5，NLL 从 8.7982 降至 6.7956。
+- 两条训练题贪心生成分别为「答甲」「答乙」并 EOS；留出题「未见问题丙」仍输出「答甲」。
+- `eval_llm.init_model`：`load_from` 末段恰为 `model`（含 `../model`、`model/`）走原生权重；含 `model` 子串但末段不是 `model` 的 `foo_model_bar` 等路径走 transformers。
+
+未修改上游；未执行 CUDA 或发布权重评估。

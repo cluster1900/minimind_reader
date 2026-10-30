@@ -1,15 +1,15 @@
 ---
 title: "第 13 章 Agent 多轮交互与奖励"
 chapter_id: ch13
-status: stale
+status: verified
 audience: advanced
 prerequisites: [ch02, ch06, ch12]
 sources:
   - repository: jingyaogong/minimind
     commit: 233d00fa068ec2b8c0d4f07b703934d6391a5a73
     dirty: false
-verified_at: null
-validation: {static: passed, cpu: not_run, gpu: not_required}
+verified_at: 2026-10-30
+validation: {static: passed, cpu: passed, gpu: not_required}
 validation_records:
   - meta/upstream-impact-2026-10-28.md
   - meta/upstream-impact-2026-10-18.md
@@ -21,9 +21,6 @@ scope: "真实 rollout_single、工具解析与反馈、生成/观察 mask、打
 ---
 
 # 第 13 章 Agent 多轮交互与奖励
-
-> 迁移候选：本章源码链接已更新，静态差异已核对；既有数值与实验记录仍属于旧基线，不表示新版已重验。
-> 新版 PyTorch 实验与独立复核待完成，暂标 stale，不可直接用于新版出版验收。详见[迁移记录](https://github.com/cluster1900/minimind_reader/blob/main/meta/upstream-impact-2026-10-28.md)。
 
 单轮回答结束后才评分，仍不足以描述工具交互。模型可能先请求计算，收到结果后再继续回答。
 这意味着一条训练轨迹交替包含模型自己生成的内容，以及环境提供的观察。
@@ -173,7 +170,8 @@ attention mask 改为按 `seq_lens` 构造，而非根据 PAD ID 值判断，所
 
 旧基线的两轮轨迹记录 70 个 response 区域 token，其中 39 个为生成、31 个为观察，
 当时过滤生成 EOS 且最终 token 重建完全一致；完整回答按当时规则得到奖励 3。
-这些计数不能当作新基线结果。新版脚本化后端还必须返回 `completion_mask`，并增加 EOS 与观察边界测试；本次未运行完整新轨迹实验。
+这些是 `6fc918be` 的历史实测。新基线两轮轨迹为 71 个 response token，其中 39 个生成、32 个观察；
+EOS 保留但策略 mask 为 0，完整重编码不再等于保留轨迹，正常完成奖励仍为 3。
 非法 JSON 被忽略，未知工具返回 None，轮数上限的 unfinished 分支也已验证。
 结果与哈希在 `experiments/ch13-results.json`，不声称一个学习策略已获得相同成功率。
 
