@@ -448,6 +448,15 @@
     ]
   },
   {
+    "chapter_id": "ch19",
+    "repository": "minimind-o",
+    "commit": "b5d1bc11ece8de17404cbc034c3e09718d0fecdf",
+    "path": "eval_omni.py",
+    "symbols": [
+      "init_model"
+    ]
+  },
+  {
     "chapter_id": "ch20",
     "repository": "minimind-o",
     "commit": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
