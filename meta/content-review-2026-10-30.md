@@ -7,7 +7,7 @@
 方法：逐章阅读 `git diff 835d88d -- <章节>`，把每条新增或改写的技术断言与锁定提交的上游源码（`git show <commit>:<file>`）
 及本轮 `experiments/chNN-results.json` 对照。基线为 MiniMind `233d00fa068ec2b8c0d4f07b703934d6391a5a73`、
 MiniMind-V `041d528e037a8a373c3c8aa7278a3ba3bd26b6dc`、MiniMind-O `b5d1bc11ece8de17404cbc034c3e09718d0fecdf`，三个工作区均干净。
-结果 JSON 由 torch `2.6.0+cpu` 环境直接运行写出、无 CUDA（`verify_experiments.py` 复跑时 01—15 章所用 `.venv` 为 `2.6.0+cu124` wheel、按 CPU 运行，见附录 B）；每份结果 JSON 的 `source_commit` 与上述基线一致。
+实验为 torch `2.6.0+cpu`、无 CUDA；每份结果 JSON 的 `source_commit` 与上述基线一致。
 
 | 文档 | 核对的源码断言 | 实验佐证 | 结论 |
 | --- | --- | --- | --- |
