@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-30T19:03:04.554909+08:00",
+  "started_at": "2026-10-30T19:27:27.949224+08:00",
   "working_directory": "/workspace/mmr-116",
   "hardware": "Linux-6.12.94+-x86_64-with-glibc2.41",
   "status": "passed",
@@ -10,7 +10,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch01_start_here.py"
       ],
-      "started_at": "2026-10-30T19:03:04.746423+08:00",
+      "started_at": "2026-10-30T19:27:28.409042+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch01.log",
       "log_sha256": "cc28c5ca700e5f67640098454816f8eb1cf95e3211efd49345b5b0d02b7678d9",
@@ -53,7 +53,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch02_tokenizer.py"
       ],
-      "started_at": "2026-10-30T19:03:08.672312+08:00",
+      "started_at": "2026-10-30T19:27:35.969355+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch02.log",
       "log_sha256": "8f4d246ed7319ea2e875eba9f9be0e5a682efe53b6ebdc52ea20fda88afdf267",
@@ -175,7 +175,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch03_model_skeleton.py"
       ],
-      "started_at": "2026-10-30T19:03:11.994647+08:00",
+      "started_at": "2026-10-30T19:27:41.510884+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch03.log",
       "log_sha256": "d1f922d2693faf6eaa672cb82a2eb65f65122ff298919eb153170ce064b19d70",
@@ -221,7 +221,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch04_attention.py"
       ],
-      "started_at": "2026-10-30T19:03:15.185078+08:00",
+      "started_at": "2026-10-30T19:27:46.329784+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch04.log",
       "log_sha256": "30188a1ed112fb6d5ea0bb11f47a64d644e2d76c353c723db4804a5cb57c80ed",
@@ -293,7 +293,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch05_rope_cache.py"
       ],
-      "started_at": "2026-10-30T19:03:18.710437+08:00",
+      "started_at": "2026-10-30T19:27:51.157445+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch05.log",
       "log_sha256": "02cec9a84a9914e3811664479eb241b8459af06754b1b701575218b920e83472",
@@ -351,10 +351,10 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch06_datasets.py"
       ],
-      "started_at": "2026-10-30T19:03:22.113750+08:00",
+      "started_at": "2026-10-30T19:27:55.787260+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch06.log",
-      "log_sha256": "3dde672b42bcd9503b6a62d4c657cd497e61bb69c1ed4e1ed852d46891a6c1d0",
+      "log_sha256": "c56b5f8eea7f14d3cd6f5555c69f0f3efb919b08bea6b093165ac9c33deaef19",
       "result": {
         "status": "passed",
         "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
@@ -410,7 +410,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch07_training_loop.py"
       ],
-      "started_at": "2026-10-30T19:03:25.744464+08:00",
+      "started_at": "2026-10-30T19:28:00.661995+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch07.log",
       "log_sha256": "f5c0cf26952cedab835f13cd5814955add6e3f117446b5421d2ae8e23f94fbb0",
@@ -523,10 +523,10 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch08_sft_evaluation.py"
       ],
-      "started_at": "2026-10-30T19:03:29.211268+08:00",
+      "started_at": "2026-10-30T19:28:06.548188+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch08.log",
-      "log_sha256": "35508458f9d12f857daedc15eea478fb89012ccad34f67987e70f6ebf18c4f10",
+      "log_sha256": "55d37b720e09765b25cb9d33096673b0491c18454510c3d2da5f691c87ac81f5",
       "result": {
         "status": "passed",
         "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
@@ -638,7 +638,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch09_moe.py"
       ],
-      "started_at": "2026-10-30T19:03:33.387308+08:00",
+      "started_at": "2026-10-30T19:28:13.437044+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch09.log",
       "log_sha256": "f051a851aa3a12cc1a6e816d2cd11a8843916e25f8ca0e29b6183809c528338f",
@@ -682,7 +682,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch10_lora_distillation.py"
       ],
-      "started_at": "2026-10-30T19:03:36.593297+08:00",
+      "started_at": "2026-10-30T19:28:17.392499+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch10.log",
       "log_sha256": "c04c4de4b6adee1d23d8e081bd356c1bcb9863da432c62625095d51fb1868dda",
@@ -738,10 +738,10 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch11_dpo.py"
       ],
-      "started_at": "2026-10-30T19:03:40.667194+08:00",
+      "started_at": "2026-10-30T19:28:21.122213+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch11.log",
-      "log_sha256": "68702a28d6c17b360c8834844cd2487a8e8a45abdad1ed40b248c758e4385cb6",
+      "log_sha256": "047ec256fa8e163531930de021363ab6625c752c7291896645a98a9ecd174ea6",
       "result": {
         "status": "passed",
         "source_commit": "233d00fa068ec2b8c0d4f07b703934d6391a5a73",
@@ -791,7 +791,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch12_rl_objectives.py"
       ],
-      "started_at": "2026-10-30T19:03:44.160752+08:00",
+      "started_at": "2026-10-30T19:28:24.778169+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch12.log",
       "log_sha256": "c3e772dc8bc6e7a20e57c4959d4479bc0b738e7b87df055cddb0e402aff916db",
@@ -1026,7 +1026,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch13_agent.py"
       ],
-      "started_at": "2026-10-30T19:03:51.457089+08:00",
+      "started_at": "2026-10-30T19:28:32.580272+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch13.log",
       "log_sha256": "e9f6de6a14448f0c3cdc7401ec9fa1a118f032c5474dce7520335ac205f92d5a",
@@ -1080,7 +1080,7 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch14_vision.py"
       ],
-      "started_at": "2026-10-30T19:03:54.904826+08:00",
+      "started_at": "2026-10-30T19:28:36.249328+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch14.log",
       "log_sha256": "70c940a8ea118e770de25ba0f7f46ae314f49fda80ae12fb08382cb688467196",
@@ -1125,10 +1125,10 @@
         "/workspace/mmr-116/.venv/bin/python",
         "/workspace/mmr-116/experiments/ch15_vlm_training.py"
       ],
-      "started_at": "2026-10-30T19:03:58.143577+08:00",
+      "started_at": "2026-10-30T19:28:39.739364+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch15.log",
-      "log_sha256": "f0f9679eda3e5ad1e9e14f10600a23f9b282c9f56f296a0381d6752ff8429070",
+      "log_sha256": "b243a89b1c547ec8f0e656e4f0525a83ef11af1a618ceec362e63a33bfc1e064",
       "result": {
         "status": "passed",
         "source_commit": "041d528e037a8a373c3c8aa7278a3ba3bd26b6dc",
@@ -1354,7 +1354,7 @@
         "/workspace/mmr-116/.venv-omni/bin/python",
         "/workspace/mmr-116/experiments/ch16_audio_input.py"
       ],
-      "started_at": "2026-10-30T19:04:01.831643+08:00",
+      "started_at": "2026-10-30T19:28:43.505950+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch16.log",
       "log_sha256": "6fbac466cfc38147c06d8401119e2c059bf5dc9550e057b662190edb96fe52be",
@@ -1407,7 +1407,7 @@
         "/workspace/mmr-116/.venv-omni/bin/python",
         "/workspace/mmr-116/experiments/ch17_thinker_talker.py"
       ],
-      "started_at": "2026-10-30T19:04:05.746318+08:00",
+      "started_at": "2026-10-30T19:28:47.350021+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch17.log",
       "log_sha256": "8bbf1db1056730615671cf93795968e36908c9b6404d37267a5ab328ce176853",
@@ -1448,7 +1448,7 @@
         "/workspace/mmr-116/.venv-omni/bin/python",
         "/workspace/mmr-116/experiments/ch18_audio_codes.py"
       ],
-      "started_at": "2026-10-30T19:04:09.139292+08:00",
+      "started_at": "2026-10-30T19:28:50.920476+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch18.log",
       "log_sha256": "157c959924065a255a904a14f149c50807081d4291d9c572b732a4a2038951b4",
@@ -1597,7 +1597,7 @@
         "/workspace/mmr-116/.venv-omni/bin/python",
         "/workspace/mmr-116/experiments/ch19_omni_training.py"
       ],
-      "started_at": "2026-10-30T19:04:12.516013+08:00",
+      "started_at": "2026-10-30T19:28:54.290789+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch19.log",
       "log_sha256": "4b2e216cf260ff79b78fef92f26c05b453eeae876a6e461112e570a384214cb4",
@@ -1733,7 +1733,7 @@
         "/workspace/mmr-116/.venv-omni/bin/python",
         "/workspace/mmr-116/experiments/ch20_realtime.py"
       ],
-      "started_at": "2026-10-30T19:04:16.187057+08:00",
+      "started_at": "2026-10-30T19:28:58.185535+08:00",
       "exit_code": 0,
       "log": "build/final-audit/ch20.log",
       "log_sha256": "a6a456976f6688d5a158952ea4c9d60eff5fb1a288f1331f81839f8c599edab6",
@@ -2436,7 +2436,7 @@
     "book/20-realtime/README.md": "577fe38876c07142f7c728f3f4b5838727f1d9e4f543eef1320380d31ec996ed",
     "book/appendices/licenses.md": "7d21a01b384cae23d7f2e1698e6758d2d60dd5fb30ebee0048b9de280b45c59d",
     "book/appendices/math-and-tensors.md": "1199d2404c681e2d8831a396e4a11c7b620330445fbb12b65f6bb05881a4b53f",
-    "book/appendices/reproduction.md": "d922894830bd7e3c29c66eb5388207bbac617f50ac73a23768abda2130a6cebd",
+    "book/appendices/reproduction.md": "f64cccd65638ce7315956b80be4713bda5b42b34b7e31babc701ca488a398b09",
     "book/appendices/source-index.md": "72e840a8c569400b625abbee57836b6bbafcc88c222911bd2289dd0b20daf2ce",
     "book/reading-guide.md": "501e7dd076aa6c68c377188f171b7d28bcdc6d495a602049ec11ace9e73b2209",
     "experiments/_omni_fixture.py": "1d7934dd2c0c340abdd5d4c37d2974b8893e39a92534f2f9b4b9528d60a4d172",
@@ -2484,5 +2484,5 @@
       "remote": "https://github.com/jingyaogong/minimind-o.git"
     }
   },
-  "completed_at": "2026-10-30T19:04:19.299950+08:00"
+  "completed_at": "2026-10-30T19:29:01.572282+08:00"
 }

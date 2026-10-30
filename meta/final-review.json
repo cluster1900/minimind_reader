@@ -2,7 +2,7 @@
   "title": "MiniMind 源码阅读与工程实践",
   "version": "1.1.0",
   "status": "passed",
-  "verified_at": "2026-10-30T19:04:37.762323+08:00",
+  "verified_at": "2026-10-30T19:38:44.086777+08:00",
   "inputs": [
     {
       "id": "reading-guide",
@@ -122,7 +122,7 @@
     {
       "id": "appendix-reproduction",
       "path": "book/appendices/reproduction.md",
-      "sha256": "d922894830bd7e3c29c66eb5388207bbac617f50ac73a23768abda2130a6cebd"
+      "sha256": "f64cccd65638ce7315956b80be4713bda5b42b34b7e31babc701ca488a398b09"
     },
     {
       "id": "appendix-source",
@@ -180,10 +180,10 @@
   "pdf_visual": {
     "passed": true,
     "pages": 210,
-    "pdf_sha256": "34c69ef2ae43b19b72d2ad960f4d50a411d833a968c67fa0b9b1c236e3339392",
-    "epub_sha256": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
-    "head_commit": "a38519a83a8b24f03b38f3aaf64c2224f3cb7583",
-    "reviewed_at": "2026-10-30T18:57:09+08:00",
+    "pdf_sha256": "fc82d7b9493b4fadd868467130bbb3d5444080e965c21be270939160245bb945",
+    "epub_sha256": "742c6266f0576e01f2411b01a0cf8bda0629546996cf76d060a922dc5d47d762",
+    "head_commit": "09eab806d620d64df7da385d2c59a341aef75243",
+    "reviewed_at": "2026-10-30T19:37:08+08:00",
     "baseline_pdf_sha256": "65f8853e5382e3d7bd06d77ecd5c26741799153df427a405b24ea73be3e4f69f",
     "changed_body_pages": [
       2,
@@ -499,13 +499,13 @@
       194,
       195
     ],
-    "method": "Rendered all 210 A5 pages and compared each raster to reviewed 1.0.1 (194 pages): 133 changed body pages, 177 with neighbours, all inspected (p195-210 equal v1.0.1 p179-194). Full 210-page read of a93ceef candidate carried over; a38519a differs from it only on p57, p128, p186 (raster diff), which were re-inspected with p56-58, p127-129, p185-187. p57/p128 numbers now match experiments/ch05,ch14-results.json; p186 lock file names no longer break. Independent fresh-clone rebuild is raster- and text-identical on all 210 pages. No clipped glyphs, overlaps, broken equations/diagrams or blank pages; non-blocking: p188 two overfull code lines (<7.3pt), p186 loose CJK spacing, cosmetic p18/p49/p148.",
+    "method": "Rendered all 210 A5 pages and compared each raster to reviewed 1.0.1 (194 pages): 133 changed body pages, 177 with neighbours (p195-210 equal v1.0.1 p179-194). Signed a38519a review (34c69ef2) carried over; 09eab80 differs from 34c69ef2 and from 4668139 build ea9ba4fd only on p186 (raster diff), re-inspected with p185-187 at 230 dpi: appendix B paragraph matches .venv-mm/final-experiments.json environments, meta/final-experiments.json and both lock names no longer break, even CJK spacing, no overflow, all fonts embedded, no fallback; Overfull/Underfull 2/50 unchanged. Independent fresh-checkout rebuild of 09eab80 is raster-identical on all 210 pages; 29 tests OK. No clipped glyphs, overlaps, broken equations/diagrams or blank pages; non-blocking: p188 two overfull code lines (<7.3pt), p186 paragraph ends with a one-character last line (house style elsewhere), cosmetic p18/p49/p148.",
     "record": "meta/content-review-2026-10-30.md"
   },
   "readers": {
     "epubjs": {
       "reader": "EPUB.js 0.3.93",
-      "sha256": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
+      "sha256": "742c6266f0576e01f2411b01a0cf8bda0629546996cf76d060a922dc5d47d762",
       "checks": [
         {
           "index": 0,
@@ -636,7 +636,7 @@
     "foliate": {
       "reader": "Foliate.js",
       "revision": "78914aef4466eb960965702401634c2cb348e9b1",
-      "sha256": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
+      "sha256": "742c6266f0576e01f2411b01a0cf8bda0629546996cf76d060a922dc5d47d762",
       "checks": [
         {
           "index": 0,
@@ -1246,12 +1246,12 @@
   "tool_input_sha256": {
     "assets/cover.pdf": "cf9496c2c484449c1e1c958486956c7c60f4e9e7ff3a3b5c7a71d742e6df8425",
     "assets/cover.png": "231a842dcfdd084ac4ea0db6aeda5d61f8b819775c85da4fc3cac309628bbe73",
-    "assets/fonts/MiniMindBookCJK.otf": "68027f54720e030cd6dd36e52e1d9dad4af23f4f6074013ea7c8c4231666291e",
+    "assets/fonts/MiniMindBookCJK.otf": "27f4859556d59eff582ef88df9a87281f66f5d40aa0901f3994f59d281c60366",
     "assets/fonts/NotoSansCJKsc-Regular.otf": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
     "assets/fonts/SourceCodePro-Regular.otf": "9f9664e2edf6f045c11e774f9bd0be6993971f2544a39061a5ce478b96b051f8",
     "meta/chapter-source-map.json": "11f87001189f50b38cca0783dff6fd7b749bf484c2600e9599a466edfca00cd2",
-    "meta/content-review-2026-10-30.md": "3ca5c66902c4ad6d082345c6ef3aaf767e9aa8a16b492603ad850080afa6df66",
-    "meta/content-review.json": "d9f785b290b65f59c72280127bacf0dc37ff5de0cc60a6c78806290059ddfe73",
+    "meta/content-review-2026-10-30.md": "2d3fb9c0964621ab2cf0b40619cb8b7e7c6a4e46d6e7ed3f796e2c62503c6c67",
+    "meta/content-review.json": "096e89a680eb03e16553138e6db25d879740c17b4b466244e6d005b28057bb77",
     "package-lock.json": "86f28db0d9ffcaed7b6924f4c436dc16d1c1b761c423fff51f6c7fb4378ee1ea",
     "publishing/book.yaml": "36ae89a6a80707144e378e93f5a8f54384474b28eaf2b61a35557de78e49ca61",
     "publishing/epub/style.css": "60b6bb1ed75ce054bdfe8bd9870e3a42171d27058bd49089bd12af47cdcaf626",
@@ -1282,16 +1282,16 @@
     "scripts/verify_experiments.py": "abb4511aa457a5c55264d998604546343fbdabc1c04c5f134a5ab6fcd8a5d3fd"
   },
   "output_sha256": {
-    "minimind-source-guide.epub": "c808fa444d1f3e1bade0c3f144f2c9a0a3c4da28278f7502c5d207be9b107ec9",
-    "minimind-source-guide.pdf": "34c69ef2ae43b19b72d2ad960f4d50a411d833a968c67fa0b9b1c236e3339392"
+    "minimind-source-guide.epub": "742c6266f0576e01f2411b01a0cf8bda0629546996cf76d060a922dc5d47d762",
+    "minimind-source-guide.pdf": "fc82d7b9493b4fadd868467130bbb3d5444080e965c21be270939160245bb945"
   },
   "audit_sha256": {
-    "build/consistency-audit/tests.log": "b09284625d7729a91b6dd323997840aafbbac9b38857281b39e9de8c5a1b26a4",
-    "build/consistency-audit/experiments.json": "889e36d40579300687b61f37e33e4e86c15bd959503eec524a8cf2179e76b15e",
-    "build/consistency-audit/build.log": "5cdc5f6e664285a138a6bb93e8f8c307b2d8ebd356879eae82061628efd52e8c",
+    "build/consistency-audit/tests.log": "5bdba2698098e6fcfe992cb97ac52f40f605d8e89a7d78189cf24dd052ce8d4c",
+    "build/consistency-audit/experiments.json": "1d954ede9a7a94e8f853ee1dfa03a13c12d75435d18e0f3180db7ba01525357d",
+    "build/consistency-audit/build.log": "33fd9d4adc75558f905c52cfbfc2d41537da43ca88b500a002f9aea5e7c058ec",
     "build/consistency-audit/epubcheck.log": "1b871a801b1773626c473f38741caef8c98ef34b42c5b60ec1c5109e2bdec171",
     "build/consistency-audit/pdffonts.txt": "d994255d1394d1ca11e641b3c025752da286a13a9e89671eda1db3693285ac00",
-    "build/consistency-audit/visual-review.json": "75d9dcfd0eb7fd61d87102826a0aa9d99b01b751449819bc47a3283af09b4a8d"
+    "build/consistency-audit/visual-review.json": "446ca20ae41c33d52b6597b1d00e9fa63083c37edfb343b74c9d380ac6c09ff4"
   },
   "limits": [
     "Source/CPU/synthetic-control-flow scope; no full default-weight training, GPU benchmark or audio-quality claim",
